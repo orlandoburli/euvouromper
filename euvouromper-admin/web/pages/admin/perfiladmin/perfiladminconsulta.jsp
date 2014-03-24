@@ -27,21 +27,10 @@
 	</div>
 
 	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="perfiladminconsulta.grid.admin" data-page-size="10" data-detail-page="perfiladmincadastro.admin"></div>
+		<div class="DataGridConsulta" data-page="perfiladminconsulta.grid.admin" data-page-size="8" data-detail-page="perfiladmincadastro.admin"></div>
 	</div>
 
-	<div class="FormularioBotoes form-actions text-right">
-		<button type="button" class="BotaoNovo btn btn-lg btn-primary" title="Novo Registro (Ctrl + N)">
-			<i class="icon-plus-circle"></i> Novo
-		</button>
+	<%@include file="../../../botoes-consulta.jsp"%>
 
-		<button type="button" class="BotaoEditar btn btn-lg btn-success" title="Editar Registro Selecionado (Ctrl + E)">
-			<i class="icon-pencil4"></i> Editar
-		</button>
-
-		<button type="button" class="BotaoExcluir btn btn-lg btn-danger" title="Excluir Registro Selecionado (Ctrl + Del)">
-			<i class="icon-minus-circle"></i> Excluir
-		</button>
-	</div>
 </div>
 <!-- /datatable inside panel body -->

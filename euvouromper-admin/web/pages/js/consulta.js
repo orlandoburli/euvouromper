@@ -70,7 +70,9 @@ function loadDataGrid() {
 	var paginaGrid = $(".DataGridConsulta").attr("data-page");
 	var pageSize = $(".DataGridConsulta").attr("data-page-size");
 	var pageNumber = $(".DataGridConsulta").attr("data-page-number");
-
+	
+	console.log("pageSize: "+pageSize);
+	
 	if (!pageNumber) {
 		pageNumber = 1;
 	}

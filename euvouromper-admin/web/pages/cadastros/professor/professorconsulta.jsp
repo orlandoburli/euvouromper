@@ -27,7 +27,7 @@
 	</div>
 
 	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="professorconsulta.grid.admin" data-page-size="10" data-detail-page="professorcadastro.admin"></div>
+		<div class="DataGridConsulta" data-page="professorconsulta.grid.admin" data-page-size="8" data-detail-page="professorcadastro.admin"></div>
 	</div>
 
 	<%@include file="../../../botoes-consulta.jsp" %>

@@ -54,6 +54,14 @@
 					<li><a data-menu-type="link" data-link="professorconsulta.admin">Professores</a></li>
 				</ul>
 			</li>
+			
+			<li>
+				<a href="#" class="expand"><span>Online</span> <i class="icon-paragraph-justify2"></i></a>
+				<ul>
+					<li><a data-menu-type="link" data-link="videoconsulta.admin">Vídeos</a></li>
+					<li><a data-menu-type="link" data-link="moduloconsulta.admin">Módulos</a></li>
+				</ul>
+			</li>
 		</ul>
 		<!-- /main navigation -->
 

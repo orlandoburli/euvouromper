@@ -86,9 +86,8 @@ $(function() {
 	$("a").click(function(e) {
 		var dataLink = $(this).attr("data-link");
 		
-		e.preventDefault();
-		
 		if (dataLink != null && dataLink != '') {
+			e.preventDefault();
 			
 			console.log("data-link: " + dataLink);
 			loadDataLink(dataLink);

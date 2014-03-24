@@ -578,25 +578,24 @@ $(function() {
 
 
 	//===== Spinner options =====//
+	$( ".spinner-default" ).spinner();
 	
-	$( "#spinner-default" ).spinner();
-	
-	$( "#spinner-decimal" ).spinner({
+	$( ".spinner-decimal" ).spinner({
 		step: 0.01,
 		numberFormat: "n"
 	});
 	
 	$( "#culture" ).change(function() {
-		var current = $( "#spinner-decimal" ).spinner( "value" );
+		var current = $( ".spinner-decimal" ).spinner( "value" );
 		Globalize.culture( $(this).val() );
-		$( "#spinner-decimal" ).spinner( "value", current );
+		$( ".spinner-decimal" ).spinner( "value", current );
 	});
 	
-	$( "#currency" ).change(function() {
-		$( "#spinner-currency" ).spinner( "option", "culture", $( this ).val() );
+	$( ".currency" ).change(function() {
+		$( ".spinner-currency" ).spinner( "option", "culture", $( this ).val() );
 	});
 	
-	$( "#spinner-currency" ).spinner({
+	$( ".spinner-currency" ).spinner({
 		min: 5,
 		max: 2500,
 		step: 25,
@@ -604,7 +603,7 @@ $(function() {
 		numberFormat: "C"
 	});
 		
-	$( "#spinner-overflow" ).spinner({
+	$( ".spinner-overflow" ).spinner({
 		spin: function( event, ui ) {
 			if ( ui.value > 10 ) {
 				$( this ).spinner( "value", -10 );

@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.orlandoburli.framework.core.log.Log;
 import br.com.orlandoburli.framework.core.utils.Utils;
 import br.com.orlandoburli.framework.core.web.BaseAction;
+import br.com.orlandoburli.framework.core.web.BaseCadastroAction;
+import br.com.orlandoburli.framework.core.web.BaseConsultaAction;
 import br.com.orlandoburli.framework.core.web.filters.AutorizathionFilter;
 import br.com.orlandoburli.framework.core.web.filters.InjectionFilter;
 
@@ -107,6 +109,13 @@ public class MainControllerServlet extends HttpServlet {
 
 			if (facade instanceof BaseAction) { // Processamento de Outjection
 				((BaseAction) facade).dispatch();
+			}
+			
+			// Fecha o DaoManager, se for consulta ou cadastro
+			if (facade instanceof BaseCadastroAction) {
+				((BaseCadastroAction) facade).getManager().commit();
+			} else if (facade instanceof BaseConsultaAction) {
+				((BaseConsultaAction) facade).getManager().commit();
 			}
 
 		} catch (ClassNotFoundException e) {
