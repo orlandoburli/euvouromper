@@ -1,1 +1,8 @@
 *.class
+
+euvouromper-admin/work/*
+
+
+euvouromper-admin/work/SESSIONS.ser
+
+euvouromper-admin/work/org/apache/jsp/web/pages/cadastros/professor/professorcadastro_jsp.java

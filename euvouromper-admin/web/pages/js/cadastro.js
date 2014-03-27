@@ -152,6 +152,9 @@ $(function() {
 
 	// Volta para a pagina de consulta
 	function voltar() {
+		// Forca esconder o modal - pode ter varios aqui...
+		$('#selecao_imagem').modal('hide');
+		
 		var pageConsulta = $(".FormularioCadastro").attr("data-page-consulta");
 		loadPage(pageConsulta);
 		loadJs("web/pages/js/consulta.js");
@@ -163,6 +166,7 @@ $(function() {
 		switch (event.which) {
 		
 		case (KEY_ESC):
+			event.preventDefault();
 			voltar();
 			break;
 
@@ -204,7 +208,7 @@ $(function() {
 	$(document).ready(function() {
 		$(document).off("keydown");
 		
-		// Verifica se e uma tela de consulta
+		// Verifica se e uma tela de cadastro
 		if ($(".FormularioCadastro")) {
 			$(document).on("keydown", eventoTeclasCadastro);
 		}

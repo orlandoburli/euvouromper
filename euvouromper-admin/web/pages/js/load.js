@@ -1,16 +1,15 @@
 
 /* ========================================================
 *
-* Londinium - premium responsive admin template
+* Script customizado, para reload das paginas internas.
 *
 * ========================================================
 *
-* File: application.js;
+* File: load.js;
 * Description: General plugins and layout settings.
-* Version: 1.0
+* Version: 1.1
 *
 * ======================================================== */
-
 
 
 $(function() {

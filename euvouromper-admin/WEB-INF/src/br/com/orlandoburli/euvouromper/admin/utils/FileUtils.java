@@ -18,6 +18,8 @@ public final class FileUtils {
 	public static final String[] EXTENSOES_IMAGENS = { "jpg", "png", "jpeg", "gif" };
 
 	public static List<FileVo> listaImagens(String path) {
+		Log.debug("Inicio listagem de imagens");
+
 		File dir = new File(path);
 
 		if (!dir.exists()) {
@@ -40,7 +42,7 @@ public final class FileUtils {
 			Log.info("FileName: " + fileName);
 
 			if (f.isFile() && fileName.indexOf(".") >= 0) {
-				
+
 				String extensao = fileName.substring(fileName.lastIndexOf(".") + 1);
 
 				// Lista somente as extensoes permitidas
@@ -53,14 +55,14 @@ public final class FileUtils {
 					file.setFullFileName(f.getAbsolutePath());
 					file.setExtension(extensao.toLowerCase());
 					file.setSize(new BigDecimal(f.length()));
-					
-					try {
-						// Dimensoes da imagem
-						BufferedImage bimg = ImageIO.read(f);
-						file.setWidth(bimg.getWidth());
-						file.setHeight(bimg.getHeight());
-					} catch (IOException e) {
-					}
+
+//					try {
+//						// Dimensoes da imagem
+//						BufferedImage bimg = ImageIO.read(f);
+//						file.setWidth(bimg.getWidth());
+//						file.setHeight(bimg.getHeight());
+//					} catch (IOException e) {
+//					}
 
 					// Data / Hora da ultima modificacao
 					Calendar lastModification = Calendar.getInstance();
@@ -70,12 +72,28 @@ public final class FileUtils {
 
 					files.add(file);
 				} else {
-					Log.debug("File " + f.getName() + " com extensao nao permitida!");
+					Log.fine("File " + f.getName() + " com extensao nao permitida! Extensoes permitidas: " + toFormatedString(EXTENSOES_IMAGENS));
 				}
 			}
 		}
+		
+		Log.debug("Fim do load das imagens");
 
 		return files;
+	}
+
+	public static String toFormatedString(String[] values) {
+		String retorno = "";
+
+		for (String v : values) {
+			retorno += v + ", ";
+		}
+
+		if (retorno.length() >= 2) {
+			retorno = retorno.substring(0, retorno.length() - 2);
+		}
+
+		return retorno;
 	}
 
 	public static boolean isInArray(String search, String[] source) {

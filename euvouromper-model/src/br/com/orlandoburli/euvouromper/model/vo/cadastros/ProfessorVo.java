@@ -35,6 +35,10 @@ public class ProfessorVo extends BaseVo {
 	@MaxSize(100)
 	@Description("Título")
 	private String titulo;
+	
+	@Column(name = PATH_FOTO, dataType = DataType.VARCHAR, maxSize = 500)
+	@Description("Foto")
+	private String pathFoto;
 
 	public Integer getIdProfessor() {
 		return idProfessor;
@@ -66,5 +70,13 @@ public class ProfessorVo extends BaseVo {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public String getPathFoto() {
+		return pathFoto;
+	}
+
+	public void setPathFoto(String pathFoto) {
+		this.pathFoto = pathFoto;
 	}
 }
