@@ -9,6 +9,7 @@ import br.com.orlandoburli.euvouromper.model.dao.online.ModuloVideoDao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.vo.online.ModuloVideoVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.ModuloVo;
+import br.com.orlandoburli.euvouromper.model.vo.online.VideoVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.web.BaseConsultaAction;
 import br.com.orlandoburli.framework.core.web.filters.OutjectSession;
@@ -58,7 +59,7 @@ public class ModuloVideoConsultaAction extends BaseConsultaAction<ModuloVideoVo,
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (getModuloSelecionado() == null) {
 			return;
 		}
@@ -71,7 +72,9 @@ public class ModuloVideoConsultaAction extends BaseConsultaAction<ModuloVideoVo,
 
 	@Override
 	public void doBeforeFilter(ModuloVideoVo filter, ModuloVideoBe be, HttpServletRequest request, HttpServletResponse response) {
-
+		filter.setVideo(new VideoVo());
+		filter.getVideo().setNome("%" + getPesquisarPor() + "%");
+		filter.setIdModulo(getModuloSelecionado().getIdModulo());
 	}
 
 	public Integer getIdModulo() {

@@ -19,9 +19,7 @@ table tbody tr td:nth-child(1), table tbody tr td:nth-child(3), table tbody tr t
 	<thead>
 		<tr>
 			<td>C&oacute;digo</td>
-			<td>Vídeo</td>
-			<td>Aula</td>
-			<td>Bloco</td>
+			<td>Módulo</td>
 		</tr>
 	</thead>
 
@@ -32,13 +30,11 @@ table tbody tr td:nth-child(1), table tbody tr td:nth-child(3), table tbody tr t
 	</tfoot>
 
 	<tbody>
-		<c:forEach items="${listSource}" var="modulovideo">
+		<c:forEach items="${listSource}" var="pacotemodulo">
 			<tr
-				data-id="idModuloVideo=${modulovideo.idModuloVideo}">
-				<td>${modulovideo.idModuloVideo }</td>
-				<td>${modulovideo.video.nome }</td>
-				<td>${modulovideo.video.aula }</td>
-				<td>${modulovideo.video.bloco }</td>
+				data-id="idPacoteModulo=${pacotemodulo.idPacoteModulo}">
+				<td>${pacotemodulo.idPacoteModulo }</td>
+				<td>${pacotemodulo.modulo.nome }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

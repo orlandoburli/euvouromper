@@ -43,4 +43,4 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/interface/collapsible.min.js"></script>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/application.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/application_blank.js"></script>

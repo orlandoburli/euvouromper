@@ -11,7 +11,7 @@
 		</div>
 		<div class="col-sm-2">
 			<select id="ParametroPesquisa" class="select">
-				<option value="Video">Vídeo</option>
+				<option value="Modulo">Módulo</option>
 			</select>
 		</div>
 
@@ -26,14 +26,14 @@
 	</div>
 
 	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="modulovideoconsulta.grid.admin" data-page-size="8" data-detail-page="modulovideocadastro.admin"></div>
+		<div class="DataGridConsulta" data-page="pacotemoduloconsulta.grid.admin" data-page-size="8" data-detail-page="pacotemodulocadastro.admin"></div>
 	</div>
 
 	<c:set var="hideEditar" value="true" />
 
 	<c:set var="customButtons">
-		<button title="Voltar para a consulta de módulos" class="BotaoVoltarModulo btn btn-lg btn-success tip">
-			<i class="icon-undo2"></i> Voltar para Módulos
+		<button title="Voltar para a consulta de pacotes" class="BotaoVoltarPacote btn btn-lg btn-success tip">
+			<i class="icon-undo2"></i> Voltar para Pacotes
 		</button>
 	</c:set>
 
@@ -42,8 +42,8 @@
 </div>
 <!-- /datatable inside panel body -->
 <script type="text/javascript">
-	$(".BotaoVoltarModulo").click(function() {
-		var paginaAcoes = "moduloconsulta.admin";
+	$(".BotaoVoltarPacote").click(function() {
+		var paginaAcoes = "pacoteconsulta.admin";
 		loadPage(paginaAcoes);
 		loadJs("web/pages/js/consulta.js");
 		loadJs("web/pages/js/load.js");

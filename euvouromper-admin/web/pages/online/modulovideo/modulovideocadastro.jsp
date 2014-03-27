@@ -11,19 +11,32 @@
 				<label class="col-sm-2 control-label text-right">C&oacute;digo</label>
 				<div class="col-sm-7">
 					<input id="idModuloVideo" type="text" disabled="disabled" class="form-control" value="${vo.idModuloVideo }" />
+					<input id="idModulo" type="hidden" disabled="disabled" class="form-control" value="${moduloSelecionado.idModulo }"  />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label text-right">Módulo</label>
+				<div class="col-sm-7">
+					<input id="nomeModulo" type="text" disabled="disabled" class="form-control" value="${moduloSelecionado.nome}" />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-2 control-label text-right">Nome</label>
+				<label class="col-sm-2 control-label text-right">Vídeo</label>
+
 				<div class="col-sm-7">
-					<input id="nome" type="text" value="${vo.nome}" autofocus="autofocus" class="form-control" />
+					<select id="idVideo" class="select-full">
+						<c:forEach var="video" items="${videos}">
+							<option value="${video.idVideo}">${video.nome} Aula ${video.aula} Bloco ${video.bloco}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
-
+			
 		</div>
 
 		<%@include file="../../../botoes-cadastro.jsp"%>
-		
+
 	</form>
 </div>

@@ -13,6 +13,10 @@ encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/m
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/modulo/ModuloConsultaAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/modulovideo/ModuloVideoCadastroAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/modulovideo/ModuloVideoConsultaAction.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/pacote/PacoteCadastroAction.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/pacote/PacoteConsultaAction.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/pacotemodulo/PacoteModuloCadastroAction.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/pacotemodulo/PacoteModuloConsultaAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/video/VideoCadastroAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/video/VideoConsultaAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/servlets/MainControllerServlet.java=UTF-8

@@ -27,9 +27,9 @@ public class ModuloVideoBe extends BaseBe<ModuloVideoVo, ModuloVideoDao> {
 	public List<VideoVo> getListNotIn(ModuloVo modulo) throws ListException {
 		StringBuilder sql = new StringBuilder();
 
-		String prefix = Dicionario.ModuloVideo.TABELA_MODULO_VIDEO + "_" + Dicionario.Video.TABELA_VIDEO + ".";
-		
-		sql.append(prefix + Dicionario.Video.Colunas.ID_VIDEO + " NOT IN");
+		String prefix = Dicionario.Video.TABELA_VIDEO + ".";
+
+		sql.append(prefix + Dicionario.Video.Colunas.ID_VIDEO);
 
 		sql.append(" NOT IN (");
 

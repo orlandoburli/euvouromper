@@ -11,7 +11,8 @@
 		</div>
 		<div class="col-sm-2">
 			<select id="ParametroPesquisa" class="select">
-				<option value="Video">Vídeo</option>
+				<option value="Nome">Nome</option>
+				<option value="Codigo">Código</option>
 			</select>
 		</div>
 
@@ -26,14 +27,13 @@
 	</div>
 
 	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="modulovideoconsulta.grid.admin" data-page-size="8" data-detail-page="modulovideocadastro.admin"></div>
+		<div class="DataGridConsulta" data-page="pacoteconsulta.grid.admin" data-page-size="8" data-detail-page="pacotecadastro.admin"></div>
 	</div>
 
-	<c:set var="hideEditar" value="true" />
-
+	<!-- Botoes customizados -->
 	<c:set var="customButtons">
-		<button title="Voltar para a consulta de módulos" class="BotaoVoltarModulo btn btn-lg btn-success tip">
-			<i class="icon-undo2"></i> Voltar para Módulos
+		<button type="button" class="BotaoModulos btn btn-lg btn-warning tip" title="Módulos do pacote">
+			<i class="icon-cube2"></i> Módulos
 		</button>
 	</c:set>
 
@@ -41,11 +41,16 @@
 
 </div>
 <!-- /datatable inside panel body -->
+
 <script type="text/javascript">
-	$(".BotaoVoltarModulo").click(function() {
-		var paginaAcoes = "moduloconsulta.admin";
+	$(".BotaoModulos").click(function() {
+		if (!registroSelecionado()) {
+			return;
+		}
+		
+		var paginaAcoes = "pacotemoduloconsulta.admin?" + getSelectedDataId();
 		loadPage(paginaAcoes);
 		loadJs("web/pages/js/consulta.js");
-		loadJs("web/pages/js/load.js");
+		loadJs("web/pages/js/load.js");	
 	});
 </script>

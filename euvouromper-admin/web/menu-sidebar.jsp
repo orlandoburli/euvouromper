@@ -60,6 +60,7 @@
 				<ul>
 					<li><a data-menu-type="link" data-link="videoconsulta.admin">Vídeos</a></li>
 					<li><a data-menu-type="link" data-link="moduloconsulta.admin">Módulos</a></li>
+					<li><a data-menu-type="link" data-link="pacoteconsulta.admin">Pacotes</a></li>
 				</ul>
 			</li>
 		</ul>

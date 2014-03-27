@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div class="form-actions text-right">
 	<button class="BotaoNavegacaoPrimeiro btn btn-default btn-icon tip" title="Primeiro [Home]">
 		<i class="icon-first"></i>
@@ -17,16 +19,21 @@
 <div class="FormularioBotoes form-actions text-right">
 	${customButtons}
 
-	<button type="button" class="BotaoNovo btn btn-lg btn-primary tip" title="Novo Registro (Ctrl + N)">
-		<i class="icon-plus-circle"></i> Novo
-	</button>
+	<c:if test="${empty hideNovo}">
+		<button type="button" class="BotaoNovo btn btn-lg btn-primary tip" title="Novo Registro (Ctrl + N)">
+			<i class="icon-plus-circle"></i> Novo
+		</button>
+	</c:if>
 
-	<button type="button" class="BotaoEditar btn btn-lg btn-success tip" title="Editar Registro Selecionado (Ctrl + E)">
-		<i class="icon-pencil4"></i> Editar
-	</button>
-
-	<button type="button" class="BotaoExcluir btn btn-lg btn-danger tip" title="Excluir Registro Selecionado (Ctrl + Del)">
-		<i class="icon-minus-circle"></i> Excluir
-	</button>
-
+	<c:if test="${empty hideEditar}">
+		<button type="button" class="BotaoEditar btn btn-lg btn-success tip" title="Editar Registro Selecionado (Ctrl + E)">
+			<i class="icon-pencil4"></i> Editar
+		</button>
+	</c:if>
+	
+	<c:if test="${empty hideExcluir}">
+		<button type="button" class="BotaoExcluir btn btn-lg btn-danger tip" title="Excluir Registro Selecionado (Ctrl + Del)">
+			<i class="icon-minus-circle"></i> Excluir
+		</button>
+	</c:if>
 </div>

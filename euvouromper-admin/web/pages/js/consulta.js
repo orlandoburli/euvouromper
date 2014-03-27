@@ -158,6 +158,14 @@ $(".BotaoPesquisar").click(function() {
 	loadDataGrid();
 });
 
+function registroSelecionado() {
+	if (getSelectedDataId() != null) {
+		return true;
+	} else {
+		$.jGrowl('Selecione um registro!', { life : 2000, theme: 'growl-warning', header: 'Alerta' });
+	}
+}
+
 function novo() {
 	// TODO Novo 
 	// alert("Novo ainda nao implementado!");
@@ -199,6 +207,10 @@ function novo() {
 }
 
 function editar() {
+	if (!registroSelecionado()) {
+		return;
+	}
+	
 	var dados = getSelectedDataId();
 
 	var paginaCadastro = $(".DataGridConsulta").attr("data-detail-page");
@@ -250,7 +262,10 @@ function excluirOld() {
 }
 
 function excluir() {
-
+	if (!registroSelecionado()) {
+		return;
+	}
+	
 	var dados = getSelectedDataId();
 
 	var paginaCadastro = $(".DataGridConsulta").attr("data-detail-page");
