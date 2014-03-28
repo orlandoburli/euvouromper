@@ -1,21 +1,13 @@
 package br.com.orlandoburli.euvouromper.admin.web.actions.cadastros.professor;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.orlandoburli.euvouromper.admin.utils.FileUtils;
-import br.com.orlandoburli.euvouromper.model.be.admin.ParametroBe;
 import br.com.orlandoburli.euvouromper.model.be.cadastros.ProfessorBe;
 import br.com.orlandoburli.euvouromper.model.dao.cadastros.ProfessorDao;
-import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
 import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
-import br.com.orlandoburli.euvouromper.model.vo.utils.FileVo;
-import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
-import br.com.orlandoburli.framework.core.log.Log;
-import br.com.orlandoburli.framework.core.utils.Constants;
 import br.com.orlandoburli.framework.core.web.BaseCadastroAction;
 
 public class ProfessorCadastroAction extends BaseCadastroAction<ProfessorVo, ProfessorDao, ProfessorBe> {
@@ -36,30 +28,6 @@ public class ProfessorCadastroAction extends BaseCadastroAction<ProfessorVo, Pro
 		getRequest().setAttribute("submenu", "Cadastros");
 		getRequest().setAttribute("menuAtivo", "Professores");
 
-		listaImagens();
-	}
-
-	public void listaImagens() {
-		try {
-			ParametroVo parametroPath = new ParametroBe(getManager()).get(Constants.Parameters.PATH_ARQUIVOS);
-			if (parametroPath == null) {
-				Log.warning("Parametro " + Constants.Parameters.PATH_ARQUIVOS + " nao definido!");
-			}
-
-			List<FileVo> files = FileUtils.listaImagens(parametroPath.getValor());
-			
-			Log.info("File list");
-			
-			for (FileVo f : files) {
-				Log.info("File: " + f.getFileName());
-			}
-			
-			Log.info("End File list");
-			
-			getRequest().setAttribute("files", files);
-		} catch (ListException e) {
-			e.printStackTrace();
-		}
-
+		FileUtils.listaImagens(getManager(), getRequest());
 	}
 }

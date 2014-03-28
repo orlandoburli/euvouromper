@@ -232,6 +232,17 @@ $(function() {
 		});
 	});
 	
+	// Funcao para caixa de selecao de imagens
+	// ATENCAO - Obrigatorio o include do arquivo lista_imagens.jsp.
+	$(".BotaoSelecionarImagem").click(function(e) {
+		// Seta os atributos que serao de retorno
+		$("#selecao_imagem").attr("data-image-retorno", $(e.currentTarget).attr("data-image-retorno"));
+		$("#selecao_imagem").attr("data-input-retorno", $(e.currentTarget).attr("data-input-retorno"));
+		
+		$("#selecao_imagem").modal({
+			keyboard : false
+		});
+	});
 
 	// Funcao ENTER funcionar como TAB em input's
 	textboxes = $("input:visible, select:visible, textarea:visible");

@@ -1,22 +1,47 @@
 package br.com.orlandoburli.euvouromper.admin.utils;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
+import br.com.orlandoburli.euvouromper.model.be.admin.ParametroBe;
+import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
 import br.com.orlandoburli.euvouromper.model.vo.utils.FileVo;
+import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
+import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
+import br.com.orlandoburli.framework.core.utils.Constants;
 
 public final class FileUtils {
 
 	public static final String[] EXTENSOES_IMAGENS = { "jpg", "png", "jpeg", "gif" };
 
+	
+	public static void listaImagens(DAOManager manager, HttpServletRequest request) {
+		try {
+			ParametroVo parametroPath = new ParametroBe(manager).get(Constants.Parameters.PATH_ARQUIVOS);
+			if (parametroPath == null) {
+				Log.warning("Parametro " + Constants.Parameters.PATH_ARQUIVOS + " nao definido!");
+				return;
+			}
+
+			List<FileVo> files = FileUtils.listaImagens(parametroPath.getValor());
+			
+			for (FileVo f : files) {
+				Log.info("File: " + f.getFileName());
+			}
+			
+			request.setAttribute("files", files);
+		} catch (ListException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 	public static List<FileVo> listaImagens(String path) {
 		Log.debug("Inicio listagem de imagens");
 
@@ -56,14 +81,6 @@ public final class FileUtils {
 					file.setExtension(extensao.toLowerCase());
 					file.setSize(new BigDecimal(f.length()));
 
-//					try {
-//						// Dimensoes da imagem
-//						BufferedImage bimg = ImageIO.read(f);
-//						file.setWidth(bimg.getWidth());
-//						file.setHeight(bimg.getHeight());
-//					} catch (IOException e) {
-//					}
-
 					// Data / Hora da ultima modificacao
 					Calendar lastModification = Calendar.getInstance();
 					lastModification.setTimeInMillis(f.lastModified());
@@ -76,7 +93,7 @@ public final class FileUtils {
 				}
 			}
 		}
-		
+
 		Log.debug("Fim do load das imagens");
 
 		return files;

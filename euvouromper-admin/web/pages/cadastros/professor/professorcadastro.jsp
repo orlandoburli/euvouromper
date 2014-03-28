@@ -38,13 +38,14 @@
 			<div class="form-group">
 				<div>
 					<label class="col-sm-2 control-label text-right">Foto do professor</label> 
-					<a href="#" class="BotaoSelecionarImagem btn btn-primary"><i class="icon-image"></i> Selecionar imagem</a>
-					<img id="imgFoto" name="imgFoto" src="${vo.pathFoto}" class="thumb img-circle"/>
-					<input type="hidden" id="pathFoto" name="pathFoto" value="${vo.pathFoto}"/>
+					<a href="#" class="BotaoSelecionarImagem btn btn-primary" data-image-retorno="#imgFoto" data-input-retorno="#pathFoto"><i class="icon-image"></i> Selecionar imagem</a>
+					
+					<img id="imgFoto" name="imgFoto" src="${vo.pathFoto}" class="thumb img-thumbnail" style="max-height: 120px; max-width: 120px; width: auto; height: auto;"/>
+					<input type="hidden" id="pathFoto" name="pathFoto" value="${vo.pathFoto}" class="form-control"/>
 				</div>
 			</div>
 
-			<%@include file="lista_imagens.jsp"%>
+			<%@include file="../../utils/lista_imagens.jsp"%>
 			
 		</div>
 
@@ -55,9 +56,5 @@
 
 <script type="text/javascript">
 	
-	$(".BotaoSelecionarImagem").click(function() {
-		$("#selecao_imagem").modal({
-			keyboard : false
-		});
-	});
+	
 </script>

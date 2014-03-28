@@ -34,7 +34,7 @@
 							<div class="row">
 								</c:if>
 
-								<div class="col-lg-3 col-md-4 col-sm-4">
+								<div class="ItemImagem col-lg-3 col-md-4 col-sm-4">
 									<div class="block">
 										<div class="thumbnail thumbnail-boxed">
 											<div class="thumb" style="width: 120px; height: 90px;">
@@ -43,10 +43,12 @@
 											<div class="caption">
 												<span><strong>${file.fileName}</strong></span><br/> 
 												<span><strong>Tamanho:</strong> ${file.longSize }</span><br/>
-												<span><strong>Formato:</strong> ${file.extension}</span>
+												<span><strong>Formato:</strong> ${file.extension}</span><br/>
+												<button data-image-value="${file.webPath}" type="button" class="BotaoRetornarImagem btn btn-primary btn-xs"><i class="icon-image2"></i> Selecionar</button>
 											</div>
 										</div>
 									</div>
+									
 								</div>
 								</c:forEach>
 							</div>
@@ -64,3 +66,21 @@
 	</div>
 	<!-- /modal with tabs -->
 </div>
+
+<script type="text/javascript">
+	$(".BotaoRetornarImagem").click(function(e) {
+		var file         = $(e.currentTarget).attr("data-image-value")
+		var imgRetorno   = $("#selecao_imagem").attr("data-image-retorno");
+		var inputRetorno = $("#selecao_imagem").attr("data-input-retorno");
+		
+		console.log("Arquivo selecionado: " + file);
+		console.log(imgRetorno);
+		console.log(inputRetorno);
+		
+		$(imgRetorno).attr("src", file);
+		$(inputRetorno).attr("value", file);
+		
+		// Forca esconder o modal
+		$('#selecao_imagem').modal('hide');
+	});
+</script>

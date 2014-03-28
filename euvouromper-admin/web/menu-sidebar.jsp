@@ -4,15 +4,22 @@
 
 		<!-- User dropdown -->
 		<div class="user-menu dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="http://placehold.it/300"> <span class="user-info"> ${usuario.nome} <span>${usuario.perfil.nome}</span>
-			</span>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+				<img src="${usuario.pathFoto}" class="img-circle">
+				 
+				<span class="user-info"> ${usuario.nome} 
+					<span>${usuario.perfil.nome}</span>
+				</span>
 			</a>
+			
 			<div class="popup dropdown-menu dropdown-menu-right">
 				<div class="thumbnail">
 					<div class="thumb">
-						<img src="http://placehold.it/300">
+						<img src="${usuario.pathFoto}">
 						<div class="thumb-options">
-							<span> <a href="#" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a> <a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a>
+							<span> <a href="#" class="btn btn-icon btn-success">
+								<i class="icon-pencil"></i></a> 
+								<!-- <a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a> -->
 							</span>
 						</div>
 					</div>
