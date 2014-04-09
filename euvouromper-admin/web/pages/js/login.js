@@ -23,7 +23,7 @@ $(function() {
 				data : params,
 
 				beforeSend : function(data) {
-//					console.log("loading...");
+//					debug("loading...");
 				},
 
 				success : function(data) {
@@ -39,7 +39,7 @@ $(function() {
 					}
 				},
 				error : function(erro) {
-//					console.log("Erro no load ajax! " + erro);
+//					debug("Erro no load ajax! " + erro);
 				}
 			});
 		}
@@ -68,10 +68,10 @@ $(function() {
 			type : "POST",
 			data : params,
 			beforeSend : function(data) {
-//				console.log("loading...");
+//				debug("loading...");
 			},
 			success : function(data) {
-//				console.log(data);
+//				debug(data);
 
 				var retorno = $.parseJSON(data);
 
@@ -86,7 +86,7 @@ $(function() {
 				}
 			},
 			error : function(erro) {
-				console.log("Erro no load ajax! " + erro);
+				debug("Erro no load ajax! " + erro);
 			}
 		});
 	}

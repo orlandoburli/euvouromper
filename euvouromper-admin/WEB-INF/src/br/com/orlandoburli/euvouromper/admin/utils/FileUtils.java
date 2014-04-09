@@ -31,10 +31,6 @@ public final class FileUtils {
 
 			List<FileVo> files = FileUtils.listaImagens(parametroPath.getValor());
 			
-			for (FileVo f : files) {
-				Log.info("File: " + f.getFileName());
-			}
-			
 			request.setAttribute("files", files);
 		} catch (ListException e) {
 			e.printStackTrace();

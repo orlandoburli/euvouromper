@@ -1,4 +1,4 @@
-//console.log("Carregando js da consulta");
+//debug("Carregando js da consulta");
 
 // FUNCOES DA DATAGRID
 
@@ -6,11 +6,11 @@ var tempo = 250;
 
 function loadJs(jsFile) {
 	setTimeout(function() {
-		console.log("Carregando arquivo " + jsFile);
+		debug("Carregando arquivo " + jsFile);
 		$.getScript(jsFile).done(function(script, textStatus) {
-			console.log("Arquivo " + jsFile + " carregado com sucesso.");
+			debug("Arquivo " + jsFile + " carregado com sucesso.");
 		}).fail(function(jqxhr, settings, exception) {
-			console.log("Erro ao carregar js file - " + exception);
+			debug("Erro ao carregar js file " + jsFile + " - Erro: " + exception);
 		});
 	}, tempo * 2);
 }
@@ -29,7 +29,7 @@ function getSelectedDataId() {
 
 	$(".DataGridConsulta > table > tbody > tr").each(function(index) {
 		if ($(this).attr("data-selected") == "true") {
-			console.log("achou");
+			debug("achou");
 			retorno = $(this).attr("data-id");
 		}
 	});
@@ -65,13 +65,13 @@ function setSelectedIndex(selectedIndex) {
 }
 
 function loadDataGrid() {
-	console.log("loading grid...");
+	debug("loading grid...");
 	
 	var paginaGrid = $(".DataGridConsulta").attr("data-page");
 	var pageSize = $(".DataGridConsulta").attr("data-page-size");
 	var pageNumber = $(".DataGridConsulta").attr("data-page-number");
 	
-	console.log("pageSize: "+pageSize);
+	debug("pageSize: "+pageSize);
 	
 	if (!pageNumber) {
 		pageNumber = 1;
@@ -92,7 +92,7 @@ function loadDataGrid() {
 		type : 'POST',
 		data : params,
 		beforeSend : function(data) {
-			// console.log("loading...");
+			// debug("loading...");
 		},
 		success : function(data) {
 			$(".DataGridConsulta").html(data);
@@ -116,7 +116,7 @@ function loadDataGrid() {
 			});
 		},
 		error : function(erro) {
-			console.log("Erro no load ajax! " + erro);
+			debug("Erro no load ajax! " + erro);
 		}
 	});
 }
@@ -183,7 +183,7 @@ function novo() {
 		type : 'POST',
 		data : params,
 		beforeSend : function(data) {
-			console.log("loading...");
+			debug("loading...");
 		},
 		success : function(data) {
 			var tempo = 250;
@@ -201,7 +201,7 @@ function novo() {
 			}, tempo);
 		},
 		error : function(erro) {
-			console.log("Erro no load ajax! " + erro);
+			debug("Erro no load ajax! " + erro);
 		}
 	});
 }
@@ -234,7 +234,7 @@ function editar() {
 		type : 'POST',
 		data : params,
 		beforeSend : function(data) {
-			console.log("loading...");
+			debug("loading...");
 		},
 		success : function(data) {
 			var tempo = 250;
@@ -252,7 +252,7 @@ function editar() {
 			}, tempo);
 		},
 		error : function(erro) {
-			console.log("Erro no load ajax! " + erro);
+			debug("Erro no load ajax! " + erro);
 		}
 	});
 }
@@ -290,7 +290,7 @@ function excluir() {
 		type : 'POST',
 		data : params,
 		beforeSend : function(data) {
-			// console.log("loading...");
+			// debug("loading...");
 		},
 		success : function(data) {
 
@@ -310,7 +310,7 @@ function excluir() {
 			}
 		},
 		error : function(erro) {
-			console.log("Erro no load ajax! " + erro);
+			debug("Erro no load ajax! " + erro);
 		}
 	});
 
@@ -453,20 +453,23 @@ var eventoTeclasConsulta = function(event) {
 	case (KEY_N):
 		if (event.ctrlKey) {
 			event.preventDefault();
-			novo();
+			//novo();
+			$(".BotaoNovo").click();			
 		}
 		break;
 		
 	case (KEY_E):
 		if (event.ctrlKey) {
 			event.preventDefault();
-			editar();
+			//editar();
+			$(".BotaoEditar").click();
 		}
 		break;
 	case (KEY_DEL):
 		if (event.ctrlKey) {
 			event.preventDefault();
-			excluir();
+			//excluir();
+			$(".BotaoExcluir").click();
 		}
 		break;
 	}

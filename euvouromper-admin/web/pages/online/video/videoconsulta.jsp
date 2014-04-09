@@ -32,8 +32,9 @@
 		<div class="DataGridConsulta" data-page="videoconsulta.grid.admin" data-page-size="8" data-detail-page="videocadastro.admin"></div>
 	</div>
 
-	<%@include file="../../../botoes-consulta.jsp"%>
-
+	<c:if test="${usuario.perfil.permissaoPacoteAlt eq 'S'}">
+		<%@include file="../../../botoes-consulta.jsp"%>
+	</c:if>
 
 </div>
 <!-- /datatable inside panel body -->

@@ -1,11 +1,8 @@
 package br.com.orlandoburli.euvouromper.model.be.admin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.dao.admin.UsuarioDao;
-import br.com.orlandoburli.euvouromper.model.domains.SimNao;
-import br.com.orlandoburli.euvouromper.model.vo.admin.MenuVo;
 import br.com.orlandoburli.euvouromper.model.vo.admin.UsuarioVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
@@ -47,26 +44,26 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 		throw new LoginInvalidoException("Usuário / Senha inválidos!");
 	}
 
-	public List<MenuVo> buildMenuUsuario(UsuarioVo usuario) {
-		List<MenuVo> list = new ArrayList<MenuVo>();
-
-		if (usuario.getPerfil() == null) {
-			return null;
-		}
-
-		MenuVo admin = new MenuVo("Admin", "", "");
-
-		list.add(admin);
-
-		if (usuario.getPerfil().getPermissaoPerfilVer().equals(SimNao.SIM)) {
-			admin.getSubMenus().add(new MenuVo("Perfis", "", "perfiladminconsulta.admin"));
-		}
-
-		if (usuario.getPerfil().getPermissaoUsuarioVer().equals(SimNao.SIM)) {
-			admin.getSubMenus().add(new MenuVo("Usuários", "", "usuarioconsulta.admin"));
-		}
-
-		return list;
-	}
+//	public List<MenuVo> buildMenuUsuario(UsuarioVo usuario) {
+//		List<MenuVo> list = new ArrayList<MenuVo>();
+//
+//		if (usuario.getPerfil() == null) {
+//			return null;
+//		}
+//
+//		MenuVo admin = new MenuVo("Admin", "", "");
+//
+//		list.add(admin);
+//
+//		if (usuario.getPerfil().getPermissaoPerfilVer().equals(SimNao.SIM)) {
+//			admin.getSubMenus().add(new MenuVo("Perfis", "", "perfiladminconsulta.admin"));
+//		}
+//
+//		if (usuario.getPerfil().getPermissaoUsuarioVer().equals(SimNao.SIM)) {
+//			admin.getSubMenus().add(new MenuVo("Usuários", "", "usuarioconsulta.admin"));
+//		}
+//
+//		return list;
+//	}
 
 }

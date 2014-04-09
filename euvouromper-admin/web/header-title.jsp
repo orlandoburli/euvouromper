@@ -5,7 +5,6 @@
 			${titulo} <small>${subtitulo}</small>
 		</h3>
 	</div>
-
 </div>
 <!-- /page header -->
 

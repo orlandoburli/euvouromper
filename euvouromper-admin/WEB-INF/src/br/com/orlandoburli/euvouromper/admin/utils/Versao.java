@@ -8,8 +8,8 @@ public final class Versao {
 	
 	private static Versao versao;
 	
-	String date = "13/03/2014";
-	String numeroVersao = "2.0a";
+	String date = "07/04/2014";
+	String numeroVersao = "2.1.1";
 	
 	private Versao() {
 		

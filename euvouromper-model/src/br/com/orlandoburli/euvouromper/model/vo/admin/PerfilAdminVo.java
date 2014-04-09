@@ -17,7 +17,7 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 public class PerfilAdminVo extends BaseVo {
 	@Column(name = Colunas.ID_PERFIL, dataType = DataType.INT, isNotNull = true, isAutoIncrement = true, isKey = true)
 	private Integer idPerfil;
-	
+
 	@Column(name = Colunas.NOME, dataType = DataType.VARCHAR, isNotNull = true, maxSize = 100)
 	@NotEmpty
 	@NotNull
@@ -25,29 +25,183 @@ public class PerfilAdminVo extends BaseVo {
 	@Description("Nome")
 	private String nome;
 
-	@Column(name = Colunas.P_PERFIL_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true)
+	// Grupo Administracao
+
+	@Column(name = Colunas.P_PARAMETRO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoParametroVer;
+
+	@Column(name = Colunas.P_PARAMETRO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoParametroAlt;
+
+	@Column(name = Colunas.P_PERFIL_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoPerfilVer;
 
-	@Column(name = Colunas.P_PERFIL_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true)
+	@Column(name = Colunas.P_PERFIL_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoPerfilAlt;
 
-	@Column(name = Colunas.P_USUARIO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true)
+	@Column(name = Colunas.P_USUARIO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoUsuarioVer;
 
-	@Column(name = Colunas.P_USUARIO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true)
+	@Column(name = Colunas.P_USUARIO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoUsuarioAlt;
+
+	// Grupo Cadastros
+
+	@Column(name = Colunas.P_DISCIPLINA_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoDisciplinaVer;
+
+	@Column(name = Colunas.P_DISCIPLINA_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoDisciplinaAlt;
+
+	@Column(name = Colunas.P_PROFESSOR_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoProfessorVer;
+
+	@Column(name = Colunas.P_PROFESSOR_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoProfessorAlt;
+	
+	// Grupo Site
+	
+	@Column(name = Colunas.P_MENU_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoMenuVer;
+
+	@Column(name = Colunas.P_MENU_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoMenuAlt;
+	
+	@Column(name = Colunas.P_NOTICIA_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoNoticiaVer;
+
+	@Column(name = Colunas.P_NOTICIA_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoNoticiaAlt;
+	
+	@Column(name = Colunas.P_ARTIGO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoArtigoVer;
+
+	@Column(name = Colunas.P_ARTIGO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoArtigoAlt;
+	
+	@Column(name = Colunas.P_INSTITUCIONAL_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoInstitucionalVer;
+
+	@Column(name = Colunas.P_INSTITUCIONAL_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoInstitucionalAlt;
+	
+	// Online
+	
+	@Column(name = Colunas.P_VIDEO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoVideoVer;
+
+	@Column(name = Colunas.P_VIDEO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoVideoAlt;
+	
+	@Column(name = Colunas.P_MODULO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoModuloVer;
+
+	@Column(name = Colunas.P_MODULO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoModuloAlt;
+	
+	@Column(name = Colunas.P_PACOTE_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoPacoteVer;
+
+	@Column(name = Colunas.P_PACOTE_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoPacoteAlt;
+	
+	// e-Commerce
+	
+	@Column(name = Colunas.P_PRODUTO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoProdutoVer;
+
+	@Column(name = Colunas.P_PRODUTO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoProdutoAlt;
+	
+	@Column(name = Colunas.P_CUPOM_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoCupomVer;
+
+	@Column(name = Colunas.P_CUPOM_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoCupomAlt;
 
 	public Integer getIdPerfil() {
 		return idPerfil;
@@ -95,5 +249,197 @@ public class PerfilAdminVo extends BaseVo {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getPermissaoParametroVer() {
+		return permissaoParametroVer;
+	}
+
+	public void setPermissaoParametroVer(String permissaoParametroVer) {
+		this.permissaoParametroVer = permissaoParametroVer;
+	}
+
+	public String getPermissaoParametroAlt() {
+		return permissaoParametroAlt;
+	}
+
+	public void setPermissaoParametroAlt(String permissaoParametroAlt) {
+		this.permissaoParametroAlt = permissaoParametroAlt;
+	}
+
+	public String getPermissaoDisciplinaVer() {
+		return permissaoDisciplinaVer;
+	}
+
+	public void setPermissaoDisciplinaVer(String permissaoDisciplinaVer) {
+		this.permissaoDisciplinaVer = permissaoDisciplinaVer;
+	}
+
+	public String getPermissaoDisciplinaAlt() {
+		return permissaoDisciplinaAlt;
+	}
+
+	public void setPermissaoDisciplinaAlt(String permissaoDisciplinaAlt) {
+		this.permissaoDisciplinaAlt = permissaoDisciplinaAlt;
+	}
+
+	public String getPermissaoProfessorVer() {
+		return permissaoProfessorVer;
+	}
+
+	public void setPermissaoProfessorVer(String permissaoProfessorVer) {
+		this.permissaoProfessorVer = permissaoProfessorVer;
+	}
+
+	public String getPermissaoProfessorAlt() {
+		return permissaoProfessorAlt;
+	}
+
+	public void setPermissaoProfessorAlt(String permissaoProfessorAlt) {
+		this.permissaoProfessorAlt = permissaoProfessorAlt;
+	}
+
+	public String getPermissaoMenuVer() {
+		return permissaoMenuVer;
+	}
+
+	public void setPermissaoMenuVer(String permissaoMenuVer) {
+		this.permissaoMenuVer = permissaoMenuVer;
+	}
+
+	public String getPermissaoMenuAlt() {
+		return permissaoMenuAlt;
+	}
+
+	public void setPermissaoMenuAlt(String permissaoMenuAlt) {
+		this.permissaoMenuAlt = permissaoMenuAlt;
+	}
+
+	public String getPermissaoNoticiaVer() {
+		return permissaoNoticiaVer;
+	}
+
+	public void setPermissaoNoticiaVer(String permissaoNoticiaVer) {
+		this.permissaoNoticiaVer = permissaoNoticiaVer;
+	}
+
+	public String getPermissaoNoticiaAlt() {
+		return permissaoNoticiaAlt;
+	}
+
+	public void setPermissaoNoticiaAlt(String permissaoNoticiaAlt) {
+		this.permissaoNoticiaAlt = permissaoNoticiaAlt;
+	}
+
+	public String getPermissaoArtigoVer() {
+		return permissaoArtigoVer;
+	}
+
+	public void setPermissaoArtigoVer(String permissaoArtigoVer) {
+		this.permissaoArtigoVer = permissaoArtigoVer;
+	}
+
+	public String getPermissaoArtigoAlt() {
+		return permissaoArtigoAlt;
+	}
+
+	public void setPermissaoArtigoAlt(String permissaoArtigoAlt) {
+		this.permissaoArtigoAlt = permissaoArtigoAlt;
+	}
+
+	public String getPermissaoInstitucionalVer() {
+		return permissaoInstitucionalVer;
+	}
+
+	public void setPermissaoInstitucionalVer(String permissaoInstitucionalVer) {
+		this.permissaoInstitucionalVer = permissaoInstitucionalVer;
+	}
+
+	public String getPermissaoInstitucionalAlt() {
+		return permissaoInstitucionalAlt;
+	}
+
+	public void setPermissaoInstitucionalAlt(String permissaoInstitucionalAlt) {
+		this.permissaoInstitucionalAlt = permissaoInstitucionalAlt;
+	}
+
+	public String getPermissaoVideoVer() {
+		return permissaoVideoVer;
+	}
+
+	public void setPermissaoVideoVer(String permissaoVideoVer) {
+		this.permissaoVideoVer = permissaoVideoVer;
+	}
+
+	public String getPermissaoVideoAlt() {
+		return permissaoVideoAlt;
+	}
+
+	public void setPermissaoVideoAlt(String permissaoVideoAlt) {
+		this.permissaoVideoAlt = permissaoVideoAlt;
+	}
+
+	public String getPermissaoModuloVer() {
+		return permissaoModuloVer;
+	}
+
+	public void setPermissaoModuloVer(String permissaoModuloVer) {
+		this.permissaoModuloVer = permissaoModuloVer;
+	}
+
+	public String getPermissaoModuloAlt() {
+		return permissaoModuloAlt;
+	}
+
+	public void setPermissaoModuloAlt(String permissaoModuloAlt) {
+		this.permissaoModuloAlt = permissaoModuloAlt;
+	}
+
+	public String getPermissaoPacoteVer() {
+		return permissaoPacoteVer;
+	}
+
+	public void setPermissaoPacoteVer(String permissaoPacoteVer) {
+		this.permissaoPacoteVer = permissaoPacoteVer;
+	}
+
+	public String getPermissaoPacoteAlt() {
+		return permissaoPacoteAlt;
+	}
+
+	public void setPermissaoPacoteAlt(String permissaoPacoteAlt) {
+		this.permissaoPacoteAlt = permissaoPacoteAlt;
+	}
+
+	public String getPermissaoProdutoVer() {
+		return permissaoProdutoVer;
+	}
+
+	public void setPermissaoProdutoVer(String permissaoProdutoVer) {
+		this.permissaoProdutoVer = permissaoProdutoVer;
+	}
+
+	public String getPermissaoProdutoAlt() {
+		return permissaoProdutoAlt;
+	}
+
+	public void setPermissaoProdutoAlt(String permissaoProdutoAlt) {
+		this.permissaoProdutoAlt = permissaoProdutoAlt;
+	}
+
+	public String getPermissaoCupomVer() {
+		return permissaoCupomVer;
+	}
+
+	public void setPermissaoCupomVer(String permissaoCupomVer) {
+		this.permissaoCupomVer = permissaoCupomVer;
+	}
+
+	public String getPermissaoCupomAlt() {
+		return permissaoCupomAlt;
+	}
+
+	public void setPermissaoCupomAlt(String permissaoCupomAlt) {
+		this.permissaoCupomAlt = permissaoCupomAlt;
 	}
 }

@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- Formulario de imagens -->
 <div id="selecao_imagem" class="modal fade" tabindex="-1" role="dialog">
@@ -14,44 +15,13 @@
 			<div class="modal-body with-padding">
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="tabListaImagens" data-toggle="tab"><i class="icon-download"></i>Lista de imagens</a></li>
-						<li><a href="tabEnviarImagens" data-toggle="tab"><i class="icon-windows8"></i>Enviar imagens</a></li>
+						<li class="active"><a id="listaImagensLink" href="#tabListaImagens" data-toggle="tab"><i class="icon-windows8"></i>Lista de imagens</a></li>
+						<li><a id="listaImagensUpload" href="#tabEnviarImagens" data-toggle="tab"><i class="icon-cloud-upload"></i>Enviar imagens</a></li>
 					</ul>
 
 					<div class="tab-content">
 						<div class="tab-pane fade in active" id="tabListaImagens">
-
-							<c:set var="contador" value="-1" />
-
-							<div class="row">
-								<c:forEach var="file" items="${files}">
-
-									<c:set var="contador" value="${contador + 1 }" />
-
-									<c:if test="${contador eq 4}">
-										<c:set var="contador" value="0" />
-							</div>
-							<div class="row">
-								</c:if>
-
-								<div class="ItemImagem col-lg-3 col-md-4 col-sm-4">
-									<div class="block">
-										<div class="thumbnail thumbnail-boxed">
-											<div class="thumb" style="width: 120px; height: 90px;">
-												<img alt="" src="${file.webPath}" class="img-thumbnail" style="max-height: 90px; max-width: 120px; width: auto; height: auto;">
-											</div>
-											<div class="caption">
-												<span><strong>${file.fileName}</strong></span><br/> 
-												<span><strong>Tamanho:</strong> ${file.longSize }</span><br/>
-												<span><strong>Formato:</strong> ${file.extension}</span><br/>
-												<button data-image-value="${file.webPath}" type="button" class="BotaoRetornarImagem btn btn-primary btn-xs"><i class="icon-image2"></i> Selecionar</button>
-											</div>
-										</div>
-									</div>
-									
-								</div>
-								</c:forEach>
-							</div>
+							<!-- Load dinamico -->
 						</div>
 
 						<div class="tab-pane body fade" id="tabEnviarImagens"></div>
@@ -68,19 +38,118 @@
 </div>
 
 <script type="text/javascript">
-	$(".BotaoRetornarImagem").click(function(e) {
-		var file         = $(e.currentTarget).attr("data-image-value")
-		var imgRetorno   = $("#selecao_imagem").attr("data-image-retorno");
-		var inputRetorno = $("#selecao_imagem").attr("data-input-retorno");
-		
-		console.log("Arquivo selecionado: " + file);
-		console.log(imgRetorno);
-		console.log(inputRetorno);
-		
-		$(imgRetorno).attr("src", file);
-		$(inputRetorno).attr("value", file);
-		
-		// Forca esconder o modal
-		$('#selecao_imagem').modal('hide');
+	// Load da pagina no click
+	$("#listaImagensLink").click(function(e) {
+		loadImagens();
 	});
+
+	$("#listaImagensUpload").click(function(e) {
+		$("#tabEnviarImagens").load("listaimagem.upload.admin");
+		
+		setTimeout(function() {
+			$(".multiple-uploader-images").pluploadQueue({
+				runtimes : 'html5, html4',
+				url : 'upload/images',
+				chunk_size : '1mb',
+				unique_names : false,
+				filters : {
+					max_file_size : '10mb',
+					mime_types : [ {
+						title : "Image files",
+						extensions : "jpg,gif,png,bmp"
+					}, {
+						title : "Zip files",
+						extensions : "zip"
+					} ]
+				},
+				resize : {
+					width : 320,
+					height : 240,
+					quality : 90
+				}
+			});
+		}, tempo);
+	});
+	
+	function loadImagens() {
+		$("#tabListaImagens").load("listaimagem.datatable.admin");
+		
+		// Seta funcao do clique do botao de retornar a imagem
+		loadClickFunction();
+		
+		setTimeout(function() {
+			oTable = $('.datatable-images table').dataTable({
+				"bJQueryUI" : false,
+				"bAutoWidth" : false,
+				"iDisplayLength" : 5,
+				"sPaginationType" : "full_numbers",
+				"sDom" : '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+				"oLanguage" : {
+					"sSearch" : "<span>Filtrar:</span> _INPUT_",
+					"sLengthMenu" : "",
+					"oPaginate" : {
+						"sFirst" : "Primeiro",
+						"sLast" : "Último",
+						"sNext" : ">",
+						"sPrevious" : "<"
+					}
+				}
+			});
+			
+			// Ao paginar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
+			$(".datatable-images table").bind("page", function() {
+				setTimeout(function() {
+					loadClickFunction();
+				}, tempo);
+			});
+			
+			// Ao filtrar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
+			$(".datatable-images table").bind("filter", function() {
+				setTimeout(function() {
+					loadClickFunction();
+				}, tempo);
+			});
+			
+			// Ao ordenar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
+			$(".datatable-images table").bind("sort", function() {
+				setTimeout(function() {
+					loadClickFunction();
+				}, tempo);
+			});
+
+			$(".dataTables_wrapper tfoot input").keyup(function() {
+				oTable.fnFilter(this.value, $(".dataTables_wrapper tfoot input").index(this));
+			});
+
+			$('.dataTables_filter input[type=text]').attr('placeholder','Digite o valor da pesquisa...');
+			
+		}, tempo);
+	}
+	
+	function loadClickFunction() {
+		debug("load click function");
+		
+		$(".BotaoRetornarImagem").click(function(e) {
+			debug("Clique botao retornar imagem");
+			
+			var file         = $(e.currentTarget).attr("data-image-value")
+			var imgRetorno   = $("#selecao_imagem").attr("data-image-retorno");
+			var inputRetorno = $("#selecao_imagem").attr("data-input-retorno");
+
+			console.log("Arquivo selecionado: " + file);
+			console.log(imgRetorno);
+			console.log(inputRetorno);
+
+			$(imgRetorno).attr("src", file);
+			$(inputRetorno).attr("value", file);
+
+			// Forca esconder o modal
+			$('#selecao_imagem').modal('hide');
+
+			// Remove-te a ti mesmo...
+			$("#caixa_selecao_imagem").remove();
+			
+			debug("Imagem selecionada");
+		});
+	}
 </script>

@@ -7,11 +7,12 @@ import br.com.orlandoburli.framework.core.dao.annotations.Column;
 import br.com.orlandoburli.framework.core.dao.annotations.DataType;
 import br.com.orlandoburli.framework.core.dao.annotations.Join;
 import br.com.orlandoburli.framework.core.dao.annotations.Table;
+import br.com.orlandoburli.framework.core.dao.annotations.UniqueConstraint;
 import br.com.orlandoburli.framework.core.vo.BaseVo;
 import br.com.orlandoburli.framework.core.vo.annotations.Description;
 import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.ModuloVideo.Colunas.*;
 
-@Table(Dicionario.ModuloVideo.TABELA_MODULO_VIDEO)
+@Table(value = Dicionario.ModuloVideo.TABELA_MODULO_VIDEO, constraints = { @UniqueConstraint(columns = {ID_MODULO, ID_VIDEO}, constraintName = Dicionario.ModuloVideo.UK_MODULO_VIDEO) })
 public class ModuloVideoVo extends BaseVo {
 
 	@Column(name = ID_MODULO_VIDEO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)

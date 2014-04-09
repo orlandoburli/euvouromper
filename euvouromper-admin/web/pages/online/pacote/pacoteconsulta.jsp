@@ -37,7 +37,9 @@
 		</button>
 	</c:set>
 
-	<%@include file="../../../botoes-consulta.jsp"%>
+	<c:if test="${usuario.perfil.permissaoPacoteAlt eq 'S'}">
+		<%@include file="../../../botoes-consulta.jsp"%>
+	</c:if>
 
 </div>
 <!-- /datatable inside panel body -->

@@ -7,11 +7,12 @@ import br.com.orlandoburli.framework.core.dao.annotations.Column;
 import br.com.orlandoburli.framework.core.dao.annotations.DataType;
 import br.com.orlandoburli.framework.core.dao.annotations.Join;
 import br.com.orlandoburli.framework.core.dao.annotations.Table;
+import br.com.orlandoburli.framework.core.dao.annotations.UniqueConstraint;
 import br.com.orlandoburli.framework.core.vo.BaseVo;
 import br.com.orlandoburli.framework.core.vo.annotations.Description;
 import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.PacoteModulo.Colunas.*;
 
-@Table(Dicionario.PacoteModulo.TABELA_PACOTE_MODULO)
+@Table(value = Dicionario.PacoteModulo.TABELA_PACOTE_MODULO, constraints = { @UniqueConstraint(columns = { ID_MODULO, ID_PACOTE }, constraintName = Dicionario.PacoteModulo.UK_PACOTE_MODULO) })
 public class PacoteModuloVo extends BaseVo {
 
 	@Column(name = ID_PACOTE_MODULO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
@@ -31,7 +32,7 @@ public class PacoteModuloVo extends BaseVo {
 
 	@Join(columnsLocal = { ID_PACOTE }, columnsRemote = { Dicionario.Pacote.Colunas.ID_PACOTE })
 	private PacoteVo pacote;
-	
+
 	@Join(columnsLocal = { ID_MODULO }, columnsRemote = { Dicionario.Modulo.Colunas.ID_MODULO })
 	private ModuloVo modulo;
 

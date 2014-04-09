@@ -64,22 +64,31 @@
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="form-group">
-				<div>
-					<label class="col-sm-2 control-label text-right">Foto do usuário</label> 
-					<a href="#" class="BotaoSelecionarImagem btn btn-primary" data-image-retorno="#imgFoto" data-input-retorno="#pathFoto"><i class="icon-image"></i> Selecionar imagem</a>
-					
-					<img id="imgFoto" name="imgFoto" src="${vo.pathFoto}" class="thumb img-thumbnail" style="max-height: 120px; max-width: 120px; width: auto; height: auto;"/>
-					<input type="hidden" id="pathFoto" name="pathFoto" value="${vo.pathFoto}" class="form-control"/>
+				<label class="col-sm-2 control-label text-right">Professor</label>
+
+				<div class="col-sm-7">
+					<select id="idProfessor" class="select" data-field-value="${vo.idProfessor}">
+						<option value="">[NENHUM]</option>
+						<c:forEach items="${professores}" var="professor">
+							<option value="${professor.idProfessor}">${professor.nome}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
-			
+
+			<div class="form-group">
+				<div>
+					<label class="col-sm-2 control-label text-right">Foto do usuário</label> <a href="#" class="BotaoSelecionarImagem btn btn-primary" data-image-retorno="#imgFoto" data-input-retorno="#pathFoto"><i class="icon-image"></i> Selecionar imagem</a> <img id="imgFoto" name="imgFoto" src="${vo.pathFoto}" class="thumb img-thumbnail" style="max-height: 120px; max-width: 120px; width: auto; height: auto;" /> <input type="hidden" id="pathFoto" name="pathFoto" value="${vo.pathFoto}" class="form-control" />
+				</div>
+			</div>
+
 			<%@include file="../../utils/lista_imagens.jsp"%>
-			
+
 		</div>
 
 		<%@include file="../../../botoes-cadastro.jsp"%>
-		
+
 	</form>
 </div>

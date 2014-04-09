@@ -13,7 +13,7 @@
 
 
 $(function() {
-
+	
 
 /* # Data tables
 ================================================== */
@@ -28,8 +28,21 @@ $(function() {
 		"sDom": '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
 		"oLanguage": {
 			"sSearch": "<span>Filter:</span> _INPUT_",
-			"sLengthMenu": "<span>Show entries:</span> _MENU_",
-			"oPaginate": { "sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<" }
+			"sLengthMenu": "<span>Registros por página:</span> _MENU_",
+			"oPaginate": { "sFirst": "Primeiro", "sLast": "Último", "sNext": ">", "sPrevious": "<" }
+		}
+    });
+	
+	oTable = $('.datatable-images table').dataTable({
+		"bJQueryUI": false,
+		"bAutoWidth": false,
+		"iDisplayLength" : 5,
+		"sPaginationType": "full_numbers",
+		"sDom": '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+		"oLanguage": {
+			"sSearch": "<span>Filter:</span> _INPUT_",
+			"sLengthMenu": "<span>Registros por página:</span> _MENU_",
+			"oPaginate": { "sFirst": "Primeiro", "sLast": "Último", "sNext": ">", "sPrevious": "<" }
 		}
     });
 
@@ -648,23 +661,58 @@ $(function() {
 
 
 	//===== jQuery UI Datepicker =====//
-
+	$.datepicker.setDefaults( $.datepicker.regional[ "pt" ] );
+	
 	$( ".datepicker" ).datepicker({
-		showOtherMonths: true
+		showOtherMonths: true,
+	    dateFormat : "dd/mm/yy",
+	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+	    nextText: 'Próximo',
+	    prevText: 'Anterior'
     });
 
-    $( ".datepicker-inline" ).datepicker({ showOtherMonths: true });
+    $( ".datepicker-inline" ).datepicker({ 
+    	showOtherMonths: true,
+        dateFormat : "dd/mm/yy",
+	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+	    nextText: 'Próximo',
+	    prevText: 'Anterior'
+    });
 
     $( ".datepicker-multiple" ).datepicker({
     	showOtherMonths: true,
-      numberOfMonths: 3
+    	numberOfMonths: 3,
+        dateFormat : "dd/mm/yy",
+	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+	    nextText: 'Próximo',
+	    prevText: 'Anterior'
     });
 
     $( ".datepicker-trigger" ).datepicker({
-      showOn: "button",
-      buttonImage: "images/interface/datepicker_trigger.png",
-      buttonImageOnly: true,
-      showOtherMonths: true
+		showOn: "button",
+		buttonImage: "web/assets/images/interface/datepicker_trigger.png",
+		buttonImageOnly: true,
+		showOtherMonths: true,
+		dateFormat : "dd/mm/yy",
+		dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		nextText: 'Próximo',
+		prevText: 'Anterior'
     });
 
     $( ".from-date" ).datepicker({
@@ -747,11 +795,26 @@ $(function() {
 
 	//===== Pluploader (multiple file uploader) =====//
 
-	$(".multiple-uploader").pluploadQueue({
+	$(".multiple-uploader-images").pluploadQueue({
 		runtimes : 'html5, html4',
-		url : '../upload.php',
+		url : 'upload/images',
 		chunk_size : '1mb',
-		unique_names : true,
+		unique_names : false,
+		filters : {
+			max_file_size : '10mb',
+			mime_types: [
+				{title : "Image files", extensions : "jpg,gif,png,bmp"},
+				{title : "Zip files", extensions : "zip"}
+			]
+		},
+		resize : {width : 320, height : 240, quality : 90}
+	});
+	
+	$(".multiple-uploader-documents").pluploadQueue({
+		runtimes : 'html5, html4',
+		url : 'upload/documents',
+		chunk_size : '1mb',
+		unique_names : false,
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
@@ -766,7 +829,7 @@ $(function() {
 	//===== WYSIWYG editor =====//
 
 	$('.editor').wysihtml5({
-	    stylesheets: "css/wysihtml5/wysiwyg-color.css"
+	    stylesheets: "web/assets/css/wysihtml5/wysiwyg-color.css"
 	});
 
 

@@ -1,7 +1,5 @@
 package br.com.orlandoburli.euvouromper.admin.web.servlets.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -21,8 +19,8 @@ public class LoadAppServlet extends HttpServlet {
 		super.init();
 
 		try {
-			String path = this.getServletContext().getRealPath("") + File.separator;
-			System.getProperties().load(new FileInputStream(path + "admin.properties"));
+			System.getProperties().load(getServletContext().getResourceAsStream("admin.properties"));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

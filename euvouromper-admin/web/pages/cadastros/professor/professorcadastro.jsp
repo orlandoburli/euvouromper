@@ -44,9 +44,8 @@
 					<input type="hidden" id="pathFoto" name="pathFoto" value="${vo.pathFoto}" class="form-control"/>
 				</div>
 			</div>
-
-			<%@include file="../../utils/lista_imagens.jsp"%>
 			
+			<%@include file="../../utils/lista_imagens.jsp"%>
 		</div>
 
 		<%@include file="../../../botoes-cadastro.jsp"%>

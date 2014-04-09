@@ -30,7 +30,9 @@
 		<div class="DataGridConsulta" data-page="perfiladminconsulta.grid.admin" data-page-size="8" data-detail-page="perfiladmincadastro.admin"></div>
 	</div>
 
-	<%@include file="../../../botoes-consulta.jsp"%>
+	<c:if test="${usuario.perfil.permissaoPerfilAlt eq 'S'}">
+		<%@include file="../../../botoes-consulta.jsp"%>
+	</c:if>
 
 </div>
 <!-- /datatable inside panel body -->

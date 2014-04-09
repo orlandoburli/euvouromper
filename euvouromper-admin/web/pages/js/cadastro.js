@@ -1,10 +1,10 @@
-console.log("Carregando arquivo cadastro.js");
+debug("Carregando arquivo cadastro.js");
 
 $(function() {
 
 	// Carrega uma pagina
 	function loadPage(pagina) {
-		console.log(pagina);
+		debug(pagina);
 		$("#formulario-home").fadeOut(tempo);
 		setTimeout(function() {
 			$("#formulario-home").load(pagina);
@@ -34,11 +34,11 @@ $(function() {
 	// Carrega um arquivo .js
 	function loadJs(jsFile) {
 		setTimeout(function() {
-			console.log("Carregando arquivo " + jsFile);
+			debug("Carregando arquivo " + jsFile);
 			$.getScript(jsFile).done(function(script, textStatus) {
-				console.log("Arquivo " + jsFile + " carregado com sucesso.");
+				debug("Arquivo " + jsFile + " carregado com sucesso.");
 			}).fail(function(jqxhr, settings, exception) {
-				console.log("Erro ao carregar js file - " + exception);
+				debug("Erro ao carregar js file - " + exception);
 			});
 		}, tempo * 2);
 	}
@@ -70,13 +70,16 @@ $(function() {
 		$("input,select,textarea").each(function(index) {
 			params[$(this).attr("id")] = $(this).val();
 		});
+		
+		debug("Parametros do metodo salvar");
+		debug(params);
 
 		$.ajax({
 			url : paginaFinal,
 			type : 'POST',
 			data : params,
 			beforeSend : function(data) {
-				// console.log("loading...");
+				// debug("loading...");
 			},
 			success : function(data) {
 
@@ -88,14 +91,10 @@ $(function() {
 				} else {
 					$.jGrowl(retorno.mensagem, { life : 2000, theme: 'growl-error', header: 'Erro' });
 					$("#" + retorno.fieldFocus).focus();
-					
-//					mensagemModal(retorno.mensagem, "Erro", function() {
-						
-//					});
 				}
 			},
 			error : function(erro) {
-				console.log("Erro no load ajax! " + erro);
+				debug("Erro no load ajax! " + erro);
 			}
 		});
 	}
@@ -125,7 +124,7 @@ $(function() {
 			type : 'POST',
 			data : params,
 			beforeSend : function(data) {
-				// console.log("loading...");
+				// debug("loading...");
 			},
 			success : function(data) {
 
@@ -133,19 +132,14 @@ $(function() {
 
 				if (retorno.sucesso) {
 					$.jGrowl(retorno.mensagem, { life : 2000, theme: 'growl-info', header: 'Aviso' });
-//					mensagemModal(retorno.mensagem, "Confirmação", function() {
-						voltar();
-//					});
+					voltar();
 				} else {
 					$.jGrowl(retorno.mensagem, { life : 2000, theme: 'growl-error', header: 'Erro' });
 					$("#" + retorno.fieldFocus).focus();
-//					mensagemModal(retorno.mensagem, "Erro", function() {
-//						$("#" + retorno.fieldFocus).focus();
-//					});
 				}
 			},
 			error : function(erro) {
-				console.log("Erro no load ajax! " + erro);
+				debug("Erro no load ajax! " + erro);
 			}
 		});
 	}
@@ -188,16 +182,15 @@ $(function() {
 
 	// Seleciona os input's SELECT de acordo com a custom tag data-field-value
 	$("select").each(function() {
-
 		var val = $(this).attr("data-field-value");
 		
-		console.log($(this).attr("id") + " = " + val);
+		debug($(this).attr("id") + " = " + val);
 		
 		if (val != null && val != "") {
 			$(this).val(val);
 		}
 	});
-
+	
 	// Adiciona um option vazio ao select do tipo autocomplete
 	$( "select[data-field-type='autocomplete']" ).prepend("<option value=\"\">NENHUM</option>");
 
@@ -232,9 +225,21 @@ $(function() {
 		});
 	});
 	
+	
+//	$("input[data-field-type='date']").each(function() {
+//		debug("field date " + $(this).attr("id"));
+//		$(this).datepicker();
+//		debug("date setado");
+//	});
+	
 	// Funcao para caixa de selecao de imagens
 	// ATENCAO - Obrigatorio o include do arquivo lista_imagens.jsp.
 	$(".BotaoSelecionarImagem").click(function(e) {
+		debug("Clique botao selecionar imagem");
+		
+		// Insere na pagina a div
+		//$(".FormularioCadastro").append("<div id=\"selecao_imagem\" class=\"modal fade\" tabindex=\"-1\" role=\"dialog\"></div>");
+		
 		// Seta os atributos que serao de retorno
 		$("#selecao_imagem").attr("data-image-retorno", $(e.currentTarget).attr("data-image-retorno"));
 		$("#selecao_imagem").attr("data-input-retorno", $(e.currentTarget).attr("data-input-retorno"));
@@ -242,7 +247,11 @@ $(function() {
 		$("#selecao_imagem").modal({
 			keyboard : false
 		});
+		
+		// Primeira carga
+		loadImagens();
 	});
+	
 
 	// Funcao ENTER funcionar como TAB em input's
 	textboxes = $("input:visible, select:visible, textarea:visible");

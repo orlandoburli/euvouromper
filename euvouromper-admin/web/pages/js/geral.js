@@ -34,7 +34,7 @@ $(function() {
 		browser.msie = true;
 	}
 	
-  $( document ).tooltip();
+//  $( document ).tooltip();
 });
 
 function mensagemModal(mensagem, titulo) {
@@ -310,3 +310,26 @@ var KEY_HOME = 36;
 var KEY_PAGEUP = 33;
 var KEY_PAGEDOWN = 34;
 
+var DEBUG = 1;
+
+function getTimeStamp() {
+    var now = new Date();
+    return ((now.getMonth() + 1) + '/' +
+            (now.getDate()) + '/' +
+             now.getFullYear() + " " +
+             now.getHours() + ':' +
+             ((now.getMinutes() < 10)
+                 ? ("0" + now.getMinutes())
+                 : (now.getMinutes())) + ':' +
+             ((now.getSeconds() < 10)
+                 ? ("0" + now.getSeconds())
+                 : (now.getSeconds())));
+}
+
+
+// Funcao para debug javascript
+function debug(o) {
+	if (DEBUG == 1) {
+		console.log(getTimeStamp() + " | " + o);
+	}
+}

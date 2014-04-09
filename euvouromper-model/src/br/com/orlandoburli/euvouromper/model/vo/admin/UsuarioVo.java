@@ -2,8 +2,10 @@ package br.com.orlandoburli.euvouromper.model.vo.admin;
 
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.PerfilAdmin;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Professor;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Usuario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Usuario.Colunas;
+import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Domain;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Email;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MaxSize;
@@ -70,11 +72,18 @@ public class UsuarioVo extends BaseVo {
 	@Description("Perfil")
 	private Integer idPerfil;
 
+	@Column(name = Colunas.ID_PROFESSOR, dataType = DataType.INT)
+	@Description("Professor")
+	private Integer idProfessor;
+
 	@Column(name = Colunas.PATH_FOTO, dataType = DataType.VARCHAR, maxSize = 500)
 	private String pathFoto;
 
 	@Join(columnsLocal = { Colunas.ID_PERFIL }, columnsRemote = { PerfilAdmin.Colunas.ID_PERFIL })
 	private PerfilAdminVo perfil;
+
+	@Join(columnsLocal = { Colunas.ID_PROFESSOR }, columnsRemote = { Professor.Colunas.ID_PROFESSOR })
+	private ProfessorVo professor;
 
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -151,5 +160,21 @@ public class UsuarioVo extends BaseVo {
 
 	public String getAtivoDescricao() {
 		return getAtivo() == null ? "" : getAtivo().equals("S") ? "Sim" : "Não";
+	}
+
+	public Integer getIdProfessor() {
+		return idProfessor;
+	}
+
+	public void setIdProfessor(Integer idProfessor) {
+		this.idProfessor = idProfessor;
+	}
+
+	public ProfessorVo getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(ProfessorVo professor) {
+		this.professor = professor;
 	}
 }

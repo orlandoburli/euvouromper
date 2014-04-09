@@ -90,7 +90,7 @@ $(function() {
 		"oLanguage": {
 			"sSearch": "<span>Filter:</span> _INPUT_",
 			"sLengthMenu": "<span>Show entries:</span> _MENU_",
-			"oPaginate": { "sNext": "Next →", "sPrevious": "← Previous" }
+			"oPaginate": { "sNext": "Next ���", "sPrevious": "��� Previous" }
 		}
     });
 
@@ -698,7 +698,7 @@ $(function() {
 	
 	//===== Tooltip =====//
 
-	$('.tip').tooltip();
+//	$('.tip').tooltip();
 
 
 	//===== Popover =====//
@@ -749,20 +749,20 @@ $(function() {
 
 	//===== Pluploader (multiple file uploader) =====//
 
-	$(".multiple-uploader").pluploadQueue({
-		runtimes : 'html5, html4',
-		url : '../upload.php',
-		chunk_size : '1mb',
-		unique_names : true,
-		filters : {
-			max_file_size : '10mb',
-			mime_types: [
-				{title : "Image files", extensions : "jpg,gif,png"},
-				{title : "Zip files", extensions : "zip"}
-			]
-		},
-		resize : {width : 320, height : 240, quality : 90}
-	});
+//	$(".multiple-uploader").pluploadQueue({
+//		runtimes : 'html5, html4',
+//		url : '../upload.php',
+//		chunk_size : '1mb',
+//		unique_names : true,
+//		filters : {
+//			max_file_size : '10mb',
+//			mime_types: [
+//				{title : "Image files", extensions : "jpg,gif,png"},
+//				{title : "Zip files", extensions : "zip"}
+//			]
+//		},
+//		resize : {width : 320, height : 240, quality : 90}
+//	});
 
 
 	//===== WYSIWYG editor =====//

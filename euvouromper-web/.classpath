@@ -8,5 +8,8 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dao-postgresql"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/euvouromper-model"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

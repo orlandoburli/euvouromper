@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.orlandoburli.euvouromper.admin.utils.FileUtils;
 import br.com.orlandoburli.euvouromper.model.be.admin.PerfilAdminBe;
 import br.com.orlandoburli.euvouromper.model.be.admin.UsuarioBe;
+import br.com.orlandoburli.euvouromper.model.be.cadastros.ProfessorBe;
 import br.com.orlandoburli.euvouromper.model.dao.admin.UsuarioDao;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario.PerfilAdmin;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Professor;
 import br.com.orlandoburli.euvouromper.model.vo.admin.UsuarioVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -32,10 +35,9 @@ public class UsuarioCadastroAction extends BaseCadastroAction<UsuarioVo, Usuario
 
 		FileUtils.listaImagens(getManager(), getRequest());
 
-		PerfilAdminBe perfilBe = new PerfilAdminBe(manager);
-
 		try {
-			request.setAttribute("perfis", perfilBe.getList());
+			request.setAttribute("perfis", new PerfilAdminBe(manager).getList(null, "", PerfilAdmin.TABELA_PERFIL_ADMIN + "." + PerfilAdmin.Colunas.NOME));
+			request.setAttribute("professores", new ProfessorBe(manager).getList(null, "", Professor.TABELA_PROFESSOR + "." + Professor.Colunas.NOME));
 		} catch (ListException e) {
 			e.printStackTrace();
 		}

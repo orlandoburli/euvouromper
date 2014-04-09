@@ -19,11 +19,12 @@ encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/p
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/pacotemodulo/PacoteModuloConsultaAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/video/VideoCadastroAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/online/video/VideoConsultaAction.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/site/institucional/InstitucionalCadastroAction.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/actions/site/institucional/InstitucionalConsultaAction.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/servlets/MainControllerServlet.java=UTF-8
-encoding//web/old-assets/js/cadastro.js=UTF-8
-encoding//web/old-assets/js/geral.js=UTF-8
-encoding//web/old-assets/js/home.js=UTF-8
-encoding//web/old-assets/js/login.js=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/servlets/utils/UploadImageServlet.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/admin/web/servlets/utils/UploadVideoServlet.java=UTF-8
+encoding//web/assets/js/application.js=UTF-8
 encoding//web/pages/js/cadastro.js=UTF-8
 encoding//web/pages/js/consulta.js=UTF-8
 encoding//web/pages/js/geral.js=UTF-8

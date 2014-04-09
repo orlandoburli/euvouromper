@@ -1,10 +1,10 @@
 var tempo = 250;
 
-console.log("Inicio load home.js");
+debug("Inicio load home.js");
 
 function loadDataLink(dataLink) {
 	if (dataLink == "null") {
-		console.log("Link nulo!");
+		debug("Link nulo!");
 	} else {
 		if (dataLink != null && dataLink != "null" && dataLink != "") {
 
@@ -26,7 +26,7 @@ function loadDataLink(dataLink) {
 
 // Carrega uma pagina no corpo
 function loadPage(pagina) {
-	console.log("Carregando pagina " + pagina);
+	debug("Carregando pagina " + pagina);
 
 	$("#formulario-home").fadeOut(tempo);
 	setTimeout(function() {
@@ -39,7 +39,7 @@ function loadPage(pagina) {
 		
 	}, tempo);
 	
-	console.log("Pagina " + pagina + " carregada com sucesso.");
+	debug("Pagina " + pagina + " carregada com sucesso.");
 }
 
 // Limpa conteudo do form
@@ -71,11 +71,11 @@ function loadCSS(href) {
 // Carrega um arquivo js
 function loadJs(jsFile) {
 	setTimeout(function() {
-		console.log("Carregando arquivo " + jsFile);
+		debug("Carregando arquivo " + jsFile);
 		$.getScript(jsFile).done(function(script, textStatus) {
-			console.log("Arquivo " + jsFile + " carregado com sucesso.");
+			debug("Arquivo " + jsFile + " carregado com sucesso.");
 		}).fail(function(jqxhr, settings, exception) {
-			console.log("Erro ao carregar js file - " + exception);
+			debug("Erro ao carregar js file " + jsFile + " - Erro: " + exception);
 		});
 	}, tempo * 2);
 }
@@ -89,7 +89,7 @@ $(function() {
 		if (dataLink != null && dataLink != '') {
 			e.preventDefault();
 			
-			console.log("data-link: " + dataLink);
+			debug("data-link: " + dataLink);
 			loadDataLink(dataLink);
 		}
 	});
@@ -158,5 +158,5 @@ $(function() {
 		}
 	});
 
-	console.log("Fim load home.js");
+	debug("Fim load home.js");
 });

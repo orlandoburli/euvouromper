@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - Orlando Burli Projetos de TI Personalizados</title>
+	<title>Admin</title>
 	
 	<%@include file="../../../header-includes.jsp"%>
 	
@@ -21,7 +21,7 @@
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-right">
 				<span class="sr-only">Toggle navbar</span> <i class="icon-grid3"></i>
 			</button>
-			<a class="navbar-brand" href="#">Eu Vou Romper - Admin | Orlando Burli Projetos de TI Personalizados</a>
+			<a class="navbar-brand" href="#">Eu Vou Romper - Admin</a>
 		</div>
 
 	</div>
