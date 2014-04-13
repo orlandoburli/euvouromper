@@ -2,7 +2,7 @@
 
 <!-- Footer -->
 <div class="footer clearfix">
-	<div class="pull-center">&copy; 2014 | Versão : ${versao.numeroVersao} ${versao.dataVersaoFormatada }
+	<div class="pull-center">&copy; 2014 | Versão : ${versao}
 	
 	<c:if test="${not empty usuario}">
 		| Usuário: ${usuario.nome}

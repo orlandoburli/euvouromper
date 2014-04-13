@@ -78,4 +78,8 @@ public class MenuVo extends BaseVo {
 	public void setGrupo(String grupo) {
 		this.grupo = grupo;
 	}
+	
+	public String getGrupoDescritivo() {
+		return new GrupoMenu().getDescription(getGrupo());
+	}
 }

@@ -17,7 +17,7 @@ public class ListaImagemAction extends BaseAction {
 
 	@IgnoreMethodAuthentication
 	public void datatable() {
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
 			FileUtils.listaImagens(manager, getRequest());

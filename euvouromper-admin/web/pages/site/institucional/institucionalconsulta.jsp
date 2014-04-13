@@ -28,10 +28,11 @@
 
 	<div class="panel-body">
 		<div class="DataGridConsulta" data-page="institucionalconsulta.grid.admin" data-page-size="8" data-detail-page="institucionalcadastro.admin"></div>
+
+		<c:if test="${usuario.perfil.permissaoInstitucionalAlt eq 'S'}">
+			<%@include file="../../../botoes-consulta.jsp"%>
+		</c:if>
 	</div>
 
-	<c:if test="${usuario.perfil.permissaoInstitucionalAlt eq 'S'}">
-		<%@include file="../../../botoes-consulta.jsp"%>
-	</c:if>
 </div>
 <!-- /datatable inside panel body -->

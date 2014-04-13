@@ -26,10 +26,6 @@
 		<div class="col-sm-10"></div>
 	</div>
 
-	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="pacoteconsulta.grid.admin" data-page-size="8" data-detail-page="pacotecadastro.admin"></div>
-	</div>
-
 	<!-- Botoes customizados -->
 	<c:set var="customButtons">
 		<button type="button" class="BotaoModulos btn btn-lg btn-warning tip" title="Módulos do pacote">
@@ -37,9 +33,13 @@
 		</button>
 	</c:set>
 
-	<c:if test="${usuario.perfil.permissaoPacoteAlt eq 'S'}">
-		<%@include file="../../../botoes-consulta.jsp"%>
-	</c:if>
+	<div class="panel-body">
+		<div class="DataGridConsulta" data-page="pacoteconsulta.grid.admin" data-page-size="8" data-detail-page="pacotecadastro.admin"></div>
+
+		<c:if test="${usuario.perfil.permissaoPacoteAlt eq 'S'}">
+			<%@include file="../../../botoes-consulta.jsp"%>
+		</c:if>
+	</div>
 
 </div>
 <!-- /datatable inside panel body -->
@@ -49,10 +49,10 @@
 		if (!registroSelecionado()) {
 			return;
 		}
-		
+
 		var paginaAcoes = "pacotemoduloconsulta.admin?" + getSelectedDataId();
 		loadPage(paginaAcoes);
 		loadJs("web/pages/js/consulta.js");
-		loadJs("web/pages/js/load.js");	
+		loadJs("web/pages/js/load.js");
 	});
 </script>

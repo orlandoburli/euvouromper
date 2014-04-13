@@ -23,7 +23,7 @@ import br.com.orlandoburli.framework.core.dao.exceptions.DAOException;
 public final class DBUtils {
 
 	public static void checkDaos() {
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
 			BaseCadastroDao.clearBuffer();

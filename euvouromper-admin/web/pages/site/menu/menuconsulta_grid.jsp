@@ -20,6 +20,7 @@ table tbody tr td:nth-child(1) {
 		<tr>
 			<td>C&oacute;digo</td>
 			<td>Nome</td>
+			<td>Grupo</td>
 		</tr>
 	</thead>
 
@@ -35,6 +36,7 @@ table tbody tr td:nth-child(1) {
 				data-id="idMenu=${menu.idMenu}">
 				<td>${menu.idMenu }</td>
 				<td>${menu.nome }</td>
+				<td>${menu.grupoDescritivo }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

@@ -20,6 +20,7 @@ table tbody tr td:nth-child(1) {
 		<tr>
 			<td>C&oacute;digo</td>
 			<td>Nome</td>
+			<td>URL</td>
 		</tr>
 	</thead>
 
@@ -35,6 +36,7 @@ table tbody tr td:nth-child(1) {
 				data-id="idProfessor=${professor.idProfessor}">
 				<td>${professor.idProfessor }</td>
 				<td>${professor.nome }</td>
+				<td>/professor/${professor.url }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

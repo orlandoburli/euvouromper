@@ -12,7 +12,6 @@ import br.com.orlandoburli.euvouromper.model.vo.site.ArtigoVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
-import br.com.orlandoburli.framework.core.utils.Utils;
 
 public class ArtigoServlet extends HttpServlet {
 
@@ -20,10 +19,17 @@ public class ArtigoServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
-			ArtigoVo artigo = new ArtigoBe(manager).getByUrl(Utils.getUrl(req));
+			String url = req.getParameter("url");
+
+			if (url == null || url.trim().equals("")) {
+				resp.sendRedirect(req.getServletContext().getContextPath() + "/home");
+				return;
+			}
+			
+			ArtigoVo artigo = new ArtigoBe(manager).getByUrl(url);
 
 			req.setAttribute("artigo", artigo);
 

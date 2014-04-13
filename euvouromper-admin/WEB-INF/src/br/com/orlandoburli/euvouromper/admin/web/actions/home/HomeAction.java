@@ -16,7 +16,8 @@ public class HomeAction extends BaseAction {
 	@IgnoreMethodAuthentication
 	public void execute() {
 
-		getRequest().setAttribute("versao", Versao.getInstance());
+		
+		getRequest().setAttribute("versao", Versao.getInstance(getContext()));
 		getRequest().setAttribute("titulo", "Home");
 		getRequest().setAttribute("subtitulo", "Painel de Administração");
 

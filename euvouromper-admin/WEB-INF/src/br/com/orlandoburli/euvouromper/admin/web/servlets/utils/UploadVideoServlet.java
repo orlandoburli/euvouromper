@@ -51,7 +51,7 @@ public class UploadVideoServlet extends HttpServlet {
 	 *            The HTTP response
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
 			ParametroVo parametro;

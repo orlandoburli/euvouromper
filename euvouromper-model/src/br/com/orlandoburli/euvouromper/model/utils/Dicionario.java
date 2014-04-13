@@ -98,6 +98,7 @@ public final class Dicionario {
 			public static final String EMAIL = "email";
 			public static final String TITULO = "titulo";
 			public static final String PATH_FOTO = "path_foto";
+			public static final String URL = "url";
 		}
 	}
 

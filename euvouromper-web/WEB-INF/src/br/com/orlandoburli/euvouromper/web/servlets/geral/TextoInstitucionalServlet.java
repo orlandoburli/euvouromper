@@ -13,24 +13,22 @@ import br.com.orlandoburli.euvouromper.model.vo.site.InstitucionalVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
-import br.com.orlandoburli.framework.core.utils.Utils;
 
-@WebServlet("/*")
+@WebServlet("/institucional.page")
 public class TextoInstitucionalServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = Utils.getUrl(req);
+		String url = req.getParameter("url");
 
 		if (url == null || url.trim().equals("")) {
 			resp.sendRedirect(req.getServletContext().getContextPath() + "/home");
-
 			return;
 		}
 		
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
 

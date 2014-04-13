@@ -25,10 +25,6 @@
 		<div class="col-sm-10"></div>
 	</div>
 
-	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="modulovideoconsulta.grid.admin" data-page-size="8" data-detail-page="modulovideocadastro.admin"></div>
-	</div>
-
 	<c:set var="hideEditar" value="true" />
 
 	<c:set var="customButtons">
@@ -37,9 +33,13 @@
 		</button>
 	</c:set>
 
-	<c:if test="${usuario.perfil.permissaoModuloAlt eq 'S'}">
-		<%@include file="../../../botoes-consulta.jsp"%>
-	</c:if>
+	<div class="panel-body">
+		<div class="DataGridConsulta" data-page="modulovideoconsulta.grid.admin" data-page-size="8" data-detail-page="modulovideocadastro.admin"></div>
+
+		<c:if test="${usuario.perfil.permissaoModuloAlt eq 'S'}">
+			<%@include file="../../../botoes-consulta.jsp"%>
+		</c:if>
+	</div>
 
 </div>
 <!-- /datatable inside panel body -->

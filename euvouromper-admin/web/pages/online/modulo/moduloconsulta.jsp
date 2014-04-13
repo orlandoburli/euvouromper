@@ -26,24 +26,23 @@
 		<div class="col-sm-10"></div>
 	</div>
 
-	<div class="panel-body">
-		<div class="DataGridConsulta" data-page="moduloconsulta.grid.admin" data-page-size="10" data-detail-page="modulocadastro.admin"></div>
-	</div>
-
 	<!-- Botoes customizados -->
 	<c:set var="customButtons">
 		<button type="button" class="BotaoVideos btn btn-lg btn-warning tip" title="Vídeos do módulo">
 			<i class="icon-movie2"></i> Vídeos
 		</button>
 	</c:set>
+	
+	<div class="panel-body">
+		<div class="DataGridConsulta" data-page="moduloconsulta.grid.admin" data-page-size="10" data-detail-page="modulocadastro.admin"></div>
 
-	<c:if test="${usuario.perfil.permissaoModuloAlt eq 'S'}">
-		<%@include file="../../../botoes-consulta.jsp"%>
-	</c:if>
+		<c:if test="${usuario.perfil.permissaoModuloAlt eq 'S'}">
+			<%@include file="../../../botoes-consulta.jsp"%>
+		</c:if>
+	</div>
 
 </div>
 <!-- /datatable inside panel body -->
-
 
 <script type="text/javascript">
 	$(".BotaoVideos").click(function() {

@@ -28,11 +28,11 @@
 
 	<div class="panel-body">
 		<div class="DataGridConsulta" data-page="produtoconsulta.grid.admin" data-page-size="8" data-detail-page="produtocadastro.admin"></div>
-	</div>
 
-	<c:if test="${usuario.perfil.permissaoProdutoAlt eq 'S'}">
-		<%@include file="../../../botoes-consulta.jsp"%>
-	</c:if>
+		<c:if test="${usuario.perfil.permissaoProdutoAlt eq 'S'}">
+			<%@include file="../../../botoes-consulta.jsp"%>
+		</c:if>
+	</div>
 
 </div>
 <!-- /datatable inside panel body -->

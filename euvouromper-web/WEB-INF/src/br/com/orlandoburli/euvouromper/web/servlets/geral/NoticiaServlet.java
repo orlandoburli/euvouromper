@@ -13,19 +13,25 @@ import br.com.orlandoburli.euvouromper.model.vo.site.NoticiaVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
-import br.com.orlandoburli.framework.core.utils.Utils;
 
-@WebServlet("/noticia/*")
+@WebServlet("/noticia.page")
 public class NoticiaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
-			NoticiaVo noticia = new NoticiaBe(manager).getByUrl(Utils.getUrl(req));
+			String url = req.getParameter("url");
+
+			if (url == null || url.trim().equals("")) {
+				resp.sendRedirect(req.getServletContext().getContextPath() + "/home");
+				return;
+			}
+			
+			NoticiaVo noticia = new NoticiaBe(manager).getByUrl(url);
 
 			req.setAttribute("noticia", noticia);
 

@@ -4,6 +4,60 @@
 	<property file="build.properties">
 	</property>
 
+	<!-- Incremento de versoes -->
+	<property file="build_info.properties" />
+
+	<target name="compile">
+		<antcall target="revision">
+		</antcall>
+	</target>
+
+	<target name="dist">
+		<antcall target="minor">
+		</antcall>
+	</target>
+
+	<target name="revision">
+		<propertyfile file="build_info.properties">
+			<entry key="build.revision.number" type="int" operation="+" value="1" pattern="00" />
+		</propertyfile>
+	</target>
+
+	<target name="minor">
+		<propertyfile file="build_info.properties">
+			<entry key="build.minor.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.revision.number" type="int" value="0" pattern="00" />
+		</propertyfile>
+	</target>
+
+	<target name="major">
+		<propertyfile file="build_info.properties">
+			<entry key="build.major.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.minor.number" type="int" value="0" pattern="00" />
+			<entry key="build.revision.number" type="int" value="0" pattern="00" />
+		</propertyfile>
+	</target>
+
+	<target name="all">
+		<propertyfile file="build_info.properties">
+			<entry key="build.major.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.minor.number" type="int" operation="+" value="1" pattern="00" />
+			<entry key="build.revision.number" type="int" operation="+" value="1" pattern="00" />
+		</propertyfile>
+	</target>
+	
+	<property name="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}" />
+
+	<target name="generate.version.number">
+		<tstamp>
+			<format property="build.time" pattern="dd/MM/yyyy HH:mm:ss" unit="hour" />
+		</tstamp>
+
+		<property name="version.number" value="${build.number} build: ${build.time}" />
+
+		<replaceregexp file="build.properties" match="(version[ \t]*=[ \t]*)+.*$" byline="true" replace="\1${version.number}" />
+	</target>
+
 	<target name="baixar-git">
 		<sshexec host="github.com" username="orlandoburli" password="carol1408" passphrase="carol1408" command="git clone git@github.com:ultraveloz/euvouromper.git  ${euvouromper.home}" trust="true" />
 	</target>
@@ -151,6 +205,10 @@
 			<fileset dir="${euvouromper.dir.admin}/">
 				<exclude name="WEB-INF/classes/" />
 			</fileset>
+
+			<manifest>
+				<attribute name="Versao" value="${version}" />
+			</manifest>
 		</war>
 
 	</target>
@@ -249,7 +307,7 @@
 
 		<antcall target="deploy-producao-euvouromper-web" inheritall="true" inheritrefs="true">
 		</antcall>
-		
+
 	</target>
 
 </project>

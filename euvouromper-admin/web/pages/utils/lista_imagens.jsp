@@ -74,9 +74,6 @@
 	function loadImagens() {
 		$("#tabListaImagens").load("listaimagem.datatable.admin");
 		
-		// Seta funcao do clique do botao de retornar a imagem
-		loadClickFunction();
-		
 		setTimeout(function() {
 			oTable = $('.datatable-images table').dataTable({
 				"bJQueryUI" : false,
@@ -95,6 +92,9 @@
 					}
 				}
 			});
+			
+			// Seta funcao do clique do botao de retornar a imagem
+			loadClickFunction();
 			
 			// Ao paginar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
 			$(".datatable-images table").bind("page", function() {

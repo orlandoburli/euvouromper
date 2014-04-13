@@ -39,14 +39,14 @@ public class LoginAction extends BaseAction {
 			}
 		}
 
-		getRequest().setAttribute("versao", Versao.getInstance());
+		getRequest().setAttribute("versao", Versao.getInstance(getContext()));
 
 		forward("web/pages/acesso/login/login.jsp");
 
 	}
 
 	public void login() {
-		DAOManager manager = new DAOManager();
+		DAOManager manager = DAOManager.getDAOManager();
 		try {
 
 			UsuarioVo usuario = new UsuarioBe(manager).login(login, senha);
