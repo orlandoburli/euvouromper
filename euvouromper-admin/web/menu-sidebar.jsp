@@ -70,6 +70,9 @@
 					<c:if test="${usuario.perfil.permissaoMenuVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="menuconsulta.admin">Menus</a></li>
 					</c:if>
+					<c:if test="${usuario.perfil.permissaoBannerVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="bannerconsulta.admin">Banners</a></li>
+					</c:if>
 					<c:if test="${usuario.perfil.permissaoNoticiaVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="noticiaconsulta.admin">Notícias</a></li>
 					</c:if>
@@ -78,6 +81,14 @@
 					</c:if>
 					<c:if test="${usuario.perfil.permissaoInstitucionalVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="institucionalconsulta.admin">Páginas Institucionais</a></li>
+					</c:if>
+					
+					
+					<c:if test="${usuario.perfil.permissaoDepoimentoVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="depoimentoconsulta.admin">Depoimentos</a></li>
+					</c:if>
+					<c:if test="${usuario.perfil.permissaoVideoYoutubeVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="videoyoutubeconsulta.admin">Vídeos YouTube</a></li>
 					</c:if>
 				</ul></li>
 

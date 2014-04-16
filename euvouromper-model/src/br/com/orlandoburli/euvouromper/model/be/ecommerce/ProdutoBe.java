@@ -1,5 +1,7 @@
 package br.com.orlandoburli.euvouromper.model.be.ecommerce;
 
+import java.util.List;
+
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ProdutoDao;
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
@@ -7,6 +9,7 @@ import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoProduto;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoValidade;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
+import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.SaveBeException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 
@@ -36,7 +39,7 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 			vo.setIdModulo(null);
 			vo.setIdPacote(null);
 		}
-		
+
 		// Validacoes do tipo de validade
 		if (vo.getTipoValidade().equals(TipoValidade.DATA)) {
 			if (vo.getDataValidade() == null) {
@@ -49,7 +52,7 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 			}
 			vo.setDataValidade(null);
 		}
-		
+
 		// Recorrente
 		if (vo.getRecorrente().equals(SimNao.SIM)) {
 			if (vo.getDiasRecorrencia() == null) {
@@ -62,5 +65,13 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		}
 
 		super.doBeforeSave(vo);
+	}
+
+	public List<ProdutoVo> getListHome() throws ListException {
+
+		ProdutoVo filter = new ProdutoVo();
+		filter.setAtivo(SimNao.SIM);
+
+		return getList(filter, null, "RANDOM()", 1, 5);
 	}
 }

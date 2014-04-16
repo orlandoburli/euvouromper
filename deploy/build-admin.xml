@@ -1,8 +1,7 @@
 <project name="euvouromper-core" default="build-all">
 
 	<!-- Definicao do arquivo de propriedades -->
-	<property file="build.properties">
-	</property>
+	<property file="build.properties"/>
 
 	<!-- Incremento de versoes -->
 	<property file="build_info.properties" />
@@ -21,6 +20,7 @@
 		<propertyfile file="build_info.properties">
 			<entry key="build.revision.number" type="int" operation="+" value="1" pattern="00" />
 		</propertyfile>
+		<antcall target="generate.version.number"/>
 	</target>
 
 	<target name="minor">
@@ -28,6 +28,7 @@
 			<entry key="build.minor.number" type="int" operation="+" value="1" pattern="00" />
 			<entry key="build.revision.number" type="int" value="0" pattern="00" />
 		</propertyfile>
+		<antcall target="generate.version.number"/>
 	</target>
 
 	<target name="major">
@@ -36,6 +37,7 @@
 			<entry key="build.minor.number" type="int" value="0" pattern="00" />
 			<entry key="build.revision.number" type="int" value="0" pattern="00" />
 		</propertyfile>
+		<antcall target="generate.version.number"/>
 	</target>
 
 	<target name="all">
@@ -44,11 +46,13 @@
 			<entry key="build.minor.number" type="int" operation="+" value="1" pattern="00" />
 			<entry key="build.revision.number" type="int" operation="+" value="1" pattern="00" />
 		</propertyfile>
+		<antcall target="generate.version.number"/>
 	</target>
 	
 	<property name="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}" />
 
 	<target name="generate.version.number">
+		
 		<tstamp>
 			<format property="build.time" pattern="dd/MM/yyyy HH:mm:ss" unit="hour" />
 		</tstamp>
@@ -56,6 +60,11 @@
 		<property name="version.number" value="${build.number} build: ${build.time}" />
 
 		<replaceregexp file="build.properties" match="(version[ \t]*=[ \t]*)+.*$" byline="true" replace="\1${version.number}" />
+		
+		<propertyfile file="build_info.properties">
+			<entry key="version.number" value="${version.number}"/>
+		</propertyfile>
+		
 	</target>
 
 	<target name="baixar-git">
@@ -177,6 +186,9 @@
 
 	<!-- Target para empacotar o euvouromper-admin -->
 	<target name="empacotar-euvouromper-admin" depends="compilar-euvouromper-admin">
+		
+		<antcall target="generate.version.number"/>
+		
 		<delete file="${deploy.dir}/admin.war">
 		</delete>
 
@@ -185,7 +197,7 @@
 			<fileset dir="${euvouromper.dir.admin}" includes="**/*.properties">
 			</fileset>
 		</copy>
-
+		
 		<war destfile="${deploy.dir}/admin.war" webxml="${euvouromper.dir.admin}/WEB-INF/web.xml">
 			<classes dir="${euvouromper.build.dir.admin}">
 			</classes>
@@ -205,9 +217,9 @@
 			<fileset dir="${euvouromper.dir.admin}/">
 				<exclude name="WEB-INF/classes/" />
 			</fileset>
-
+			
 			<manifest>
-				<attribute name="Versao" value="${version}" />
+				<attribute name="Versao" value="${version.number}" />
 			</manifest>
 		</war>
 

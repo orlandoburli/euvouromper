@@ -175,6 +175,26 @@
 									</select>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Banners</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoBannerVer" class="select" data-field-value="${vo.permissaoBannerVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Banners</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoBannerAlt" class="select" data-field-value="${vo.permissaoBannerAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label text-right">Visualizar Notícias</label>
@@ -235,6 +255,47 @@
 									</select>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Depoimentos</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoDepoimentoVer" class="select" data-field-value="${vo.permissaoDepoimentoVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Depoimentos</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoDepoimentoAlt" class="select" data-field-value="${vo.permissaoDepoimentoAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Vídeos YouTube</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoVideoYoutubeVer" class="select" data-field-value="${vo.permissaoVideoYoutubeVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Vídeos YouTube</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoVideoYoutubeAlt" class="select" data-field-value="${vo.permissaoVideoYoutubeAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>

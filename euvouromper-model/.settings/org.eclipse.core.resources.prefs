@@ -13,6 +13,8 @@ encoding//src/br/com/orlandoburli/euvouromper/model/vo/online/ModuloVideoVo.java
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/online/ModuloVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/online/PacoteModuloVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/site/ArtigoVo.java=UTF-8
+encoding//src/br/com/orlandoburli/euvouromper/model/vo/site/BannerVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/site/GrupoMenu.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/site/InstitucionalVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/site/NoticiaVo.java=UTF-8
+encoding//src/br/com/orlandoburli/euvouromper/model/vo/site/VideoYoutubeVo.java=UTF-8

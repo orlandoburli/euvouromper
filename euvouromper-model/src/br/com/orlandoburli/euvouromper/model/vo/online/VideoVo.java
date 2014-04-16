@@ -58,6 +58,9 @@ public class VideoVo extends BaseVo {
 	@Column(name = PATH_VIDEO, dataType = DataType.VARCHAR, maxSize = 300)
 	@MaxSize(300)
 	private String pathVideo;
+	
+	@Column(name = PATH_FOTO, dataType = DataType.VARCHAR, maxSize = 300)
+	private String pathFoto;
 
 	@Column(name = HASH, dataType = DataType.VARCHAR, maxSize = 100)
 	@MaxSize(100)
@@ -155,5 +158,13 @@ public class VideoVo extends BaseVo {
 
 	public void setDisciplina(DisciplinaVo disciplina) {
 		this.disciplina = disciplina;
+	}
+
+	public String getPathFoto() {
+		return pathFoto;
+	}
+
+	public void setPathFoto(String pathFoto) {
+		this.pathFoto = pathFoto;
 	}
 }

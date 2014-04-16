@@ -37,6 +37,15 @@ public final class Dicionario {
 			public static final String P_MENU_VER = "p_menu_ver";
 			public static final String P_MENU_ALT = "p_menu_alt";
 
+			public static final String P_BANNER_VER = "p_banner_ver";
+			public static final String P_BANNER_ALT = "p_banner_alt";
+
+			public static final String P_DEPOIMENTO_VER = "p_depoimento_ver";
+			public static final String P_DEPOIMENTO_ALT = "p_depoimento_alt";
+
+			public static final String P_VIDEOYOUTUBE_VER = "p_videoyoutube_ver";
+			public static final String P_VIDEOYOUTUBE_ALT = "p_videoyoutube_alt";
+
 			public static final String P_NOTICIA_VER = "p_noticia_ver";
 			public static final String P_NOTICIA_ALT = "p_noticia_alt";
 
@@ -99,6 +108,8 @@ public final class Dicionario {
 			public static final String TITULO = "titulo";
 			public static final String PATH_FOTO = "path_foto";
 			public static final String URL = "url";
+			public static final String MINI_CURRICULO = "mini_curriculo";
+			public static final String CURRICULO = "curriculo";
 		}
 	}
 
@@ -156,6 +167,42 @@ public final class Dicionario {
 		}
 	}
 
+	public final class Depoimento {
+		public static final String TABELA_DEPOIMENTO = "depoimento";
+
+		public final class Colunas {
+			public static final String ID_DEPOIMENTO = "id_depoimento";
+			public static final String NOME = "nome";
+			public static final String TEXTO = "texto";
+			public static final String STATUS = "status";
+		}
+	}
+
+	public final class VideoYoutube {
+		public static final String TABELA_VIDEO_YOUTUBE = "video_youtube";
+
+		public final class Colunas {
+			public static final String ID_VIDEO_YOUTUBE = "id_video_youtube";
+			public static final String DESCRICAO = "descricao";
+			public static final String CHAVE = "chave";
+		}
+	}
+
+	public final class Banner {
+		public static final String TABELA_BANNER = "banner";
+
+		public final class Colunas {
+			public static final String ID_BANNER = "id_banner";
+			public static final String TITULO = "titulo";
+			public static final String SUBTITULO = "subtitulo";
+			public static final String URL = "url";
+			public static final String ATIVO = "ativo";
+			public static final String PATH_IMAGEM = "path_imagem";
+			public static final String COR_TITULO = "cor_titulo";
+			public static final String COR_SUBTITULO = "cor_subtitulo";
+		}
+	}
+
 	public final class Video {
 		public static final String TABELA_VIDEO = "video";
 
@@ -170,6 +217,8 @@ public final class Dicionario {
 			public static final String ID_DISCIPLINA = "id_disciplina";
 			public static final String PATH_VIDEO = "path_video";
 			public static final String HASH = "hash";
+
+			public static final String PATH_FOTO = "path_foto";
 		}
 	}
 
@@ -233,6 +282,7 @@ public final class Dicionario {
 			public static final String DIAS_VALIDADE = "dias_validade";
 			public static final String RECORRENTE = "recorrente";
 			public static final String DIAS_RECORRENCIA = "dias_recorrencia";
+			public static final String PATH_FOTO = "path_foto";
 		}
 	}
 

@@ -88,9 +88,9 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoProfessorAlt;
-	
+
 	// Grupo Site
-	
+
 	@Column(name = Colunas.P_MENU_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -102,7 +102,43 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoMenuAlt;
-	
+
+	@Column(name = Colunas.P_BANNER_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoBannerVer;
+
+	@Column(name = Colunas.P_BANNER_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoBannerAlt;
+
+	@Column(name = Colunas.P_DEPOIMENTO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoDepoimentoVer;
+
+	@Column(name = Colunas.P_DEPOIMENTO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoDepoimentoAlt;
+
+	@Column(name = Colunas.P_VIDEOYOUTUBE_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoVideoYoutubeVer;
+
+	@Column(name = Colunas.P_VIDEOYOUTUBE_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoVideoYoutubeAlt;
+
 	@Column(name = Colunas.P_NOTICIA_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -114,7 +150,7 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoNoticiaAlt;
-	
+
 	@Column(name = Colunas.P_ARTIGO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -126,7 +162,7 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoArtigoAlt;
-	
+
 	@Column(name = Colunas.P_INSTITUCIONAL_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -138,9 +174,9 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoInstitucionalAlt;
-	
+
 	// Online
-	
+
 	@Column(name = Colunas.P_VIDEO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -152,7 +188,7 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoVideoAlt;
-	
+
 	@Column(name = Colunas.P_MODULO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -164,7 +200,7 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoModuloAlt;
-	
+
 	@Column(name = Colunas.P_PACOTE_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -176,9 +212,9 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoPacoteAlt;
-	
+
 	// e-Commerce
-	
+
 	@Column(name = Colunas.P_PRODUTO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -190,7 +226,7 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoProdutoAlt;
-	
+
 	@Column(name = Colunas.P_CUPOM_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -441,5 +477,53 @@ public class PerfilAdminVo extends BaseVo {
 
 	public void setPermissaoCupomAlt(String permissaoCupomAlt) {
 		this.permissaoCupomAlt = permissaoCupomAlt;
+	}
+
+	public String getPermissaoBannerVer() {
+		return permissaoBannerVer;
+	}
+
+	public void setPermissaoBannerVer(String permissaoBannerVer) {
+		this.permissaoBannerVer = permissaoBannerVer;
+	}
+
+	public String getPermissaoBannerAlt() {
+		return permissaoBannerAlt;
+	}
+
+	public void setPermissaoBannerAlt(String permissaoBannerAlt) {
+		this.permissaoBannerAlt = permissaoBannerAlt;
+	}
+
+	public String getPermissaoDepoimentoVer() {
+		return permissaoDepoimentoVer;
+	}
+
+	public void setPermissaoDepoimentoVer(String permissaoDepoimentoVer) {
+		this.permissaoDepoimentoVer = permissaoDepoimentoVer;
+	}
+
+	public String getPermissaoDepoimentoAlt() {
+		return permissaoDepoimentoAlt;
+	}
+
+	public void setPermissaoDepoimentoAlt(String permissaoDepoimentoAlt) {
+		this.permissaoDepoimentoAlt = permissaoDepoimentoAlt;
+	}
+
+	public String getPermissaoVideoYoutubeVer() {
+		return permissaoVideoYoutubeVer;
+	}
+
+	public void setPermissaoVideoYoutubeVer(String permissaoVideoYoutubeVer) {
+		this.permissaoVideoYoutubeVer = permissaoVideoYoutubeVer;
+	}
+
+	public String getPermissaoVideoYoutubeAlt() {
+		return permissaoVideoYoutubeAlt;
+	}
+
+	public void setPermissaoVideoYoutubeAlt(String permissaoVideoYoutubeAlt) {
+		this.permissaoVideoYoutubeAlt = permissaoVideoYoutubeAlt;
 	}
 }

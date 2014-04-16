@@ -54,6 +54,14 @@ public class ProfessorVo extends BaseVo {
 	@SpaceToUnderline
 	@Description("URL")
 	private String url;
+	
+	@Column(name = MINI_CURRICULO, dataType = DataType.TEXT)
+	@Description("Mini Currículo")
+	private String miniCurriculo;
+	
+	@Column(name = CURRICULO, dataType = DataType.TEXT)
+	@Description("Currículo")
+	private String curriculo;
 
 	public Integer getIdProfessor() {
 		return idProfessor;
@@ -101,5 +109,21 @@ public class ProfessorVo extends BaseVo {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getMiniCurriculo() {
+		return miniCurriculo;
+	}
+
+	public void setMiniCurriculo(String miniCurriculo) {
+		this.miniCurriculo = miniCurriculo;
+	}
+
+	public String getCurriculo() {
+		return curriculo;
+	}
+
+	public void setCurriculo(String curriculo) {
+		this.curriculo = curriculo;
 	}
 }

@@ -1,9 +1,12 @@
 package br.com.orlandoburli.euvouromper.model.be.cadastros;
 
+import java.util.List;
+
 import br.com.orlandoburli.euvouromper.model.dao.cadastros.ProfessorDao;
 import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
+import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 
 public class ProfessorBe extends BaseBe<ProfessorVo, ProfessorDao> {
@@ -19,5 +22,19 @@ public class ProfessorBe extends BaseBe<ProfessorVo, ProfessorDao> {
 		}
 
 		super.doBeforeSave(vo);
+	}
+
+	public ProfessorVo getByUrl(String url) throws ListException {
+
+		ProfessorVo filter = new ProfessorVo();
+		filter.setUrl(url);
+
+		List<ProfessorVo> list = getList(filter);
+
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+
+		return null;
 	}
 }

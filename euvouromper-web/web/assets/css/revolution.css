@@ -35,7 +35,7 @@ website:   	http://www.themepunch.com
 
 .tp-hide-revslider,.tp-caption.tp-hidden-caption	{	visibility:hidden !important; display:none !important;}
 /* ESSE CARALHO AQUI ARRUMA PORRA DO POSICIONAMENTO DO BOTAO, PORRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA! FILHA DA PUUUUUUUUUUUUUUUUTAAAA */
-.tp-caption { z-index:1; left:90px !important;}
+.tp-caption { z-index:1; left:120px !important;}
 .tp-caption.big_white{
 			position: absolute;
 			color: #fff;

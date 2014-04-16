@@ -1,4 +1,4 @@
-package br.com.orlandoburli.euvouromper.web.servlets.geral;
+package br.com.orlandoburli.euvouromper.web.servlets.geral.professores;
 
 import java.io.IOException;
 
@@ -8,14 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.site.NoticiaBe;
-import br.com.orlandoburli.euvouromper.model.vo.site.NoticiaVo;
+import br.com.orlandoburli.euvouromper.model.be.cadastros.ProfessorBe;
+import br.com.orlandoburli.euvouromper.model.be.site.MenuBe;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
-import br.com.orlandoburli.framework.core.log.Log;
 
-@WebServlet("/noticia.page")
-public class NoticiaServlet extends HttpServlet {
+@WebServlet("/professor.page")
+public class ProfessorView extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,22 +23,28 @@ public class NoticiaServlet extends HttpServlet {
 		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
-			String url = req.getParameter("url");
+			// Menus
 
-			if (url == null || url.trim().equals("")) {
-				resp.sendRedirect(req.getServletContext().getContextPath() + "/home");
-				return;
-			}
+			MenuBe menuBe = new MenuBe(manager);
+
+			req.setAttribute("menusTopo", menuBe.getListTopo());
+			req.setAttribute("menusRodape1", menuBe.getListRodape1());
+			req.setAttribute("menusRodape2", menuBe.getListRodape2());
+
+			// Professor
 			
-			NoticiaVo noticia = new NoticiaBe(manager).getByUrl(url);
+			String professorParametro = req.getParameter("professor");
 
-			req.setAttribute("noticia", noticia);
+			req.setAttribute("professor", new ProfessorBe(manager).getByUrl(professorParametro));
 
 		} catch (ListException e) {
-			Log.error(e);
+			e.printStackTrace();
 		} finally {
 			manager.commit();
 		}
+
+		req.getRequestDispatcher("web/pages/site/professores/professor_ver.jsp").forward(req, resp);
+
 	}
 
 	@Override

@@ -100,6 +100,9 @@ public class ProdutoVo extends BaseVo {
 	@Description("Dias recorrência")
 	private Integer diasRecorrencia;
 
+	@Column(name = PATH_FOTO, maxSize = 100, dataType = DataType.VARCHAR)
+	private String pathFoto;
+
 	@Join(columnsLocal = { ID_MODULO }, columnsRemote = { Modulo.Colunas.ID_MODULO })
 	private ModuloVo modulo;
 
@@ -224,5 +227,13 @@ public class ProdutoVo extends BaseVo {
 
 	public void setPacote(PacoteVo pacote) {
 		this.pacote = pacote;
+	}
+
+	public String getPathFoto() {
+		return pathFoto;
+	}
+
+	public void setPathFoto(String pathFoto) {
+		this.pathFoto = pathFoto;
 	}
 }
