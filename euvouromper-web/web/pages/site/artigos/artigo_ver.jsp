@@ -26,7 +26,13 @@
 			</nav>
 			<h2 class="titles-big linha-h2">${artigo.titulo}</h2>
 
-			<p>${artigo.texto}</p>
+			<div style="text-align: justify;">
+				<p>${artigo.texto}</p>
+			</div>
+			
+			<fmt:formatDate value="${artigo.data.time}" pattern="dd/MM/yyyy" var="dataFormatada" />
+
+			<p style="text-align: right;">Publicado em ${dataFormatada}</p>
 			
 			<div id="autor-artigo">
 				<div>

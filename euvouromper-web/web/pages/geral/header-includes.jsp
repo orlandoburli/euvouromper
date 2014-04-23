@@ -36,3 +36,5 @@
 	<script src="${root}/web/assets/js/easypaginate.js" type="text/javascript" ></script>
 
 </head>
+
+<%@include file="initialize-fb.jsp" %>

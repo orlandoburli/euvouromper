@@ -1,5 +1,7 @@
 package br.com.orlandoburli.euvouromper.model.vo.online;
 
+import java.util.List;
+
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MaxSize;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.NotEmpty;
@@ -24,6 +26,14 @@ public class PacoteVo extends BaseVo {
 	@Description("Nome")
 	private String nome;
 
+	@Column(name = CONTEUDO, dataType = DataType.TEXT)
+	private String conteudo;
+
+	@Column(name = OBJETIVO, dataType = DataType.TEXT)
+	private String objetivo;
+	
+	private List<ModuloVo> modulos;
+
 	public Integer getIdPacote() {
 		return idPacote;
 	}
@@ -38,5 +48,29 @@ public class PacoteVo extends BaseVo {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
+
+	public String getObjetivo() {
+		return objetivo;
+	}
+
+	public void setObjetivo(String objetivo) {
+		this.objetivo = objetivo;
+	}
+
+	public List<ModuloVo> getModulos() {
+		return modulos;
+	}
+
+	public void setModulos(List<ModuloVo> modulos) {
+		this.modulos = modulos;
 	}
 }

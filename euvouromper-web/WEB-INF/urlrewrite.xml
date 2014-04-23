@@ -8,6 +8,16 @@
 
 	<!-- NOTICIAS -->
 	<rule match-type="wildcard">
+		<from>/noticias/lista</from>
+		<to type="redirect">/noticia/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/noticias</from>
+		<to type="redirect">/noticia/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
 		<from>/noticia/lista</from>
 		<to type="forward">/noticia.lista.page?pagina=1</to>
 	</rule>
@@ -23,6 +33,21 @@
 	</rule>
 	
 	<!-- ARTIGOS -->
+	<rule match-type="wildcard">
+		<from>/artigo</from>
+		<to type="redirect">/artigo/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/artigos</from>
+		<to type="redirect">/artigo/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/artigos/lista</from>
+		<to type="redirect">/artigo/lista</to>
+	</rule>
+	
 	<rule match-type="wildcard">
 		<from>/artigo/lista</from>
 		<to type="forward">/artigo.lista.page?pagina=1</to>
@@ -44,5 +69,56 @@
 		<from>/professor/**</from>
 		<to type="forward">/professor.page?professor=$1</to>
 	</rule>
+	
+	<!-- INSTITUCIONAL -->
+	
+	<rule match-type="wildcard">
+		<from>/institucional/*</from>
+		<to type="forward">/institucional.page?institucional=$1</to>
+	</rule>
+	
+	<!-- PRODUTOS -->
+	
+	<rule match-type="wildcard">
+		<from>/produto</from>
+		<to type="redirect">/produto/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/produtos</from>
+		<to type="redirect">/produto/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/produtos/lista</from>
+		<to type="redirect">/produto/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/produto/lista</from>
+		<to type="forward">/produto.lista.page?pagina=1</to>
+	</rule>
 
+	<rule match-type="wildcard">
+		<from>/produto/lista/**</from>
+		<to type="forward">/produto.lista.page?pagina=$1</to>
+	</rule>
+
+	<rule match-type="wildcard">
+		<from>/produto/**</from>
+		<to type="forward">/produto.page?produto=$1</to>
+	</rule>
+	
+	<!-- CARRINHO -->
+	
+	<rule match-type="wildcard">
+		<from>/carrinho/adicionar/*</from>
+		<to type="forward">/carrinho.adicionar.page?produto=$1</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/carrinho/remover/*</from>
+		<to type="forward">/carrinho.remover.page?produto=$1</to>
+	</rule>
+	
 </urlrewrite>

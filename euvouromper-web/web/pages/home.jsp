@@ -58,7 +58,8 @@
 							<h5>${produto.nome}</h5>
 						</div>
 						<div class="footer-curso">
-							<span><fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" /></span> <a href="#" class="saiba-mais-curso" title="Saiba mais">saiba mais</a>
+							<span><fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" /></span> 
+							<a href="${root}/produto/${produto.url}" class="saiba-mais-curso" title="Saiba mais">saiba mais</a>
 						</div>
 					</article>
 				</c:forEach>

@@ -1,4 +1,4 @@
-package br.com.orlandoburli.euvouromper.web.servlets.geral.artigos;
+package br.com.orlandoburli.euvouromper.web.servlets.geral.site.noticias;
 
 import java.io.IOException;
 
@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.site.MenuBe;
-import br.com.orlandoburli.euvouromper.model.be.site.ArtigoBe;
+import br.com.orlandoburli.euvouromper.model.be.site.NoticiaBe;
+import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
 
-@WebServlet("/artigo.lista.page")
-public class ArtigoList extends HttpServlet {
+@WebServlet("/noticia.lista.page")
+public class NoticiaList extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,19 +34,15 @@ public class ArtigoList extends HttpServlet {
 		try {
 			// Menus
 
-			MenuBe menuBe = new MenuBe(manager);
+			WebUtils.buildMenus(req, manager);
 
-			req.setAttribute("menusTopo", menuBe.getListTopo());
-			req.setAttribute("menusRodape1", menuBe.getListRodape1());
-			req.setAttribute("menusRodape2", menuBe.getListRodape2());
-
-			// Artigos
+			// Not??cias
 			
-			ArtigoBe artigoBe = new ArtigoBe(manager);
+			NoticiaBe noticiaBe = new NoticiaBe(manager);
 
-			Integer totalPaginas = artigoBe.getQuantidadePaginasArtigos();
+			Integer totalPaginas = noticiaBe.getQuantidadePaginasNoticias();
 
-			req.setAttribute("artigos", artigoBe.getPaginaArtigos(pagina));
+			req.setAttribute("noticias", noticiaBe.getPaginaNoticias(pagina));
 
 			Integer paginaAnterior = pagina > 1 ? pagina - 1 : 1;
 			Integer proximaPagina = pagina >= totalPaginas ? pagina : pagina + 1;
@@ -62,10 +58,10 @@ public class ArtigoList extends HttpServlet {
 			manager.commit();
 		}
 
-		req.getRequestDispatcher("web/pages/site/artigos/artigo_lista.jsp").forward(req, resp);
+		req.getRequestDispatcher("web/pages/site/noticias/noticia_lista.jsp").forward(req, resp);
 
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

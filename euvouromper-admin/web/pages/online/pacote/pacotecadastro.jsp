@@ -21,6 +21,42 @@
 					</div>
 				</div>
 				
+				<div class="form-group">
+					<label class="col-sm-2 control-label text-right"></label>
+					<div class="col-sm-7">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h6 class="panel-title">
+									<i class="icon-pencil"></i>Objetivo
+								</h6>
+							</div>
+							<div class="panel-body">
+								<div class="block-inner">
+									<textarea id="objetivo" rows="20" class="editor form-control" placeholder="Digite o texto aqui...">${vo.objetivo}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label text-right"></label>
+					<div class="col-sm-7">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h6 class="panel-title">
+									<i class="icon-pencil"></i>Conteúdo
+								</h6>
+							</div>
+							<div class="panel-body">
+								<div class="block-inner">
+									<textarea id="conteudo" rows="20" class="editor form-control" placeholder="Digite o texto aqui...">${vo.conteudo}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<%@include file="../../../botoes-cadastro.jsp"%>
 			</div>
 		</div>

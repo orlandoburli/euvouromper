@@ -18,7 +18,7 @@
 
 			<ul class="lista-footer">
 				<c:forEach items="${menusRodape1}" var="menu">
-					<li><a href="${menu.url}">${menu.nome}</a></li>
+					<li><a href="${root}/${menu.url}">${menu.nome}</a></li>
 				</c:forEach>
 			</ul>
 
@@ -28,7 +28,7 @@
 
 			<ul class="lista-footer">
 				<c:forEach items="${menusRodape2}" var="menu">
-					<li><a href="${menu.url}">${menu.nome}</a></li>
+					<li><a href="${root}/${menu.url}">${menu.nome}</a></li>
 				</c:forEach>
 			</ul>
 		</div>

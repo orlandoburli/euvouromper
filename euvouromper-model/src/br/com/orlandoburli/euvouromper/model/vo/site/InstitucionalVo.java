@@ -35,7 +35,6 @@ public class InstitucionalVo extends BaseVo {
 	@Description("Texto")
 	private String texto;
 
-
 	@Column(name = URL, dataType = DataType.VARCHAR, maxSize = 200)
 	@FullTrim
 	@Lower

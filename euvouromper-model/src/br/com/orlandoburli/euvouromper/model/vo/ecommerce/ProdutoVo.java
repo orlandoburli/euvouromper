@@ -9,6 +9,11 @@ import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Modulo;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pacote;
 import br.com.orlandoburli.euvouromper.model.vo.online.ModuloVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.PacoteVo;
+import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.FilterOnly;
+import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.FullTrim;
+import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.Lower;
+import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.NoAccents;
+import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.SpaceToUnderline;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Domain;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MaxSize;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MinSize;
@@ -100,6 +105,15 @@ public class ProdutoVo extends BaseVo {
 	@Description("Dias recorrência")
 	private Integer diasRecorrencia;
 
+	@Column(name = URL, dataType = DataType.VARCHAR, maxSize = 300)
+	@FullTrim
+	@Lower
+	@NoAccents
+	@FilterOnly("abcdefghijhlmnopqrstuvxzwyk1234567890_ ")
+	@SpaceToUnderline
+	@Description("URL")
+	private String url;
+
 	@Column(name = PATH_FOTO, maxSize = 100, dataType = DataType.VARCHAR)
 	private String pathFoto;
 
@@ -109,6 +123,10 @@ public class ProdutoVo extends BaseVo {
 	@Join(columnsLocal = { ID_PACOTE }, columnsRemote = { Pacote.Colunas.ID_PACOTE })
 	private PacoteVo pacote;
 
+	public String getAtivoDescritivo() {
+		return new SimNao().getDescription(getAtivo());
+	}
+	
 	public Integer getIdProduto() {
 		return idProduto;
 	}
@@ -235,5 +253,13 @@ public class ProdutoVo extends BaseVo {
 
 	public void setPathFoto(String pathFoto) {
 		this.pathFoto = pathFoto;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

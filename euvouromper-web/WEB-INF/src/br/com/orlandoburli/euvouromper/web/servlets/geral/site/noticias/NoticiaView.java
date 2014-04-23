@@ -1,4 +1,4 @@
-package br.com.orlandoburli.euvouromper.web.servlets.geral.noticias;
+package br.com.orlandoburli.euvouromper.web.servlets.geral.site.noticias;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.site.MenuBe;
 import br.com.orlandoburli.euvouromper.model.be.site.NoticiaBe;
 import br.com.orlandoburli.euvouromper.model.vo.site.NoticiaVo;
+import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
@@ -27,11 +27,7 @@ public class NoticiaView extends HttpServlet {
 		try {
 			// Menus
 
-			MenuBe menuBe = new MenuBe(manager);
-
-			req.setAttribute("menusTopo", menuBe.getListTopo());
-			req.setAttribute("menusRodape1", menuBe.getListRodape1());
-			req.setAttribute("menusRodape2", menuBe.getListRodape2());
+			WebUtils.buildMenus(req, manager);
 
 			// Parametro da noticia
 

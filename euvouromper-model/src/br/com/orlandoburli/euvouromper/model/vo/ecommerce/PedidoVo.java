@@ -1,30 +1,12 @@
 package br.com.orlandoburli.euvouromper.model.vo.ecommerce;
 
 import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.CupomDesconto.Colunas.ID_CUPOM;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.BAIRRO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.CEP;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.CIDADE;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.COMPLEMENTO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.CPF;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.DATA_HORA_LIBERACAO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.EMAIL;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.ENDERECO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.FONE1;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.FONE2;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.ID_CLIENTE;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.ID_PAGSEGURO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.ID_PEDIDO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.NOME;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.NUMERO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.STATUS_PAGAMENTO_PEDIDO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.STATUS_PEDIDO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.UF;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.VALOR_BRUTO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.VALOR_DESCONTO;
-import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.VALOR_LIQUIDO;
+import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido.Colunas.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
@@ -49,7 +31,7 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 @Table(Dicionario.Pedido.TABELA_PEDIDO)
 public class PedidoVo extends BaseVo {
 
-	@Column(name = ID_PEDIDO, dataType = DataType.INT, isNotNull = true, isAutoIncrement = true)
+	@Column(name = ID_PEDIDO, dataType = DataType.INT, isNotNull = true, isAutoIncrement = true, isKey = true)
 	private Integer idPedido;
 
 	@Column(name = ID_CLIENTE, dataType = DataType.INT, isNotNull = true)
@@ -66,15 +48,6 @@ public class PedidoVo extends BaseVo {
 	@Description("Status do Pedido")
 	private String statusPedido;
 
-	@Column(name = STATUS_PAGAMENTO_PEDIDO, dataType = DataType.CHAR, maxSize = 1, isNotNull = true)
-	@NotNull
-	@NotEmpty
-	@MinSize(1)
-	@MaxSize(1)
-	@Domain(StatusPagamentoPedido.class)
-	@Description("Status do Pagamento Pedido")
-	private String statusPagamentoPedido;
-
 	@Column(name = ID_PAGSEGURO, dataType = DataType.VARCHAR, maxSize = 100)
 	@MaxSize(100)
 	@Description("Id do PagSeguro")
@@ -86,6 +59,12 @@ public class PedidoVo extends BaseVo {
 	@Column(name = DATA_HORA_LIBERACAO, dataType = DataType.DATETIME)
 	@Description("Data / Hora da Liberação")
 	private Calendar dataHoraLiberacao;
+
+	@Column(name = DATA_HORA_PEDIDO, dataType = DataType.DATETIME, isNotNull = true)
+	@NotNull
+	@NotEmpty
+	@Description("Data / Hora do pedido")
+	private Calendar dataHoraPedido;
 
 	@Column(name = NOME, dataType = DataType.VARCHAR, maxSize = 100, isNotNull = true)
 	@NotNull
@@ -116,18 +95,28 @@ public class PedidoVo extends BaseVo {
 	private String cep;
 
 	@Column(name = ENDERECO, dataType = DataType.VARCHAR, maxSize = 100)
+	@NotNull
+	@NotEmpty
+	@Description("Endereço")
 	private String endereco;
 
 	@Column(name = NUMERO, dataType = DataType.INT)
+	@NotNull
+	@NotEmpty
+	@Description("Número")
 	private Integer numero;
 
 	@Column(name = BAIRRO, dataType = DataType.VARCHAR, maxSize = 100)
 	private String bairro;
 
 	@Column(name = COMPLEMENTO, dataType = DataType.VARCHAR, maxSize = 150)
+	@Description("Complemento")
 	private String complemento;
 
 	@Column(name = UF, dataType = DataType.VARCHAR, maxSize = 2)
+	@MinSize(2)
+	@MaxSize(2)
+	@Description("UF")
 	private String uf;
 
 	@Column(name = CIDADE, dataType = DataType.VARCHAR, maxSize = 100)
@@ -168,6 +157,15 @@ public class PedidoVo extends BaseVo {
 
 	@Join(columnsLocal = { ID_CUPOM }, columnsRemote = { CupomDesconto.Colunas.ID_CUPOM })
 	private CupomDescontoVo cupom;
+
+	@Column(name = URL_PAG_SEGURO, dataType = DataType.VARCHAR, maxSize = 300)
+	private String urlPagSeguro;
+
+	private List<ItemPedidoVo> itens;
+
+	public Integer getQuantidadeItens() {
+		return getItens().size();
+	}
 
 	public Integer getIdPedido() {
 		return idPedido;
@@ -329,14 +327,6 @@ public class PedidoVo extends BaseVo {
 		this.valorLiquido = valorLiquido;
 	}
 
-	public String getStatusPagamentoPedido() {
-		return statusPagamentoPedido;
-	}
-
-	public void setStatusPagamentoPedido(String statusPagamentoPedido) {
-		this.statusPagamentoPedido = statusPagamentoPedido;
-	}
-
 	public ClienteVo getCliente() {
 		return cliente;
 	}
@@ -359,5 +349,32 @@ public class PedidoVo extends BaseVo {
 
 	public void setCupom(CupomDescontoVo cupom) {
 		this.cupom = cupom;
+	}
+
+	public List<ItemPedidoVo> getItens() {
+		if (itens == null) {
+			itens = new ArrayList<ItemPedidoVo>();
+		}
+		return itens;
+	}
+
+	public void setItens(List<ItemPedidoVo> itens) {
+		this.itens = itens;
+	}
+
+	public String getUrlPagSeguro() {
+		return urlPagSeguro;
+	}
+
+	public void setUrlPagSeguro(String urlPagSeguro) {
+		this.urlPagSeguro = urlPagSeguro;
+	}
+
+	public Calendar getDataHoraPedido() {
+		return dataHoraPedido;
+	}
+
+	public void setDataHoraPedido(Calendar dataHoraPedido) {
+		this.dataHoraPedido = dataHoraPedido;
 	}
 }

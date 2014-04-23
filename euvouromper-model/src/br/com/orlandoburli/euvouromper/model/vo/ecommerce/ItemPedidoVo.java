@@ -8,6 +8,7 @@ import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Modulo;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pacote;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Produto;
 import br.com.orlandoburli.euvouromper.model.vo.online.ModuloVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.PacoteVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Domain;
@@ -106,6 +107,9 @@ public class ItemPedidoVo extends BaseVo {
 
 	@Join(columnsLocal = { ID_PEDIDO }, columnsRemote = { Pedido.Colunas.ID_PEDIDO })
 	private PedidoVo pedido;
+
+	@Join(columnsLocal = { ID_PRODUTO }, columnsRemote = { Produto.Colunas.ID_PRODUTO })
+	private ProdutoVo produto;
 
 	public PedidoVo getPedido() {
 		return pedido;
@@ -233,5 +237,13 @@ public class ItemPedidoVo extends BaseVo {
 
 	public void setPacote(PacoteVo pacote) {
 		this.pacote = pacote;
+	}
+
+	public ProdutoVo getProduto() {
+		return produto;
+	}
+
+	public void setProduto(ProdutoVo produto) {
+		this.produto = produto;
 	}
 }

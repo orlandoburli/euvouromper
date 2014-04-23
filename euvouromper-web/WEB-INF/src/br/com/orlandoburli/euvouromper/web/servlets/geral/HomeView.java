@@ -14,10 +14,10 @@ import br.com.orlandoburli.euvouromper.model.be.online.VideoBe;
 import br.com.orlandoburli.euvouromper.model.be.site.ArtigoBe;
 import br.com.orlandoburli.euvouromper.model.be.site.BannerBe;
 import br.com.orlandoburli.euvouromper.model.be.site.DepoimentoBe;
-import br.com.orlandoburli.euvouromper.model.be.site.MenuBe;
 import br.com.orlandoburli.euvouromper.model.be.site.NoticiaBe;
 import br.com.orlandoburli.euvouromper.model.be.site.VideoYoutubeBe;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Professor;
+import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
@@ -37,12 +37,8 @@ public class HomeView extends HttpServlet {
 
 			// Menus
 
-			MenuBe menuBe = new MenuBe(manager);
-
-			req.setAttribute("menusTopo", menuBe.getListTopo());
-			req.setAttribute("menusRodape1", menuBe.getListRodape1());
-			req.setAttribute("menusRodape2", menuBe.getListRodape2());
-
+			WebUtils.buildMenus(req, manager);
+			
 			// Professores
 
 			req.setAttribute("professores", new ProfessorBe(manager).getList(null, null, Professor.TABELA_PROFESSOR + "." + Professor.Colunas.NOME));

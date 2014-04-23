@@ -36,7 +36,7 @@ table tbody tr td:nth-child(1) {
 				data-id="idInstitucional=${institucional.idInstitucional}">
 				<td>${institucional.idInstitucional }</td>
 				<td>${institucional.titulo }</td>
-				<td>/${institucional.url }</td>
+				<td>/institucional/${institucional.url }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

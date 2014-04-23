@@ -32,7 +32,7 @@ public class ModuloVideoCadastroAction extends BaseCadastroAction<ModuloVideoVo,
 		getRequest().setAttribute("subtitulo", "Cadastro de Vídeos do Módulo do Site");
 		getRequest().setAttribute("submenu", "Online");
 		getRequest().setAttribute("menuAtivo", "Vídeos do Módulo");
-		
+
 		try {
 			getRequest().setAttribute("videos", be.getListNotIn(getModuloSelecionado()));
 		} catch (ListException e) {

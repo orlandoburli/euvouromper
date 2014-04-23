@@ -21,6 +21,7 @@ table tbody tr td:nth-child(1) {
 			<td>C&oacute;digo</td>
 			<td>Nome</td>
 			<td>Grupo</td>
+			<td>URL</td>
 		</tr>
 	</thead>
 
@@ -37,6 +38,7 @@ table tbody tr td:nth-child(1) {
 				<td>${menu.idMenu }</td>
 				<td>${menu.nome }</td>
 				<td>${menu.grupoDescritivo }</td>
+				<td>/${menu.url}</td>
 			</tr>
 		</c:forEach>
 	</tbody>

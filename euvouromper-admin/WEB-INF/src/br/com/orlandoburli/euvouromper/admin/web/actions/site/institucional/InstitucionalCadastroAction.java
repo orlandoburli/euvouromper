@@ -30,5 +30,5 @@ public class InstitucionalCadastroAction extends BaseCadastroAction<Instituciona
 		
 		getRequest().setAttribute("statusInstitucionalList", new StatusInstitucional().getList());
 	}
-
+	
 }

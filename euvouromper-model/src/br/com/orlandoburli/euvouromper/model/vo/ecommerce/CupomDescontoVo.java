@@ -18,11 +18,12 @@ import br.com.orlandoburli.framework.core.dao.annotations.Column;
 import br.com.orlandoburli.framework.core.dao.annotations.DataType;
 import br.com.orlandoburli.framework.core.dao.annotations.Join;
 import br.com.orlandoburli.framework.core.dao.annotations.Table;
+import br.com.orlandoburli.framework.core.dao.annotations.UniqueConstraint;
 import br.com.orlandoburli.framework.core.vo.BaseVo;
 import br.com.orlandoburli.framework.core.vo.annotations.Description;
 import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.CupomDesconto.Colunas.*;
 
-@Table(Dicionario.CupomDesconto.TABELA_CUPOM_DESCONTO)
+@Table(value = Dicionario.CupomDesconto.TABELA_CUPOM_DESCONTO, constraints = { @UniqueConstraint(column = CHAVE, constraintName = Dicionario.CupomDesconto.UK_CUPOM_CHAVE) })
 public class CupomDescontoVo extends BaseVo {
 
 	@Column(name = ID_CUPOM, dataType = DataType.INT, isNotNull = true, isKey = true, isAutoIncrement = true)
@@ -58,8 +59,8 @@ public class CupomDescontoVo extends BaseVo {
 
 	@Column(name = DATA_VALIDADE, dataType = DataType.DATE)
 	private Calendar dataValidade;
-	
-	@Column(name  = VALOR, dataType = DataType.NUMERIC, maxSize = 10, precision = 2)
+
+	@Column(name = VALOR, dataType = DataType.NUMERIC, maxSize = 10, precision = 2)
 	@Precision(2)
 	@NotNull
 	@NotEmpty

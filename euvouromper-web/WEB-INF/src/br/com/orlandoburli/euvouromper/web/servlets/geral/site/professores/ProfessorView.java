@@ -1,4 +1,4 @@
-package br.com.orlandoburli.euvouromper.web.servlets.geral;
+package br.com.orlandoburli.euvouromper.web.servlets.geral.site.professores;
 
 import java.io.IOException;
 
@@ -8,39 +8,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.site.InstitucionalBe;
-import br.com.orlandoburli.euvouromper.model.vo.site.InstitucionalVo;
+import br.com.orlandoburli.euvouromper.model.be.cadastros.ProfessorBe;
+import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
-import br.com.orlandoburli.framework.core.log.Log;
 
-@WebServlet("/institucional.page")
-public class TextoInstitucionalServlet extends HttpServlet {
+@WebServlet("/professor.page")
+public class ProfessorView extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = req.getParameter("url");
-
-		if (url == null || url.trim().equals("")) {
-			resp.sendRedirect(req.getServletContext().getContextPath() + "/home");
-			return;
-		}
-		
 		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
+			// Menus
 
-			Log.debug("URL: " + url);
+			WebUtils.buildMenus(req, manager);
 
-			InstitucionalVo institucional = new InstitucionalBe(manager).getByUrl(url);
-			req.setAttribute("institucional", institucional);
+			// Professor
+			
+			String professorParametro = req.getParameter("professor");
+
+			req.setAttribute("professor", new ProfessorBe(manager).getByUrl(professorParametro));
+
 		} catch (ListException e) {
 			e.printStackTrace();
 		} finally {
 			manager.commit();
 		}
+
+		req.getRequestDispatcher("web/pages/site/professores/professor_ver.jsp").forward(req, resp);
+
 	}
 
 	@Override

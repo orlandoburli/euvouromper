@@ -35,6 +35,55 @@
 					</div>
 				</div>
 				
+				<div class="form-group">
+					<label class="col-sm-2 control-label text-right">Professor</label>
+
+					<div class="col-sm-7">
+						<select id="idProfessor" class="select" data-field-value="${vo.idProfessor}">
+							<option>[NENHUM]</option>
+							<c:forEach var="professor" items="${professores}">
+								<option value="${professor.idProfessor}">${professor.nome}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label text-right"></label>
+					<div class="col-sm-7">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h6 class="panel-title">
+									<i class="icon-pencil"></i>Objetivo
+								</h6>
+							</div>
+							<div class="panel-body">
+								<div class="block-inner">
+									<textarea id="objetivo" rows="20" class="editor form-control" placeholder="Digite o texto aqui...">${vo.objetivo}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label text-right"></label>
+					<div class="col-sm-7">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h6 class="panel-title">
+									<i class="icon-pencil"></i>Conteúdo
+								</h6>
+							</div>
+							<div class="panel-body">
+								<div class="block-inner">
+									<textarea id="conteudoProgramatico" rows="20" class="editor form-control" placeholder="Digite o texto aqui...">${vo.conteudoProgramatico}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<%@include file="../../../botoes-cadastro.jsp"%>
 			</div>
 		</div>

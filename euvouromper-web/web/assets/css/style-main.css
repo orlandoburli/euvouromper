@@ -13,8 +13,29 @@ hr.line {
 }
 
 .right {
-
 }
+.white {
+	color: white !important;
+}
+
+#carrinho-compras {
+	margin: 2em 0;
+}
+.quantidade-carrinho {
+	background-color: #3D89CF;
+	-webkit-border-radius: 50px 50px 50px 50px;
+	border-radius: 50px 50px 50px 50px;
+	padding: 5px 10px;
+	color: #fff !important;
+}
+.margin-top {
+ margin-top: 15px;
+}
+
+.floatright {
+	float: right;
+}
+
 
 
 /* ----Start------ */
@@ -256,6 +277,13 @@ h2.linha-h2 {
 }
 
 h2.title-professores {
+	line-height: 5.9rem;
+	padding-left: 60px;
+	background:transparent url('../imgs/title-prof.png') no-repeat 0 0;
+	border-bottom: 1px solid #ccc;
+}
+
+h2.title-aluno {
 	line-height: 5.9rem;
 	padding-left: 60px;
 	background:transparent url('../imgs/title-prof.png') no-repeat 0 0;
@@ -753,7 +781,6 @@ a.article-lista-noticias h4 {
 	margin-bottom: 35px;
 }
 
-
 /*--------- PAGES ARTIGOS -----------*/
 #autor-artigo {
 	width: 100%;
@@ -776,3 +803,311 @@ a.article-lista-noticias h4 {
 	padding: 1em 0 0 0;
 }
 
+
+/*--------- AREA DO ALUNO -----------*/
+.titulo-area-aluno {
+
+}
+
+nav#nav-area-aluno {
+	margin-bottom: 2em;
+}
+ul#menu-aluno {
+	width: 100%;
+	list-style: none;
+	overflow: auto;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+
+}
+
+ul#menu-aluno li {
+	display: inline-block;
+	float: left;
+}
+
+ul#menu-aluno li a {
+	padding: 1.5em 1.5em 1.5em 3.2em;
+	display: block;
+	color: #999;
+	font-size: 0.8em;
+	border-right: 1px solid #ccc;
+}
+
+ul#menu-aluno li a:hover {
+	background-color: #f1f1f1 !important;
+}
+
+ul#menu-aluno li a.aluno {
+	background: url('../imgs/user-aluno.png') no-repeat 15px center;
+}
+ul#menu-aluno li a.cursos {
+	background: url('../imgs/user-curso.png') no-repeat 15px center;
+}
+ul#menu-aluno li a.perguntas {
+	background: url('../imgs/user-perguntas.png') no-repeat 15px center;
+}
+ul#menu-aluno li a.mensagens {
+	background: url('../imgs/user-mensagens.png') no-repeat 15px center;
+	position: relative;
+}
+ul#menu-aluno li a.mensagens .numeros {
+	position: absolute;
+	top: 0;
+	right: 2%;
+	background-color: #3D89CF;
+	-webkit-border-radius: 50px 50px 50px 50px;
+	border-radius: 50px 50px 50px 50px;
+	padding: 2px 9px;
+	color: #fff !important;
+	font-size: 0.8em;
+}
+ul#menu-aluno li a.comprar {
+	background: url('../imgs/user-comprar.png') no-repeat 15px center;
+}
+ul#menu-aluno li a.dados {
+	background: url('../imgs/user-dados.png') no-repeat 15px center;
+}
+ul#menu-aluno li a.preferencias {
+	background: url('../imgs/user-preferencias.png') no-repeat 15px center;
+}
+ul#menu-aluno li a.credito {
+	background: url('../imgs/user-creditos.png') no-repeat 15px center;
+	font-family: 'Open Sans Bold';
+	color: #fff !important;
+	background-color: #3D89CF;
+	position: relative;
+}
+ul#menu-aluno li a.credito:hover {
+	background: url('../imgs/user-creditos-hover.png') no-repeat 15px center;
+	color: #111 !important;
+	background-color: #3D89CF;
+}
+
+ul#menu-aluno li a.credito span {
+	position: absolute;
+	top: 3%;
+	font-size: 0.8em;
+	left: 4.2em;
+}
+
+
+#tabela-mensagens {
+	margin: 20px 0;
+}
+#saldo {
+
+}
+#saldo p {
+
+}
+#saldo span {
+	padding: 20px;
+	background-color: #3D89CF;
+	display: block;
+	color: #fff;
+	font-size: 3em;
+	font-family: 'Open Sans Bold';
+	-webkit-border-radius: 50px 50px 50px 50px;
+	border-radius: 50px 50px 50px 50px;
+	padding: 8px 25px;
+	margin-top: 22px;
+}
+#pedidos-abertos, #saldo {
+	width: 48%;
+	float: left;
+}
+.botao-comprar {
+	margin: 15px 0 !important;
+	display: block;
+	float: left;
+}
+a.numeros-pedidos {
+	background-color: #3D89CF;
+	-webkit-border-radius: 50px 50px 50px 50px;
+	border-radius: 50px 50px 50px 50px;
+	padding: 8px 25px;
+	color: #fff !important;
+	font-size: 3.8em;
+	margin: 10px 0;
+	display: inline-block;
+	font-family: 'Open Sans Bold';
+}
+
+#pedidos-abertos {
+	text-align: center;
+}
+
+ul#lista-perguntas-frequentes {
+	list-style-type: decimal;
+	margin: 0;
+	padding: 0 0 0 5%;
+	width: 100%;
+
+}
+
+ul#lista-perguntas-frequentes li a {
+	font-size: 0.8em;
+	text-decoration: none;
+}
+
+ul#lista-perguntas-frequentes li a:hover {
+	text-decoration: underline;
+}
+a.ver-todas-simples {
+	display: block;
+	margin: 15px 10px;
+	text-decoration: underline;
+	color:#333;
+	float: right;
+}
+a.ver-todas-simples:hover {
+	text-decoration: none;
+	color:#333;
+}
+
+#legenda-aulas {
+	margin: 15px 0;
+}
+.concluido, .andamento, .nao-iniciado, .expirado {
+	color: #999;
+ 	padding: 6px;
+ 	float: left;
+}
+.concluido p, .andamento p, .nao-iniciado p, .expirado p{
+	margin: 0;
+	padding: 0;
+}
+.concluido {
+ 	border-left: 8px solid #5ea20d;
+}
+.andamento {
+ 	border-left: 8px solid #2980b9;	
+}
+.nao-iniciado {
+	 border-left: 8px solid #F1C411;
+}
+.expirado {
+ 	border-left: 8px solid #E74C3C;
+}
+
+.revisar {
+	background-color: #ccc;
+	color: #666 !important;
+	padding: 5px;
+	margin-top: 5px;
+	display: block;
+	text-align: center;
+}
+.revisar:hover {
+	background-color: #245F93;
+	color: #fff !important;
+}
+.iniciar {
+	background-color: #ccc;
+	color: #666 !important;
+	padding: 5px;
+	margin-top: 2px;
+	display: block;
+	text-align: center;
+}
+.iniciar:hover {
+	color: #fff !important;
+	background-color: #245F93;
+}
+
+/*--------- PAGE CARRINHO -----------*/
+
+.deleta-item {
+	text-indent: -99999px;
+	width: 45px;
+	height: 45px;
+	display: block;
+	background: transparent url('../imgs/delete-produto.png') no-repeat 0 0;
+
+}
+.deleta-item:hover {
+	background: transparent url('../imgs/delete-produto.png') no-repeat 0 -45px;
+}
+
+.continuar-comprando {
+	padding: 15px 15px 15px 4em;
+	background: #1AA1E1 url('../imgs/arrow-left.png') no-repeat 15px center;
+	color: #fff !important;
+}
+.finalizar-compra {
+	padding: 15px 4em 15px 15px;
+	background: #1AA1E1 url('../imgs/arrow-right.png') no-repeat 125px center;
+	color: #fff !important;
+	text-align: right;
+	float: right;
+
+}
+.finalizar-compra:hover {
+	background-color: #3D89CF;	
+}
+
+.botao-finalizar-compra {
+	padding: 15px 4em 15px 15px !important;
+	background: #1AA1E1 url('../imgs/arrow-right.png') no-repeat 125px center !important;
+	color: #fff !important;
+	text-align: right;
+	float: right;
+}
+.botao-finalizar-compra:hover {
+	background-color: #3D89CF !important;
+}
+
+.continuar-comprando:hover {
+	background-color: #3D89CF;
+}
+
+#total-carrinho {
+	margin: -20px 10px 0 0;
+	float: right;
+	text-align: right;
+}
+
+.label-total {
+	font-size: 0.9em;
+	display: block;
+}
+.label-valor {
+	font-size: 1.9em;
+	display: block;
+	font-family: 'Open Sans Bold' !important;
+}
+
+#vale-cupom {
+	padding: 25px 0;
+	margin: 25px 0;
+	width: 99%;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	clear: both;
+}
+
+#total-pedido {
+	position: relative;
+	text-align: right;
+	min-height: 50px;
+	padding-right: 0.5em;
+
+}
+.label-total-pedido {
+	position: absolute;
+	top: 2%;
+	font-size: 0.9em;
+	text-align: right;
+	display: table;
+	width: 100%;
+}
+.total-pedido-valor {
+	position: absolute;
+	width: 100%;
+	top: 24%;
+	font-size: 2em;
+	display: table;
+	text-align: right;
+}

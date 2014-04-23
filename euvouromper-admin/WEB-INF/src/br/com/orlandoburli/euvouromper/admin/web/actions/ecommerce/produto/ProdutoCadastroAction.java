@@ -36,10 +36,10 @@ public class ProdutoCadastroAction extends BaseCadastroAction<ProdutoVo, Produto
 
 		getRequest().setAttribute("tipoProdutoList", new TipoProduto().getList());
 		getRequest().setAttribute("tipoValidadeList", new TipoValidade().getList());
-		
+
 		try {
-			getRequest().setAttribute("pacotes", new PacoteBe(getManager()).getList(null, null, Pacote.Colunas.NOME));
-			getRequest().setAttribute("modulos", new ModuloBe(getManager()).getList(null, null, Modulo.Colunas.NOME));
+			getRequest().setAttribute("pacotes", new PacoteBe(getManager()).getList(null, null, Pacote.TABELA_PACOTE + "." + Pacote.Colunas.NOME));
+			getRequest().setAttribute("modulos", new ModuloBe(getManager()).getList(null, null, Modulo.TABELA_MODULO + "." + Modulo.Colunas.NOME));
 		} catch (ListException e) {
 			e.printStackTrace();
 		}

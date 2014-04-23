@@ -1,6 +1,9 @@
 package br.com.orlandoburli.euvouromper.model.vo.online;
 
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Professor;
+import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.FullTrim;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.TransformateWhen;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.ZeroIfNull;
@@ -10,6 +13,7 @@ import br.com.orlandoburli.framework.core.be.validation.annotations.validators.N
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.NotZero;
 import br.com.orlandoburli.framework.core.dao.annotations.Column;
 import br.com.orlandoburli.framework.core.dao.annotations.DataType;
+import br.com.orlandoburli.framework.core.dao.annotations.Join;
 import br.com.orlandoburli.framework.core.dao.annotations.Table;
 import br.com.orlandoburli.framework.core.vo.BaseVo;
 import br.com.orlandoburli.framework.core.vo.annotations.Description;
@@ -47,6 +51,18 @@ public class ModuloVo extends BaseVo {
 	@Column(name = CONTEUDO_PROGRAMATICO, dataType = DataType.TEXT)
 	@Description("Conteúdo programático")
 	private String conteudoProgramatico;
+
+	@Column(name = OBJETIVO, dataType = DataType.TEXT)
+	private String objetivo;
+
+	@Column(name = ID_PROFESSOR, dataType = DataType.INT)
+	private Integer idProfessor;
+
+	@Join(columnsLocal = { ID_PROFESSOR }, columnsRemote = { Professor.Colunas.ID_PROFESSOR })
+	private ProfessorVo professor;
+	
+	// Esse produto nao e referencia com FK
+	private ProdutoVo produto;
 
 	public Integer getIdModulo() {
 		return idModulo;
@@ -86,5 +102,37 @@ public class ModuloVo extends BaseVo {
 
 	public void setConteudoProgramatico(String conteudoProgramatico) {
 		this.conteudoProgramatico = conteudoProgramatico;
+	}
+
+	public String getObjetivo() {
+		return objetivo;
+	}
+
+	public void setObjetivo(String objetivo) {
+		this.objetivo = objetivo;
+	}
+
+	public Integer getIdProfessor() {
+		return idProfessor;
+	}
+
+	public void setIdProfessor(Integer idProfessor) {
+		this.idProfessor = idProfessor;
+	}
+
+	public ProfessorVo getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(ProfessorVo professor) {
+		this.professor = professor;
+	}
+
+	public ProdutoVo getProduto() {
+		return produto;
+	}
+
+	public void setProduto(ProdutoVo produto) {
+		this.produto = produto;
 	}
 }

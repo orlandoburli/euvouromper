@@ -23,8 +23,13 @@
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-right">Valor</label>
-					<div class="col-sm-7">
+					<div class="col-sm-2">
 						<input id="valor" type="text" value="${vo.valor}" class="form-control" data-field-type="number" data-field-precision="2" />
+					</div>
+					
+					<label class="col-sm-2 control-label text-right">URL</label>
+					<div class="col-sm-3">
+						<input id="url" type="text" value="${vo.url}" class="form-control" />
 					</div>
 				</div>
 

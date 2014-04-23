@@ -72,9 +72,7 @@
 	});
 	
 	function loadImagens() {
-		$("#tabListaImagens").load("listaimagem.datatable.admin");
-		
-		setTimeout(function() {
+		$("#tabListaImagens").load("listaimagem.datatable.admin", function(response, status, xhr) {
 			oTable = $('.datatable-images table').dataTable({
 				"bJQueryUI" : false,
 				"bAutoWidth" : false,
@@ -90,32 +88,58 @@
 						"sNext" : ">",
 						"sPrevious" : "<"
 					}
+				},
+				"fnDrawCallback" : function() {
+					loadClickFunction();
 				}
 			});
+		});
+		
+		setTimeout(function() {
+			/* oTable = $('.datatable-images table').dataTable({
+				"bJQueryUI" : false,
+				"bAutoWidth" : false,
+				"iDisplayLength" : 5,
+				"sPaginationType" : "full_numbers",
+				"sDom" : '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+				"oLanguage" : {
+					"sSearch" : "<span>Filtrar:</span> _INPUT_",
+					"sLengthMenu" : "",
+					"oPaginate" : {
+						"sFirst" : "Primeiro",
+						"sLast" : "Último",
+						"sNext" : ">",
+						"sPrevious" : "<"
+					}
+				},
+				"fnDrawCallback" : function() {
+					loadClickFunction();
+				}
+			}); */
 			
 			// Seta funcao do clique do botao de retornar a imagem
-			loadClickFunction();
+			///loadClickFunction();
 			
-			// Ao paginar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
+			/* // Ao paginar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
 			$(".datatable-images table").bind("page", function() {
 				setTimeout(function() {
 					loadClickFunction();
-				}, tempo);
+				}, tempo * 3);
 			});
 			
 			// Ao filtrar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
 			$(".datatable-images table").bind("filter", function() {
 				setTimeout(function() {
 					loadClickFunction();
-				}, tempo);
+				}, tempo * 3);
 			});
 			
 			// Ao ordenar, chamar evento para dar funcao de click dos botoes, pois sao re-renderizados na paginacao.
 			$(".datatable-images table").bind("sort", function() {
 				setTimeout(function() {
 					loadClickFunction();
-				}, tempo);
-			});
+				}, tempo * 3);
+			}); */
 
 			$(".dataTables_wrapper tfoot input").keyup(function() {
 				oTable.fnFilter(this.value, $(".dataTables_wrapper tfoot input").index(this));

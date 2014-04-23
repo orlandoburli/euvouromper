@@ -231,6 +231,9 @@ public final class Dicionario {
 			public static final String DESCRICAO = "descricao";
 			public static final String HORAS = "horas";
 			public static final String CONTEUDO_PROGRAMATICO = "conteudo_programatico";
+			public static final String OBJETIVO = "objetivo";
+
+			public static final String ID_PROFESSOR = Professor.Colunas.ID_PROFESSOR;
 		}
 	}
 
@@ -251,6 +254,8 @@ public final class Dicionario {
 		public final class Colunas {
 			public static final String ID_PACOTE = "id_pacote";
 			public static final String NOME = "nome";
+			public static final String CONTEUDO = "conteudo";
+			public static final String OBJETIVO = "objetivo";
 		}
 	}
 
@@ -283,6 +288,7 @@ public final class Dicionario {
 			public static final String RECORRENTE = "recorrente";
 			public static final String DIAS_RECORRENCIA = "dias_recorrencia";
 			public static final String PATH_FOTO = "path_foto";
+			public static final String URL = "url";
 		}
 	}
 
@@ -297,6 +303,7 @@ public final class Dicionario {
 			public static final String FLAG_EMAIL_CONFIRMADO = "flag_email_confirmado";
 			public static final String SENHA = "senha";
 			public static final String HASH = "hash";
+			public static final String TIPO_CADASTRO = "tipo_cadastro";
 
 			public static final String CPF = "cpf";
 			public static final String CEP = "cep";
@@ -313,6 +320,7 @@ public final class Dicionario {
 
 	public final class CupomDesconto {
 		public static final String TABELA_CUPOM_DESCONTO = "cupom_desconto";
+		public static final String UK_CUPOM_CHAVE = "uk_cupom_chave";
 
 		public final class Colunas {
 			public static final String ID_CUPOM = "id_cupom";
@@ -335,8 +343,8 @@ public final class Dicionario {
 			public static final String STATUS_PEDIDO = "status_pedido";
 			public static final String ID_PAGSEGURO = "id_pagseguro";
 			public static final String ID_CUPOM = CupomDesconto.Colunas.ID_CUPOM;
-			public static final String STATUS_PAGAMENTO_PEDIDO = "status_pagamento_pedido";
 			public static final String DATA_HORA_LIBERACAO = "data_hora_liberacao";
+			public static final String DATA_HORA_PEDIDO = "data_hora_pedido";
 
 			public static final String NOME = Cliente.Colunas.NOME;
 			public static final String EMAIL = Cliente.Colunas.EMAIL;
@@ -354,6 +362,7 @@ public final class Dicionario {
 			public static final String VALOR_BRUTO = "valor_bruto";
 			public static final String VALOR_DESCONTO = "valor_desconto";
 			public static final String VALOR_LIQUIDO = "valor_liquido";
+			public static final String URL_PAG_SEGURO = "url_pag_seguro";
 		}
 	}
 
