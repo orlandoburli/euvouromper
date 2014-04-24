@@ -8,7 +8,7 @@ public class StatusPedido extends BaseDomain {
 	public static final String PAGO = "P";
 	public static final String CANCELADO = "C";
 
-	public static final String ABERTO_DESCRITIVO = "Aberto";
+	public static final String ABERTO_DESCRITIVO = "Em Aberto";
 	public static final String PAGO_DESCRITIVO = "Pago";
 	public static final String CANCELADO_DESCRITIVO = "Cancelado";
 

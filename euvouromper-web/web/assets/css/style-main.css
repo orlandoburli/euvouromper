@@ -3,6 +3,9 @@ hr.line {
 	background: #ccc !important;
 	margin: 5px 0 15px 0 !important;
 }
+.metro {
+
+}
 .clear {
 	clear: both;
 }
@@ -17,7 +20,9 @@ hr.line {
 .white {
 	color: white !important;
 }
-
+.padding-left {
+	padding-left: 43px;
+}
 #carrinho-compras {
 	margin: 2em 0;
 }
@@ -35,8 +40,61 @@ hr.line {
 .floatright {
 	float: right;
 }
+.floatleft {
+	float: left;
+}
+.link-padrao {
+	text-align: right;
+	clear: both;
+	padding: 25px 10px;
+}
+.link-padrao a {
+	color: #fff !important;
+	background-color: #3D89CF !important;
+	padding: 10px 35px !important;
+	width: 100%;
+	font-size: 1em;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: 'Open Sans Bold';
+	-webkit-box-shadow: 2px 2px 1px 1px #245F93;
+	box-shadow: 2px 2px 1px 1px #245F93;
+}
+.link-padrao a:hover {
+	background-color: #245F93 !important;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
 
 
+
+#ver-noticias {
+	display: block;
+	background-color: #3D89CF !important;
+	padding: 10px 0 !important;
+	margin-top: 15px;
+	font-size: 0.9em;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: 'Open Sans Bold';
+	-webkit-box-shadow: 2px 2px 1px 1px #245F93;
+	box-shadow: 2px 2px 1px 1px #245F93;
+	width: 40%;
+	float: right;
+	color: #fff !important; 
+}
+
+#ver-noticias:hover {
+	background-color: #245F93 !important;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
 
 /* ----Start------ */
 
@@ -336,6 +394,7 @@ h2.title-tv {
 	padding: 10px 22px;
 	position: relative;
 	margin-bottom: 10px;
+	display: block;
 }
 
 .title-curso-item {
@@ -452,14 +511,14 @@ a.saiba-mais-curso:hover {
 
 }
 
-#noticias a {
+#noticias .noticias-item a {
 	display: block;
 	margin-top: 20px;
 	overflow: auto;
 	color: #AAAAAA !important;
 }
 
-#noticias a:hover {
+#noticias .noticias-item  a:hover {
 	color: #256093 !important;
 }
 
@@ -502,7 +561,7 @@ a.saiba-mais-curso:hover {
 	margin-top: 20px;
 	background-color: #7DA9D0;
 	min-height: 248px;
-	padding: 20px 20px 10px 20px;
+	padding: 20px 20px 29px 20px;
 
 }
 .content-depoimentos .autor {
@@ -639,19 +698,19 @@ color: #fff;
 }
 
 #informacoes h3 {	
-	width: 132px;
+	width: 140px;
 }
 
 #minha-conta h3 {	
-	width: 135px;
-}
-
-#fale-conosco h3 {	
 	width: 145px;
 }
 
+#fale-conosco h3 {	
+	width: 155px;
+}
+
 #newsletter h3 {	
-	width: 115px;
+	width: 125px;
 }
 
 .box-footer p {
@@ -780,6 +839,38 @@ a.article-lista-noticias h4 {
 	float: left;
 	margin-bottom: 35px;
 }
+
+
+/* ------------ PAGE CURSOS -------------*/
+
+#botao-window {
+	background: none !important;
+	margin: 0 !important;
+	color: #000 !important;
+	text-shadow: 0 0 0 transparent;
+	font-size: 1em;
+	font-weight: normal;
+	letter-spacing: -1px;
+	height: auto;
+	text-decoration: underline;
+	line-height: 12px !important;
+
+}
+
+.adicionar-carrinho {
+	background: #5F9CD4 url('../imgs/carrinho-white.png') no-repeat 10px 11px;
+	color: #fff !important;
+	padding: 10px 5px 10px 27px;
+	margin-top: 10px;
+	display: block;
+	width: 180px;
+	text-align: center;
+	float: right;
+}
+.adicionar-carrinho:hover {
+	background-color: #3D89CF;	
+}
+
 
 /*--------- PAGES ARTIGOS -----------*/
 #autor-artigo {
@@ -1019,26 +1110,16 @@ a.ver-todas-simples:hover {
 
 /*--------- PAGE CARRINHO -----------*/
 
-.deleta-item {
-	text-indent: -99999px;
-	width: 45px;
-	height: 45px;
-	display: block;
-	background: transparent url('../imgs/delete-produto.png') no-repeat 0 0;
-
-}
-.deleta-item:hover {
-	background: transparent url('../imgs/delete-produto.png') no-repeat 0 -45px;
-}
 
 .continuar-comprando {
 	padding: 15px 15px 15px 4em;
 	background: #1AA1E1 url('../imgs/arrow-left.png') no-repeat 15px center;
 	color: #fff !important;
+		float: left;
 }
 .finalizar-compra {
-	padding: 15px 4em 15px 15px;
-	background: #1AA1E1 url('../imgs/arrow-right.png') no-repeat 125px center;
+	padding: 15px 55px 15px 15px;
+	background: #1AA1E1 url('../imgs/arrow-right.png') no-repeat right center;
 	color: #fff !important;
 	text-align: right;
 	float: right;
@@ -1064,9 +1145,13 @@ a.ver-todas-simples:hover {
 }
 
 #total-carrinho {
-	margin: -20px 10px 0 0;
-	float: right;
+	padding: 25px 0;
+	margin: 25px 0;
 	text-align: right;
+	width: 100%;
+	overflow: auto;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 
 .label-total {
@@ -1080,14 +1165,15 @@ a.ver-todas-simples:hover {
 }
 
 #vale-cupom {
-	padding: 25px 0;
+	padding: 25px 0 5px 0;
 	margin: 25px 0;
 	width: 99%;
-	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #ccc;
 	clear: both;
 }
-
+#botao-valida-cupom {
+ 	padding: 8px 12px !important;
+}
 #total-pedido {
 	position: relative;
 	text-align: right;

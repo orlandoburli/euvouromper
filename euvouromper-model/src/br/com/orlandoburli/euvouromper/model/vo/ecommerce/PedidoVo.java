@@ -162,6 +162,10 @@ public class PedidoVo extends BaseVo {
 	private String urlPagSeguro;
 
 	private List<ItemPedidoVo> itens;
+	
+	public String getStatusPedidoDescritivo() {
+		return new StatusPedido().getDescription(this.getStatusPedido());
+	}
 
 	public Integer getQuantidadeItens() {
 		return getItens().size();

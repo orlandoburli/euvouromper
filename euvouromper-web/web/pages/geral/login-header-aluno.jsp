@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="conteiner-area-aluno">
-	<h3>Área do Aluno</h3>
+	<a href="${root}/aluno"><h3>Área do Aluno</h3></a>
 
 	<div id="form-area-aluno">
 

@@ -46,6 +46,11 @@ public class ProdutoView extends HttpServlet {
 			ProdutoBe produtoBe = new ProdutoBe(manager);
 
 			ProdutoVo produto = produtoBe.getByUrl(parametroProduto);
+			
+			if (produto == null) {
+				WebUtils.goHome(req, resp);
+				return;
+			}
 
 			// Modulos do Pacote
 			if (produto.getTipoProduto().equals(TipoProduto.PACOTE)) {
@@ -62,10 +67,6 @@ public class ProdutoView extends HttpServlet {
 			// Tipos de Produto
 
 			WebUtils.sendDomain(req, new TipoProduto());
-
-			// Ultimas Produtos
-
-			// req.setAttribute("produtos", produtoBe.getPaginaProdutos(1));
 
 		} catch (ListException e) {
 			Log.error(e);

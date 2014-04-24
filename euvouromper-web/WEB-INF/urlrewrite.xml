@@ -121,4 +121,11 @@
 		<to type="forward">/carrinho.remover.page?produto=$1</to>
 	</rule>
 	
+	<!-- AREA DO ALUNO -->
+
+	<rule match-type="wildcard">
+		<from>/aluno/pedido/*</from>
+		<to type="forward">/aluno.pedido.page?pedido=$1</to>
+	</rule>
+	
 </urlrewrite>

@@ -2,11 +2,14 @@ package br.com.orlandoburli.euvouromper.model.be.ecommerce;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.be.admin.ParametroBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.CupomBeException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.FinalizarPedidoException;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.PedidoDao;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido;
 import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.CupomDescontoVo;
@@ -173,7 +176,8 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		pedido.setStatusPedido(StatusPedido.ABERTO);
 
 		// Data / hora do pedido corrente
-		pedido.setDataHoraPedido(Calendar.getInstance());
+		Calendar c = new GregorianCalendar();
+		pedido.setDataHoraPedido(c);
 
 		// Salva o pedido
 		save(pedido);
@@ -206,7 +210,7 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		cliente.setCidade(pedido.getCidade());
 		cliente.setFone1(pedido.getFone1());
 		cliente.setFone2(pedido.getFone2());
-		
+
 		new ClienteBe(getManager()).save(cliente);
 	}
 
@@ -267,5 +271,41 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		} catch (PagSeguroServiceException e) {
 			throw new FinalizarPedidoException("Erro ao gerar pagamento no pagseguro - " + e.getMessage());
 		}
+	}
+
+	public Integer getPedidosAbertos(ClienteVo cliente) throws ListException {
+		PedidoVo filter = new PedidoVo();
+
+		filter.setIdCliente(cliente.getIdCliente());
+		filter.setStatusPedido(StatusPedido.ABERTO);
+
+		return getListCount(filter, null);
+	}
+
+	public List<PedidoVo> getList(ClienteVo cliente) throws ListException {
+		PedidoVo filter = new PedidoVo();
+		filter.setIdCliente(cliente.getIdCliente());
+
+		return getList(filter, null, Pedido.TABELA_PEDIDO + "." + Pedido.Colunas.ID_PEDIDO + " DESC");
+	}
+
+	public PedidoVo getPedido(ClienteVo cliente, Integer idPedido) throws ListException {
+
+		PedidoVo filter = new PedidoVo();
+		filter.setIdCliente(cliente.getIdCliente());
+		filter.setIdPedido(idPedido);
+
+		List<PedidoVo> list = getList(filter);
+
+		if (list.size() > 0) {
+			PedidoVo pedido = list.get(0);
+
+			// Busca os itens
+			pedido.setItens(new ItemPedidoBe(getManager()).getList(pedido));
+
+			return pedido;
+		}
+
+		return null;
 	}
 }
