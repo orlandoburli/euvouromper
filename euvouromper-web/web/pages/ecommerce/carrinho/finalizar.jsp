@@ -55,22 +55,22 @@
 					</div>
 					<label>Complemento:</label>
 					<div class="input-control text">
-						<input id="complemento" name="complemento" type="text" value="${vo.complemento}" placeholder="" />
+						<input id="complemento" name="complemento" type="text" value="${carrinho.complemento}" placeholder="" />
 						<button class="btn-clear"></button>
 					</div>
 					<label>Bairro:</label>
 					<div class="input-control text">
-						<input id="bairro" name="bairro" type="text" value="${vo.bairro}" placeholder="" />
+						<input id="bairro" name="bairro" type="text" value="${carrinho.bairro}" placeholder="" />
 						<button class="btn-clear"></button>
 					</div>
 					<label>Fone 1:</label>
 					<div class="input-control text">
-						<input id="fone1" name="fone1" type="text" value="${vo.fone1}" placeholder="" />
+						<input id="fone1" name="fone1" type="text" value="${carrinho.fone1}" placeholder="" />
 						<button class="btn-clear"></button>
 					</div>
 					<label>Fone 2:</label>
 					<div class="input-control text">
-						<input id="fone2" name="fone2" type="text" value="${vo.fone2}" placeholder="" />
+						<input id="fone2" name="fone2" type="text" value="${carrinho.fone2}" placeholder="" />
 						<button class="btn-clear"></button>
 					</div>
 					<label>UF:</label>
@@ -107,10 +107,15 @@
 						</select>
 					</div>
 					<label>Cidade:</label>
+					
 					<div class="input-control text">
 						<input id="cidade" name="cidade" type="text" value="${carrinho.cidade}" placeholder="" />
 						<button class="btn-clear"></button>
 					</div>
+					
+					<div class="metro one-column span4 left">
+						<a href="${root}/produto/lista" title="Continuar Comprando" class="continuar-comprando left">Continuar Comprando</a>
+			    	</div>
 					<input type="submit" value="Finalizar compra" class="right botao-finalizar-compra">
 					
 					<c:if test="${not empty erro}">
@@ -122,10 +127,10 @@
 				</form>
 			</div>
 
-			<div class="metro one-column box-total">
+			<!-- <div class="metro one-column box-total">
 				<a href="" title="Continuar Comprando" class="continuar-comprando left">Continuar Comprando</a>
-				<!--a href="" title="Finalizar Compra" class="finalizar-compra">Finalizar Compra</a -->
-			</div>
+				a href="" title="Finalizar Compra" class="finalizar-compra">Finalizar Compra</a
+			</div> -->
 			<div class="metro one-column margin-top">
 				<img src='https://p.simg.uol.com.br/out/pagseguro/i/banners/divulgacao/728x90_10X_pagseguro.gif' alt='' />
 			</div>

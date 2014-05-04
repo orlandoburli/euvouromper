@@ -34,7 +34,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Parâmetros</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoParametroVer" class="select" data-field-value="${vo.permissaoParametroVer}">
+									<select id="permissaoParametroVer"  data-field-value="${vo.permissaoParametroVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -43,7 +43,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Perfil</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoParametroAlt" class="select" data-field-value="${vo.permissaoParametroAlt}">
+									<select id="permissaoParametroAlt"  data-field-value="${vo.permissaoParametroAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -54,7 +54,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Perfil</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoPerfilVer" class="select" data-field-value="${vo.permissaoPerfilVer}">
+									<select id="permissaoPerfilVer"  data-field-value="${vo.permissaoPerfilVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -63,7 +63,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Perfil</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoPerfilAlt" class="select" data-field-value="${vo.permissaoPerfilAlt}">
+									<select id="permissaoPerfilAlt"  data-field-value="${vo.permissaoPerfilAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -74,7 +74,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Usuários</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoUsuarioVer" class="select" data-field-value="${vo.permissaoUsuarioVer}">
+									<select id="permissaoUsuarioVer"  data-field-value="${vo.permissaoUsuarioVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -83,7 +83,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Usuários</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoUsuarioAlt" class="select" data-field-value="${vo.permissaoUsuarioAlt}">
+									<select id="permissaoUsuarioAlt"  data-field-value="${vo.permissaoUsuarioAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -107,7 +107,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Disciplinas</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoDisciplinaVer" class="select" data-field-value="${vo.permissaoDisciplinaVer}">
+									<select id="permissaoDisciplinaVer"  data-field-value="${vo.permissaoDisciplinaVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -116,7 +116,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Disciplinas</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoDisciplinaAlt" class="select" data-field-value="${vo.permissaoDisciplinaAlt}">
+									<select id="permissaoDisciplinaAlt"  data-field-value="${vo.permissaoDisciplinaAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -127,7 +127,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Professores</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoProfessorVer" class="select" data-field-value="${vo.permissaoProfessorVer}">
+									<select id="permissaoProfessorVer"  data-field-value="${vo.permissaoProfessorVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -136,7 +136,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Professores</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoProfessorAlt" class="select" data-field-value="${vo.permissaoProfessorAlt}">
+									<select id="permissaoProfessorAlt"  data-field-value="${vo.permissaoProfessorAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -157,10 +157,31 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Departamentos</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoDepartamentoVer"  data-field-value="${vo.permissaoDepartamentoVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Departamentos</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoDepartamentoAlt"  data-field-value="${vo.permissaoDepartamentoAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
+							
+							
+							<div class="form-group">
 								<label class="col-sm-2 control-label text-right">Visualizar Menus</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoMenuVer" class="select" data-field-value="${vo.permissaoMenuVer}">
+									<select id="permissaoMenuVer"  data-field-value="${vo.permissaoMenuVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -169,7 +190,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Menus</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoMenuAlt" class="select" data-field-value="${vo.permissaoMenuAlt}">
+									<select id="permissaoMenuAlt"  data-field-value="${vo.permissaoMenuAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -180,7 +201,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Banners</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoBannerVer" class="select" data-field-value="${vo.permissaoBannerVer}">
+									<select id="permissaoBannerVer"  data-field-value="${vo.permissaoBannerVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -189,7 +210,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Banners</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoBannerAlt" class="select" data-field-value="${vo.permissaoBannerAlt}">
+									<select id="permissaoBannerAlt"  data-field-value="${vo.permissaoBannerAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -200,7 +221,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Notícias</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoNoticiaVer" class="select" data-field-value="${vo.permissaoNoticiaVer}">
+									<select id="permissaoNoticiaVer"  data-field-value="${vo.permissaoNoticiaVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -209,7 +230,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Notícias</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoNoticiaAlt" class="select" data-field-value="${vo.permissaoNoticiaAlt}">
+									<select id="permissaoNoticiaAlt"  data-field-value="${vo.permissaoNoticiaAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -220,7 +241,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Artigos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoArtigoVer" class="select" data-field-value="${vo.permissaoArtigoVer}">
+									<select id="permissaoArtigoVer"  data-field-value="${vo.permissaoArtigoVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -229,7 +250,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Artigos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoArtigoAlt" class="select" data-field-value="${vo.permissaoArtigoAlt}">
+									<select id="permissaoArtigoAlt"  data-field-value="${vo.permissaoArtigoAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -240,7 +261,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Páginas Institucionais</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoInstitucionalVer" class="select" data-field-value="${vo.permissaoInstitucionalVer}">
+									<select id="permissaoInstitucionalVer"  data-field-value="${vo.permissaoInstitucionalVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -249,7 +270,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Páginas Institucionais</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoInstitucionalAlt" class="select" data-field-value="${vo.permissaoInstitucionalAlt}">
+									<select id="permissaoInstitucionalAlt"  data-field-value="${vo.permissaoInstitucionalAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -260,7 +281,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Depoimentos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoDepoimentoVer" class="select" data-field-value="${vo.permissaoDepoimentoVer}">
+									<select id="permissaoDepoimentoVer"  data-field-value="${vo.permissaoDepoimentoVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -269,7 +290,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Depoimentos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoDepoimentoAlt" class="select" data-field-value="${vo.permissaoDepoimentoAlt}">
+									<select id="permissaoDepoimentoAlt"  data-field-value="${vo.permissaoDepoimentoAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -280,7 +301,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Vídeos YouTube</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoVideoYoutubeVer" class="select" data-field-value="${vo.permissaoVideoYoutubeVer}">
+									<select id="permissaoVideoYoutubeVer"  data-field-value="${vo.permissaoVideoYoutubeVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -289,7 +310,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Vídeos YouTube</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoVideoYoutubeAlt" class="select" data-field-value="${vo.permissaoVideoYoutubeAlt}">
+									<select id="permissaoVideoYoutubeAlt"  data-field-value="${vo.permissaoVideoYoutubeAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -314,7 +335,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Vídeos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoVideoVer" class="select" data-field-value="${vo.permissaoVideoVer}">
+									<select id="permissaoVideoVer"  data-field-value="${vo.permissaoVideoVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -323,7 +344,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Vídeos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoVideoAlt" class="select" data-field-value="${vo.permissaoVideoAlt}">
+									<select id="permissaoVideoAlt"  data-field-value="${vo.permissaoVideoAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -334,7 +355,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Módulos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoModuloVer" class="select" data-field-value="${vo.permissaoModuloVer}">
+									<select id="permissaoModuloVer"  data-field-value="${vo.permissaoModuloVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -343,7 +364,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Módulos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoModuloAlt" class="select" data-field-value="${vo.permissaoModuloAlt}">
+									<select id="permissaoModuloAlt"  data-field-value="${vo.permissaoModuloAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -354,7 +375,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Pacotes</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoPacoteVer" class="select" data-field-value="${vo.permissaoPacoteVer}">
+									<select id="permissaoPacoteVer"  data-field-value="${vo.permissaoPacoteVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -363,7 +384,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Pacotes</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoPacoteAlt" class="select" data-field-value="${vo.permissaoPacoteAlt}">
+									<select id="permissaoPacoteAlt"  data-field-value="${vo.permissaoPacoteAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -387,7 +408,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Produtos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoProdutoVer" class="select" data-field-value="${vo.permissaoProdutoVer}">
+									<select id="permissaoProdutoVer"  data-field-value="${vo.permissaoProdutoVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -396,7 +417,7 @@
 								<label class="col-sm-2 control-label text-right">Alterar Produtos</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoProdutoAlt" class="select" data-field-value="${vo.permissaoProdutoAlt}">
+									<select id="permissaoProdutoAlt"  data-field-value="${vo.permissaoProdutoAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -407,7 +428,7 @@
 								<label class="col-sm-2 control-label text-right">Visualizar Cupons de Desconto</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoCupomVer" class="select" data-field-value="${vo.permissaoCupomVer}">
+									<select id="permissaoCupomVer"  data-field-value="${vo.permissaoCupomVer}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
@@ -416,7 +437,47 @@
 								<label class="col-sm-2 control-label text-right">Alterar Cupons de Desconto</label>
 
 								<div class="col-sm-2">
-									<select id="permissaoCupomAlt" class="select" data-field-value="${vo.permissaoCupomAlt}">
+									<select id="permissaoCupomAlt"  data-field-value="${vo.permissaoCupomAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Modelos de EMail</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoEmailVer"  data-field-value="${vo.permissaoEmailVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Modelos de Email</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoEmailAlt"  data-field-value="${vo.permissaoEmailAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Mensagens</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoMensagemVer"  data-field-value="${vo.permissaoMensagemVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Visualizar Mensagens</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoMensagemAlt"  data-field-value="${vo.permissaoMensagemAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>

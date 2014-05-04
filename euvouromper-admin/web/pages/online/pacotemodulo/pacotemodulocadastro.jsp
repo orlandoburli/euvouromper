@@ -25,7 +25,7 @@
 					<label class="col-sm-2 control-label text-right">Módulo</label>
 
 					<div class="col-sm-7">
-						<select id="idModulo" class="select-full">
+						<select id="idModulo">
 							<c:forEach var="modulo" items="${modulos}">
 								<option value="${modulo.idModulo}">${modulo.nome}</option>
 							</c:forEach>

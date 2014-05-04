@@ -37,7 +37,7 @@
 					<label class="col-sm-2 control-label text-right">Tipo de Produto</label>
 
 					<div class="col-sm-2">
-						<select id="tipoProduto" class="select" data-field-value="${vo.tipoProduto}">
+						<select id="tipoProduto"  data-field-value="${vo.tipoProduto}">
 							<c:forEach var="tipo" items="${tipoProdutoList}">
 								<option value="${tipo.valor }">${tipo.descricao}</option>
 							</c:forEach>
@@ -47,7 +47,7 @@
 					<label class="col-sm-2 control-label text-right">Ativo</label>
 
 					<div class="col-sm-2">
-						<select id="ativo" class="select" data-field-value="${vo.ativo}">
+						<select id="ativo"  data-field-value="${vo.ativo}">
 							<option value="N">Não</option>
 							<option value="S">Sim</option>
 						</select>
@@ -58,7 +58,7 @@
 					<label class="col-sm-2 control-label text-right">Módulo</label>
 
 					<div class="col-sm-2">
-						<select id="idModulo" class="select" data-field-value="${vo.idModulo}">
+						<select id="idModulo"  data-field-value="${vo.idModulo}">
 							<option value="">[NENHUM]</option>
 							<c:forEach var="modulo" items="${modulos}">
 								<option value="${modulo.idModulo }">${modulo.nome}</option>
@@ -69,7 +69,7 @@
 					<label class="col-sm-2 control-label text-right">Pacote</label>
 
 					<div class="col-sm-2">
-						<select id="idPacote" class="select" data-field-value="${vo.idPacote}">
+						<select id="idPacote"  data-field-value="${vo.idPacote}">
 							<option value="">[NENHUM]</option>
 							<c:forEach var="pacote" items="${pacotes}">
 								<option value="${pacote.idPacote }">${pacote.nome}</option>
@@ -82,7 +82,7 @@
 					<label class="col-sm-2 control-label text-right">Tipo de Validade</label>
 
 					<div class="col-sm-2">
-						<select id="tipoValidade" class="select" data-field-value="${vo.tipoValidade}">
+						<select id="tipoValidade"  data-field-value="${vo.tipoValidade}">
 							<c:forEach var="tipo" items="${tipoValidadeList}">
 								<option value="${tipo.valor }">${tipo.descricao}</option>
 							</c:forEach>
@@ -112,7 +112,7 @@
 
 					<div class="col-sm-2">
 						<div class="col-sm-7">
-							<select id="recorrente" class="select" data-field-value="${vo.recorrente}">
+							<select id="recorrente"  data-field-value="${vo.recorrente}">
 								<option value="N">Não</option>
 								<option value="S">Sim</option>
 							</select>

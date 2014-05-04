@@ -36,7 +36,7 @@ public class EntrarView extends HttpServlet {
 		} finally {
 			manager.commit();
 		}
-
+		
 		req.getRequestDispatcher("web/pages/login/entrar.jsp").forward(req, resp);
 	}
 

@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-right">Ativo</label>
 					<div class="col-sm-7">
-						<select id="ativo" class="select" data-field-value="${vo.ativo}">
+						<select id="ativo"  data-field-value="${vo.ativo}">
 							<option value="N">Não</option>
 							<option value="S">Sim</option>
 						</select>

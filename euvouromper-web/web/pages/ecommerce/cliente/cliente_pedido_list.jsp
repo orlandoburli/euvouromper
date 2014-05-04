@@ -50,7 +50,11 @@
 
 										<td class="right"><a href="${root}/aluno/pedido/${pedido.idPedido}">Detalhes do pedido</a></td>
 
-										<td class="text-right"><a href="${pedido.urlPagSeguro}" target="_blank" title=""><img src="${root}/web/assets/imgs/180x25-pagar.gif" alt=""></a></td>
+										<td class="text-right">
+											<c:if test="${pedido.statusPedido eq ABERTO }">
+												<a href="${pedido.urlPagSeguro}" target="_blank" title=""><img src="${root}/web/assets/imgs/180x25-pagar.gif" alt=""></a>
+											</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 

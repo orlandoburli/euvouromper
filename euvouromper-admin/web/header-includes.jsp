@@ -31,9 +31,14 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/uploader/plupload.queue.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/uploader/pt_BR.js"></script>
 
-<script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/wysihtml5/wysihtml5.min.js"></script>
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/wysihtml5/wysihtml5.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/forms/wysihtml5/toolbar.js"></script>
+ --%>
+ 
+<script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/ckeditor/adapters/jquery.js"></script>
 
+ 
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/interface/daterangepicker.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/interface/fancybox.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/web/assets/js/plugins/interface/moment.js"></script>

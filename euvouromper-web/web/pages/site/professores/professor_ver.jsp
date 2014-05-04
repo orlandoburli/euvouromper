@@ -20,7 +20,7 @@
 				<ul>
 					<li><a href="${root}/home"><i class="icon-home"></i></a></li>
 					<li><a href="${root}/home">Home</a></li>
-					<li><a href="${root}/professor/lista">Professores</a></li>
+					<li><a href="${root}/home">Professores</a></li>
 					<li class="active"><a href="#">${professor.nome}</a></li>
 				</ul>
 			</nav>
@@ -29,7 +29,7 @@
 				<figure id="foto-professor">
 					<img class="cycle polaroid shadow" style="width: 180px; height: 180px;"  src="${professor.pathFoto}" alt="${professor.nome}" />
 					<figcaption>
-						<h5>${professor.nome}</h5>
+						<h5 class="cycle">${professor.nome}</h5>
 					</figcaption>
 				</figure>
 				<p>${professor.curriculo}</p>

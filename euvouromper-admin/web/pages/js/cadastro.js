@@ -67,13 +67,13 @@ $(function() {
 		};
 
 		// Loop nos input's do form para enviar
+		debug("Parametros do metodo salvar");
+		
 		$("input,select,textarea").each(function(index) {
 			params[$(this).attr("id")] = $(this).val();
+			debug($(this).attr("id") + ' = ' + $(this).val());
 		});
 		
-		debug("Parametros do metodo salvar");
-		debug(params);
-
 		$.ajax({
 			url : paginaFinal,
 			type : 'POST',
@@ -189,6 +189,11 @@ $(function() {
 		if (val != null && val != "") {
 			$(this).val(val);
 		}
+		
+		$(this).select2({
+//			minimumResultsForSearch: "-1",
+			width: 300
+		});
 	});
 	
 	// Adiciona um option vazio ao select do tipo autocomplete

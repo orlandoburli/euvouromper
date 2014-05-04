@@ -6,8 +6,11 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.be.admin.ParametroBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.CheckPedidoException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.CupomBeException;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.EmailException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.FinalizarPedidoException;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.pagseguro.NotificacaoPagSeguroBe;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.PedidoDao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido;
 import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
@@ -22,15 +25,25 @@ import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
+import br.com.orlandoburli.framework.core.log.Log;
 import br.com.orlandoburli.framework.core.utils.Constants;
 import br.com.uol.pagseguro.domain.AccountCredentials;
+import br.com.uol.pagseguro.domain.Credentials;
 import br.com.uol.pagseguro.domain.PaymentRequest;
+import br.com.uol.pagseguro.domain.Transaction;
 import br.com.uol.pagseguro.enums.Currency;
 import br.com.uol.pagseguro.enums.DocumentType;
 import br.com.uol.pagseguro.enums.ShippingType;
+import br.com.uol.pagseguro.enums.TransactionStatus;
 import br.com.uol.pagseguro.exception.PagSeguroServiceException;
+import br.com.uol.pagseguro.properties.PagSeguroConfig;
+import br.com.uol.pagseguro.service.NotificationService;
 
 public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
+
+	static {
+		PagSeguroConfig.setProductionEnvironment();
+	}
 
 	public PedidoBe(DAOManager manager) {
 		super(manager);
@@ -113,6 +126,8 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 
 			pedido.setCupom(cupom);
 			pedido.setIdCupom(cupom.getIdCupom());
+		} else {
+			throw new CupomBeException("Cupom inválido!");
 		}
 
 		calculaTotal(pedido);
@@ -172,6 +187,10 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		// Calcula o pedido
 		calculaTotal(pedido);
 
+		if (pedido.getItens().size() <= 0) {
+			throw new FinalizarPedidoException("Nenhum item no carrinho!");
+		}
+
 		// Seta status do pedido como aberto
 		pedido.setStatusPedido(StatusPedido.ABERTO);
 
@@ -191,6 +210,9 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 
 			itemBe.save(item);
 		}
+
+		// Salva o pedido
+		getManager().commit();
 
 		// Gera compra do pagseguro
 		geraPagSeguro(pedido);
@@ -231,6 +253,9 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		// Gera pedido do pagseguro
 		PaymentRequest paymentRequest = new PaymentRequest();
 
+		// Seta o ID do pedido como referencia
+		paymentRequest.setReference(pedido.getIdPedido().toString());
+
 		// Endereço de entrega / endereço do cliente
 		paymentRequest.setShippingAddress("BRA", pedido.getUf(), pedido.getCidade(), pedido.getBairro(), pedido.getCep(), pedido.getEndereco(), pedido.getNumero().toString(), pedido.getComplemento());
 
@@ -242,22 +267,22 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 			paymentRequest.addItem(item.getIdItemPedido().toString(), item.getNome(), Integer.valueOf(1), item.getValor(), new Long(0), BigDecimal.ZERO.setScale(2));
 		}
 
+		// Desconto
+		paymentRequest.setExtraAmount(pedido.getValorDesconto().multiply(new BigDecimal(-1)));
+
 		// Dados do comprador
 		paymentRequest.setSender(pedido.getNome(), pedido.getEmail(), null, null, DocumentType.CPF, pedido.getCpf());
 
 		// Seta moeda (Real - pra que se só tem essa merda?)
 		paymentRequest.setCurrency(Currency.BRL);
 
-		// Referenciando a transação do PagSeguro em seu sistema
-		paymentRequest.setReference("REF1234-USER214-ORDER754851B");
-
 		// URL para onde o comprador será redirecionado (GET) após o fluxo de
 		// pagamento
-		paymentRequest.setRedirectURL("http://www.lojamodelo.com.br/thankyou");
+		paymentRequest.setRedirectURL("http://www.euvouromper.com.br/aluno/pedidos");
 
 		// URL para onde serão enviadas notificações (POST) indicando alterações
 		// no status da transação
-		paymentRequest.setNotificationURL("http://www.euvouromper.com.br/retorno");
+		paymentRequest.setNotificationURL("http://www.euvouromper.com.br/retornopagseguro");
 
 		try {
 
@@ -268,8 +293,18 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 			// Salva novamente o pedido, com dados do pagseguro
 			save(pedido);
 
+			// Commita os dados ate aqui, depois disso e so o email.
+			getManager().commit();
+
 		} catch (PagSeguroServiceException e) {
 			throw new FinalizarPedidoException("Erro ao gerar pagamento no pagseguro - " + e.getMessage());
+		}
+
+		// Dispara o email
+		try {
+			new EmailBe(getManager()).sendEmailPedidoRecebido(pedido);
+		} catch (ListException | EmailException e) {
+			Log.critical(e);
 		}
 	}
 
@@ -308,4 +343,70 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 
 		return null;
 	}
+
+	public void checkByNotificationCode(String notificationCode) throws BeException {
+
+		try {
+			Log.debug("Checando codigo de notificacao pagseguro " + notificationCode);
+
+			// Busca credenciais nos parametros
+			ParametroVo emailPagSeguro = new ParametroBe(getManager()).get(Constants.Parameters.EMAIL_PAGSEGURO);
+
+			if (emailPagSeguro == null) {
+				throw new CheckPedidoException("Parametro " + Constants.Parameters.EMAIL_PAGSEGURO + " não definido!");
+			}
+
+			ParametroVo chavePagSeguro = new ParametroBe(getManager()).get(Constants.Parameters.CHAVE_PAGSEGURO);
+
+			if (chavePagSeguro == null) {
+				throw new CheckPedidoException("Parametro " + Constants.Parameters.CHAVE_PAGSEGURO + " não definido!");
+			}
+
+			Credentials credentials = new AccountCredentials(emailPagSeguro.getValor(), chavePagSeguro.getValor());
+
+			Transaction transaction = NotificationService.checkTransaction(credentials, notificationCode);
+
+			// Registra o retorno
+			new NotificacaoPagSeguroBe(getManager()).registrar(notificationCode, transaction.getStatus().getValue());
+
+			PedidoVo pedido = get(Integer.parseInt(transaction.getReference()));
+
+			if (pedido != null) {
+				if (transaction.getStatus().equals(TransactionStatus.PAID)) {
+					pagar(pedido);
+				} else if (transaction.getStatus().equals(TransactionStatus.CANCELLED)) {
+					cancelar(pedido);
+				} else if (transaction.getStatus().equals(TransactionStatus.REFUNDED)) {
+					cancelar(pedido);
+				}
+			}
+
+		} catch (PagSeguroServiceException e) {
+			throw new CheckPedidoException("Erro ao buscar transação do pagseguro - " + e.getMessage());
+		}
+	}
+
+	public void cancelar(PedidoVo pedido) throws BeException {
+		pedido.setStatusPedido(StatusPedido.CANCELADO);
+		save(pedido);
+
+		try {
+			new EmailBe(getManager()).sendEmailPedidoCancelado(pedido);
+		} catch (ListException | EmailException e) {
+			Log.critical(e);
+		}
+	}
+
+	public void pagar(PedidoVo pedido) throws BeException {
+		pedido.setStatusPedido(StatusPedido.PAGO);
+		pedido.setDataHoraLiberacao(Calendar.getInstance());
+		save(pedido);
+
+		try {
+			new EmailBe(getManager()).sendEmailPedidoPago(pedido);
+		} catch (ListException | EmailException e) {
+			Log.critical(e);
+		}
+	}
+
 }

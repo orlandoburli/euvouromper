@@ -37,7 +37,7 @@
 
 					<label class="col-sm-2 control-label text-right">Status</label>
 					<div class="col-sm-3">
-						<select id="status" class="select" data-field-value="${vo.status}">
+						<select id="status"  data-field-value="${vo.status}">
 							<c:forEach var="tipo" items="${statusArtigoList}">
 								<option value="${tipo.valor}">${tipo.descricao}</option>
 							</c:forEach>
@@ -48,7 +48,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-right">Professor</label>
 					<div class="col-sm-7">
-						<select id="idProfessor" class="select" data-field-value="${vo.idProfessor}">
+						<select id="idProfessor"  data-field-value="${vo.idProfessor}">
 							<option value="">[NENHUM]</option>
 							<c:forEach var="professor" items="${professores}">
 								<option value="${professor.idProfessor}">${professor.nome}</option>

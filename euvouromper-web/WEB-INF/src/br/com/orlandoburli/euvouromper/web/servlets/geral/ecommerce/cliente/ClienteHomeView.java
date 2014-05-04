@@ -2,6 +2,7 @@ package br.com.orlandoburli.euvouromper.web.servlets.geral.ecommerce.cliente;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.PedidoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.MensagemVo;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -24,18 +27,18 @@ public class ClienteHomeView extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		if (req.getSession().getAttribute(Constants.Session.CLIENTE) == null) {
 			WebUtils.goTo(req, resp, "/entrar?redir=/aluno");
 			return;
 		}
 
 		DAOManager manager = DAOManager.getDAOManager();
-		
+
 		try {
-			
+
 			// Menus
-			
+
 			WebUtils.buildMenus(req, manager);
 
 			// TODO Saldo disponivel
@@ -45,10 +48,26 @@ public class ClienteHomeView extends HttpServlet {
 
 			// Pedidos em aberto
 			req.setAttribute("pedidosAbertos", new PedidoBe(manager).getPedidosAbertos(cliente));
-			
+
 			// TODO Ultimas aulas
+
+			// Mensagens
+
+			List<MensagemVo> mensagens = new MensagemBe(manager).getList(cliente, 10);
+
+			int novasMensagens = 0;
+			for (MensagemVo mensagem : mensagens) {
+				if (!mensagem.isLida()) {
+					novasMensagens++;
+				}
+			}
+
+			req.setAttribute("novasMensagens", novasMensagens);
+
+			// Remove deixando somente as 3 primeiras
+			mensagens = mensagens.subList(0, 3);
 			
-			// TODO Mensagens
+			req.setAttribute("mensagens", mensagens);
 
 		} catch (ListException e) {
 			Log.error(e);

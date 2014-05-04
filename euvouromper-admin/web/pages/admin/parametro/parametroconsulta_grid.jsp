@@ -5,6 +5,7 @@
 		<tr>
 			<td>C&oacute;digo</td>
 			<td>Nome</td>
+			<td>Valor</td>
 		</tr>
 	</thead>
 
@@ -20,6 +21,7 @@
 				data-id="idParametro=${parametro.idParametro}">
 				<td>${parametro.idParametro }</td>
 				<td>${parametro.nome }</td>
+				<td>${parametro.valor }</td>
 			</tr>
 		</c:forEach>
 	</tbody>

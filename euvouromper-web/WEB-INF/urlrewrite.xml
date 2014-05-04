@@ -66,8 +66,18 @@
 	<!-- PROFESSORES -->
 	
 	<rule match-type="wildcard">
-		<from>/professor/**</from>
+		<from>/professor/*</from>
 		<to type="forward">/professor.page?professor=$1</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/professor/lista/*</from>
+		<to type="forward">/professor.list.page?pagina=$1</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/professor/lista</from>
+		<to type="forward">/professor.list.page?pagina=1</to>
 	</rule>
 	
 	<!-- INSTITUCIONAL -->

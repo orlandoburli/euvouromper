@@ -37,7 +37,7 @@
 					<label class="col-sm-2 control-label text-right">Gratuito</label>
 
 					<div class="col-sm-7">
-						<select id="gratuito" class="select" data-field-value="${vo.gratuito}">
+						<select id="gratuito"  data-field-value="${vo.gratuito}">
 							<option value="N">Não</option>
 							<option value="S">Sim</option>
 						</select>
@@ -48,7 +48,7 @@
 					<label class="col-sm-2 control-label text-right">Professor</label>
 
 					<div class="col-sm-7">
-						<select id="idProfessor" class="select" data-field-value="${vo.idProfessor}">
+						<select id="idProfessor"  data-field-value="${vo.idProfessor}">
 							<c:forEach var="professor" items="${professores}">
 								<option value="${professor.idProfessor}">${professor.nome}</option>
 							</c:forEach>
@@ -60,7 +60,7 @@
 					<label class="col-sm-2 control-label text-right">Disciplina</label>
 
 					<div class="col-sm-7">
-						<select id="idDisciplina" class="select" data-field-value="${vo.idDisciplina}">
+						<select id="idDisciplina"  data-field-value="${vo.idDisciplina}">
 							<c:forEach var="disciplina" items="${disciplinas}">
 								<option value="${disciplina.idDisciplina}">${disciplina.nome}</option>
 							</c:forEach>

@@ -46,7 +46,7 @@
 					<label class="col-sm-2 control-label text-right">Perfil</label>
 
 					<div class="col-sm-7">
-						<select id="idPerfil" class="select" data-field-value="${vo.idPerfil}">
+						<select id="idPerfil"  data-field-value="${vo.idPerfil}">
 							<c:forEach items="${perfis}" var="perfil">
 								<option value="${perfil.idPerfil}">${perfil.nome}</option>
 							</c:forEach>
@@ -58,7 +58,7 @@
 					<label class="col-sm-2 control-label text-right">Ativo</label>
 
 					<div class="col-sm-7">
-						<select id="ativo" class="select" data-field-value="${vo.ativo}">
+						<select id="ativo"  data-field-value="${vo.ativo}">
 							<option value="N">Não</option>
 							<option value="S">Sim</option>
 						</select>
@@ -69,7 +69,7 @@
 					<label class="col-sm-2 control-label text-right">Professor</label>
 
 					<div class="col-sm-7">
-						<select id="idProfessor" class="select" data-field-value="${vo.idProfessor}">
+						<select id="idProfessor"  data-field-value="${vo.idProfessor}">
 							<option value="">[NENHUM]</option>
 							<c:forEach items="${professores}" var="professor">
 								<option value="${professor.idProfessor}">${professor.nome}</option>

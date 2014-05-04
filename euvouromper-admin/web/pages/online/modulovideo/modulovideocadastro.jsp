@@ -25,9 +25,9 @@
 					<label class="col-sm-2 control-label text-right">Vídeo</label>
 
 					<div class="col-sm-7">
-						<select id="idVideo" class="select-full">
+						<select id="idVideo">
 							<c:forEach var="video" items="${videos}">
-								<option value="${video.idVideo}">${video.nome}Aula ${video.aula} Bloco ${video.bloco}</option>
+								<option value="${video.idVideo}">${video.nome} Aula ${video.aula} Bloco ${video.bloco}</option>
 							</c:forEach>
 						</select>
 					</div>

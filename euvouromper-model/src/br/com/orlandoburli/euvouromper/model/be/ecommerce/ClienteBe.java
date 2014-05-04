@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.be.admin.LoginInvalidoException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.ClienteInexistenteException;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.EmailException;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ClienteDao;
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
@@ -52,13 +53,13 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 	@Override
 	public void doBeforeInsert(ClienteVo vo) throws InsertBeException {
 		super.doBeforeInsert(vo);
-		
+
 		// Verifica se ja existe email com esse cadastro
-		
+
 		ClienteVo temp;
 		try {
 			temp = getByEmail(vo.getEmail());
-			
+
 			if (temp != null) {
 				throw new InsertBeException("Já existe o email " + vo.getEmail() + " cadastrado!");
 			}
@@ -66,8 +67,6 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 			Log.error(e);
 			throw new InsertBeException(e.getMessage());
 		}
-		
-		
 
 		if (vo.getTipoCadastro().equals(TipoCadastro.EMAIL)) {
 			if (vo.getConfSenha() == null || vo.getConfSenha().trim().equals("")) {
@@ -79,6 +78,21 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 					throw new InsertBeException("Campo senha e confirmação da senha devem ser iguais!");
 				}
 			}
+		}
+
+		// Seta o hash do cliente
+		vo.setHash(Utils.toSHA1(vo.getEmail()));
+	}
+
+	@Override
+	public void doAfterInsert(ClienteVo vo) throws InsertBeException {
+		super.doAfterInsert(vo);
+
+		try {
+			new EmailBe(getManager()).sendEmailConfirmacaoCadastro(vo);
+		} catch (ListException | EmailException e) {
+			Log.error(e);
+			throw new InsertBeException("Erro após o cadastro do cliente. Erro: " + e.getMessage());
 		}
 	}
 
@@ -148,24 +162,49 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 		}
 		return null;
 	}
-	
+
 	public void resetarSenha(String email) throws BeException {
 		if (email == null || email.trim().equals("")) {
 			throw new SaveBeException("Informe o email!");
 		}
 		ClienteVo cliente = getByEmail(email);
-		
+
 		if (cliente == null) {
 			throw new ClienteInexistenteException("Email não cadastrado!");
 		}
-		
+
 		// Gera uma nova senha
 		cliente.setSenha(Utils.geraCadeiaString(10).toUpperCase());
-		
+
 		// Salva a nova senha
 		save(cliente);
-		
-		// TODO envia um email com a nova senha
+
+		// Envia um email com a nova senha
+		new EmailBe(getManager()).sendEmailNovaSenha(cliente);
+	}
+
+	public void alterarSenha(ClienteVo cliente, String senha, String novaSenha, String confNovaSenha) throws BeException {
+
+		if (senha == null || !cliente.getSenha().equals(senha)) {
+			throw new SaveBeException("Senha atual incorreta!");
+		}
+
+		if (confNovaSenha == null || confNovaSenha.trim().equals("")) {
+			throw new SaveBeException("Campo confirmação senha é obrigatório!");
+		}
+
+		if (novaSenha != null) {
+			if (!novaSenha.equals(confNovaSenha)) {
+				throw new SaveBeException("Campo senha e confirmação da senha devem ser iguais!");
+			}
+		}
+
+		// Seta a nova senha
+		cliente.setSenha(novaSenha);
+		cliente.setConfSenha(confNovaSenha);
+
+		// Salva o cliente
+		save(cliente);
 	}
 
 }

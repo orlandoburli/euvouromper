@@ -90,6 +90,18 @@ public class PerfilAdminVo extends BaseVo {
 	private String permissaoProfessorAlt;
 
 	// Grupo Site
+	
+	@Column(name = Colunas.P_DEPARTAMENTO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoDepartamentoVer;
+
+	@Column(name = Colunas.P_DEPARTAMENTO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoDepartamentoAlt;
 
 	@Column(name = Colunas.P_MENU_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
@@ -238,6 +250,30 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoCupomAlt;
+
+	@Column(name = Colunas.P_EMAIL_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoEmailVer;
+
+	@Column(name = Colunas.P_EMAIL_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoEmailAlt;
+
+	@Column(name = Colunas.P_MENSAGEM_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoMensagemVer;
+
+	@Column(name = Colunas.P_MENSAGEM_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoMensagemAlt;
 
 	public Integer getIdPerfil() {
 		return idPerfil;
@@ -525,5 +561,53 @@ public class PerfilAdminVo extends BaseVo {
 
 	public void setPermissaoVideoYoutubeAlt(String permissaoVideoYoutubeAlt) {
 		this.permissaoVideoYoutubeAlt = permissaoVideoYoutubeAlt;
+	}
+
+	public String getPermissaoEmailVer() {
+		return permissaoEmailVer;
+	}
+
+	public void setPermissaoEmailVer(String permissaoEmailVer) {
+		this.permissaoEmailVer = permissaoEmailVer;
+	}
+
+	public String getPermissaoEmailAlt() {
+		return permissaoEmailAlt;
+	}
+
+	public void setPermissaoEmailAlt(String permissaoEmailAlt) {
+		this.permissaoEmailAlt = permissaoEmailAlt;
+	}
+
+	public String getPermissaoMensagemVer() {
+		return permissaoMensagemVer;
+	}
+
+	public void setPermissaoMensagemVer(String permissaoMensagemVer) {
+		this.permissaoMensagemVer = permissaoMensagemVer;
+	}
+
+	public String getPermissaoMensagemAlt() {
+		return permissaoMensagemAlt;
+	}
+
+	public void setPermissaoMensagemAlt(String permissaoMensagemAlt) {
+		this.permissaoMensagemAlt = permissaoMensagemAlt;
+	}
+
+	public String getPermissaoDepartamentoVer() {
+		return permissaoDepartamentoVer;
+	}
+
+	public void setPermissaoDepartamentoVer(String permissaoDepartamentoVer) {
+		this.permissaoDepartamentoVer = permissaoDepartamentoVer;
+	}
+
+	public String getPermissaoDepartamentoAlt() {
+		return permissaoDepartamentoAlt;
+	}
+
+	public void setPermissaoDepartamentoAlt(String permissaoDepartamentoAlt) {
+		this.permissaoDepartamentoAlt = permissaoDepartamentoAlt;
 	}
 }

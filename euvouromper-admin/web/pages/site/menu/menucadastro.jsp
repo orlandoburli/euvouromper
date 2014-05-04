@@ -36,7 +36,7 @@
 
 					<label class="col-sm-2 control-label text-right">Grupo</label>
 					<div class="col-sm-2">
-						<select id="grupo" class="select" data-field-value="${vo.grupo}">
+						<select id="grupo"  data-field-value="${vo.grupo}">
 							<c:forEach items="${grupos}" var="grupo">
 								<option value="${grupo.valor}">${grupo.descricao}</option>
 							</c:forEach>

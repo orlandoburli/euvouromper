@@ -102,7 +102,7 @@ $(function() {
 		"oLanguage": {
 			"sSearch": "<span>Filter:</span> _INPUT_",
 			"sLengthMenu": "<span>Show entries:</span> _MENU_",
-			"oPaginate": { "sNext": "Next ���", "sPrevious": "��� Previous" }
+			"oPaginate": { "sNext": "Next", "sPrevious": "Previous" }
 		}
     });
 
@@ -226,8 +226,6 @@ $(function() {
 
 
 
-
-
 /* # Select2 dropdowns 
 ================================================== */
 
@@ -243,7 +241,7 @@ $(function() {
 
 	$(".select").select2({
 		minimumResultsForSearch: "-1",
-		width: 200
+		width: 250
 	});
 
 
@@ -666,24 +664,24 @@ $(function() {
 	$( ".datepicker" ).datepicker({
 		showOtherMonths: true,
 	    dateFormat : "dd/mm/yy",
-	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNames: ['Domingo','Segunda','Ter��a','Quarta','Quinta','Sexta','S��bado'],
 	    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','S��b','Dom'],
+	    monthNames: ['Janeiro','Fevereiro','Mar��o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-	    nextText: 'Próximo',
+	    nextText: 'Pr��ximo',
 	    prevText: 'Anterior'
     });
 
     $( ".datepicker-inline" ).datepicker({ 
     	showOtherMonths: true,
         dateFormat : "dd/mm/yy",
-	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNames: ['Domingo','Segunda','Ter��a','Quarta','Quinta','Sexta','S��bado'],
 	    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','S��b','Dom'],
+	    monthNames: ['Janeiro','Fevereiro','Mar��o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-	    nextText: 'Próximo',
+	    nextText: 'Pr��ximo',
 	    prevText: 'Anterior'
     });
 
@@ -691,12 +689,12 @@ $(function() {
     	showOtherMonths: true,
     	numberOfMonths: 3,
         dateFormat : "dd/mm/yy",
-	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNames: ['Domingo','Segunda','Ter��a','Quarta','Quinta','Sexta','S��bado'],
 	    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','S��b','Dom'],
+	    monthNames: ['Janeiro','Fevereiro','Mar��o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-	    nextText: 'Próximo',
+	    nextText: 'Pr��ximo',
 	    prevText: 'Anterior'
     });
 
@@ -706,12 +704,12 @@ $(function() {
 		buttonImageOnly: true,
 		showOtherMonths: true,
 		dateFormat : "dd/mm/yy",
-		dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		dayNames: ['Domingo','Segunda','Ter��a','Quarta','Quinta','Sexta','S��bado'],
 		dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-		monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','S��b','Dom'],
+		monthNames: ['Janeiro','Fevereiro','Mar��o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-		nextText: 'Próximo',
+		nextText: 'Pr��ximo',
 		prevText: 'Anterior'
     });
 
@@ -828,10 +826,12 @@ $(function() {
 
 	//===== WYSIWYG editor =====//
 
-	$('.editor').wysihtml5({
-	    stylesheets: "web/assets/css/wysihtml5/wysiwyg-color.css"
-	});
-
+//	$('.editorx').wysihtml5({
+//	    stylesheets: "web/assets/css/wysihtml5/wysiwyg-color.css"
+//	});
+	
+	// CKEditor
+	$('.editor').ckeditor();
 
 	//===== Elastic textarea =====//
 	

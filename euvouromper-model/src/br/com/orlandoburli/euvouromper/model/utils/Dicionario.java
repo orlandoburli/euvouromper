@@ -70,6 +70,14 @@ public final class Dicionario {
 			public static final String P_CUPOM_VER = "p_cupom_ver";
 			public static final String P_CUPOM_ALT = "p_cupom_alt";
 
+			public static final String P_EMAIL_VER = "p_email_ver";
+			public static final String P_EMAIL_ALT = "p_email_alt";
+
+			public static final String P_MENSAGEM_VER = "p_mensagem_ver";
+			public static final String P_MENSAGEM_ALT = "p_mensagem_alt";
+			
+			public static final String P_DEPARTAMENTO_VER = "p_departamento_ver";
+			public static final String P_DEPARTAMENTO_ALT = "p_departamento_alt";
 		}
 	}
 
@@ -384,6 +392,82 @@ public final class Dicionario {
 			public static final String DIAS_VALIDADE = "dias_validade";
 			public static final String RECORRENTE = "recorrente";
 			public static final String DIAS_RECORRENCIA = "dias_recorrencia";
+		}
+	}
+
+	public final class NotificacaoPagSeguro {
+		public static final String TABELA_NOTIFICACAO_PAGSEGURO = "notificacao_pagseguro";
+
+		public final class Colunas {
+			public static final String ID_NOTIFICACAO = "id_notificacao";
+			public static final String CODIGO_NOTIFICACAO = "codigo_notificacao";
+			public static final String DATA_HORA = "data_hora";
+			public static final String STATUS = "status";
+		}
+	}
+
+	public final class Email {
+		public static final String TABELA_EMAIL = "email";
+
+		public final class Colunas {
+			public static final String ID_EMAIL = "id_email";
+			public static final String ASSUNTO = "assunto";
+			public static final String REMETENTE_EMAIL = "remetente_email";
+			public static final String REMETENTE_NOME = "remetente_nome";
+			public static final String CORPO = "corpo";
+		}
+	}
+
+	public final class Mensagem {
+		public static final String TABELA_MENSAGEM = "mensagem";
+
+		public final class Colunas {
+			public static final String ID_MENSAGEM = "id_mensagem";
+			public static final String DESTINO = "destino";
+			public static final String REMETENTE = "remetente";
+			public static final String ID_CLIENTE = Cliente.Colunas.ID_CLIENTE;
+			public static final String ID_PRODUTO = Produto.Colunas.ID_PRODUTO;
+			public static final String STATUS = "status";
+			public static final String DATA_INICIAL = "data_inicial";
+			public static final String DATA_FINAL = "data_final";
+			public static final String ASSUNTO = "assunto";
+			public static final String MENSAGEM = "mensagem";
+		}
+	}
+
+	public final class MensagemLida {
+		public static final String TABELA_MENSAGEM_LIDA = "mensagem_lida";
+		public static final String UNIQUE_MENSAGEM_LIDA = "unq_mensagem_lida";
+		
+		public final class Colunas {
+			public static final String ID_MENSAGEM_LIDA = "id_mensagem_lida";
+			public static final String ID_MENSAGEM = Mensagem.Colunas.ID_MENSAGEM;
+			public static final String ID_CLIENTE = Cliente.Colunas.ID_CLIENTE;
+			public static final String DATA_HORA = "data_hora";
+		}
+	}
+	
+	public final class Departamento {
+		public static final String TABELA_DEPARTAMENTO = "departamento";
+		
+		public final class Colunas {
+			public static final String ID_DEPARTAMENTO = "id_departamento";
+			public static final String NOME = "nome";
+			public static final String EMAIL = "email";
+		}
+	}
+	
+	public final class Contato {
+		public static final String TABELA_CONTATO = "contato";
+		
+		public final class Colunas {
+			public static final String ID_CONTATO = "id_contato";
+			public static final String NOME = "nome";
+			public static final String EMAIL = "email";
+			public static final String ASSUNTO = "assunto";
+			public static final String FONE = "fone";
+			public static final String ID_DEPARTAMENTO = Departamento.Colunas.ID_DEPARTAMENTO;
+			public static final String MENSAGEM = "mensagem";
 		}
 	}
 

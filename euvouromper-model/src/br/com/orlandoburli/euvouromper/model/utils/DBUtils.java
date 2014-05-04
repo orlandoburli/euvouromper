@@ -6,7 +6,9 @@ import br.com.orlandoburli.euvouromper.model.dao.cadastros.DisciplinaDao;
 import br.com.orlandoburli.euvouromper.model.dao.cadastros.ProfessorDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ClienteDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.CupomDescontoDao;
+import br.com.orlandoburli.euvouromper.model.dao.ecommerce.EmailDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ItemPedidoDao;
+import br.com.orlandoburli.euvouromper.model.dao.ecommerce.MensagemDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.PedidoDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ProdutoDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.ModuloDao;
@@ -52,6 +54,9 @@ public final class DBUtils {
 			
 			new PedidoDao(manager).checkTable();
 			new ItemPedidoDao(manager).checkTable();
+			
+			new EmailDao(manager).checkTable();
+			new MensagemDao(manager).checkTable();
 			
 		} catch (DAOException e) {
 			e.printStackTrace();

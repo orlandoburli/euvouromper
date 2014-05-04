@@ -21,14 +21,22 @@
 
 			<div class="clear margin-top">
 				<div id="tabela-mensagens" class="panel margin-top">
-					<div class="panel-header bg-lightBlue fg-white">PEDIDO Nº. <fmt:formatNumber minIntegerDigits="6" value="${pedido.idPedido}"/> </div>
+					<div class="panel-header bg-lightBlue fg-white">
+						PEDIDO Nº.
+						<fmt:formatNumber minIntegerDigits="6" value="${pedido.idPedido}" />
+					</div>
 					<div class="panel-content">
-						<div class="span5">
+						<div class="span18">
 							<table class="table">
 								<tbody>
 									<tr>
-										<td class="text-right span10">STATUS:</td>
-										<td class="text-left"><b> ${pedido.statusPedidoDescritivo }</b></td>
+										<td class="text-right span3">STATUS:</td>
+										<td class="text-left"><b> ${pedido.statusPedidoDescritivo }</b>
+											<div class="text-right" style="display: inline; padding-left: 595px;">
+												<c:if test="${pedido.statusPedido eq ABERTO }">
+													<a href="${pedido.urlPagSeguro}" target="_blank" title=""><img src="${root}/web/assets/imgs/180x25-pagar.gif" alt=""></a>
+												</c:if>
+											</div></td>
 									</tr>
 									<tr>
 										<td class="text-right">NOME:</td>
@@ -71,9 +79,10 @@
 										<td class="text-right">CIDADE:</td>
 										<td class="text-left"><b>${pedido.cidade}</b></td>
 									</tr>
+
 									<tr>
-										<td class="text-left">VALE DESCONTO:</td>
-										<td class="text-left"><b> ${pedido.cupom.descricao }</b></td>
+										<td class="text-right"></td>
+										<td class="text-left"></td>
 									</tr>
 
 								</tbody>
@@ -95,7 +104,7 @@
 								<tbody>
 									<c:forEach items="${pedido.itens}" var="item">
 										<tr>
-											<td class="text-left"><fmt:formatNumber minIntegerDigits="3" value="${item.idProduto}"/></td>
+											<td class="text-left"><fmt:formatNumber minIntegerDigits="3" value="${item.idProduto}" /></td>
 											<td class="text-left">${item.nome}</td>
 											<fmt:formatNumber value="${item.valor}" minFractionDigits="2" type="currency" var="valor" />
 											<td class="text-right">${valor}</td>
@@ -105,12 +114,12 @@
 										<tr>
 											<td class="text-left">${pedido.cupom.chave}</td>
 											<td class="text-left">${pedido.cupom.descricao}</td>
-											
+
 											<c:if test="${pedido.cupom.tipoDesconto eq VALOR}">
 												<fmt:formatNumber value="${pedido.cupom.valor}" minFractionDigits="2" type="currency" var="valor" />
 												<td class="text-right">${valor}</td>
 											</c:if>
-											
+
 											<c:if test="${pedido.cupom.tipoDesconto eq PERCENTUAL}">
 												<fmt:formatNumber value="${pedido.cupom.valor / 100}" minFractionDigits="2" type="percent" var="valor" />
 												<td class="text-right">${valor}</td>
@@ -120,29 +129,37 @@
 								</tbody>
 								<tfoot></tfoot>
 							</table>
-							<div class="span3 floatright text-right">
-								<div id="total-pedido">
-									<div class="label-total-pedido">
-										<b>Total</b>
-									</div>
-									<div class="total-pedido-valor">
-										<b><fmt:formatNumber value="${pedido.valorLiquido}" minFractionDigits="2" type="currency" /></b>
-									</div>
+
+							<div id="total-carrinho" class="">
+								<div class="span4 left">
+									<span class="label-total">Total Itens</span>
+									<fmt:formatNumber value="${pedido.valorBruto}" minFractionDigits="2" type="currency" var="valorBruto" />
+									<span class="label-valor">${valorBruto}</span>
+								</div>
+								<div class="span4 left">
+									<span class="label-total">Desconto</span>
+									<fmt:formatNumber value="${pedido.valorDesconto}" minFractionDigits="2" type="currency" var="valorDesconto" />
+									<span class="label-valor">${valorDesconto}</span>
+								</div>
+								<div class="span5 left">
+									<span class="label-total">Total</span>
+									<fmt:formatNumber value="${pedido.valorLiquido}" minFractionDigits="2" type="currency" var="valorLiquido" />
+									<span class="label-valor">${valorLiquido }</span>
 								</div>
 							</div>
+
+							<div class="metro one-column span4 left">
+								<a href="${root}/aluno/pedidos" title="Voltar para lista de pedidos" class="continuar-comprando left">Voltar para lista de pedidos</a>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
-
-
-
+			<!-- end noticias -->
 		</div>
-		<!-- end noticias -->
-	</div>
-	<!-- end container -->
+		<!-- end container -->
 
-	<%@include file="../../geral/footer.jsp"%>
-
+		<%@include file="../../geral/footer.jsp"%>
 </body>
 </html>

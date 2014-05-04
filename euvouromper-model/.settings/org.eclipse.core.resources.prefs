@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/br/com/orlandoburli/euvouromper/model/be/admin/UsuarioBe.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/be/ecommerce/ClienteBe.java=UTF-8
+encoding//src/br/com/orlandoburli/euvouromper/model/be/ecommerce/EmailBe.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/be/ecommerce/PedidoBe.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/be/ecommerce/ProdutoBe.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/domains/SimNao.java=UTF-8
@@ -10,6 +11,7 @@ encoding//src/br/com/orlandoburli/euvouromper/model/vo/ecommerce/CupomDescontoVo
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/ecommerce/ItemPedidoVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/ecommerce/PedidoVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/ecommerce/ProdutoVo.java=UTF-8
+encoding//src/br/com/orlandoburli/euvouromper/model/vo/ecommerce/TipoEmail.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/ecommerce/TipoProduto.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/online/ModuloVideoVo.java=UTF-8
 encoding//src/br/com/orlandoburli/euvouromper/model/vo/online/ModuloVo.java=UTF-8

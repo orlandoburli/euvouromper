@@ -39,7 +39,7 @@
 					<label class="col-sm-2 control-label text-right">Professor</label>
 
 					<div class="col-sm-7">
-						<select id="idProfessor" class="select" data-field-value="${vo.idProfessor}">
+						<select id="idProfessor"  data-field-value="${vo.idProfessor}">
 							<option>[NENHUM]</option>
 							<c:forEach var="professor" items="${professores}">
 								<option value="${professor.idProfessor}">${professor.nome}</option>

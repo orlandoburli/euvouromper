@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-right">Produto</label>
 					<div class="col-sm-7">
-						<select id="idProdutoDestino" class="select" data-field-value="${vo.idProdutoDestino}">
+						<select id="idProdutoDestino"  data-field-value="${vo.idProdutoDestino}">
 							<option value="">[NENHUM]</option>
 							<c:forEach var="produto" items="${produtos}">
 								<option value="${produto.idProduto}">${produto.nome}</option>
@@ -51,7 +51,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-right">Tipo de Desconto</label>
 					<div class="col-sm-7">
-						<select id="tipoDesconto" class="select" data-field-value="${vo.tipoDesconto}">
+						<select id="tipoDesconto"  data-field-value="${vo.tipoDesconto}">
 							<c:forEach var="tipo" items="${tipoDescontoList}">
 								<option value="${tipo.valor}">${tipo.descricao}</option>
 							</c:forEach>
@@ -63,7 +63,7 @@
 					<label class="col-sm-2 control-label text-right">Cliente</label>
 
 					<div class="col-sm-7">
-						<select id="idCliente" class="select" data-field-value="${vo.idCliente}">
+						<select id="idCliente"  data-field-value="${vo.idCliente}">
 							<option value="">[NENHUM]</option>
 							<c:forEach var="cliente" items="${clientes}">
 								<option value="${cliente.idCliente}">${cliente.nome}</option>

@@ -31,7 +31,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-right">Status</label>
 					<div class="col-sm-7">
-						<select id="status" class="select" data-field-value="${vo.status}">
+						<select id="status"  data-field-value="${vo.status}">
 							<c:forEach var="tipo" items="${statusInstitucionalList}">
 								<option value="${tipo.valor}">${tipo.descricao}</option>
 							</c:forEach>

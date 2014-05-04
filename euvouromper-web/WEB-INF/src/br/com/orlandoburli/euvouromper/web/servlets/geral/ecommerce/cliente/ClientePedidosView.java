@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemLidaBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.PedidoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.StatusPedido;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -23,32 +25,40 @@ public class ClientePedidosView extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
-		
+
 		if (cliente == null) {
 			WebUtils.goTo(req, resp, "/entrar?redir=/aluno/pedidos");
 			return;
 		}
-		
+
 		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
-			
+
 			// Menus
-			
+
 			WebUtils.buildMenus(req, manager);
-			
+
 			// Lista de Pedidos
-			
+
 			req.setAttribute("pedidos", new PedidoBe(manager).getList(cliente));
-			
+
+			// Status dos pedidos
+
+			WebUtils.sendDomain(req, new StatusPedido());
+
+			// Novas Mensagens
+
+			req.setAttribute("novasMensagens", new MensagemLidaBe(manager).getNovasMensagensCount(cliente));
+
 		} catch (ListException e) {
 			Log.error(e);
 		} finally {
 			manager.commit();
 		}
-		
+
 		req.getRequestDispatcher("../web/pages/ecommerce/cliente/cliente_pedido_list.jsp").forward(req, resp);
 	}
 

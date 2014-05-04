@@ -3,8 +3,7 @@
 	<!-- Definicao do arquivo de propriedades -->
 	<property file="build.properties" />
 
-	<!-- Incremento de versoes -->
-	<property file="build_info.properties" />
+
 
 	<target name="compile">
 		<antcall target="revision">
@@ -55,6 +54,8 @@
 
 	<target name="generate.version.number">
 
+		<property file="build_info.properties" />
+
 		<tstamp>
 			<format property="build.time" pattern="dd/MM/yyyy HH:mm:ss" unit="hour" />
 		</tstamp>
@@ -63,7 +64,8 @@
 
 		<property name="new.version.number" value="${build.number} build: ${build.time}" />
 
-		<replaceregexp file="build.properties" match="(version[ \t]*=[ \t]*)+.*$" byline="true" replace="\1${version.number}" />
+		<echo message="${new.version.number}" />
+
 
 		<propertyfile file="build_info.properties">
 			<entry key="version.number" value="${new.version.number}" />
@@ -72,6 +74,10 @@
 	</target>
 
 	<target name="baixar-git">
+		<!-- Incremento de versoes -->
+		<property file="build_info.properties" />
+		<replaceregexp file="build.properties" match="(version[ \t]*=[ \t]*)+.*$" byline="true" replace="\1${new.version.number}" />
+
 		<sshexec host="github.com" username="orlandoburli" password="carol1408" passphrase="carol1408" command="git clone git@github.com:ultraveloz/euvouromper.git  ${euvouromper.home}" trust="true" />
 	</target>
 
@@ -86,7 +92,7 @@
 
 	<!-- Target para compilar o projeto euvouromper-core -->
 	<target name="compilar-core" depends="limpar-core">
-		<javac srcdir="${euvouromper.dir.core}/src" destdir="${euvouromper.build.dir.core}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on">
+		<javac srcdir="${euvouromper.dir.core}/src" destdir="${euvouromper.build.dir.core}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
 			<classpath>
 				<fileset dir="${tomcat-lib.dir}">
 					<include name="*.jar" />
@@ -118,7 +124,7 @@
 
 	<!-- Target para compilar o projeto euvouromper-dao-postgresql -->
 	<target name="compilar-dao-postgresql" depends="limpar-dao-postgresql">
-		<javac srcdir="${euvouromper.dir.dao-postgresql}/src" destdir="${euvouromper.build.dir.dao-postgresql}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on">
+		<javac srcdir="${euvouromper.dir.dao-postgresql}/src" destdir="${euvouromper.build.dir.dao-postgresql}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
 			<classpath>
 				<fileset dir="${deploy.dir}">
 					<include name="core.jar" />
@@ -146,10 +152,13 @@
 
 	<!-- Target para compilar o projeto euvouromper-model -->
 	<target name="compilar-euvouromper-model" depends="limpar-euvouromper-model">
-		<javac srcdir="${euvouromper.dir.model}/src" destdir="${euvouromper.build.dir.model}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on">
+		<javac srcdir="${euvouromper.dir.model}/src" destdir="${euvouromper.build.dir.model}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
 			<classpath>
 				<fileset dir="/Users/orlandoburli/Documents/java/lib/pagseguro-java-2.1.2">
 					<include name="pagseguro-api-2.1.2.jar" />
+				</fileset>
+				<fileset dir="/Users/orlandoburli/Documents/java/lib/commons-email-1.3.2">
+					<include name="commons-email-1.3.2.jar" />
 				</fileset>
 				<fileset dir="${deploy.dir}">
 					<include name="core.jar" />
@@ -178,7 +187,7 @@
 
 	<!-- Target para compilar o projeto euvouromper-admin -->
 	<target name="compilar-euvouromper-admin" depends="limpar-euvouromper-admin,empacotar-core,empacotar-dao-postgresql,empacotar-euvouromper-model">
-		<javac srcdir="${euvouromper.dir.admin}/WEB-INF/src" destdir="${euvouromper.build.dir.admin}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on">
+		<javac srcdir="${euvouromper.dir.admin}/WEB-INF/src" destdir="${euvouromper.build.dir.admin}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
 			<classpath>
 				<fileset dir="${deploy.dir}">
 					<include name="core.jar" />
@@ -193,6 +202,8 @@
 
 	<!-- Target para empacotar o euvouromper-admin -->
 	<target name="empacotar-euvouromper-admin" depends="compilar-euvouromper-admin">
+
+		<property file="build_info.properties" />
 
 		<antcall target="generate.version.number" />
 
@@ -209,15 +220,6 @@
 			<classes dir="${euvouromper.build.dir.admin}">
 			</classes>
 
-			<lib dir="/Users/orlandoburli/Documents/java/lib">
-				<include name="postgresql-9.2-1001.jdbc4.jar" />
-			</lib>
-			<lib dir="/Users/orlandoburli/Documents/java/lib/google-gson-2.2.4">
-				<include name="gson-2.2.4.jar" />
-			</lib>
-			<lib dir="/Users/orlandoburli/Documents/java/lib/pagseguro-java-2.1.2">
-				<include name="pagseguro-api-2.1.2.jar" />
-			</lib>
 			<lib dir="${deploy.dir}">
 				<include name="core.jar" />
 				<include name="dao-postgresql.jar" />
@@ -246,7 +248,7 @@
 
 	<!-- Target para compilar o projeto euvouromper-web -->
 	<target name="compilar-euvouromper-web" depends="limpar-euvouromper-web,empacotar-core,empacotar-dao-postgresql,empacotar-euvouromper-model">
-		<javac srcdir="${euvouromper.dir.web}/WEB-INF/src" destdir="${euvouromper.build.dir.web}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on">
+		<javac srcdir="${euvouromper.dir.web}/WEB-INF/src" destdir="${euvouromper.build.dir.web}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
 			<classpath>
 				<fileset dir="${deploy.dir}">
 					<include name="core.jar" />
@@ -261,6 +263,9 @@
 
 	<!-- Target para empacotar o euvouromper-web -->
 	<target name="empacotar-euvouromper-web" depends="compilar-euvouromper-web">
+
+		<property file="build_info.properties" />
+
 		<delete file="${deploy.dir}/euvouromper-web.war">
 		</delete>
 
@@ -275,15 +280,6 @@
 			<classes dir="${euvouromper.build.dir.web}">
 			</classes>
 
-			<lib dir="/Users/orlandoburli/Documents/java/lib">
-				<include name="postgresql-9.2-1001.jdbc4.jar" />
-			</lib>
-			<lib dir="/Users/orlandoburli/Documents/java/lib/google-gson-2.2.4">
-				<include name="gson-2.2.4.jar" />
-			</lib>
-			<lib dir="/Users/orlandoburli/Documents/java/lib/pagseguro-java-2.1.2">
-				<include name="pagseguro-api-2.1.2.jar" />
-			</lib>
 			<lib dir="${deploy.dir}">
 				<include name="core.jar" />
 				<include name="dao-postgresql.jar" />
@@ -294,6 +290,9 @@
 				<exclude name="WEB-INF/classes/" />
 			</fileset>
 
+			<manifest>
+				<attribute name="Versao" value="${version.number}" />
+			</manifest>
 		</war>
 
 	</target>

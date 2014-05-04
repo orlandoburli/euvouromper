@@ -67,6 +67,9 @@
 
 			<li><a href="#" class="expand"><span>Site</span> <i class="icon-paragraph-justify2"></i></a>
 				<ul>
+					<c:if test="${usuario.perfil.permissaoDepartamentoVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="departamentoconsulta.admin">Departamentos</a></li>
+					</c:if>
 					<c:if test="${usuario.perfil.permissaoMenuVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="menuconsulta.admin">Menus</a></li>
 					</c:if>
@@ -82,8 +85,6 @@
 					<c:if test="${usuario.perfil.permissaoInstitucionalVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="institucionalconsulta.admin">Páginas Institucionais</a></li>
 					</c:if>
-					
-					
 					<c:if test="${usuario.perfil.permissaoDepoimentoVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="depoimentoconsulta.admin">Depoimentos</a></li>
 					</c:if>
@@ -112,6 +113,12 @@
 					</c:if>
 					<c:if test="${usuario.perfil.permissaoCupomVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="cupomdescontoconsulta.admin">Cupons de Desconto</a></li>
+					</c:if>
+					<c:if test="${usuario.perfil.permissaoEmailVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="emailconsulta.admin">Modelos de Email</a></li>
+					</c:if>
+					<c:if test="${usuario.perfil.permissaoMensagemVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="mensagemconsulta.admin">Mensagens</a></li>
 					</c:if>
 				</ul></li>
 		</ul>

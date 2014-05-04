@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemLidaBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.PedidoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.StatusPedido;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoDesconto;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
@@ -63,6 +65,14 @@ public class ClientePedidoVerView extends HttpServlet {
 			// Menus
 
 			WebUtils.buildMenus(req, manager);
+
+			// Status dos pedidos
+
+			WebUtils.sendDomain(req, new StatusPedido());
+
+			// Novas Mensagens
+
+			req.setAttribute("novasMensagens", new MensagemLidaBe(manager).getNovasMensagensCount(cliente));
 
 		} catch (ListException e) {
 			Log.error(e);
