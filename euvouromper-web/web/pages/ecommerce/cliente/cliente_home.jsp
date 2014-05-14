@@ -19,6 +19,7 @@
 			<%@include file="header-aluno.jsp"%>
 
 			<h3 class="titulo-area-aluno">Olá, ${cliente.nome}!</h3>
+			
 			<div class="clear" style="">
 				<div class="panel span7 left margin-top">
 					<div class="panel-header bg-lightBlue fg-white">Meus Pedidos</div>

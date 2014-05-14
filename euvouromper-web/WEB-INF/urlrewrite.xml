@@ -138,4 +138,10 @@
 		<to type="forward">/aluno.pedido.page?pedido=$1</to>
 	</rule>
 	
+	<rule match-type="wildcard">
+		<from>/aluno/curso/*</from>
+		<to type="forward">/aluno.curso.page?produto=$1</to>
+	</rule>
+	
+	
 </urlrewrite>

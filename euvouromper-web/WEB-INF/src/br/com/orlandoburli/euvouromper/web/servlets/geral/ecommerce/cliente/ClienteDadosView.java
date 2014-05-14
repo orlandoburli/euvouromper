@@ -44,6 +44,10 @@ public class ClienteDadosView extends HttpServlet {
 
 			req.setAttribute("novasMensagens", new MensagemLidaBe(manager).getNovasMensagensCount(cliente));
 
+			// Saldo
+
+			req.setAttribute("saldo", new ClienteBe(manager).saldo(cliente));
+
 		} catch (ListException e) {
 			Log.error(e);
 		} finally {

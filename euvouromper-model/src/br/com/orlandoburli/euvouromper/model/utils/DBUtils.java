@@ -17,6 +17,8 @@ import br.com.orlandoburli.euvouromper.model.dao.online.PacoteDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.PacoteModuloDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.VideoDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.ArtigoDao;
+import br.com.orlandoburli.euvouromper.model.dao.site.ContatoDao;
+import br.com.orlandoburli.euvouromper.model.dao.site.DepartamentoDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.InstitucionalDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.MenuDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.NoticiaDao;
@@ -57,6 +59,8 @@ public final class DBUtils {
 			
 			new EmailDao(manager).checkTable();
 			new MensagemDao(manager).checkTable();
+			new DepartamentoDao(manager).checkTable();
+			new ContatoDao(manager).checkTable();
 			
 		} catch (DAOException e) {
 			e.printStackTrace();

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.MensagemVo;
@@ -37,6 +38,10 @@ public class ClienteMensagensView extends HttpServlet {
 
 			WebUtils.buildMenus(req, manager);
 
+			// Saldo
+
+			req.setAttribute("saldo", new ClienteBe(manager).saldo(cliente));
+
 			// Mensagens
 
 			List<MensagemVo> mensagens = new MensagemBe(manager).getList(cliente, 10);
@@ -49,9 +54,9 @@ public class ClienteMensagensView extends HttpServlet {
 					novasMensagens++;
 				}
 			}
-			
+
 			req.setAttribute("novasMensagens", novasMensagens);
-			
+
 		} catch (ListException e) {
 			e.printStackTrace();
 		}

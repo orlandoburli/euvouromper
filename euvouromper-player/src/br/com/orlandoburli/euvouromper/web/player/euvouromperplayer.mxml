@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-	xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="800"
-	minHeight="600">
+	width="500" height="300" creationComplete="application1_creationCompleteHandler(event)">
 
-	<fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import org.osmf.utils.Version;
+			import org.osmf.utils.OSMFStrings;
+			import org.osmf.utils.OSMFSettings;
 
-	</fx:Declarations>
+			import br.com.orlandoburli.euvouromper.utils.Format;
 
-	<s:VideoPlayer top="0" left="0" bottom="0" right="0">
-		
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.managers.BrowserManager;
+			import mx.managers.IBrowserManager;
+			import mx.utils.Base64Decoder;
+
+			private var urlSistema : String = "";
+			private var bm : IBrowserManager;
+			private var CodigoVideo : String = "";
+			private var NomeCliente : String = "";
+			private var CpfCliente : String = "";
+			private var ItemPedido : String = "";
+
+			protected function application1_creationCompleteHandler(event : FlexEvent) : void {
+				var pos : String = "1";
+
+				OSMFSettings.enableStageVideo = false;
+				
+
+				try {
+					var nomeSistema : String = "/flex/";
+					urlSistema = this.url;
+					urlSistema = urlSistema.substr(0, urlSistema.indexOf(nomeSistema));
+					pos = "2";
+
+					bm = BrowserManager.getInstance();
+					bm.init();
+
+					var parametroStr : String = bm.url.substr(bm.url.indexOf("?") + 1);
+
+					if (parametroStr.lastIndexOf("#") > 0) {
+						parametroStr = parametroStr.replace("#", "");
+					}
+
+					pos = "3";
+
+					var parametros : Array = parametroStr.split("&");
+
+					pos = "4";
+					CodigoVideo = parametros[0];
+					CodigoVideo = CodigoVideo.replace("v=", "");
+
+					pos = "4.1";
+					ItemPedido = parametros[1];
+					ItemPedido = ItemPedido.replace("i=", "");
+
+					pos = "5";
+
+					var decoder : Base64Decoder = new Base64Decoder();
+
+					NomeCliente = parametros[2];
+					NomeCliente = NomeCliente.replace("nome=", "");
+
+					decoder.decode(NomeCliente);
+					NomeCliente = decoder.toByteArray().toString();
+
+					pos = "6";
+
+					CpfCliente = parametros[3];
+					CpfCliente = CpfCliente.replace("cpf=", "");
+
+					decoder.decode(CpfCliente);
+					CpfCliente = decoder.toByteArray().toString();
+
+					// CPF Formatado
+					CpfCliente = Format.CPF(CpfCliente);
+
+					pos = "7";
+
+					lblCliente.text = NomeCliente + "\n" + CpfCliente;
+
+					videoPlayer1.source = urlSistema + "/aluno.video.get?v=" + CodigoVideo;
+					videoPlayer1.play();
+				} catch (err : Error) {
+					Alert.show(pos + " - " + err.message, "Erro");
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<s:VideoPlayer id="videoPlayer1" left="0" right="0" top="0"
+		bottom="0" autoPlay="false">
 	</s:VideoPlayer>
-	
+
+	<s:Label id="lblCliente" x="10" y="33" color="#188ED5" fontFamily="Verdana" z="0"
+		fontSize="14" fontWeight="bold" text=""/>
+
+	<s:Label id="lblClientex" x="10" y="10" color="#188ED5" z="1"
+		fontFamily="Verdana" fontSize="14" fontWeight="bold" text="ESTE VÍDEO ESTÁ LICENCIADO PARA"/>
 </s:Application>

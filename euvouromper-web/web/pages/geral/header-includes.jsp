@@ -17,6 +17,7 @@
     <link href="${root}/web/assets/css/metro-bootstrap.css" rel="stylesheet">
     <link href="${root}/web/assets/css/iconFont.css" rel="stylesheet">
     <link href="${root}/web/assets/css/style-main.css" rel="stylesheet">
+    <link href="${root}/web/assets/css/custom.css" rel="stylesheet">
 	<link href="${root}/web/assets/css/revolution.css" rel="stylesheet">
     <link href="${root}/web/assets/css/default_slider.css" rel="stylesheet">
 

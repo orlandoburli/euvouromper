@@ -26,6 +26,12 @@ public class ErroInternoView extends HttpServlet {
 			// Menus
 
 			WebUtils.buildMenus(req, manager);
+
+			Throwable throwable = (Throwable) req.getAttribute("javax.servlet.error.exception");
+
+			Log.critical("Pagina de erro: ");
+			Log.critical(throwable);
+
 		} catch (ListException e) {
 			Log.error(e);
 		} finally {
@@ -34,7 +40,7 @@ public class ErroInternoView extends HttpServlet {
 
 		req.getRequestDispatcher("web/pages/geral/500.jsp").forward(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

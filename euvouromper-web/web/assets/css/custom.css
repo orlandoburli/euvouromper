@@ -1,0 +1,11 @@
+.video-novo {
+	border-left: 3px #0067b0 solid !important;
+}
+
+.video-nao-comprado {
+	border-left: 3px #555555 solid !important;
+}
+
+.video-assistido {
+	border-left: 3px #e77120 solid !important;
+}

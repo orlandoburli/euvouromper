@@ -100,11 +100,11 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		filter.setAtivo(SimNao.SIM);
 
 		List<ProdutoVo> list = getList(filter);
-		
+
 		if (list.size() > 0) {
 			return list.get(0);
 		}
-		
+
 		return null;
 	}
 
@@ -131,5 +131,13 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		filter.setAtivo(SimNao.SIM);
 
 		return getList(filter, null, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME, pagina, TAMANHO_PAGINA_PRODUTOS);
+	}
+
+	public List<ProdutoVo> getListAtivos() throws ListException {
+		ProdutoVo filter = new ProdutoVo();
+
+		filter.setAtivo(SimNao.SIM);
+
+		return getList(filter, null, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME);
 	}
 }

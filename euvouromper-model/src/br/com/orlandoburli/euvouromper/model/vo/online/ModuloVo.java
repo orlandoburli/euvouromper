@@ -1,5 +1,7 @@
 package br.com.orlandoburli.euvouromper.model.vo.online;
 
+import java.util.List;
+
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Professor;
 import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
@@ -60,6 +62,8 @@ public class ModuloVo extends BaseVo {
 
 	@Join(columnsLocal = { ID_PROFESSOR }, columnsRemote = { Professor.Colunas.ID_PROFESSOR })
 	private ProfessorVo professor;
+	
+	private List<VideoVo> videos;
 	
 	// Esse produto nao e referencia com FK
 	private ProdutoVo produto;
@@ -134,5 +138,13 @@ public class ModuloVo extends BaseVo {
 
 	public void setProduto(ProdutoVo produto) {
 		this.produto = produto;
+	}
+
+	public List<VideoVo> getVideos() {
+		return videos;
+	}
+
+	public void setVideos(List<VideoVo> videos) {
+		this.videos = videos;
 	}
 }

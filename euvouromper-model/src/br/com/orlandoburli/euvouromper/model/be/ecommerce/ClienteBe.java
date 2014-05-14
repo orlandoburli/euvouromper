@@ -1,5 +1,6 @@
 package br.com.orlandoburli.euvouromper.model.be.ecommerce;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.be.admin.LoginInvalidoException;
@@ -94,6 +95,16 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 			Log.error(e);
 			throw new InsertBeException("Erro após o cadastro do cliente. Erro: " + e.getMessage());
 		}
+	}
+	
+	/**
+	 * Retorna o saldo do cliente
+	 * @param cliente Cliente a verificar o saldo
+	 * @return Saldo
+	 */
+	public BigDecimal saldo(ClienteVo cliente) {
+		// TODO Implementar rotina de saldo
+		return BigDecimal.ZERO;
 	}
 
 	public ClienteVo loginFacebook(String nome, String email) throws BeException {
@@ -206,5 +217,6 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 		// Salva o cliente
 		save(cliente);
 	}
+	
 
 }

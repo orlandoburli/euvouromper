@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemLidaBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.PedidoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
@@ -73,6 +74,10 @@ public class ClientePedidoVerView extends HttpServlet {
 			// Novas Mensagens
 
 			req.setAttribute("novasMensagens", new MensagemLidaBe(manager).getNovasMensagensCount(cliente));
+
+			// Saldo
+
+			req.setAttribute("saldo", new ClienteBe(manager).saldo(cliente));
 
 		} catch (ListException e) {
 			Log.error(e);

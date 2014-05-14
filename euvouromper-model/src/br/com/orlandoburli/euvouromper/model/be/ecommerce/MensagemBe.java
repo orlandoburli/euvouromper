@@ -68,7 +68,7 @@ public class MensagemBe extends BaseBe<MensagemVo, MensagemDao> {
 
 			List<MensagemVo> list = dao.getList(cliente, produtos, max, idMensagem);
 
-			// TODO Flag de mensagem lida
+			// Flag de mensagem lida
 			new MensagemLidaBe(getManager()).listLida(list, cliente);
 
 			return list;

@@ -122,6 +122,11 @@ public class ProdutoVo extends BaseVo {
 
 	@Join(columnsLocal = { ID_PACOTE }, columnsRemote = { Pacote.Colunas.ID_PACOTE })
 	private PacoteVo pacote;
+	
+	/**
+	 * Item do pedido, apenas para referencia.
+	 */
+	private ItemPedidoVo item;
 
 	public String getAtivoDescritivo() {
 		return new SimNao().getDescription(getAtivo());
@@ -261,5 +266,13 @@ public class ProdutoVo extends BaseVo {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public ItemPedidoVo getItem() {
+		return item;
+	}
+
+	public void setItem(ItemPedidoVo item) {
+		this.item = item;
 	}
 }

@@ -13,6 +13,7 @@ import br.com.orlandoburli.euvouromper.model.be.site.ContatoBe;
 import br.com.orlandoburli.euvouromper.model.be.site.DepartamentoBe;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Departamento;
 import br.com.orlandoburli.euvouromper.model.vo.site.ContatoVo;
+import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -26,10 +27,14 @@ public class ContatoView extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		
+
 		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
+			// Menus
+
+			WebUtils.buildMenus(req, manager);
+
 			req.setAttribute("departamentos", new DepartamentoBe(manager).getList(null, null, Departamento.TABELA_DEPARTAMENTO + "." + Departamento.Colunas.NOME));
 		} catch (ListException e) {
 			Log.error(e);
@@ -62,7 +67,7 @@ public class ContatoView extends HttpServlet {
 
 		try {
 			ContatoVo contato = new ContatoVo();
-			
+
 			contato.setNome(nome);
 			contato.setEmail(email);
 			contato.setFone(fone);
@@ -73,13 +78,13 @@ public class ContatoView extends HttpServlet {
 			ContatoBe contatoBe = new ContatoBe(manager);
 			contatoBe.save(contato);
 			contato = contatoBe.get(contato);
-			
+
 			new EmailBe(manager).sendEmailContato(contato);
 
 			req.setAttribute("sucesso", "Obrigado pelo contato. Estaremos respondendo em breve!");
 		} catch (BeException e) {
 			req.setAttribute("erro", e.getMessage());
-			
+
 			req.setAttribute("nome", nome);
 			req.setAttribute("email", email);
 			req.setAttribute("fone", fone);

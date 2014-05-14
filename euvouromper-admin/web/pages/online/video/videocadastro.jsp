@@ -117,6 +117,23 @@
 				width : 320,
 				height : 240,
 				quality : 90
+			},
+			init : {
+				FileUploaded: function(up, files, object) {
+					var myData;
+				    try {
+				        myData = eval(object.response);
+				    } catch(err) {
+				        myData = eval('(' + object.response + ')');
+				    }
+				    
+				    $("#pathVideo").val(myData.arquivo);
+				    
+				    //alert(myData.arquivo);
+					//var retorno = $.parseJSON(response);
+	                // Called when all files are either uploaded or failed
+	                //console.log('[FileUploaded] ' + up + ' - ' + files + ' - ' + response.response);
+	            },
 			}
 		});
 	});

@@ -117,6 +117,8 @@ public class UploadVideoServlet extends HttpServlet {
 
 							responseString = RESP_SUCCESS;
 							responseString = responseString.replace("[arquivo]", "\"" + nomeArquivo + "\"");
+							
+							Log.info("Nome Arquivo Upload: " + nomeArquivo);
 						}
 					}
 				} catch (Exception e) {
@@ -135,7 +137,7 @@ public class UploadVideoServlet extends HttpServlet {
 			output.write(responseBytes);
 			output.flush();
 
-			Log.debug("Upload do video finalizado!");
+			Log.debug("Upload do video finalizado! ");
 
 		} finally {
 			manager.commit();

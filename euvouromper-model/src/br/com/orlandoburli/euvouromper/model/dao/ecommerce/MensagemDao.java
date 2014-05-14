@@ -45,9 +45,9 @@ public class MensagemDao extends BaseCadastroDao<MensagemVo> {
 
 		if (produtosIn != null && produtosIn.length() > 0) {
 			sb.append(" OR \n");
-			sb.append("(" + Mensagem.TABELA_MENSAGEM + "." + Mensagem.Colunas.DESTINO + " = '" + TipoDestinoMensagens.PRODUTO + "' AND " + Mensagem.TABELA_MENSAGEM + "." + Mensagem.Colunas.ID_PRODUTO + " IN (" + produtosIn + ") \n");
+			sb.append("(" + Mensagem.TABELA_MENSAGEM + "." + Mensagem.Colunas.DESTINO + " = '" + TipoDestinoMensagens.PRODUTO + "' AND " + Mensagem.TABELA_MENSAGEM + "." + Mensagem.Colunas.ID_PRODUTO + " IN (" + produtosIn + ")) \n");
 		}
-		sb.append(") \n");
+		sb.append(")\n");
 
 		MensagemVo filter = new MensagemVo();
 		

@@ -970,6 +970,7 @@ ul#menu-aluno li a.credito {
 	color: #fff !important;
 	background-color: #3D89CF;
 	position: relative;
+	width: 319px;
 }
 ul#menu-aluno li a.credito:hover {
 	background: url('../imgs/user-creditos-hover.png') no-repeat 15px center;

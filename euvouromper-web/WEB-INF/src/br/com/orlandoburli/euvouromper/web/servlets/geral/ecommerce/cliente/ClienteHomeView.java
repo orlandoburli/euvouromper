@@ -1,7 +1,6 @@
 package br.com.orlandoburli.euvouromper.web.servlets.geral.ecommerce.cliente;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.PedidoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
@@ -27,8 +27,9 @@ public class ClienteHomeView extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
 
-		if (req.getSession().getAttribute(Constants.Session.CLIENTE) == null) {
+		if (cliente == null) {
 			WebUtils.goTo(req, resp, "/entrar?redir=/aluno");
 			return;
 		}
@@ -41,10 +42,9 @@ public class ClienteHomeView extends HttpServlet {
 
 			WebUtils.buildMenus(req, manager);
 
-			// TODO Saldo disponivel
-			req.setAttribute("saldo", BigDecimal.ZERO);
-
-			ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
+			// Saldo 
+			
+			req.setAttribute("saldo", new ClienteBe(manager).saldo(cliente));
 
 			// Pedidos em aberto
 			req.setAttribute("pedidosAbertos", new PedidoBe(manager).getPedidosAbertos(cliente));
@@ -65,8 +65,9 @@ public class ClienteHomeView extends HttpServlet {
 			req.setAttribute("novasMensagens", novasMensagens);
 
 			// Remove deixando somente as 3 primeiras
-			mensagens = mensagens.subList(0, 3);
-			
+			int max = mensagens.size() > 3 ? 3 : mensagens.size();
+			mensagens = mensagens.subList(0, max);
+
 			req.setAttribute("mensagens", mensagens);
 
 		} catch (ListException e) {
