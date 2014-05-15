@@ -3,9 +3,9 @@ package br.com.orlandoburli.euvouromper.admin.web.actions.ecommerce.mensagem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.MensagemDao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Produto;

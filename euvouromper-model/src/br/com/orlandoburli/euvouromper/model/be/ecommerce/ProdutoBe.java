@@ -42,6 +42,9 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		} else if (vo.getTipoProduto().equals(TipoProduto.TOTAL)) {
 			vo.setIdModulo(null);
 			vo.setIdPacote(null);
+		} else if (vo.getTipoProduto().equals(TipoProduto.VIDEO_INDIVIDUAL)) {
+			vo.setIdModulo(null);
+			vo.setIdPacote(null);
 		}
 
 		// Validacoes do tipo de validade
@@ -139,5 +142,19 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		filter.setAtivo(SimNao.SIM);
 
 		return getList(filter, null, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME);
+	}
+	
+	public ProdutoVo getProdutoVideoIndividual() throws ListException {
+		ProdutoVo filter = new ProdutoVo();
+		filter.setTipoProduto(TipoProduto.VIDEO_INDIVIDUAL);
+		filter.setAtivo(SimNao.SIM);
+		
+		List<ProdutoVo> list = getList(filter);
+		
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+		
+		return null;
 	}
 }

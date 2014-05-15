@@ -1,7 +1,8 @@
-package br.com.orlandoburli.euvouromper.model.vo.ecommerce;
+package br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente;
 
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoCadastro;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.Lower;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.Upper;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Domain;

@@ -1,11 +1,44 @@
-.video-novo {
+.video-ok {
 	border-left: 3px #0067b0 solid !important;
 }
 
 .video-nao-comprado {
-	border-left: 3px #555555 solid !important;
+	border-left: 3px #E74C3C solid !important;
 }
 
-.video-assistido {
-	border-left: 3px #e77120 solid !important;
+.video-gratuito {
+	border-left: 3px #5ea20d solid !important;
+}
+
+.video-gratuito p, .video-nao-comprado p, .video-ok p, .video-novo p, .video-novo span {
+	padding-left: 10px;
+	padding-top: 10px;
+	float: left;
+}
+
+.concluido,.andamento,.nao-iniciado,.expirado {
+	color: #999;
+	padding: 6px;
+	float: left;
+}
+
+.concluido p,.andamento p,.nao-iniciado p,.expirado p {
+	margin: 0;
+	padding: 0;
+}
+
+.concluido {
+	border-left: 8px solid #5ea20d;
+}
+
+.andamento {
+	border-left: 8px solid #2980b9;
+}
+
+.nao-iniciado {
+	border-left: 8px solid #F1C411;
+}
+
+.expirado {
+	border-left: 8px solid #E74C3C;
 }

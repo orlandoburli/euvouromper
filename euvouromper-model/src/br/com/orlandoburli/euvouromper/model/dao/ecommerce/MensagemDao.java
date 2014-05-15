@@ -3,11 +3,11 @@ package br.com.orlandoburli.euvouromper.model.dao.ecommerce;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Mensagem;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.MensagemVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.StatusMensagem;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoDestinoMensagens;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.dao.BaseCadastroDao;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.dao.exceptions.DAOException;

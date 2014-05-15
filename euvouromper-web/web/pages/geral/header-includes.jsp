@@ -35,6 +35,10 @@
 	<script src="${root}/web/assets/js/default.js" type="text/javascript"></script>
 	<script src="${root}/web/assets/js/plugin_revolution.js" type="text/javascript"></script>
 	<script src="${root}/web/assets/js/easypaginate.js" type="text/javascript" ></script>
+	
+	<!-- Video.js -->
+    <script src="${root}/web/assets/video-js/video.js"></script>
+    <link href="${root}/web/assets/video-js/video-js.min.css" rel="stylesheet">
 
 </head>
 

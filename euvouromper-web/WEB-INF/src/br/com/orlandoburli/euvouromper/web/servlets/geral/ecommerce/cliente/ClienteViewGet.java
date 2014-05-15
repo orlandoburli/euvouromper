@@ -1,6 +1,7 @@
 package br.com.orlandoburli.euvouromper.web.servlets.geral.ecommerce.cliente;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -15,9 +16,10 @@ import java.io.File;
 import br.com.orlandoburli.euvouromper.model.be.admin.ParametroBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ItemPedidoBe;
 import br.com.orlandoburli.euvouromper.model.be.online.VideoBe;
+import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.VideoVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -33,6 +35,13 @@ public class ClienteViewGet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		// Verifica se existe cliente logado
+		ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
+
+		if (cliente == null || cliente.getIdCliente() == null) {
+			return;
+		}
 		String urlCripto = req.getParameter("v");
 
 		String url;
@@ -49,6 +58,7 @@ public class ClienteViewGet extends HttpServlet {
 			String urlSessao = (String) req.getSession().getAttribute(url);
 
 			if (urlSessao == null || !urlCripto.equals(urlSessao)) {
+				Log.warning("URL não é mais válida! Possível tentativa de furto de vídeo do cliente " + cliente.getIdCliente() + " Nome: " + cliente.getNome());
 				return;
 			}
 
@@ -77,13 +87,6 @@ public class ClienteViewGet extends HttpServlet {
 			return;
 		}
 
-		// Verifica se existe cliente logado
-		ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
-
-		if (cliente == null || cliente.getIdCliente() == null) {
-			return;
-		}
-
 		if (idVideo != null) {
 			DAOManager manager = DAOManager.getDAOManager();
 
@@ -92,14 +95,15 @@ public class ClienteViewGet extends HttpServlet {
 				VideoVo video = new VideoBe(manager).get(idVideo);
 
 				if (video != null) {
+					if (!video.getGratuito().equals(SimNao.SIM)) {
+						ItemPedidoBe itemPedidoBe = new ItemPedidoBe(manager);
 
-					ItemPedidoBe itemPedidoBe = new ItemPedidoBe(manager);
+						ItemPedidoVo item = itemPedidoBe.get(idItemPedido);
 
-					ItemPedidoVo item = itemPedidoBe.get(idItemPedido);
-
-					if (!(itemPedidoBe.checkItemAcessoTotal(item) || itemPedidoBe.checkItem(item))) {
-						manager.commit();
-						return;
+						if (!(itemPedidoBe.checkItemAcessoTotal(item) || itemPedidoBe.checkItem(item))) {
+							manager.commit();
+							return;
+						}
 					}
 
 					ParametroVo parametroPathVideos = new ParametroBe(manager).get(Constants.Parameters.PATH_ARQUIVOS);
@@ -112,26 +116,38 @@ public class ClienteViewGet extends HttpServlet {
 					String pathVideos = parametroPathVideos.getValor();
 
 					// Pega o arquivo
-					ServletOutputStream out = resp.getOutputStream();
-					File fileVideo = new File(pathVideos + File.separator + "videos" + File.separator + video.getPathVideo());
-					FileInputStream input = new FileInputStream(fileVideo);
+					try {
+						ServletOutputStream out = resp.getOutputStream();
+						File fileVideo = new File(pathVideos + File.separator + "videos" + File.separator + video.getPathVideo());
+						FileInputStream input = new FileInputStream(fileVideo);
 
-					byte[] buffer = new byte[1024];
-					int i;
+						byte[] buffer = new byte[1024];
+						int i;
 
-					while ((i = input.read(buffer)) != -1) {
-						out.write(buffer, 0, i);
+						while ((i = input.read(buffer)) != -1) {
+							out.write(buffer, 0, i);
+						}
+
+						out.flush();
+						input.close();
+						out.close();
+					} catch (FileNotFoundException e) {
+						Log.error("Arquivo de vídeo " + pathVideos + File.separator + "videos" + File.separator + video.getPathVideo() + " não encontrado!");
 					}
 
-					out.flush();
-					input.close();
-					out.close();
-
+				} else {
+					Log.error("Vídeo de id " + idVideo + " não encontrado!");
 				}
 
 			} catch (ListException e) {
 				Log.error(e);
 			} finally {
+				try {
+					// TODO Log de visualizacao
+				} catch (Exception e) {
+					Log.error(e);
+				}
+
 				manager.commit();
 			}
 		}

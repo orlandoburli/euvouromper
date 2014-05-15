@@ -7,13 +7,13 @@ import java.util.List;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ItemPedidoDao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.ItemPedido;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.StatusPedido;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoProduto;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoValidade;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -148,7 +148,7 @@ public class ItemPedidoBe extends BaseBe<ItemPedidoVo, ItemPedidoDao> {
 
 	public boolean checkItemAcessoTotal(ItemPedidoVo item) {
 		
-		if (item.getTipoProduto().equals(TipoProduto.TOTAL)) {
+		if (!item.getTipoProduto().equals(TipoProduto.TOTAL)) {
 			return false;
 		}
 		

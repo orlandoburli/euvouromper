@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.MensagemDao;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.MensagemVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoDestinoMensagens;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;

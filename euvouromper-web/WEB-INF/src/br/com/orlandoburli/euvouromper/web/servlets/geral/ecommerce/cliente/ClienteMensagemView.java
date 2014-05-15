@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemLidaBe;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.MensagemVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;

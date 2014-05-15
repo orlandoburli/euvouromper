@@ -75,7 +75,7 @@ public final class Dicionario {
 
 			public static final String P_MENSAGEM_VER = "p_mensagem_ver";
 			public static final String P_MENSAGEM_ALT = "p_mensagem_alt";
-			
+
 			public static final String P_DEPARTAMENTO_VER = "p_departamento_ver";
 			public static final String P_DEPARTAMENTO_ALT = "p_departamento_alt";
 		}
@@ -326,6 +326,50 @@ public final class Dicionario {
 		}
 	}
 
+	public final class ClienteSaldo {
+		public static final String TABELA_CLIENTE_SALDO = "cliente_saldo";
+
+		public final class Colunas {
+			public static final String ID_CLIENTE = Cliente.Colunas.ID_CLIENTE;
+			public static final String SALDO = "saldo";
+			public static final String ID_ULTIMA_MOVIMENTACAO = ClienteMovimentacao.Colunas.ID_MOVIMENTACAO;
+		}
+	}
+
+	public final class ClienteMovimentacao {
+		public static final String TABELA_CLIENTE_MOVIMENTACAO = "cliente_movimentacao";
+
+		public final class Colunas {
+			public static final String ID_MOVIMENTACAO = "id_movimentacao";
+			public static final String ID_CLIENTE = Cliente.Colunas.ID_CLIENTE;
+			public static final String DATA_HORA = "data_hora";
+			public static final String TIPO_MOVIMENTACAO = "tipo_movimentacao";
+			public static final String HISTORICO = "historico";
+			public static final String VALOR = "valor";
+			public static final String SALDO_ANTERIOR = "saldo_anterior";
+			public static final String SALDO_ATUAL = "saldo_atual";
+
+			public static final String ID_ITEM_PEDIDO = ItemPedido.Colunas.ID_ITEM_PEDIDO;
+			public static final String ID_VIDEO = Video.Colunas.ID_VIDEO;
+		}
+	}
+
+	public final class LogVisualizacaoVideo {
+		public static final String TABELA_LOG_VIDEO = "log_video";
+
+		public final class Colunas {
+			public static final String ID_LOG = "id_log";
+			public static final String ID_CLIENTE = Cliente.Colunas.ID_CLIENTE;
+			public static final String ID_VIDEO = Video.Colunas.ID_VIDEO;
+			public static final String DATA_HORA = "data_hora";
+			public static final String ENDERECO_IP = "endereco_ip";
+			public static final String TIPO_VISUALIZACAO = "tipo_visualizacao";
+			public static final String GRATUITO = "gratuito";
+			public static final String ID_ITEM_PEDIDO = ItemPedido.Colunas.ID_ITEM_PEDIDO;
+			public static final String ID_MOVIMENTACAO = ClienteMovimentacao.Colunas.ID_MOVIMENTACAO;
+		}
+	}
+
 	public final class CupomDesconto {
 		public static final String TABELA_CUPOM_DESCONTO = "cupom_desconto";
 		public static final String UK_CUPOM_CHAVE = "uk_cupom_chave";
@@ -438,7 +482,7 @@ public final class Dicionario {
 	public final class MensagemLida {
 		public static final String TABELA_MENSAGEM_LIDA = "mensagem_lida";
 		public static final String UNIQUE_MENSAGEM_LIDA = "unq_mensagem_lida";
-		
+
 		public final class Colunas {
 			public static final String ID_MENSAGEM_LIDA = "id_mensagem_lida";
 			public static final String ID_MENSAGEM = Mensagem.Colunas.ID_MENSAGEM;
@@ -446,20 +490,20 @@ public final class Dicionario {
 			public static final String DATA_HORA = "data_hora";
 		}
 	}
-	
+
 	public final class Departamento {
 		public static final String TABELA_DEPARTAMENTO = "departamento";
-		
+
 		public final class Colunas {
 			public static final String ID_DEPARTAMENTO = "id_departamento";
 			public static final String NOME = "nome";
 			public static final String EMAIL = "email";
 		}
 	}
-	
+
 	public final class Contato {
 		public static final String TABELA_CONTATO = "contato";
-		
+
 		public final class Colunas {
 			public static final String ID_CONTATO = "id_contato";
 			public static final String NOME = "nome";

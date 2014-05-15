@@ -6,6 +6,7 @@ import java.util.Calendar;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Produto;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.Precision;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Domain;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MinSize;

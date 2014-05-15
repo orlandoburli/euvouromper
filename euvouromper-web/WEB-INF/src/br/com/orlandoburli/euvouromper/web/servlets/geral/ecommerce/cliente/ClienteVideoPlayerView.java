@@ -16,9 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ItemPedidoBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
 import br.com.orlandoburli.euvouromper.model.be.online.VideoBe;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
+import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.VideoVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -42,46 +44,62 @@ public class ClienteVideoPlayerView extends HttpServlet {
 			return;
 		}
 
-		Integer idVideo = null;
-		try {
-			idVideo = Integer.parseInt(req.getParameter("v"));
-		} catch (NumberFormatException | NullPointerException e) {
-			idVideo = null;
-		}
-
-		if (idVideo == null) {
-			Log.warning("Parametro [v] está vazio.");
-			return;
-		}
-
-		Integer idItemPedido = null;
-		try {
-			idItemPedido = Integer.parseInt(req.getParameter("i"));
-		} catch (NumberFormatException | NullPointerException e) {
-			idItemPedido = null;
-		}
-
-		if (idItemPedido == null) {
-			Log.warning("Parametro [i] está vazio.");
-			return;
-		}
-
 		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
 
+			Integer idVideo = null;
+			try {
+				idVideo = Integer.parseInt(req.getParameter("v"));
+			} catch (NumberFormatException | NullPointerException e) {
+				idVideo = null;
+			}
+
+			if (idVideo == null) {
+				Log.warning("Parametro [v] está vazio.");
+				return;
+			}
+
 			VideoVo video = new VideoBe(manager).get(idVideo);
+
+			req.setAttribute("video", video);
+
+			Integer idItemPedido = null;
+
+			try {
+				idItemPedido = Integer.parseInt(req.getParameter("i"));
+			} catch (NumberFormatException | NullPointerException e) {
+				idItemPedido = null;
+			}
+
+			if (idItemPedido == null && !video.getGratuito().equals(SimNao.SIM)) {
+				// Item ainda nao foi comprado, dar opcao de compra somente
+				// daquele video
+				Log.warning("Parametro [i] está vazio.");
+
+				// Seta o produto de video individual para compra.
+				req.setAttribute("produto", new ProdutoBe(manager).getProdutoVideoIndividual());
+
+				req.getRequestDispatcher("/web/pages/ecommerce/cliente/cliente_video_comprar.jsp").forward(req, resp);
+
+				// TODO Dar as opcoes de compra do vídeo
+				return;
+			}
 
 			ItemPedidoVo item = new ItemPedidoBe(manager).get(idItemPedido, cliente);
 
-			if (video != null && item != null) {
+			if (video != null) {
 
 				// Gera URL Temporaria na sessao
 
 				String dataHoraVideo = new SimpleDateFormat("ddMMyyyy-hhmmss").format(Utils.getNow());
 				String codigoItem = Utils.fillString(video.getIdVideo(), "0", 20, 1);
-				String itemPedido = Utils.fillString(item.getIdItemPedido(), "0", 20, 1);
-
+				String itemPedido = "";
+				if (item != null) {
+					itemPedido = Utils.fillString(item.getIdItemPedido(), "0", 20, 1);
+				} else {
+					itemPedido = Utils.fillString("0", "0", 20, 1);
+				}
 				String url = dataHoraVideo + "-" + codigoItem + "-" + itemPedido;
 
 				String urlCripto = Utils.toBase64(Criptografia.newInstance(Constants.CHAVE_CRIPTO).cripto(url));
@@ -90,7 +108,11 @@ public class ClienteVideoPlayerView extends HttpServlet {
 
 				req.setAttribute("urlVideo", urlCripto);
 
-				req.setAttribute("item", item.getIdItemPedido());
+				if (item != null) {
+					req.setAttribute("item", item.getIdItemPedido());
+				} else {
+					req.setAttribute("item", "0");
+				}
 
 				req.setAttribute("nomeCliente64", Utils.toBase64(cliente.getNome()));
 

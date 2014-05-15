@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;

@@ -11,6 +11,7 @@ import java.util.List;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.CupomDesconto;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.FilterOnly;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.NoSpace;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.Precision;

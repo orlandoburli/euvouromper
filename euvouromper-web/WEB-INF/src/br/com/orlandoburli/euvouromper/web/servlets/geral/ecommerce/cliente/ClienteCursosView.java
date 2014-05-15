@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ItemPedidoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemLidaBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoProduto;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
-import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
+import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
 import br.com.orlandoburli.framework.core.utils.Constants;
@@ -65,7 +65,7 @@ public class ClienteCursosView extends HttpServlet {
 			
 			WebUtils.sendDomain(req, new TipoProduto());
 
-		} catch (ListException e) {
+		} catch (BeException e) {
 			Log.error(e);
 		} finally {
 			manager.commit();

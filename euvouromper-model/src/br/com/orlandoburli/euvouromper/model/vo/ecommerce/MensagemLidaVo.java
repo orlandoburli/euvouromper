@@ -6,6 +6,7 @@ import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Mensagem;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.MensagemLida;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.NotEmpty;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.NotNull;
 import br.com.orlandoburli.framework.core.dao.annotations.Column;

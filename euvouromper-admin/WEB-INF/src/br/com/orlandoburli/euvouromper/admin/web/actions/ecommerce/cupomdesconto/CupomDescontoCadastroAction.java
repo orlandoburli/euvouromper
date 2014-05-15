@@ -3,9 +3,9 @@ package br.com.orlandoburli.euvouromper.admin.web.actions.ecommerce.cupomdescont
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.orlandoburli.euvouromper.model.be.ecommerce.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.CupomDescontoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.CupomDescontoDao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Produto;

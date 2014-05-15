@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.be.admin.ParametroBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteSaldoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.CheckPedidoException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.CupomBeException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.EmailException;
@@ -14,13 +16,14 @@ import br.com.orlandoburli.euvouromper.model.be.ecommerce.pagseguro.NotificacaoP
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.PedidoDao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido;
 import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.CupomDescontoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.StatusPedido;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoDesconto;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoProduto;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
@@ -55,6 +58,11 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		produto = new ProdutoBe(getManager()).get(produto);
 
 		if (produto == null) {
+			return;
+		}
+
+		if (produto.getTipoProduto().equals(TipoProduto.VIDEO_INDIVIDUAL)) {
+			// Nao adiciona este item ao carrinho, pois ele nao é comprável
 			return;
 		}
 
@@ -211,12 +219,6 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 			itemBe.save(item);
 		}
 
-		// Salva o pedido
-		getManager().commit();
-
-		// Gera compra do pagseguro
-		geraPagSeguro(pedido);
-
 		// Atualiza os dados do cliente com os dados do pedido
 		ClienteVo cliente = pedido.getCliente();
 
@@ -234,6 +236,12 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		cliente.setFone2(pedido.getFone2());
 
 		new ClienteBe(getManager()).save(cliente);
+
+		// Salva o pedido
+		getManager().commit();
+
+		// Gera compra do pagseguro
+		geraPagSeguro(pedido);
 	}
 
 	public void geraPagSeguro(PedidoVo pedido) throws BeException {
@@ -401,6 +409,17 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		pedido.setStatusPedido(StatusPedido.PAGO);
 		pedido.setDataHoraLiberacao(Calendar.getInstance());
 		save(pedido);
+
+		// Itens do tipo CREDITO, liberar o saldo na conta do cliente
+
+		List<ItemPedidoVo> list = new ItemPedidoBe(getManager()).getList(pedido);
+		ClienteSaldoBe clienteSaldoBe = new ClienteSaldoBe(getManager());
+
+		for (ItemPedidoVo item : list) {
+			if (item.getTipoProduto().equals(TipoProduto.CREDITO)) {
+				clienteSaldoBe.adicionarSaldo(pedido.getCliente(), item);
+			}
+		}
 
 		try {
 			new EmailBe(getManager()).sendEmailPedidoPago(pedido);

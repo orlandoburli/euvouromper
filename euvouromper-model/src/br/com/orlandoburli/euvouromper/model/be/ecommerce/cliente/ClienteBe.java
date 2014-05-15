@@ -1,15 +1,17 @@
-package br.com.orlandoburli.euvouromper.model.be.ecommerce;
+package br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.be.admin.LoginInvalidoException;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.EmailBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.ClienteInexistenteException;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.exceptions.EmailException;
-import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ClienteDao;
+import br.com.orlandoburli.euvouromper.model.dao.ecommerce.cliente.ClienteDao;
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
-import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoCadastro;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteSaldoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.InsertBeException;
@@ -96,15 +98,19 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 			throw new InsertBeException("Erro após o cadastro do cliente. Erro: " + e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Retorna o saldo do cliente
-	 * @param cliente Cliente a verificar o saldo
+	 * 
+	 * @param cliente
+	 *            Cliente a verificar o saldo
 	 * @return Saldo
+	 * @throws BeException
 	 */
-	public BigDecimal saldo(ClienteVo cliente) {
-		// TODO Implementar rotina de saldo
-		return BigDecimal.ZERO;
+	public BigDecimal saldo(ClienteVo cliente) throws BeException {
+		ClienteSaldoVo clienteSaldo = new ClienteSaldoBe(getManager()).get(cliente);
+
+		return clienteSaldo.getSaldo();
 	}
 
 	public ClienteVo loginFacebook(String nome, String email) throws BeException {
@@ -140,13 +146,6 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 	 * @throws BeException
 	 */
 	public ClienteVo cadastrar(String nome, String email, String senha, String confSenha) throws BeException {
-
-		// if (senha != null && confSenha != null) {
-		// if (!senha.equals(confSenha)) {
-		// throw new
-		// SaveBeException("Senha e confirmação de senha devem ser iguais!");
-		// }
-		// }
 
 		ClienteVo cliente = new ClienteVo();
 
@@ -217,6 +216,5 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 		// Salva o cliente
 		save(cliente);
 	}
-	
 
 }
