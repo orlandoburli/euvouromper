@@ -45,6 +45,10 @@ public class ItemPedidoBe extends BaseBe<ItemPedidoVo, ItemPedidoDao> {
 	}
 
 	public ItemPedidoVo get(Integer idItemPedido, ClienteVo cliente) throws ListException {
+		if (idItemPedido == null || idItemPedido == 0) {
+			return null;
+		}
+		
 		ItemPedidoVo filter = new ItemPedidoVo();
 		filter.setPedido(new PedidoVo());
 		filter.getPedido().setStatusPedido(StatusPedido.PAGO);

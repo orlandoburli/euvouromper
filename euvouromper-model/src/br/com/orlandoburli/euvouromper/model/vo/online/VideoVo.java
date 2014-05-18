@@ -4,6 +4,8 @@ import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.vo.cadastros.DisciplinaVo;
 import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteMovimentacaoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.LogVideoVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.Domain;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MaxSize;
 import br.com.orlandoburli.framework.core.be.validation.annotations.validators.MinSize;
@@ -72,6 +74,10 @@ public class VideoVo extends BaseVo {
 	@Join(columnsLocal = { ID_DISCIPLINA }, columnsRemote = { Dicionario.Disciplina.Colunas.ID_DISCIPLINA })
 	private DisciplinaVo disciplina;
 
+	private ClienteMovimentacaoVo mov;
+	
+	private LogVideoVo log;
+	
 	public Integer getIdVideo() {
 		return idVideo;
 	}
@@ -166,5 +172,21 @@ public class VideoVo extends BaseVo {
 
 	public void setPathFoto(String pathFoto) {
 		this.pathFoto = pathFoto;
+	}
+
+	public ClienteMovimentacaoVo getMov() {
+		return mov;
+	}
+
+	public void setMov(ClienteMovimentacaoVo mov) {
+		this.mov = mov;
+	}
+
+	public LogVideoVo getLog() {
+		return log;
+	}
+
+	public void setLog(LogVideoVo log) {
+		this.log = log;
 	}
 }

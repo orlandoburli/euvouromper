@@ -71,13 +71,12 @@
 							</h2>
 
 							<c:forEach items="${produtos}" var="produto">
-								<c:set var="selecionado" value="" />
-
-								<c:if test="${not empty produto.item}">
-									<c:set var="selecionado" value="selected" />
-								</c:if>
-
 								<c:if test="${produto.tipoProduto eq MODULO}">
+									<c:set var="selecionado" value="" />
+									
+									<c:if test="${not empty produto.item}">
+										<c:set var="selecionado" value="selected" />
+									</c:if>
 									<a class="tile double bd-lightBlue ${selecionado}" data-click="transform" href="${root}/aluno/curso/${produto.url}">
 
 										<div class="tile-content image">

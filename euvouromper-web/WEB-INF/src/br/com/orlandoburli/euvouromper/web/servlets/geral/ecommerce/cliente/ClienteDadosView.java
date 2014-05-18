@@ -59,7 +59,10 @@ public class ClienteDadosView extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Salvar os dados
-
+		
+		Log.info("Charset do request: " + req.getCharacterEncoding());
+		Log.info("Charset do response: " + resp.getCharacterEncoding());
+		
 		ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
 
 		if (cliente == null) {

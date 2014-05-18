@@ -78,6 +78,9 @@ public final class Dicionario {
 
 			public static final String P_DEPARTAMENTO_VER = "p_departamento_ver";
 			public static final String P_DEPARTAMENTO_ALT = "p_departamento_alt";
+
+			public static final String P_PEDIDO_VER = "p_pedido_ver";
+			public static final String P_PEDIDO_ALT = "p_pedido_alt";
 		}
 	}
 
@@ -354,7 +357,7 @@ public final class Dicionario {
 		}
 	}
 
-	public final class LogVisualizacaoVideo {
+	public final class LogVideo {
 		public static final String TABELA_LOG_VIDEO = "log_video";
 
 		public final class Colunas {
@@ -364,9 +367,9 @@ public final class Dicionario {
 			public static final String DATA_HORA = "data_hora";
 			public static final String ENDERECO_IP = "endereco_ip";
 			public static final String TIPO_VISUALIZACAO = "tipo_visualizacao";
-			public static final String GRATUITO = "gratuito";
 			public static final String ID_ITEM_PEDIDO = ItemPedido.Colunas.ID_ITEM_PEDIDO;
 			public static final String ID_MOVIMENTACAO = ClienteMovimentacao.Colunas.ID_MOVIMENTACAO;
+			public static final String ID_PRODUTO = Produto.Colunas.ID_PRODUTO;
 		}
 	}
 
@@ -415,6 +418,18 @@ public final class Dicionario {
 			public static final String VALOR_DESCONTO = "valor_desconto";
 			public static final String VALOR_LIQUIDO = "valor_liquido";
 			public static final String URL_PAG_SEGURO = "url_pag_seguro";
+		}
+	}
+
+	public final class PedidoMovimentacao {
+		public static final String TABELA_PEDIDO_MOVIMENTACAO = "pedido_movimentacao";
+
+		public final class Colunas {
+			public static final String ID_MOVIMENTACAO = "id_movimentacao";
+			public static final String ID_PEDIDO = Pedido.Colunas.ID_PEDIDO;
+			public static final String DATA_HORA = "data_hora";
+			public static final String STATUS_PEDIDO = Pedido.Colunas.STATUS_PEDIDO;
+			public static final String ID_USUARIO = Usuario.Colunas.ID_USUARIO;
 		}
 	}
 

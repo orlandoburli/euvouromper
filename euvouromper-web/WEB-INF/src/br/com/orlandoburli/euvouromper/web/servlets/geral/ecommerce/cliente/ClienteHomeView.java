@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.PedidoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.LogVideoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.MensagemVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
@@ -50,6 +51,7 @@ public class ClienteHomeView extends HttpServlet {
 			req.setAttribute("pedidosAbertos", new PedidoBe(manager).getPedidosAbertos(cliente));
 
 			// TODO Ultimas aulas
+			req.setAttribute("ultimasAulas", new LogVideoBe(manager).getUltimasAulas());
 
 			// Mensagens
 

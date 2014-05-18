@@ -18,6 +18,7 @@ import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pedido;
 import br.com.orlandoburli.euvouromper.model.vo.admin.ParametroVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.CupomDescontoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoMovimentacaoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.StatusPedido;
@@ -27,6 +28,7 @@ import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.BaseBe;
 import br.com.orlandoburli.framework.core.be.exceptions.BeException;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
+import br.com.orlandoburli.framework.core.be.exceptions.persistence.SaveBeException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
 import br.com.orlandoburli.framework.core.utils.Constants;
@@ -50,6 +52,18 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 
 	public PedidoBe(DAOManager manager) {
 		super(manager);
+	}
+
+	@Override
+	public void doAfterSave(PedidoVo vo) throws SaveBeException {
+		super.doAfterSave(vo);
+
+		// Gera movimentacao do pedido
+		try {
+			new PedidoMovimentacaoBe(getManager()).geraMovimentacao(vo);
+		} catch (BeException e) {
+			Log.error(e);
+		}
 	}
 
 	public void adicionarItem(PedidoVo pedido, Integer idProduto) throws ListException {
@@ -85,7 +99,7 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 		item.setIdPacote(produto.getIdPacote());
 		item.setIdModulo(produto.getIdModulo());
 		item.setPacote(produto.getPacote());
-		item.setModulo(item.getModulo());
+		item.setModulo(produto.getModulo());
 		item.setTipoValidade(produto.getTipoValidade());
 		item.setDiasValidade(produto.getDiasValidade());
 		item.setDataValidade(produto.getDataValidade());
@@ -395,9 +409,24 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 	}
 
 	public void cancelar(PedidoVo pedido) throws BeException {
+		if (pedido.getStatusPedido().equals(StatusPedido.CANCELADO)) {
+			throw new SaveBeException("Este pedido já está cancelado!");
+		}
+		
 		pedido.setStatusPedido(StatusPedido.CANCELADO);
 		save(pedido);
 
+		// Itens do tipo CREDITO, estornar o saldo na conta do cliente
+
+		List<ItemPedidoVo> list = new ItemPedidoBe(getManager()).getList(pedido);
+		ClienteSaldoBe clienteSaldoBe = new ClienteSaldoBe(getManager());
+
+		for (ItemPedidoVo item : list) {
+			if (item.getTipoProduto().equals(TipoProduto.CREDITO)) {
+				clienteSaldoBe.estornarSaldo(pedido.getCliente(), item);
+			}
+		}
+		
 		try {
 			new EmailBe(getManager()).sendEmailPedidoCancelado(pedido);
 		} catch (ListException | EmailException e) {
@@ -406,6 +435,11 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 	}
 
 	public void pagar(PedidoVo pedido) throws BeException {
+		
+		if (pedido.getStatusPedido().equals(StatusPedido.PAGO)) {
+			throw new SaveBeException("Este pedido já está pago!");
+		}
+		
 		pedido.setStatusPedido(StatusPedido.PAGO);
 		pedido.setDataHoraLiberacao(Calendar.getInstance());
 		save(pedido);

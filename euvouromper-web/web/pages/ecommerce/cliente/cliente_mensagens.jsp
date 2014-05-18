@@ -75,7 +75,7 @@
 
 	<%@include file="../../geral/footer.jsp"%>
 
-	<script>
+	<script type="text/javascript">
 		$(function() {
 			$(".createWindow").click(function(e) {
 				var id =  $(this).attr("data-mensagem-id");

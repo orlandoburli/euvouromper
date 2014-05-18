@@ -10,7 +10,7 @@
     <meta name="product" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="${keywords}">
 
     <link href="${root}/web/assets/css/metro-bootstrap.css" rel="stylesheet">
     <link href="${root}/web/assets/css/metro-bootstrap-responsive.css" rel="stylesheet">

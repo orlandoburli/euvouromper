@@ -90,7 +90,7 @@ public class PerfilAdminVo extends BaseVo {
 	private String permissaoProfessorAlt;
 
 	// Grupo Site
-	
+
 	@Column(name = Colunas.P_DEPARTAMENTO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -274,6 +274,18 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoMensagemAlt;
+
+	@Column(name = Colunas.P_PEDIDO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoPedidoVer;
+
+	@Column(name = Colunas.P_PEDIDO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoPedidoAlt;
 
 	public Integer getIdPerfil() {
 		return idPerfil;
@@ -609,5 +621,21 @@ public class PerfilAdminVo extends BaseVo {
 
 	public void setPermissaoDepartamentoAlt(String permissaoDepartamentoAlt) {
 		this.permissaoDepartamentoAlt = permissaoDepartamentoAlt;
+	}
+
+	public String getPermissaoPedidoVer() {
+		return permissaoPedidoVer;
+	}
+
+	public void setPermissaoPedidoVer(String permissaoPedidoVer) {
+		this.permissaoPedidoVer = permissaoPedidoVer;
+	}
+
+	public String getPermissaoPedidoAlt() {
+		return permissaoPedidoAlt;
+	}
+
+	public void setPermissaoPedidoAlt(String permissaoPedidoAlt) {
+		this.permissaoPedidoAlt = permissaoPedidoAlt;
 	}
 }

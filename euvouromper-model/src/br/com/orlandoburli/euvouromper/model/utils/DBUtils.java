@@ -13,6 +13,7 @@ import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ProdutoDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.cliente.ClienteDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.cliente.ClienteMovimentacaoDao;
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.cliente.ClienteSaldoDao;
+import br.com.orlandoburli.euvouromper.model.dao.ecommerce.cliente.LogVideoDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.ModuloDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.ModuloVideoDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.PacoteDao;
@@ -24,6 +25,7 @@ import br.com.orlandoburli.euvouromper.model.dao.site.DepartamentoDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.InstitucionalDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.MenuDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.NoticiaDao;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoMovimentadaoDao;
 import br.com.orlandoburli.framework.core.dao.BaseCadastroDao;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.dao.exceptions.DAOException;
@@ -55,12 +57,14 @@ public final class DBUtils {
 			new ClienteDao(manager).checkTable();
 			new ClienteMovimentacaoDao(manager).checkTable();
 			new ClienteSaldoDao(manager).checkTable();
+			new LogVideoDao(manager).checkTable();
 			
 			new ProdutoDao(manager).checkTable();
 			new CupomDescontoDao(manager).checkTable();
 
 			new PedidoDao(manager).checkTable();
 			new ItemPedidoDao(manager).checkTable();
+			new PedidoMovimentadaoDao(manager).checkTable();
 
 			new EmailDao(manager).checkTable();
 			new MensagemDao(manager).checkTable();

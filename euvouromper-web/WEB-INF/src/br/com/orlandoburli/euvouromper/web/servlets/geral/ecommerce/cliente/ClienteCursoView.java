@@ -14,6 +14,8 @@ import br.com.orlandoburli.euvouromper.model.be.ecommerce.ItemPedidoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.MensagemLidaBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteSaldoBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.LogVideoBe;
 import br.com.orlandoburli.euvouromper.model.be.online.ModuloBe;
 import br.com.orlandoburli.euvouromper.model.be.online.VideoBe;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
@@ -87,6 +89,27 @@ public class ClienteCursoView extends HttpServlet {
 				// Se nao e pacote nem modulo, voce nao deveria estar aqui!
 				WebUtils.goTo(req, resp, "/aluno/cursos");
 				return;
+			}
+
+			if (produto.getItem() == null) {
+				// Se o produto nao estiver comprado, verifica se cada video foi
+				// comprado individualmente.
+				if (produto.getTipoProduto().equals(TipoProduto.MODULO)) {
+					new ClienteSaldoBe(manager).checkVideos(cliente, produto.getModulo().getVideos());
+				} else if (produto.getTipoProduto().equals(TipoProduto.PACOTE)) {
+					for (ModuloVo modulo : produto.getPacote().getModulos()) {
+						new ClienteSaldoBe(manager).checkVideos(cliente, modulo.getVideos());
+					}
+				}
+			}
+			
+			// Log dos videos
+			if (produto.getTipoProduto().equals(TipoProduto.MODULO)) {
+				new LogVideoBe(manager).checkLog(cliente, produto.getModulo().getVideos());
+			} else if (produto.getTipoProduto().equals(TipoProduto.PACOTE)) {
+				for (ModuloVo modulo : produto.getPacote().getModulos()) {
+					new LogVideoBe(manager).checkLog(cliente, modulo.getVideos());
+				}
 			}
 
 			req.setAttribute("produto", produto);

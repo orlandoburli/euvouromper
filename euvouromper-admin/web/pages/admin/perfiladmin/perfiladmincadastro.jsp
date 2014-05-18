@@ -483,6 +483,26 @@
 									</select>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Pedidos</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoPedidoVer"  data-field-value="${vo.permissaoPedidoVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Pedidos</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoPedidoAlt"  data-field-value="${vo.permissaoPedidoAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
 						</div>
 					</div>
 

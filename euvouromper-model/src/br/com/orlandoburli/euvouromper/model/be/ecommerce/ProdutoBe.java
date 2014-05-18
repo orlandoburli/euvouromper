@@ -18,6 +18,7 @@ import br.com.orlandoburli.framework.core.dao.DAOManager;
 public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 
 	private static final int TAMANHO_PAGINA_PRODUTOS = 8;
+	private static final String FILTRO_HOME_TIPO = Produto.TABELA_PRODUTO + "." + Produto.Colunas.TIPO_PRODUTO + " IN (" + "'" + TipoProduto.MODULO + "', '" + TipoProduto.PACOTE + "', '" + TipoProduto.CREDITO + "')";
 
 	public ProdutoBe(DAOManager manager) {
 		super(manager);
@@ -54,7 +55,7 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 			}
 			vo.setDiasValidade(null);
 		} else if (vo.getTipoValidade().equals(TipoValidade.DIAS)) {
-			if (vo.getDiasValidade() == null) {
+			if (vo.getDiasValidade() == null || vo.getDiasValidade() <= 0) {
 				throw new SaveBeException("Informe os dias de validade!");
 			}
 			vo.setDataValidade(null);
@@ -116,7 +117,7 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		ProdutoVo filter = new ProdutoVo();
 		filter.setAtivo(SimNao.SIM);
 
-		return getList(filter, null, "RANDOM()", 1, 5);
+		return getList(filter, FILTRO_HOME_TIPO, "RANDOM()", 1, 5);
 	}
 
 	public Integer getQuantidadePaginasProdutos() throws ListException {
@@ -124,7 +125,7 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 
 		filter.setAtivo(SimNao.SIM);
 
-		return getPageCount(filter, null, TAMANHO_PAGINA_PRODUTOS);
+		return getPageCount(filter, FILTRO_HOME_TIPO, TAMANHO_PAGINA_PRODUTOS);
 	}
 
 	public List<ProdutoVo> getPaginaProdutos(Integer pagina) throws ListException {
@@ -133,7 +134,7 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 
 		filter.setAtivo(SimNao.SIM);
 
-		return getList(filter, null, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME, pagina, TAMANHO_PAGINA_PRODUTOS);
+		return getList(filter, FILTRO_HOME_TIPO, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME, pagina, TAMANHO_PAGINA_PRODUTOS);
 	}
 
 	public List<ProdutoVo> getListAtivos() throws ListException {
@@ -141,20 +142,20 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 
 		filter.setAtivo(SimNao.SIM);
 
-		return getList(filter, null, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME);
+		return getList(filter, FILTRO_HOME_TIPO, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME);
 	}
-	
+
 	public ProdutoVo getProdutoVideoIndividual() throws ListException {
 		ProdutoVo filter = new ProdutoVo();
 		filter.setTipoProduto(TipoProduto.VIDEO_INDIVIDUAL);
 		filter.setAtivo(SimNao.SIM);
-		
+
 		List<ProdutoVo> list = getList(filter);
-		
+
 		if (list.size() > 0) {
 			return list.get(0);
 		}
-		
+
 		return null;
 	}
 }

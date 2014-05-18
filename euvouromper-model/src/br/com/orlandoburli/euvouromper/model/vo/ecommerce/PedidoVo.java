@@ -11,6 +11,7 @@ import java.util.List;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.CupomDesconto;
+import br.com.orlandoburli.euvouromper.model.vo.admin.UsuarioVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.FilterOnly;
 import br.com.orlandoburli.framework.core.be.validation.annotations.transformation.NoSpace;
@@ -163,6 +164,11 @@ public class PedidoVo extends BaseVo {
 	private String urlPagSeguro;
 
 	private List<ItemPedidoVo> itens;
+	
+	/**
+	 * Este usuario é meramente para transporte de dados.
+	 */
+	private UsuarioVo usuario;
 	
 	public String getStatusPedidoDescritivo() {
 		return new StatusPedido().getDescription(this.getStatusPedido());
@@ -381,5 +387,13 @@ public class PedidoVo extends BaseVo {
 
 	public void setDataHoraPedido(Calendar dataHoraPedido) {
 		this.dataHoraPedido = dataHoraPedido;
+	}
+
+	public UsuarioVo getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioVo usuario) {
+		this.usuario = usuario;
 	}
 }

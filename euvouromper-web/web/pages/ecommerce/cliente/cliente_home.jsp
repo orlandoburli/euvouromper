@@ -44,28 +44,20 @@
 						<table class="table hovered">
 							<thead>
 								<tr>
-									<th class="text-left">Aula</th>
-									<th class="text-left">Assistido(%)</th>
+									<th class="text-left">Curso</th>
+									<th class="text-left">Vídeo</th>
 									<th class="text-left"></th>
 								</tr>
 							</thead>
 
 							<tbody>
-								<tr>
-									<td><a href="" title="" id="" class="createWindow">Língua Portuguesa</a></td>
-									<td class="right">20%</td>
-									<td class="right"><a href="" title="" class="revisar">Continuar</a></td>
-								</tr>
-								<tr>
-									<td><a href="" title="" class="">Gestão de Pessoas</a></td>
-									<td class="right">20%</td>
-									<td class="right"><a href="" title="" class="iniciar">Continuar</a></td>
-								</tr>
-								<tr>
-									<td><a href="" title="" class="">Administração Geral</a></td>
-									<td class="right">20%</td>
-									<td class="right"><a href="" title="" class="revisar">Continuar</a></td>
-								</tr>
+								<c:forEach var="log" items="${ultimasAulas}">
+									<tr>
+										<td><a href="" title="" id="" class="createWindow">${log.produto.nome}</a></td>
+										<td class="right">${log.video.nome} Aula ${log.video.aula} Bloco ${log.video.bloco}</td>
+										<td class="right"><a href="${root}/aluno/curso/${log.produto.url}" title="" class="revisar">Continuar</a></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 
 							<tfoot></tfoot>

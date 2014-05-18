@@ -257,6 +257,57 @@ function editar() {
 	});
 }
 
+function acaoCustomizada(acao) {
+	if (!registroSelecionado()) {
+		return;
+	}
+	
+	var dados = getSelectedDataId();
+
+	var paginaCadastro = $(".DataGridConsulta").attr("data-detail-page");
+	var paginaBase = paginaCadastro.split(".")[0];
+	var paginaVisualizar = paginaBase + ".visualizar." + paginaCadastro.split(".")[1];
+
+	var params = {
+		'operacao' : acao
+	};
+
+	var dadosSplit = dados.split("&");
+
+	for ( var i = 0; i < dadosSplit.length; i++) {
+		var campo = dadosSplit[i].split("=")[0];
+		var valor = dadosSplit[i].split("=")[1];
+		params[campo] = valor;
+	}
+
+	$.ajax({
+		url : paginaVisualizar,
+		type : 'POST',
+		data : params,
+		beforeSend : function(data) {
+			debug("loading...");
+		},
+		success : function(data) {
+			var tempo = 250;
+			$("#formulario-home").fadeOut(tempo);
+
+			setTimeout(function() {
+				$("#formulario-home").html(data);
+				$("#formulario-home").fadeIn(tempo);
+
+				// Carrega o js de cadastros
+				loadJs("web/pages/js/cadastro.js");
+				
+				// Forca o load dos componentes
+				loadJs("web/pages/js/load.js");
+			}, tempo);
+		},
+		error : function(erro) {
+			debug("Erro no load ajax! " + erro);
+		}
+	});
+}
+
 function excluirOld() {
 //	confirmacaoModal("Confirma a exclusão deste registro?", "Confirmação", excluirConfirmado);
 }

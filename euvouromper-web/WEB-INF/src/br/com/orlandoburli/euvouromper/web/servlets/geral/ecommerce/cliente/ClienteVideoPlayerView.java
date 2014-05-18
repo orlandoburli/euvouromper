@@ -17,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ItemPedidoBe;
 import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.cliente.ClienteSaldoBe;
 import br.com.orlandoburli.euvouromper.model.be.online.VideoBe;
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
+import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.VideoVo;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
@@ -72,7 +74,13 @@ public class ClienteVideoPlayerView extends HttpServlet {
 				idItemPedido = null;
 			}
 
-			if (idItemPedido == null && !video.getGratuito().equals(SimNao.SIM)) {
+			Log.info("idItemPedido 2 = " + idItemPedido);
+
+			// Verifica se o video foi comprado invidividualmente
+			boolean compraIndividual = new ClienteSaldoBe(manager).checkIndividual(cliente, video) != null;
+
+			if (idItemPedido == null && !compraIndividual && !video.getGratuito().equals(SimNao.SIM)) {
+
 				// Item ainda nao foi comprado, dar opcao de compra somente
 				// daquele video
 				Log.warning("Parametro [i] está vazio.");
@@ -82,8 +90,15 @@ public class ClienteVideoPlayerView extends HttpServlet {
 
 				req.getRequestDispatcher("/web/pages/ecommerce/cliente/cliente_video_comprar.jsp").forward(req, resp);
 
-				// TODO Dar as opcoes de compra do vídeo
 				return;
+			}
+
+			Integer idProduto = null;
+
+			try {
+				idProduto = Integer.parseInt(req.getParameter("p"));
+			} catch (NullPointerException | NumberFormatException e) {
+				idProduto = null;
 			}
 
 			ItemPedidoVo item = new ItemPedidoBe(manager).get(idItemPedido, cliente);
@@ -100,7 +115,18 @@ public class ClienteVideoPlayerView extends HttpServlet {
 				} else {
 					itemPedido = Utils.fillString("0", "0", 20, 1);
 				}
-				String url = dataHoraVideo + "-" + codigoItem + "-" + itemPedido;
+				
+				ProdutoVo produto = new ProdutoBe(manager).get(idProduto);
+
+				String idProdutoStr = "";
+				
+				if (produto != null) {
+					idProdutoStr = produto.getIdProduto().toString();
+				}
+				
+				idProdutoStr = Utils.fillString(idProdutoStr, "0", 20, 1);
+
+				String url = dataHoraVideo + "-" + codigoItem + "-" + itemPedido + "-" + idProdutoStr;
 
 				String urlCripto = Utils.toBase64(Criptografia.newInstance(Constants.CHAVE_CRIPTO).cripto(url));
 

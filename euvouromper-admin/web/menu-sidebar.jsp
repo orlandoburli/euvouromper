@@ -120,6 +120,9 @@
 					<c:if test="${usuario.perfil.permissaoMensagemVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="mensagemconsulta.admin">Mensagens</a></li>
 					</c:if>
+					<c:if test="${usuario.perfil.permissaoPedidoVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="pedidoconsulta.admin">Pedidos</a></li>
+					</c:if>
 				</ul></li>
 		</ul>
 		<!-- /main navigation -->

@@ -59,15 +59,30 @@
 															<c:if test="${not empty produto.item}">
 																<c:set var="statusVideo" value="video-ok" />
 															</c:if>
+															
+															<c:if test="${not empty video.mov}">
+																<c:set var="statusVideo" value="video-ok" />
+															</c:if>
 
-															<c:if test="${video.gratuito eq 'S' }">
+															<c:if test="${video.gratuito eq 'S'}">
 																<c:set var="statusVideo" value="video-gratuito" />
 															</c:if>
 
 															<a href="#conteudo-video" class="ver-video list ${statusVideo}" data-id-video="${video.idVideo}" data-id-item-pedido="${produto.item.idItemPedido}">
 																<div class="list-content">
-																	<span class="place-right icon-star-3 fg-amber smaller"></span> <span class="list-title">${video.nome} - Aula ${video.aula } Bloco ${video.bloco }</span> <span class="list-subtitle"> <span class="place-right">Assistido 01/04/2014 11:51</span> Disciplina: ${video.disciplina.nome}
-																	</span> <span class="list-remark">Professor: ${video.professor.nome}</span>
+																	<c:if test="${empty video.log }">
+																		<span class="place-right icon-star-3 fg-amber smaller"></span>
+																	</c:if>
+																	<span class="list-title">${video.nome} - Aula ${video.aula } Bloco ${video.bloco }</span> 
+																	<span class="list-subtitle"> 
+																		<c:if test="${not empty video.log}">
+																			<fmt:formatDate value="${video.log.dataHora.time}" pattern="dd/MM/yyyy HH:mm:ss" var="dataFormatada" />
+																			<span class="place-right">Assistido ${dataFormatada}</span>
+																		</c:if>
+																		 
+																		Disciplina: ${video.disciplina.nome}
+																	</span> 
+																	<span class="list-remark">Professor: ${video.professor.nome}</span>
 																</div>
 															</a>
 														</c:forEach>
@@ -91,6 +106,10 @@
 														<c:if test="${not empty produto.item}">
 															<c:set var="statusVideo" value="video-ok" />
 														</c:if>
+														
+														<c:if test="${not empty video.mov}">
+															<c:set var="statusVideo" value="video-ok" />
+														</c:if>
 
 														<c:if test="${video.gratuito eq 'S' }">
 															<c:set var="statusVideo" value="video-gratuito" />
@@ -98,8 +117,19 @@
 
 														<a href="#conteudo-video" class="ver-video list ${statusVideo}" data-id-video="${video.idVideo}" data-id-item-pedido="${produto.item.idItemPedido}">
 															<div class="list-content">
-																<span class="place-right icon-star-3 fg-amber smaller"></span> <span class="list-title">${video.nome} - Aula ${video.aula } Bloco ${video.bloco }</span> <span class="list-subtitle"> <span class="place-right">Assistido 01/04/2014 11:51</span> Disciplina: ${video.disciplina.nome}
-																</span> <span class="list-remark">Professor: ${video.professor.nome}</span>
+																<c:if test="${empty video.log }">
+																	<span class="place-right icon-star-3 fg-amber smaller"></span>
+																</c:if> 
+																<span class="list-title">${video.nome} - Aula ${video.aula } Bloco ${video.bloco }</span> 
+																<span class="list-subtitle"> 
+																	<c:if test="${not empty video.log}">
+																		<fmt:formatDate value="${video.log.dataHora.time}" pattern="dd/MM/yyyy HH:mm:ss" var="dataFormatada" />
+																		<span class="place-right">Assistido ${dataFormatada}</span>
+																	</c:if>
+																	 
+																	Disciplina: ${video.disciplina.nome}
+																</span> 
+																<span class="list-remark">Professor: ${video.professor.nome}</span>
 															</div>
 														</a>
 													</c:forEach>
@@ -171,7 +201,7 @@
 
 					$.ajax({
 						url : '${root}/aluno.video.page?v=' + idVideo + '&i='
-								+ idItemPedido,
+								+ idItemPedido + '&p=${produto.idProduto}',
 						type : 'POST',
 						data : params,
 						beforeSend : function(data) {
