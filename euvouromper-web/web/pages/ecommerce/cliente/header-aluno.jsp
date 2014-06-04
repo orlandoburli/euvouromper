@@ -10,5 +10,6 @@
 		<li><a href="${root}/aluno/dados" class="dados">Meus Dados</a></li>
 		<li><a href="${root}/aluno/pedidos" class="preferencias">Meus Pedidos</a></li>
 		<li><a href="${root}/aluno" class="credito"> <fmt:formatNumber value="${saldo}" minFractionDigits="2" type="currency" /> <span>saldo </span></a></li>
+		<li><a href="${root}/sair" class="preferencias">Sair</a></li>
 	</ul>
 </nav>

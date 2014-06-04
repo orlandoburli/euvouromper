@@ -49,6 +49,9 @@ public final class Dicionario {
 			public static final String P_NOTICIA_VER = "p_noticia_ver";
 			public static final String P_NOTICIA_ALT = "p_noticia_alt";
 
+			public static final String P_AGENDA_VER = "p_agenda_ver";
+			public static final String P_AGENDA_ALT = "p_agenda_alt";
+
 			public static final String P_ARTIGO_VER = "p_artigo_ver";
 			public static final String P_ARTIGO_ALT = "p_artigo_alt";
 
@@ -63,6 +66,9 @@ public final class Dicionario {
 
 			public static final String P_PACOTE_VER = "p_pacote_ver";
 			public static final String P_PACOTE_ALT = "p_pacote_alt";
+
+			public static final String P_MATERIAL_APOIO_VER = "p_material_apoio_ver";
+			public static final String P_MATERIAL_APOIO_ALT = "p_material_apoio_alt";
 
 			public static final String P_PRODUTO_VER = "p_produto_ver";
 			public static final String P_PRODUTO_ALT = "p_produto_alt";
@@ -124,6 +130,16 @@ public final class Dicionario {
 		}
 	}
 
+	public final class ProfessorProduto {
+		public static final String TABELA_PROFESSOR_PRODUTO = "professor_produto";
+
+		public final class Colunas {
+			public static final String ID_PROFESSOR_PRODUTO = "id_professor_produto";
+			public static final String ID_PROFESSOR = Professor.Colunas.ID_PROFESSOR;
+			public static final String ID_PRODUTO = Produto.Colunas.ID_PRODUTO;
+		}
+	}
+
 	public final class Menu {
 		public static final String TABELA_MENU = "menu";
 
@@ -173,6 +189,20 @@ public final class Dicionario {
 			public static final String TEXTO = "texto";
 			public static final String DATA = "data";
 			public static final String ID_PROFESSOR = Professor.Colunas.ID_PROFESSOR;
+			public static final String URL = "url";
+			public static final String STATUS = "status";
+		}
+	}
+
+	public final class Agenda {
+		public static final String TABELA_AGENDA = "agenda";
+
+		public final class Colunas {
+			public static final String ID_AGENDA = "id_agenda";
+			public static final String TITULO = "titulo";
+			public static final String RESUMO = "resumo";
+			public static final String TEXTO = "texto";
+			public static final String DATA = "data";
 			public static final String URL = "url";
 			public static final String STATUS = "status";
 		}
@@ -245,6 +275,17 @@ public final class Dicionario {
 			public static final String OBJETIVO = "objetivo";
 
 			public static final String ID_PROFESSOR = Professor.Colunas.ID_PROFESSOR;
+		}
+	}
+
+	public final class MaterialApoio {
+		public static final String TABELA_MATERIAL_APOIO = "material_apoio";
+
+		public final class Colunas {
+			public static final String ID_MATERIAL_APOIO = "id_material_apoio";
+			public static final String NOME = "nome";
+			public static final String ARQUIVO = "arquivo";
+			public static final String ID_MODULO = Modulo.Colunas.ID_MODULO;
 		}
 	}
 
@@ -527,6 +568,15 @@ public final class Dicionario {
 			public static final String FONE = "fone";
 			public static final String ID_DEPARTAMENTO = Departamento.Colunas.ID_DEPARTAMENTO;
 			public static final String MENSAGEM = "mensagem";
+		}
+	}
+
+	public final class Newsletter {
+		public static final String TABELA_NEWSLETTER = "newsletter";
+
+		public final class Colunas {
+			public static final String ID_NEWSLETTER = "id_newsletter";
+			public static final String EMAIL = "email";
 		}
 	}
 

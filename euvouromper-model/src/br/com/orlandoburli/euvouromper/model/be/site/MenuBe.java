@@ -26,8 +26,12 @@ public class MenuBe extends BaseBe<MenuVo, MenuDao> {
 		return list;
 	}
 
-	public List<MenuVo> getListTopo() throws ListException {
-		return getListGrupo(GrupoMenu.TOPO);
+	public List<MenuVo> getListTopo1() throws ListException {
+		return getListGrupo(GrupoMenu.TOPO1);
+	}
+
+	public List<MenuVo> getListTopo2() throws ListException {
+		return getListGrupo(GrupoMenu.TOPO2);
 	}
 
 	public List<MenuVo> getListRodape1() throws ListException {
@@ -40,6 +44,10 @@ public class MenuBe extends BaseBe<MenuVo, MenuDao> {
 
 	public List<MenuVo> getListRodape3() throws ListException {
 		return getListGrupo(GrupoMenu.RODAPE3);
+	}
+
+	public List<MenuVo> getListLateral1() throws ListException {
+		return getListGrupo(GrupoMenu.LATERAL1);
 	}
 
 }

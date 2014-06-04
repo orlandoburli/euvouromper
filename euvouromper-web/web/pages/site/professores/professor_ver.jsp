@@ -24,7 +24,9 @@
 					<li class="active"><a href="#">${professor.nome}</a></li>
 				</ul>
 			</nav>
+			
 			<h2 class="titles-big title-professores">${professor.nome}</h2>
+			
 			<div id="desc-prof">
 				<figure id="foto-professor">
 					<img class="cycle polaroid shadow" style="width: 180px; height: 180px;"  src="${professor.pathFoto}" alt="${professor.nome}" />
@@ -34,6 +36,32 @@
 				</figure>
 				<p>${professor.curriculo}</p>
 			</div>
+			
+			
+			<div class="tile-group">
+					<h2 class="titles-big linha-h2">
+						<i class="icon-cube"></i> Cursos deste professor
+					</h2>
+					
+					<c:forEach items="${produtos}" var="produto">
+						<a class="tile double bd-lightBlue" data-click="transform" href="${root}/produto/${produto.url}">
+
+							<div class="tile-content image">
+								<img src="${produto.pathFoto }">
+							</div>
+
+							<div class="tile-content icon">
+								<i class="icon-play-alt"></i>
+							</div>
+
+							<div class="brand bg-dark opacity">
+								<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor"/>
+								<span class="label fg-white">${produto.nome} - ${valor}</span>
+							</div>
+
+						</a>
+					</c:forEach>
+				</div>
 
 		</div>
 		<!-- end noticias -->

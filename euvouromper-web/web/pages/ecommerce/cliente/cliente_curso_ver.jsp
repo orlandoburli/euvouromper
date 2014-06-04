@@ -68,7 +68,7 @@
 																<c:set var="statusVideo" value="video-gratuito" />
 															</c:if>
 
-															<a href="#conteudo-video" class="ver-video list ${statusVideo}" data-id-video="${video.idVideo}" data-id-item-pedido="${produto.item.idItemPedido}">
+															<a href="#conteudo-video" class="ver-video list ${statusVideo}" data-id-video="${video.idVideo}" data-id-item-pedido="${produto.item.idItemPedido}" data-id-modulo="${modulo.idModulo}">
 																<div class="list-content">
 																	<c:if test="${empty video.log }">
 																		<span class="place-right icon-star-3 fg-amber smaller"></span>
@@ -115,7 +115,7 @@
 															<c:set var="statusVideo" value="video-gratuito" />
 														</c:if>
 
-														<a href="#conteudo-video" class="ver-video list ${statusVideo}" data-id-video="${video.idVideo}" data-id-item-pedido="${produto.item.idItemPedido}">
+														<a href="#conteudo-video" class="ver-video list ${statusVideo}" data-id-video="${video.idVideo}" data-id-item-pedido="${produto.item.idItemPedido}"  data-id-modulo="${modulo.idModulo}">
 															<div class="list-content">
 																<c:if test="${empty video.log }">
 																	<span class="place-right icon-star-3 fg-amber smaller"></span>
@@ -131,7 +131,7 @@
 																</span> 
 																<span class="list-remark">Professor: ${video.professor.nome}</span>
 															</div>
-														</a>
+														</a>	
 													</c:forEach>
 												</div>
 											</div>
@@ -190,10 +190,11 @@
 				function(e) {
 					var idVideo = $(this).attr("data-id-video");
 					var idItemPedido = $(this).attr("data-id-item-pedido");
+					var idModulo = $(this).attr("data-id-modulo");
 					var tempo = 250;
 
-					console.log("Vídeo: " + idVideo);
-					console.log("Item Pedido: " + idItemPedido);
+					/* console.log("Vídeo: " + idVideo);
+					console.log("Item Pedido: " + idItemPedido); */
 
 					// Load ajax
 
@@ -201,7 +202,7 @@
 
 					$.ajax({
 						url : '${root}/aluno.video.page?v=' + idVideo + '&i='
-								+ idItemPedido + '&p=${produto.idProduto}',
+								+ idItemPedido + '&p=${produto.idProduto}&m=' + idModulo,
 						type : 'POST',
 						data : params,
 						beforeSend : function(data) {

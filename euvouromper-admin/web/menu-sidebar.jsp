@@ -82,6 +82,9 @@
 					<c:if test="${usuario.perfil.permissaoArtigoVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="artigoconsulta.admin">Artigos</a></li>
 					</c:if>
+					<c:if test="${usuario.perfil.permissaoAgendaVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="agendaconsulta.admin">Agenda</a></li>
+					</c:if>
 					<c:if test="${usuario.perfil.permissaoInstitucionalVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="institucionalconsulta.admin">Páginas Institucionais</a></li>
 					</c:if>
@@ -103,6 +106,10 @@
 					</c:if>
 					<c:if test="${usuario.perfil.permissaoPacoteVer eq 'S' }">
 						<li><a data-menu-type="link" data-link="pacoteconsulta.admin">Pacotes</a></li>
+					</c:if>
+					
+					<c:if test="${usuario.perfil.permissaoMaterialApoioVer eq 'S' }">
+						<li><a data-menu-type="link" data-link="materialapoioconsulta.admin">Materiais de Apoio</a></li>
 					</c:if>
 				</ul></li>
 

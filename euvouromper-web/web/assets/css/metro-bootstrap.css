@@ -9,6 +9,7 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
+  background: #fff url('../imgs/background-body.jpg') top center repeat-x;
 }
 html,
 body,

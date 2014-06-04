@@ -29,9 +29,29 @@
 	<div class="panel-body">
 		<div class="DataGridConsulta" data-page="professorconsulta.grid.admin" data-page-size="8" data-detail-page="professorcadastro.admin"></div>
 	</div>
+	
+	<!-- Botoes customizados -->
+	<c:set var="customButtons">
+		<button type="button" class="BotaoProdutos btn btn-lg btn-warning tip" title="Produtos do professor">
+			<i class="icon-cube2"></i> Produtos
+		</button>
+	</c:set>
 
 	<c:if test="${usuario.perfil.permissaoProfessorAlt eq 'S'}">
 		<%@include file="../../../botoes-consulta.jsp"%>
 	</c:if>
 </div>
 <!-- /datatable inside panel body -->
+
+<script type="text/javascript">
+	$(".BotaoProdutos").click(function() {
+		if (!registroSelecionado()) {
+			return;
+		}
+
+		var paginaAcoes = "professorprodutoconsulta.admin?" + getSelectedDataId();
+		loadPage(paginaAcoes);
+		loadJs("web/pages/js/consulta.js");
+		loadJs("web/pages/js/load.js");
+	});
+</script>

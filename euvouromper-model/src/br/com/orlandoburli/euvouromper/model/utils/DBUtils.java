@@ -19,11 +19,13 @@ import br.com.orlandoburli.euvouromper.model.dao.online.ModuloVideoDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.PacoteDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.PacoteModuloDao;
 import br.com.orlandoburli.euvouromper.model.dao.online.VideoDao;
+import br.com.orlandoburli.euvouromper.model.dao.site.AgendaDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.ArtigoDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.ContatoDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.DepartamentoDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.InstitucionalDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.MenuDao;
+import br.com.orlandoburli.euvouromper.model.dao.site.NewsletterDao;
 import br.com.orlandoburli.euvouromper.model.dao.site.NoticiaDao;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.PedidoMovimentadaoDao;
 import br.com.orlandoburli.framework.core.dao.BaseCadastroDao;
@@ -53,6 +55,7 @@ public final class DBUtils {
 			new ModuloVideoDao(manager).checkTable();
 			new PacoteDao(manager).checkTable();
 			new PacoteModuloDao(manager).checkTable();
+			new AgendaDao(manager).checkTable();
 
 			new ClienteDao(manager).checkTable();
 			new ClienteMovimentacaoDao(manager).checkTable();
@@ -70,6 +73,7 @@ public final class DBUtils {
 			new MensagemDao(manager).checkTable();
 			new DepartamentoDao(manager).checkTable();
 			new ContatoDao(manager).checkTable();
+			new NewsletterDao(manager).checkTable();
 
 		} catch (DAOException e) {
 			e.printStackTrace();

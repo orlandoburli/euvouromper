@@ -4,7 +4,9 @@ import java.util.List;
 
 import br.com.orlandoburli.euvouromper.model.dao.ecommerce.ProdutoDao;
 import br.com.orlandoburli.euvouromper.model.domains.SimNao;
+import br.com.orlandoburli.euvouromper.model.utils.Dicionario;
 import br.com.orlandoburli.euvouromper.model.utils.Dicionario.Produto;
+import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoProduto;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.TipoValidade;
@@ -17,8 +19,8 @@ import br.com.orlandoburli.framework.core.dao.DAOManager;
 
 public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 
-	private static final int TAMANHO_PAGINA_PRODUTOS = 8;
-	private static final String FILTRO_HOME_TIPO = Produto.TABELA_PRODUTO + "." + Produto.Colunas.TIPO_PRODUTO + " IN (" + "'" + TipoProduto.MODULO + "', '" + TipoProduto.PACOTE + "', '" + TipoProduto.CREDITO + "')";
+	private static final int TAMANHO_PAGINA_PRODUTOS = 9999;
+	private static final String FILTRO_HOME_TIPO = Produto.TABELA_PRODUTO + "." + Produto.Colunas.TIPO_PRODUTO + " IN (" + "'" + TipoProduto.MODULO + "', '" + TipoProduto.PACOTE + "', '" + TipoProduto.CREDITO + "', '" + TipoProduto.TOTAL + "')";
 
 	public ProdutoBe(DAOManager manager) {
 		super(manager);
@@ -128,11 +130,13 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		return getPageCount(filter, FILTRO_HOME_TIPO, TAMANHO_PAGINA_PRODUTOS);
 	}
 
-	public List<ProdutoVo> getPaginaProdutos(Integer pagina) throws ListException {
+	public List<ProdutoVo> getPaginaProdutos(Integer pagina, String tipo) throws ListException {
 
 		ProdutoVo filter = new ProdutoVo();
 
 		filter.setAtivo(SimNao.SIM);
+
+		filter.setTipoProduto(tipo);
 
 		return getList(filter, FILTRO_HOME_TIPO, Produto.TABELA_PRODUTO + "." + Produto.Colunas.NOME, pagina, TAMANHO_PAGINA_PRODUTOS);
 	}
@@ -157,5 +161,23 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		}
 
 		return null;
+	}
+
+	public List<ProdutoVo> getByProfessor(ProfessorVo professor) throws ListException {
+
+		String prefix = Dicionario.Produto.TABELA_PRODUTO + ".";
+
+		StringBuilder sql = new StringBuilder();
+
+		sql.append(prefix + Dicionario.Produto.Colunas.ID_PRODUTO);
+		sql.append(" IN (");
+		sql.append(" SELECT " + Dicionario.ProfessorProduto.TABELA_PROFESSOR_PRODUTO + "." + Dicionario.ProfessorProduto.Colunas.ID_PRODUTO);
+		sql.append(" FROM ");
+
+		sql.append(Dicionario.ProfessorProduto.TABELA_PROFESSOR_PRODUTO + " WHERE ");
+		sql.append(Dicionario.ProfessorProduto.Colunas.ID_PROFESSOR + " = " + professor.getIdProfessor());
+		sql.append(")");
+
+		return getList(null, sql.toString(), "");
 	}
 }

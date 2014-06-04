@@ -4,14 +4,7 @@
 
 <footer id="footer" class="clear ">
 	<div id="footer-content" class="">
-		<div id="redes-sociais">
-			<ul class="">
-				<li><a href="" title="" class="facebook">facebook</a></li>
-				<li><a href="" title="" class="twitter">twitter</a></li>
-				<li><a href="" title="" class="google">google +</a></li>
-				<li><a href="" title="" class="youtube">youtube</a></li>
-			</ul>
-		</div>
+		
 		<!-- end redes-sociais -->
 		<div id="informacoes" class="box-footer span3 left">
 			<span><h3>Informações</h3></span>
@@ -34,22 +27,25 @@
 		</div>
 		<div id="fale-conosco" class="box-footer span3 left">
 			<span><h3>Fale conosco</h3></span>
-			<p style="margin-top: 15px;">Telefone: 1-000-000-0000</p>
-			<p>Rua Teste Q. 03 Nº 04 Apto. 16</p>
+			<p style="margin-top: 15px;">Telefone: (65) 3025-1630</p>
+			<p>Rua 2800, N. 25. Jardim Imperial, Cuiabá - MT</p>
 			<p>E-mail: contato@euvouromper.com.br</p>
 			<!-- <a href="" title="" style="color: #fff;">Google Maps</a> -->
 		</div>
 		<div id="newsletter" class="box-footer span3 left">
 			<span><h3>Newsletter</h3></span>
 			<p>Receba nossas informações:</p>
-			<form action="" method="get" accept-charset="utf-8">
+			<form action="${root}/news" method="get" accept-charset="utf-8">
 				<div class="">
-					<input type="text" value="" placeholder="e-mail" />
+					<input type="text" value="" placeholder="e-mail" id="email" name="email" />
 				</div>
 				<input type="submit" value="Cadastrar">
 			</form>
 		</div>
-		<div id="pagseguro"></div>
+		
+		<div id="pagseguro">
+			<img src='https://p.simg.uol.com.br/out/pagseguro/i/banners/divulgacao/468X60_10X_pagseguro.gif' alt='' />
+		</div>
 	</div>
 	<!-- end footer-content -->
 </footer>

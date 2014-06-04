@@ -85,6 +85,7 @@
   }
   .container {
     width: 1140px !important;
+    margin: 0 auto;
   }
 }
 /* tablet landscape*/

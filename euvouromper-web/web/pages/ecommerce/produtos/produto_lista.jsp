@@ -26,36 +26,128 @@
 			</nav>
 
 			<h2 class="titles-big title-cursos">Cursos</h2>
-
-			<c:forEach var="produto" items="${produtos}">
-
-				<article class="cursos-item">
-					<figure>
-						<img src="${produto.pathFoto}" alt="">
-						<figcaption></figcaption>
-					</figure>
-					<div class="title-curso-item">
-						<h5>${produto.nome}</h5>
-					</div>
-					<div class="footer-curso">
-						<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor"/>
-						<span>${valor}</span> <a href="${root}/produto/${produto.url}" class="saiba-mais-curso" title="Saiba mais">saiba mais</a>
-					</div>
-				</article>
-
-			</c:forEach>
+			
+			<c:if test="${empty tipo || tipo eq TOTAL}">
+				<div class="tile-group">
+					<h2 class="titles-big linha-h2">
+						<i class="icon-cube"></i> Acesso Total
+					</h2>
+					
+					<c:forEach items="${produtos}" var="produto">
+						<c:if test="${produto.tipoProduto eq TOTAL}">
+							<a class="tile double bd-lightBlue ${selecionado}" data-click="transform" href="${root}/produto/${produto.url}">
+	
+								<div class="tile-content image">
+									<img src="${produto.pathFoto }">
+								</div>
+	
+								<div class="tile-content icon">
+									<i class="icon-play-alt"></i>
+								</div>
+	
+								<div class="brand bg-dark opacity">
+									<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor"/>
+									<span class="label fg-white">${produto.nome} - ${valor}</span>
+								</div>
+	
+							</a>
+						</c:if>
+					</c:forEach>
+				</div>
+			</c:if>
+			
+			<c:if test="${empty tipo || tipo eq PACOTE}">
+				<div class="tile-group">
+					<h2 class="titles-big linha-h2">
+						<i class="icon-cube-2"></i> Pacotes completos
+					</h2>
+					
+					<c:forEach items="${produtos}" var="produto">
+						<c:if test="${produto.tipoProduto eq PACOTE}">
+							<a class="tile double bd-lightBlue ${selecionado}" data-click="transform" href="${root}/produto/${produto.url}">
+	
+								<div class="tile-content image">
+									<img src="${produto.pathFoto }">
+								</div>
+	
+								<div class="tile-content icon">
+									<i class="icon-play-alt"></i>
+								</div>
+	
+								<div class="brand bg-dark opacity">
+									<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor"/>
+									<span class="label fg-white">${produto.nome} - ${valor}</span>
+								</div>
+	
+							</a>
+						</c:if>
+					</c:forEach>
+				</div>
+			</c:if>
+			
+			<c:if test="${empty tipo || tipo eq MODULO}">
+				<div class="tile-group">
+					<h2 class="titles-big linha-h2">
+						<i class="icon-puzzle"></i> Cursos modulares
+					</h2>
+					
+					<c:forEach items="${produtos}" var="produto">
+						<c:if test="${produto.tipoProduto eq MODULO}">
+							<a class="tile double bd-lightBlue ${selecionado}" data-click="transform" href="${root}/produto/${produto.url}">
+	
+								<div class="tile-content image">
+									<img src="${produto.pathFoto }">
+								</div>
+	
+								<div class="tile-content icon">
+									<i class="icon-play-alt"></i>
+								</div>
+	
+								<div class="brand bg-dark opacity">
+									<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor"/>
+									<span class="label fg-white">${produto.nome} - ${valor}</span>
+								</div>
+	
+							</a>
+						</c:if>
+					</c:forEach>
+				</div>
+			</c:if>
+			
+			<c:if test="${empty tipo || tipo eq CREDITO}">
+				<div class="tile-group">
+					<h2 class="titles-big linha-h2">
+						<i class="icon-coins"></i> Créditos
+					</h2>
+					
+					<c:forEach items="${produtos}" var="produto">
+						<c:if test="${produto.tipoProduto eq CREDITO}">
+							<a class="tile double bd-lightBlue" data-click="transform" href="${root}/produto/${produto.url}">
+	
+								<div class="tile-content image">
+									<img src="${produto.pathFoto }">
+								</div>
+	
+								<div class="tile-content icon">
+									<i class="icon-play-alt"></i>
+								</div>
+	
+								<div class="brand bg-dark opacity">
+									<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor"/>
+									<span class="label fg-white">${produto.nome}</span>
+								</div>
+	
+							</a>
+						</c:if>
+					</c:forEach>
+				</div>
+			</c:if>
 
 		</div>
 		<!-- end cursos -->
 		
-		<c:set var="tipo" value="produto" />
-
-		<%@include file="../../geral/paginador.jsp"%>
-
 	</div>
 	<!-- end container -->
-
-	
 
 	<%@include file="../../geral/footer.jsp"%>
 

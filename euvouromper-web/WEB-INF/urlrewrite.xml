@@ -63,6 +63,32 @@
 		<to type="forward">/artigo.page?artigo=$1</to>
 	</rule>
 	
+	<!-- NOTICIAS -->
+	<rule match-type="wildcard">
+		<from>/agendas/lista</from>
+		<to type="redirect">/agenda/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/agendas</from>
+		<to type="redirect">/agenda/lista</to>
+	</rule>
+	
+	<rule match-type="wildcard">
+		<from>/agenda/lista</from>
+		<to type="forward">/agenda.lista.page?pagina=1</to>
+	</rule>
+
+	<rule match-type="wildcard">
+		<from>/agenda/lista/**</from>
+		<to type="forward">/agenda.lista.page?pagina=$1</to>
+	</rule>
+
+	<rule match-type="wildcard">
+		<from>/agenda/**</from>
+		<to type="forward">/agenda.page?agenda=$1</to>
+	</rule>
+	
 	<!-- PROFESSORES -->
 	
 	<rule match-type="wildcard">

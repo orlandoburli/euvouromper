@@ -24,16 +24,7 @@
 					<div class="panel-header bg-lightBlue fg-white">Meus Cursos</div>
 					<div class="panel-content">
 
-						<label>Pesquisar</label>
-
-						<div class="input-control text text-right">
-							<form method="post">
-								<input id="assunto" name="assunto" type="text" value="${assunto}" placeholder="Digite aqui o assunto que você deseja pesquisar" />
-								<button class="btn-search"></button>
-							</form>
-						</div>
-
-						<div class="tile-group">
+						<div class="tile-group" style="margin-left: 0px;">
 							<h2 class="titles-big linha-h2">
 								<i class="icon-cube-2"></i> Pacotes completos
 							</h2>

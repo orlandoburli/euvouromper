@@ -94,6 +94,10 @@ public class ClienteVo extends BaseVo {
 	@Column(name = FONE2, dataType = DataType.VARCHAR, maxSize = 20)
 	private String fone2;
 
+	public String getPrimeiroNome() {
+		return getNome().substring(0, getNome().indexOf(" ")).trim();
+	}
+
 	public Integer getIdCliente() {
 		return idCliente;
 	}

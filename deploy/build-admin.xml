@@ -253,6 +253,10 @@
 				<fileset dir="${deploy.dir}">
 					<include name="core.jar" />
 					<include name="euvouromper-model.jar" />
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/core/lucene-core-4.8.1.jar"/>
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/analysis/common/lucene-analyzers-common-4.8.1.jar"/>
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/queries/lucene-queries-4.8.1.jar"/>
+					<include name="/Users/orlandoburli/Documents/java/lib/lucene-4.8.1/queryparser/lucene-queryparser-4.8.1.jar"/>
 				</fileset>
 				<fileset dir="${tomcat-lib.dir}">
 					<include name="*.jar" />

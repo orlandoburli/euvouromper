@@ -14,6 +14,8 @@
 
 	<%@include file="../../geral/header-geral.jsp"%>
 
+	<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency" var="valor" />
+
 	<div class="container" style="padding: 10px">
 		<div class="metro one-column" style="text-align: justify;">
 			<nav class="breadcrumbs mini">
@@ -28,39 +30,42 @@
 				<a href="${root}/carrinho/adicionar/${produto.idProduto}" title="Adicionar no carrinho" class="adicionar-carrinho">Adicionar no carrinho</a>
 			</div>
 			<h2 class="titles-big linha-h2">${produto.nome}</h2>
-			<p>${produto.descricao}</p>
-			<div class="panel margin-top" style="overflow: auto;">
-				<div class="panel-content">
+			<h3>${valor}</h3>
 
-					<div class="span6 left" style="">
-						<div class="panel-header bg-transparent">Objetivo</div>
-						<div class="panel-content">
-							<c:if test="${produto.tipoProduto eq PACOTE}">
+			<p>${produto.descricao}</p>
+
+			<c:if test="${produto.tipoProduto eq PACOTE || produto.tipoProduto eq MODULO}">
+				<div class="panel margin-top" style="overflow: auto;">
+					<div class="panel-content">
+
+						<div class="span6 left" style="">
+							<div class="panel-header bg-transparent">Objetivo</div>
+							<div class="panel-content">
+								<c:if test="${produto.tipoProduto eq PACOTE}">
 								${produto.pacote.objetivo}
 							</c:if>
 
-							<c:if test="${produto.tipoProduto eq MODULO}">
+								<c:if test="${produto.tipoProduto eq MODULO}">
 								${produto.modulo.objetivo}
 							</c:if>
+							</div>
+						</div>
+
+						<div class="span7 floatright" style="">
+							<div class="panel-header bg-transparent">Conteúdo</div>
+							<div class="panel-content">
+								<c:if test="${produto.tipoProduto eq PACOTE}">
+									${produto.pacote.conteudo}
+								</c:if>
+
+								<c:if test="${produto.tipoProduto eq MODULO}">
+									${produto.modulo.conteudoProgramatico}
+								</c:if>
+							</div>
 						</div>
 					</div>
-
-					<div class="span7 floatright" style="">
-						<div class="panel-header bg-transparent">Conteúdo</div>
-						<div class="panel-content">
-							<c:if test="${produto.tipoProduto eq PACOTE}">
-								${produto.pacote.conteudo}
-							</c:if>
-
-							<c:if test="${produto.tipoProduto eq MODULO}">
-								${produto.modulo.conteudoProgramatico}
-							</c:if>
-						</div>
-					</div>
-
-
 				</div>
-			</div>
+			</c:if>
 			<!-- end descricao produto -->
 			<c:if test="${produto.tipoProduto eq PACOTE}">
 
@@ -70,18 +75,25 @@
 					<script>
 						$(function() {
 
-							$(".createWindow").click(function(e) {
-								$.Dialog({
-									shadow : true,
-									overlay : true,
-									flat: true,
-									icon : '',
-									title : 'Conteúdo programático',
-									width : 500,
-									padding : 20,
-									content : '<div style="max-width: 500px; text-align: justify">' + $(this).attr("data-title") + '</div>'
-								});
-							});
+							$(".createWindow")
+									.click(
+											function(e) {
+												$
+														.Dialog({
+															shadow : true,
+															overlay : true,
+															flat : true,
+															icon : '',
+															title : 'Conteúdo programático',
+															width : 500,
+															padding : 20,
+															content : '<div style="max-width: 500px; text-align: justify">'
+																	+ $(this)
+																			.attr(
+																					"data-title")
+																	+ '</div>'
+														});
+											});
 
 						})
 					</script>

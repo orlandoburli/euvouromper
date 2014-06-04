@@ -175,6 +175,18 @@ public class PerfilAdminVo extends BaseVo {
 	@Domain(SimNao.class)
 	private String permissaoArtigoAlt;
 
+	@Column(name = Colunas.P_AGENDA_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoAgendaVer;
+
+	@Column(name = Colunas.P_AGENDA_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoAgendaAlt;
+
 	@Column(name = Colunas.P_INSTITUCIONAL_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
 	@NotNull
 	@NotEmpty
@@ -224,6 +236,18 @@ public class PerfilAdminVo extends BaseVo {
 	@NotEmpty
 	@Domain(SimNao.class)
 	private String permissaoPacoteAlt;
+
+	@Column(name = Colunas.P_MATERIAL_APOIO_VER, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoMaterialApoioVer;
+
+	@Column(name = Colunas.P_MATERIAL_APOIO_ALT, dataType = DataType.CHAR, maxSize = 1, isNotNull = true, defaultValue = "'N'")
+	@NotNull
+	@NotEmpty
+	@Domain(SimNao.class)
+	private String permissaoMaterialApoioAlt;
 
 	// e-Commerce
 
@@ -637,5 +661,37 @@ public class PerfilAdminVo extends BaseVo {
 
 	public void setPermissaoPedidoAlt(String permissaoPedidoAlt) {
 		this.permissaoPedidoAlt = permissaoPedidoAlt;
+	}
+
+	public String getPermissaoAgendaAlt() {
+		return permissaoAgendaAlt;
+	}
+
+	public void setPermissaoAgendaAlt(String permissaoAgendaAlt) {
+		this.permissaoAgendaAlt = permissaoAgendaAlt;
+	}
+
+	public String getPermissaoAgendaVer() {
+		return permissaoAgendaVer;
+	}
+
+	public void setPermissaoAgendaVer(String permissaoAgendaVer) {
+		this.permissaoAgendaVer = permissaoAgendaVer;
+	}
+
+	public String getPermissaoMaterialApoioVer() {
+		return permissaoMaterialApoioVer;
+	}
+
+	public void setPermissaoMaterialApoioVer(String permissaoMaterialApoioVer) {
+		this.permissaoMaterialApoioVer = permissaoMaterialApoioVer;
+	}
+
+	public String getPermissaoMaterialApoioAlt() {
+		return permissaoMaterialApoioAlt;
+	}
+
+	public void setPermissaoMaterialApoioAlt(String permissaoMaterialApoioAlt) {
+		this.permissaoMaterialApoioAlt = permissaoMaterialApoioAlt;
 	}
 }

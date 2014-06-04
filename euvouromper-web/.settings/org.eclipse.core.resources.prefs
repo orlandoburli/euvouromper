@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/web/servlets/geral/ecommerce/carrinho/CarrinhoAdicionarCupomView.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/web/servlets/geral/login/EntrarView.java=UTF-8
+encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/web/servlets/geral/site/agenda/AgendaList.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/web/servlets/geral/site/artigos/ArtigoList.java=UTF-8
 encoding//WEB-INF/src/br/com/orlandoburli/euvouromper/web/servlets/geral/site/noticias/NoticiaList.java=UTF-8
 encoding//web/assets/css/style-main.css=UTF-8

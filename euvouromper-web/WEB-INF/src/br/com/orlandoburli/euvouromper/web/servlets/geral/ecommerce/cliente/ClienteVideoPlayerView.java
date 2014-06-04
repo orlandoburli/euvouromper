@@ -76,6 +76,16 @@ public class ClienteVideoPlayerView extends HttpServlet {
 
 			Log.info("idItemPedido 2 = " + idItemPedido);
 
+			Integer idModulo = null;
+
+			try {
+				idModulo = Integer.parseInt(req.getParameter("m"));
+			} catch (NumberFormatException | NullPointerException e) {
+				idModulo = null;
+			}
+			
+			req.setAttribute("idModulo", idModulo);
+
 			// Verifica se o video foi comprado invidividualmente
 			boolean compraIndividual = new ClienteSaldoBe(manager).checkIndividual(cliente, video) != null;
 
@@ -115,15 +125,15 @@ public class ClienteVideoPlayerView extends HttpServlet {
 				} else {
 					itemPedido = Utils.fillString("0", "0", 20, 1);
 				}
-				
+
 				ProdutoVo produto = new ProdutoBe(manager).get(idProduto);
 
 				String idProdutoStr = "";
-				
+
 				if (produto != null) {
 					idProdutoStr = produto.getIdProduto().toString();
 				}
-				
+
 				idProdutoStr = Utils.fillString(idProdutoStr, "0", 20, 1);
 
 				String url = dataHoraVideo + "-" + codigoItem + "-" + itemPedido + "-" + idProdutoStr;

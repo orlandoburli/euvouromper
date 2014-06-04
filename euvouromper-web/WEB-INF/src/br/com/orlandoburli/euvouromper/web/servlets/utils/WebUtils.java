@@ -57,7 +57,9 @@ public final class WebUtils {
 
 		MenuBe menuBe = new MenuBe(manager);
 
-		req.setAttribute("menusTopo", menuBe.getListTopo());
+		req.setAttribute("menusTopo", menuBe.getListTopo1());
+		req.setAttribute("menusTopo2", menuBe.getListTopo2());
+		req.setAttribute("menusLateral1", menuBe.getListLateral1());
 		req.setAttribute("menusRodape1", menuBe.getListRodape1());
 		req.setAttribute("menusRodape2", menuBe.getListRodape2());
 

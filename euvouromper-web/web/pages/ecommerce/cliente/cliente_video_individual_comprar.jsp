@@ -47,11 +47,13 @@
 			<div class="row">
 				<div class="span6 right final">
 					<c:if test="${empty erro }">
-						<a style="" href="#" title="Comprar vídeo individual" class="adicionar-carrinho confirmar-compra-video">Confirmar compra</a>
+						<a style="" href="javascript:void(0)" title="Comprar vídeo individual" class="adicionar-carrinho confirmar-compra-video">Confirmar compra</a>
 					</c:if>
-
+					
 					<c:if test="${not empty erro}">
 						<div class="notice marker-on-top bg-crimson fg-white">${erro}</div>
+						<br/>
+						<a style="" target="_blank" href="${root}/produto/lista/credito" title="Comprar Créditos" class="adicionar-carrinho ">Comprar créditos</a>
 					</c:if>
 				</div>
 			</div>
@@ -69,11 +71,11 @@
 			type : 'POST',
 			success : function(data) {
 				
-				var retorno = $.parseJson(data);
+				var retorno = $.parseJSON(data);
 				
 				if (retorno.sucesso) {
 					$.Dialog.close();
-					window.location.href = window.location.href;
+					location.reload();
 				} else {
 					$(".final").append("<div class='notice marker-on-top bg-crimson fg-white'>"+retorno.mensagem+"</div>");
 				}

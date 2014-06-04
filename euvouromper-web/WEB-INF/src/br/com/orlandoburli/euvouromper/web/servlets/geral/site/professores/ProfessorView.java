@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.orlandoburli.euvouromper.model.be.cadastros.ProfessorBe;
+import br.com.orlandoburli.euvouromper.model.be.ecommerce.ProdutoBe;
+import br.com.orlandoburli.euvouromper.model.vo.cadastros.ProfessorVo;
 import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
@@ -31,7 +33,13 @@ public class ProfessorView extends HttpServlet {
 			
 			String professorParametro = req.getParameter("professor");
 
-			req.setAttribute("professor", new ProfessorBe(manager).getByUrl(professorParametro));
+			ProfessorVo professor = new ProfessorBe(manager).getByUrl(professorParametro);
+			
+			req.setAttribute("professor", professor);
+			
+			// Produtos do Professor
+			
+			req.setAttribute("produtos", new ProdutoBe(manager).getByProfessor(professor));
 
 		} catch (ListException e) {
 			e.printStackTrace();

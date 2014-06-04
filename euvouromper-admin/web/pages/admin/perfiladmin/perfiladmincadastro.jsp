@@ -256,6 +256,26 @@
 									</select>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Agendas</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoAgendaVer"  data-field-value="${vo.permissaoAgendaVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Agendas</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoAgendaAlt"  data-field-value="${vo.permissaoAgendaAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label text-right">Visualizar Páginas Institucionais</label>
@@ -385,6 +405,26 @@
 
 								<div class="col-sm-2">
 									<select id="permissaoPacoteAlt"  data-field-value="${vo.permissaoPacoteAlt}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right">Visualizar Materiais de Apoio</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoMaterialApoioVer"  data-field-value="${vo.permissaoMaterialApoioVer}">
+										<option value="N">Não</option>
+										<option value="S">Sim</option>
+									</select>
+								</div>
+
+								<label class="col-sm-2 control-label text-right">Alterar Materiais de Apoio</label>
+
+								<div class="col-sm-2">
+									<select id="permissaoMaterialApoioAlt"  data-field-value="${vo.permissaoMaterialApoioAlt}">
 										<option value="N">Não</option>
 										<option value="S">Sim</option>
 									</select>
