@@ -19,8 +19,11 @@ order by nome]]>
 	<field name="objetivo" class="java.lang.String"/>
 	<variable name="valorComissaoPacote" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$V{valorComissaoTemp}]]></variableExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)	]]></initialValueExpression>
 	</variable>
-	<variable name="valorComissaoTemp" class="java.math.BigDecimal"/>
+	<variable name="valorComissaoTemp" class="java.math.BigDecimal">
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)	]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

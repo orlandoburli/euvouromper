@@ -1,6 +1,7 @@
 package br.com.orlandoburli.euvouromper.admin.web.servlets.utils;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class LoadAppServlet extends HttpServlet {
 
 		try {
 			System.getProperties().load(getServletContext().getResourceAsStream("admin.properties"));
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -32,6 +33,8 @@ public class LoadAppServlet extends HttpServlet {
 		DBUtils.checkDaos();
 
 		Log.info("DAOs checadas.");
+
+		Locale.setDefault(new Locale("pt", "BR"));
 
 		Log.info("App admin inicializado.");
 	}

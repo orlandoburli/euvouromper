@@ -28,7 +28,9 @@ order by nome]]>
 		<variableExpression><![CDATA[$V{valorComissaoTemp}]]></variableExpression>
 		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)]]></initialValueExpression>
 	</variable>
-	<variable name="valorComissaoTemp" class="java.math.BigDecimal"/>
+	<variable name="valorComissaoTemp" class="java.math.BigDecimal">
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)	]]></initialValueExpression>
+	</variable>
 	<title>
 		<band height="21">
 			<staticText>

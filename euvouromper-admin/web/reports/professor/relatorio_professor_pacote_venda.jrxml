@@ -60,6 +60,7 @@ as tab2]]>
 	<field name="valor_comissao" class="java.math.BigDecimal"/>
 	<variable name="valorComissaoPacote" class="java.math.BigDecimal">
 		<variableExpression><![CDATA[$F{valor_comissao}]]></variableExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)	]]></initialValueExpression>
 	</variable>
 	<columnHeader>
 		<band height="20" splitType="Stretch">

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
@@ -74,6 +75,7 @@ public class RelatorioProfessorAction extends BaseAction {
 	}
 
 	public void view() {
+		
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		Calendar dataInicial = Utils.toCalendar("01/" + Utils.fillString(mes, "0", 2, 1) + "/" + ano);
@@ -84,6 +86,7 @@ public class RelatorioProfessorAction extends BaseAction {
 		parameters.put("DataFinal", new java.sql.Date(dataFinal.getTime().getTime()));
 		parameters.put("idProfessor", usuario.getIdProfessor());
 		parameters.put("SUBREPORT_DIR", getContext().getRealPath("web/reports/professor/") + "/");
+		parameters.put("REPORT_LOCALE", new Locale("pt", "BR"));
 
 		SimpleDateFormat sdf2 = new SimpleDateFormat("MMMM/yyyy");
 		parameters.put("referencia", sdf2.format(dataInicial.getTime()));
