@@ -24,6 +24,8 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 @Table(Dicionario.Agenda.TABELA_AGENDA)
 public class AgendaVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_AGENDA, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idAgenda;
 

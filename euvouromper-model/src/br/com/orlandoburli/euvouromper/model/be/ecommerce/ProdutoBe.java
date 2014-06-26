@@ -31,12 +31,12 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		// Validacoes do tipo de produto
 		if (vo.getTipoProduto().equals(TipoProduto.MODULO)) {
 			if (vo.getIdModulo() == null) {
-				throw new SaveBeException("Informe o módulo!");
+				throw new SaveBeException("Informe o módulo!", "idModulo");
 			}
 			vo.setIdPacote(null);
 		} else if (vo.getTipoProduto().equals(TipoProduto.PACOTE)) {
 			if (vo.getIdPacote() == null) {
-				throw new SaveBeException("Informe o pacote!");
+				throw new SaveBeException("Informe o pacote!", "idPacote");
 			}
 			vo.setIdModulo(null);
 		} else if (vo.getTipoProduto().equals(TipoProduto.CREDITO)) {
@@ -53,12 +53,12 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		// Validacoes do tipo de validade
 		if (vo.getTipoValidade().equals(TipoValidade.DATA)) {
 			if (vo.getDataValidade() == null) {
-				throw new SaveBeException("Informe a data de validade!");
+				throw new SaveBeException("Informe a data de validade!", "dataValidade");
 			}
 			vo.setDiasValidade(null);
 		} else if (vo.getTipoValidade().equals(TipoValidade.DIAS)) {
 			if (vo.getDiasValidade() == null || vo.getDiasValidade() <= 0) {
-				throw new SaveBeException("Informe os dias de validade!");
+				throw new SaveBeException("Informe os dias de validade!", "dataValidade");
 			}
 			vo.setDataValidade(null);
 		}
@@ -66,9 +66,9 @@ public class ProdutoBe extends BaseBe<ProdutoVo, ProdutoDao> {
 		// Recorrente
 		if (vo.getRecorrente().equals(SimNao.SIM)) {
 			if (vo.getDiasRecorrencia() == null) {
-				throw new SaveBeException("Informe os dias de recorrência!");
+				throw new SaveBeException("Informe os dias de recorrência!", "recorrente");
 			} else if (vo.getDiasRecorrencia() <= 0) {
-				throw new SaveBeException("Os dias de recorrência deve ser maior que zero!");
+				throw new SaveBeException("Os dias de recorrência deve ser maior que zero!", "recorrente");
 			}
 		} else if (vo.getRecorrente().equals(SimNao.NAO)) {
 			vo.setDiasRecorrencia(null);

@@ -6,8 +6,8 @@ public class ClienteInexistenteException extends BeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public ClienteInexistenteException(String message) {
-		super(message);
+	public ClienteInexistenteException(String message, String field) {
+		super(message, field);
 	}
 
 }

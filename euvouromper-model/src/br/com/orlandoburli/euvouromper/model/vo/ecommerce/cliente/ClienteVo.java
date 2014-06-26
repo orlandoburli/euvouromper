@@ -21,6 +21,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Cliente.Col
 @Table(value = Dicionario.Cliente.TABELA_CLIENTE, constraints = { @UniqueConstraint(constraintName = Dicionario.Cliente.UK_EMAIL_CLIENTE, column = EMAIL) })
 public class ClienteVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_CLIENTE, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idCliente;
 

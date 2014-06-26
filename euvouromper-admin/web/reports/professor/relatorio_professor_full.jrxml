@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_professor_full" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4c451cfb-0a37-4ceb-a576-a49fe753855d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db-euvouromper"/>
+	<parameter name="idProfessor" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DataFinal" class="java.sql.Date"/>
+	<parameter name="DataInicial" class="java.sql.Date"/>
+	<queryString language="SQL">
+		<![CDATA[select valor_vendas, videos_modulo, videos_professor, cast(videos_professor / (videos_modulo + 0.0000000001) as numeric(8, 4)) as percentual_professor, cast((videos_professor /  (videos_modulo + 0.0000000001)) * valor_vendas * 0.5 as numeric(8,2)) as valor_comissao
+  from (
+     select (
+     -- Vendas full
+     select coalesce(sum(i.valor), 0.00) from produto p
+       join item_pedido i on i.id_produto = p.id_produto
+       join pedido ped on ped.id_pedido = i.id_pedido
+      where 1=1
+        and ped.status_pedido = 'P'
+        and p.tipo_produto = 'T'
+        and date_trunc('day', ped.data_hora_pedido) between $P{DataInicial} and $P{DataFinal}
+     ) as valor_vendas,
+
+     (-- Views usando full
+  select cast( count(*)  as numeric(8,4)) as quantidade_views from (
+  select distinct l.id_video, l.id_cliente
+    from log_video l
+    join video v on l.id_video = v.id_video
+   where 1 = 1
+     and date_trunc('day', l.data_hora) between $P{DataInicial} and $P{DataFinal}
+     and tipo_visualizacao = 'T'
+    ) as tab1 ) as videos_modulo,
+
+     (-- Views do professor full
+    select cast( count(*) as numeric(8,4)) as quantidade_views from (
+  select distinct l.id_video, l.id_cliente
+    from log_video l
+    join video v on l.id_video = v.id_video
+   where 1 = 1
+     and date_trunc('day', l.data_hora) between $P{DataInicial} and $P{DataFinal}
+     and tipo_visualizacao = 'T'
+     and id_professor = $P{idProfessor}) as tab1 )  as videos_professor
+     )
+as tab2]]>
+	</queryString>
+	<field name="valor_vendas" class="java.math.BigDecimal"/>
+	<field name="videos_modulo" class="java.math.BigDecimal"/>
+	<field name="videos_professor" class="java.math.BigDecimal"/>
+	<field name="percentual_professor" class="java.math.BigDecimal"/>
+	<field name="valor_comissao" class="java.math.BigDecimal"/>
+	<variable name="valorComissaoFull" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{valor_comissao}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="21">
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="dce53d4c-3eb2-4a54-8c52-e103fa2d2f10">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="71fe462b-ac5e-4c49-a679-112d84e986ef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pacote Full]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="291" y="0" width="235" height="20" uuid="9e8ff775-1db4-4c5e-9430-0a03d3c18574"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Professor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="111" height="20" uuid="612d2a8a-8274-49ae-9b93-36d0f9b85129"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Views do Professor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="0" width="49" height="20" uuid="3731e921-31cb-468e-bb4d-6aaa80003d72"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Views]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="0" width="60" height="20" uuid="c3392896-3027-4c24-a1cc-c140b06919c1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[% Professor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="20" uuid="a69c19ab-d661-42ec-8f2b-d1a40e70c9b1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vendas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="#,##0.###;(#,##0.###-)" isBlankWhenNull="true">
+				<reportElement x="120" y="1" width="111" height="20" uuid="d0e86cae-0b4d-4fa1-9cfc-98053a0a14c2"/>
+				<textFieldExpression><![CDATA[$F{videos_professor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00" isBlankWhenNull="true">
+				<reportElement x="0" y="1" width="70" height="20" uuid="2cfdb4b8-a859-4cb0-842b-d8ea8258f478"/>
+				<textFieldExpression><![CDATA[$F{valor_vendas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00%" isBlankWhenNull="true">
+				<reportElement x="231" y="1" width="60" height="20" uuid="17431593-4b1e-4a79-b6d5-6f1eb2894318"/>
+				<textFieldExpression><![CDATA[$F{percentual_professor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###;(#,##0.###-)" isBlankWhenNull="true">
+				<reportElement x="70" y="1" width="50" height="20" uuid="06d40329-b14e-426d-b54b-a65be0729169"/>
+				<textFieldExpression><![CDATA[$F{videos_modulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00" isBlankWhenNull="true">
+				<reportElement x="291" y="1" width="234" height="20" uuid="41a2c60a-3aff-4f05-9d35-08e271c1d57b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valor_comissao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

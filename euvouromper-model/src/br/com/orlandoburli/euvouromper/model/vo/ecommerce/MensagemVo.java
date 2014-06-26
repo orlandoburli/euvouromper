@@ -21,6 +21,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Mensagem.Co
 @Table(Dicionario.Mensagem.TABELA_MENSAGEM)
 public class MensagemVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MENSAGEM, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idMensagem;
 

@@ -17,11 +17,11 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 
 	public UsuarioVo login(String login, String senha) throws LoginInvalidoException {
 		if (login == null || login.trim().equals("")) {
-			throw new LoginInvalidoException("Usuário / Senha inválidos!");
+			throw new LoginInvalidoException("Usuário / Senha inválidos!", "email");
 		}
 
 		if (senha == null || senha.trim().equals("")) {
-			throw new LoginInvalidoException("Usuário / Senha inválidos!");
+			throw new LoginInvalidoException("Usuário / Senha inválidos!", "email");
 		}
 
 		UsuarioVo filter = new UsuarioVo();
@@ -41,7 +41,7 @@ public class UsuarioBe extends BaseBe<UsuarioVo, UsuarioDao> {
 			Log.error(e.getMessage());
 		}
 
-		throw new LoginInvalidoException("Usuário / Senha inválidos!");
+		throw new LoginInvalidoException("Usuário / Senha inválidos!", "email");
 	}
 
 //	public List<MenuVo> buildMenuUsuario(UsuarioVo usuario) {

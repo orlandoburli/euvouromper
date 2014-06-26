@@ -22,6 +22,9 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 
 @Table(Usuario.TABELA_USUARIO)
 public class UsuarioVo extends BaseVo {
+
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = Colunas.ID_USUARIO, isKey = true, isAutoIncrement = true, dataType = DataType.INT)
 	private Integer idUsuario;
 

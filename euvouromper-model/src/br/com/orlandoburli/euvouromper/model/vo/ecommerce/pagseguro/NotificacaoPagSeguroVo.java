@@ -15,6 +15,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Notificacao
 @Table(Dicionario.NotificacaoPagSeguro.TABELA_NOTIFICACAO_PAGSEGURO)
 public class NotificacaoPagSeguroVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_NOTIFICACAO, dataType = DataType.INT, isNotNull = true, isKey = true, isAutoIncrement = true)
 	private Integer idNotificacao;
 

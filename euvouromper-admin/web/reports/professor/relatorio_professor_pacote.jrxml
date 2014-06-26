@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_professor_pacote" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0c7c8bb2-66a1-4775-989b-563181591238">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db-euvouromper"/>
+	<parameter name="idProfessor" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DataFinal" class="java.sql.Date"/>
+	<parameter name="DataInicial" class="java.sql.Date"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from pacote
+order by nome]]>
+	</queryString>
+	<field name="id_pacote" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="conteudo" class="java.lang.String"/>
+	<field name="objetivo" class="java.lang.String"/>
+	<variable name="valorComissaoPacote" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{valorComissaoTemp}]]></variableExpression>
+	</variable>
+	<variable name="valorComissaoTemp" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="1ca1c940-966f-4824-a9bf-6011b0e63e5c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pacotes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="bcc50f28-7f1b-4d5c-8599-214080869d2e">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="14" uuid="23f37e75-27c6-4466-9782-290dcdcb4639">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="14" width="555" height="20" uuid="bd7e1606-f699-4248-abd8-88d43c561c62">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="idProfessor">
+					<subreportParameterExpression><![CDATA[$P{idProfessor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataFinal">
+					<subreportParameterExpression><![CDATA[$P{DataFinal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataInicial">
+					<subreportParameterExpression><![CDATA[$P{DataInicial}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idPacote">
+					<subreportParameterExpression><![CDATA[$F{id_pacote}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="valorComissaoPacote" toVariable="valorComissaoTemp"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +
+"relatorio_professor_pacote_venda.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00" isBlankWhenNull="true">
+				<reportElement x="291" y="1" width="234" height="20" uuid="ec53b099-3d84-4e5e-b4ed-fa35a0854c32"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valorComissaoPacote}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="200" height="20" uuid="8962afa6-38f4-419d-b5b6-4d1f561058e6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Pacotes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="ecbc9a4c-0c58-4a61-bb8f-a2b4c430c280">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

@@ -7,7 +7,11 @@ public class EmailException extends BeException {
 	private static final long serialVersionUID = 1L;
 
 	public EmailException(String message) {
-		super(message);
+		super(message, null);
+	}
+
+	public EmailException(String message, String field) {
+		super(message, field);
 	}
 
 }

@@ -33,6 +33,8 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 @Table(Dicionario.Pedido.TABELA_PEDIDO)
 public class PedidoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_PEDIDO, dataType = DataType.INT, isNotNull = true, isAutoIncrement = true, isKey = true)
 	private Integer idPedido;
 

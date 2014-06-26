@@ -14,6 +14,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Departament
 @Table(Departamento.TABELA_DEPARTAMENTO)
 public class DepartamentoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_DEPARTAMENTO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idDepartamento;
 

@@ -6,8 +6,8 @@ public class LoginInvalidoException extends BeException{
 
 	private static final long serialVersionUID = 1L;
 
-	public LoginInvalidoException(String message) {
-		super(message);
+	public LoginInvalidoException(String message, String field) {
+		super(message, field);
 	}
 
 }

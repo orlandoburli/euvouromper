@@ -25,6 +25,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.ClienteMovi
 @Table(ClienteMovimentacao.TABELA_CLIENTE_MOVIMENTACAO)
 public class ClienteMovimentacaoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MOVIMENTACAO, dataType = DataType.INT, isNotNull = true, isKey = true, isAutoIncrement = true)
 	private Integer idMovimentacao;
 

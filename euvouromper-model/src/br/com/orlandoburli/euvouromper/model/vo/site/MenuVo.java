@@ -16,6 +16,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Menu.Coluna
 @Table(Dicionario.Menu.TABELA_MENU)
 public class MenuVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MENU, dataType = DataType.INT, isNotNull = true, isKey = true, isAutoIncrement = true)
 	private Integer idMenu;
 

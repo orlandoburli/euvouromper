@@ -28,12 +28,12 @@ public class MensagemBe extends BaseBe<MensagemVo, MensagemDao> {
 		if (vo.getDestino() != null) {
 			if (vo.getDestino().equals(TipoDestinoMensagens.CLIENTE)) {
 				if (vo.getIdCliente() == null) {
-					throw new SaveBeException("Informe o cliente!");
+					throw new SaveBeException("Informe o cliente!", "idCliente");
 				}
 				vo.setIdProduto(null);
 			} else if (vo.getDestino().equals(TipoDestinoMensagens.PRODUTO)) {
 				if (vo.getIdProduto() == null) {
-					throw new SaveBeException("Informe o produto!");
+					throw new SaveBeException("Informe o produto!", "idProduto");
 				}
 				vo.setIdCliente(null);
 			} else if (vo.getDestino().equals(TipoDestinoMensagens.TODOS)) {

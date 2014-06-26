@@ -31,6 +31,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Produto.Col
 @Table(Dicionario.Produto.TABELA_PRODUTO)
 public class ProdutoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_PRODUTO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idProduto;
 

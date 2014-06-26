@@ -24,6 +24,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Modulo.Colu
 @Table(Dicionario.Modulo.TABELA_MODULO)
 public class ModuloVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MODULO, dataType = DataType.INT, isAutoIncrement = true, isKey = true)
 	private Integer idModulo;
 

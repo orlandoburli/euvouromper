@@ -16,6 +16,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.MaterialApo
 @Table(Dicionario.MaterialApoio.TABELA_MATERIAL_APOIO)
 public class MaterialApoioVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MATERIAL_APOIO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idMaterialApoio;
 

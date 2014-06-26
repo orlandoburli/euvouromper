@@ -27,6 +27,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.CupomDescon
 @Table(value = Dicionario.CupomDesconto.TABELA_CUPOM_DESCONTO, constraints = { @UniqueConstraint(column = CHAVE, constraintName = Dicionario.CupomDesconto.UK_CUPOM_CHAVE) })
 public class CupomDescontoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_CUPOM, dataType = DataType.INT, isNotNull = true, isKey = true, isAutoIncrement = true)
 	private Integer idCupom;
 

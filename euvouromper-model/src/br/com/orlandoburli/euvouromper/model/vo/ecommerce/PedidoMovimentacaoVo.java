@@ -19,6 +19,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.PedidoMovim
 @Table(PedidoMovimentacao.TABELA_PEDIDO_MOVIMENTACAO)
 public class PedidoMovimentacaoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MOVIMENTACAO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idMovimentacao;
 

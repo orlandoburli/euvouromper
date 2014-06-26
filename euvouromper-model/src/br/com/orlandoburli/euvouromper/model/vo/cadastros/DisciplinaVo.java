@@ -12,6 +12,8 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 @Table(Dicionario.Disciplina.TABELA_DISCIPLINA)
 public class DisciplinaVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = Dicionario.Disciplina.Colunas.ID_DISCIPLINA, dataType = DataType.INT, isAutoIncrement = true, isKey = true)
 	private Integer idDisciplina;
 

@@ -7,7 +7,11 @@ public class FinalizarPedidoException extends BeException {
 	private static final long serialVersionUID = 1L;
 
 	public FinalizarPedidoException(String message) {
-		super(message);
+		super(message, null);
+	}
+
+	public FinalizarPedidoException(String message, String field) {
+		super(message, field);
 	}
 
 }

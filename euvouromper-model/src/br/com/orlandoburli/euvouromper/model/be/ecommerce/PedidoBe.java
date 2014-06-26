@@ -410,7 +410,7 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 
 	public void cancelar(PedidoVo pedido) throws BeException {
 		if (pedido.getStatusPedido().equals(StatusPedido.CANCELADO)) {
-			throw new SaveBeException("Este pedido já está cancelado!");
+			throw new SaveBeException("Este pedido já está cancelado!", "statusPedido");
 		}
 		
 		pedido.setStatusPedido(StatusPedido.CANCELADO);
@@ -437,7 +437,7 @@ public class PedidoBe extends BaseBe<PedidoVo, PedidoDao> {
 	public void pagar(PedidoVo pedido) throws BeException {
 		
 		if (pedido.getStatusPedido().equals(StatusPedido.PAGO)) {
-			throw new SaveBeException("Este pedido já está pago!");
+			throw new SaveBeException("Este pedido já está pago!", "statusPedido");
 		}
 		
 		pedido.setStatusPedido(StatusPedido.PAGO);

@@ -12,5 +12,6 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache Commons - File Upload"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JasperLib"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

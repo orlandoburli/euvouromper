@@ -14,6 +14,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.ProfessorPr
 @Table(Dicionario.ProfessorProduto.TABELA_PROFESSOR_PRODUTO)
 public class ProfessorProdutoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_PROFESSOR_PRODUTO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idProfessorProduto;
 

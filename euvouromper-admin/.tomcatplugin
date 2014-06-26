@@ -8,4 +8,7 @@
     <warLocation></warLocation>
     <extraInfo></extraInfo>
     <webPath>/euvouromper-admin</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>org.eclipse.jdt.USER_LIBRARY/JasperLib</webClassPathEntry>
+    </webClassPathEntries>
 </tomcatProjectProperties>

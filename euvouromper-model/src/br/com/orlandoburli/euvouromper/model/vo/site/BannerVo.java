@@ -17,6 +17,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Banner.Colu
 @Table(Dicionario.Banner.TABELA_BANNER)
 public class BannerVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_BANNER, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idBanner;
 

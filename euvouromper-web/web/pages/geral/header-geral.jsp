@@ -41,8 +41,8 @@
 				<ul class="">
 					<li><a href="" title="" class="facebook">facebook</a></li>
 					<li><a href="" title="" class="twitter">twitter</a></li>
-					<li><a href="" title="" class="google">google +</a></li>
-					<li><a href="" title="" class="youtube">youtube</a></li>
+					<li><a href="https://plus.google.com/u/0/109431195159309613921/about" title="" target="_blank" class="google">google +</a></li>
+					<li><a href="https://www.youtube.com/channel/UCg0xRIvQW70uyqr5kImlbAg/feed" target="_blank" title="" class="youtube">youtube</a></li>
 				</ul>
 			</div>
 			<!-- end redes-sociais -->

@@ -15,6 +15,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.PacoteModul
 @Table(value = Dicionario.PacoteModulo.TABELA_PACOTE_MODULO, constraints = { @UniqueConstraint(columns = { ID_MODULO, ID_PACOTE }, constraintName = Dicionario.PacoteModulo.UK_PACOTE_MODULO) })
 public class PacoteModuloVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_PACOTE_MODULO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idPacoteModulo;
 

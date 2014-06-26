@@ -24,6 +24,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.LogVideo.Co
 @Table(LogVideo.TABELA_LOG_VIDEO)
 public class LogVideoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_LOG, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idLog;
 

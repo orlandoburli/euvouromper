@@ -16,6 +16,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Depoimento.
 @Table(Depoimento.TABELA_DEPOIMENTO)
 public class DepoimentoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_DEPOIMENTO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idDepoimento;
 

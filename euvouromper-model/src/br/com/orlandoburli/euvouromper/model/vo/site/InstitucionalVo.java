@@ -21,6 +21,8 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 @Table(Dicionario.Institucional.TABELA_INSTITUCIONAL)
 public class InstitucionalVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_INSTITUCIONAL, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idInstitucional;
 

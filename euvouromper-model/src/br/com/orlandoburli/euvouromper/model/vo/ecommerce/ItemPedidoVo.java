@@ -28,6 +28,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.ItemPedido.
 @Table(Dicionario.ItemPedido.TABELA_ITEM_PEDIDO)
 public class ItemPedidoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_ITEM_PEDIDO, dataType = DataType.INT, isNotNull = true, isKey = true, isAutoIncrement = true)
 	private Integer idItemPedido;
 

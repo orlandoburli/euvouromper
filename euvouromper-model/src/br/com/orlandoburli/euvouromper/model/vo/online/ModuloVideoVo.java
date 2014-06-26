@@ -15,6 +15,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.ModuloVideo
 @Table(value = Dicionario.ModuloVideo.TABELA_MODULO_VIDEO, constraints = { @UniqueConstraint(columns = {ID_MODULO, ID_VIDEO}, constraintName = Dicionario.ModuloVideo.UK_MODULO_VIDEO) })
 public class ModuloVideoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MODULO_VIDEO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idModuloVideo;
 

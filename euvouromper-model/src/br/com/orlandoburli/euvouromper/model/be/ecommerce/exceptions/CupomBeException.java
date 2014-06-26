@@ -7,7 +7,11 @@ public class CupomBeException extends BeException {
 	private static final long serialVersionUID = 1L;
 
 	public CupomBeException(String message) {
-		super(message);
+		super(message, null);
+	}
+
+	public CupomBeException(String message, String field) {
+		super(message, field);
 	}
 
 }

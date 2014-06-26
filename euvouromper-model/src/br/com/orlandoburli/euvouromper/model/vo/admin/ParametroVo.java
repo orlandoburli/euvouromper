@@ -18,6 +18,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Parametro.C
 @Table(Dicionario.Parametro.TABELA_PARAMETRO)
 public class ParametroVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_PARAMETRO, dataType = DataType.VARCHAR, maxSize = 50, isKey = true)
 	@NotEmpty
 	@NotNull

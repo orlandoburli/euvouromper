@@ -19,6 +19,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.ClienteSald
 @Table(ClienteSaldo.TABELA_CLIENTE_SALDO)
 public class ClienteSaldoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_CLIENTE, dataType = DataType.INT, isNotNull = true, isKey = true)
 	private Integer idCliente;
 

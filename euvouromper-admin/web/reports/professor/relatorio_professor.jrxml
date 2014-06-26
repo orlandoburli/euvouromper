@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_professor" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="3228fe9c-7031-4166-872b-715aa999327f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db-euvouromper"/>
+	<parameter name="idProfessor" class="java.lang.Integer">
+		<parameterDescription><![CDATA[Id do Professor]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DataFinal" class="java.sql.Date">
+		<parameterDescription><![CDATA[Data Inicial]]></parameterDescription>
+	</parameter>
+	<parameter name="DataInicial" class="java.sql.Date">
+		<parameterDescription><![CDATA[Data Inicial]]></parameterDescription>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="referencia" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from professor
+ where id_professor = $P{idProfessor}]]>
+	</queryString>
+	<field name="id_professor" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="path_foto" class="java.lang.String"/>
+	<field name="url" class="java.lang.String"/>
+	<field name="mini_curriculo" class="java.lang.String"/>
+	<field name="curriculo" class="java.lang.String"/>
+	<variable name="valorComissaoIndividual" class="java.math.BigDecimal">
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<variable name="valorComissaoModulo" class="java.math.BigDecimal">
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<variable name="valorComissaoPacote" class="java.math.BigDecimal">
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<variable name="valorComissaoFull" class="java.math.BigDecimal">
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="100" height="20" uuid="78dc3eb1-a57b-4cbc-bebe-2ca0726790c4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="336" height="20" uuid="d3cf6899-b4f0-4c80-91af-f705c169512a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Individual de Faturamento do Professor]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="555" height="1" uuid="4f1d7473-bdb5-40e9-95f9-ae2f4e06af9b">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.1"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="336" y="0" width="218" height="20" uuid="e896c54c-0efb-4498-8f8b-22a0d4be2d8e"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instituto Romper]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="20" width="156" height="20" uuid="72f2b4ee-ce74-49c0-8f8f-69c79c95c495">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{referencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="20" width="80" height="20" uuid="6e96a7d4-e08b-4bbe-91ba-6884fa88c2ec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referência:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="20" uuid="1a31e118-2ccf-47b9-84d0-d78d91161a3d">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="idProfessor">
+					<subreportParameterExpression><![CDATA[$P{idProfessor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataFinal">
+					<subreportParameterExpression><![CDATA[$P{DataFinal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataInicial">
+					<subreportParameterExpression><![CDATA[$P{DataInicial}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="valorComissaoIndividual" toVariable="valorComissaoIndividual"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +
+"relatorio_professor_individual.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="20" uuid="6b97c579-e11e-48f9-bc8f-1caf45737a30">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="idProfessor">
+					<subreportParameterExpression><![CDATA[$P{idProfessor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataFinal">
+					<subreportParameterExpression><![CDATA[$P{DataFinal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataInicial">
+					<subreportParameterExpression><![CDATA[$P{DataInicial}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="valorComissaoModulo" toVariable="valorComissaoModulo"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +
+"relatorio_professor_modulo.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="20" uuid="cb85e98e-e58b-4f8f-8733-376b9295b225">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<subreportParameter name="idProfessor">
+					<subreportParameterExpression><![CDATA[$P{idProfessor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataFinal">
+					<subreportParameterExpression><![CDATA[$P{DataFinal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataInicial">
+					<subreportParameterExpression><![CDATA[$P{DataInicial}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="valorComissaoPacote" toVariable="valorComissaoPacote"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +
+"relatorio_professor_pacote.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="20" uuid="99247d66-1028-41dc-bbd8-65bc46f95e1c">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="idProfessor">
+					<subreportParameterExpression><![CDATA[$P{idProfessor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataFinal">
+					<subreportParameterExpression><![CDATA[$P{DataFinal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DataInicial">
+					<subreportParameterExpression><![CDATA[$P{DataInicial}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="valorComissaoFull" toVariable="valorComissaoFull"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +
+"relatorio_professor_full.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="309cb846-c948-4118-9ff5-412ceb171178">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.1"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="20" uuid="7229bc15-3c77-453d-9c44-a9c4f36f8870"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.euvouromper.com.br]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="1" width="100" height="20" uuid="1d1dc1a9-9737-4351-a972-e2893cb6ca6a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="500" y="1" width="55" height="20" uuid="bcac9919-8973-4d52-88fd-d6f77bf42884"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="0" y="0" width="130" height="20" uuid="e14d15c2-7b4d-4030-9ee8-d1f1a1be3d1e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="160" splitType="Immediate">
+			<line>
+				<reportElement x="0" y="50" width="555" height="1" uuid="93fe038c-a511-4260-bf7e-29f8acae1d28">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="30" width="100" height="20" uuid="00aa13a8-8aee-4323-80d8-96cd62c2982c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="180" height="20" uuid="a1299f98-85bd-4b34-a276-b072549dd322"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vídeos Individuais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="180" height="20" uuid="32a4a249-3de6-4cad-ba49-3eaa79d81591"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Módulos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="180" height="20" uuid="ee290e06-b88b-4306-931d-de05147b1e6b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pacotes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="180" height="20" uuid="8f08ed83-aaf9-4913-bad7-53e7df36e2e7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Acesso Full]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="180" height="20" uuid="9f04fbbd-3e8b-47d5-ac3a-a7d705e21533"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00">
+				<reportElement x="180" y="60" width="200" height="20" uuid="704dc0f3-ed2b-4734-a7a2-7ddcf7073a25"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valorComissaoIndividual}]]></textFieldExpression>
+			</textField>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00">
+				<reportElement x="180" y="80" width="200" height="20" uuid="4bfdb781-25eb-4394-89f7-daa6f3cbf571"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valorComissaoModulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00">
+				<reportElement x="180" y="100" width="200" height="20" uuid="301b8aec-05b1-4f39-9dee-c80926d5d365"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valorComissaoPacote}]]></textFieldExpression>
+			</textField>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00">
+				<reportElement x="180" y="120" width="200" height="20" uuid="5c66efbb-28dd-471c-a3b7-8d4216e3a7d8"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valorComissaoFull}]]></textFieldExpression>
+			</textField>
+			<textField pattern="R$ #,##0.00;R$ -#,##0.00">
+				<reportElement x="180" y="140" width="200" height="20" uuid="a7f3d7fa-4830-46b8-8117-cb232905b17b"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valorComissaoIndividual}.add( $V{valorComissaoModulo} ).add($V{valorComissaoPacote}).add($V{valorComissaoFull})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

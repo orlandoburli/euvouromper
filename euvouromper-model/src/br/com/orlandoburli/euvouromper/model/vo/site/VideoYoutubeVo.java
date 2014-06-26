@@ -14,6 +14,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.VideoYoutub
 @Table(VideoYoutube.TABELA_VIDEO_YOUTUBE)
 public class VideoYoutubeVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_VIDEO_YOUTUBE, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idVideoYoutube;
 

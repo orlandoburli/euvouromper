@@ -37,7 +37,7 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 			}
 		}
 
-		throw new LoginInvalidoException("Email / Senha inválidos!");
+		throw new LoginInvalidoException("Email / Senha inválidos!", "email");
 	}
 
 	@Override
@@ -46,15 +46,15 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 
 		if (vo.getTipoCadastro().equals(TipoCadastro.EMAIL)) {
 			if (vo.getSenha() == null || vo.getSenha().trim().equals("")) {
-				throw new SaveBeException("Campo senha é obrigatório!");
+				throw new SaveBeException("Campo senha é obrigatório!", "senha");
 			} else if (vo.getSenha().trim().length() < 3) {
-				throw new SaveBeException("Campo senha deve ter pelo menos 3 caracteres!");
+				throw new SaveBeException("Campo senha deve ter pelo menos 3 caracteres!", "senha");
 			}
 		}
 	}
 
 	@Override
-	public void doBeforeInsert(ClienteVo vo) throws InsertBeException {
+	public void doBeforeInsert(ClienteVo vo) throws BeException {
 		super.doBeforeInsert(vo);
 
 		// Verifica se ja existe email com esse cadastro
@@ -64,21 +64,21 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 			temp = getByEmail(vo.getEmail());
 
 			if (temp != null) {
-				throw new InsertBeException("Já existe o email " + vo.getEmail() + " cadastrado!");
+				throw new InsertBeException("Já existe o email " + vo.getEmail() + " cadastrado!", "email");
 			}
 		} catch (ListException e) {
 			Log.error(e);
-			throw new InsertBeException(e.getMessage());
+			throw new InsertBeException(e.getMessage(), e.getField());
 		}
 
 		if (vo.getTipoCadastro().equals(TipoCadastro.EMAIL)) {
 			if (vo.getConfSenha() == null || vo.getConfSenha().trim().equals("")) {
-				throw new InsertBeException("Campo confirmação senha é obrigatório!");
+				throw new InsertBeException("Campo confirmação senha é obrigatório!", "confSenha");
 			}
 
 			if (vo.getSenha() != null) {
 				if (!vo.getSenha().equals(vo.getConfSenha())) {
-					throw new InsertBeException("Campo senha e confirmação da senha devem ser iguais!");
+					throw new InsertBeException("Campo senha e confirmação da senha devem ser iguais!", "senha");
 				}
 			}
 		}
@@ -95,7 +95,7 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 			new EmailBe(getManager()).sendEmailConfirmacaoCadastro(vo);
 		} catch (ListException | EmailException e) {
 			Log.error(e);
-			throw new InsertBeException("Erro após o cadastro do cliente. Erro: " + e.getMessage());
+			throw new InsertBeException("Erro após o cadastro do cliente. Erro: " + e.getMessage(), null);
 		}
 	}
 
@@ -175,12 +175,12 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 
 	public void resetarSenha(String email) throws BeException {
 		if (email == null || email.trim().equals("")) {
-			throw new SaveBeException("Informe o email!");
+			throw new SaveBeException("Informe o email!", "email");
 		}
 		ClienteVo cliente = getByEmail(email);
 
 		if (cliente == null) {
-			throw new ClienteInexistenteException("Email não cadastrado!");
+			throw new ClienteInexistenteException("Email não cadastrado!", "email");
 		}
 
 		// Gera uma nova senha
@@ -196,16 +196,16 @@ public class ClienteBe extends BaseBe<ClienteVo, ClienteDao> {
 	public void alterarSenha(ClienteVo cliente, String senha, String novaSenha, String confNovaSenha) throws BeException {
 
 		if (senha == null || !cliente.getSenha().equals(senha)) {
-			throw new SaveBeException("Senha atual incorreta!");
+			throw new SaveBeException("Senha atual incorreta!", "senha");
 		}
 
 		if (confNovaSenha == null || confNovaSenha.trim().equals("")) {
-			throw new SaveBeException("Campo confirmação senha é obrigatório!");
+			throw new SaveBeException("Campo confirmação senha é obrigatório!", "confNovaSenha");
 		}
 
 		if (novaSenha != null) {
 			if (!novaSenha.equals(confNovaSenha)) {
-				throw new SaveBeException("Campo senha e confirmação da senha devem ser iguais!");
+				throw new SaveBeException("Campo senha e confirmação da senha devem ser iguais!", "novaSenha");
 			}
 		}
 

@@ -55,15 +55,15 @@ public class ClienteSaldoBe extends BaseBe<ClienteSaldoVo, ClienteSaldoDao> {
 	 */
 	public void adicionarSaldo(ClienteVo cliente, ItemPedidoVo item) throws BeException {
 		if (cliente == null) {
-			throw new SaveBeException("Cliente não pode ser nulo!");
+			throw new SaveBeException("Cliente não pode ser nulo!", "idCliente");
 		}
 
 		if (item == null) {
-			throw new SaveBeException("Item do pedido não pode ser nulo!");
+			throw new SaveBeException("Item do pedido não pode ser nulo!", "item");
 		}
 
 		if (!item.getTipoProduto().equals(TipoProduto.CREDITO)) {
-			throw new SaveBeException("Item do pedido não é do tipo crédito!");
+			throw new SaveBeException("Item do pedido não é do tipo crédito!", null);
 		}
 
 		ClienteSaldoVo saldo = get(cliente);

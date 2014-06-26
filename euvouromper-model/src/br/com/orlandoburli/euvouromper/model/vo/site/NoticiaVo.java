@@ -23,6 +23,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Noticia.Col
 @Table(Dicionario.Noticia.TABELA_NOTICIA)
 public class NoticiaVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_NOTICIA, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idNoticia;
 

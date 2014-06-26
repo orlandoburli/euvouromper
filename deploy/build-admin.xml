@@ -189,10 +189,24 @@
 	<target name="compilar-euvouromper-admin" depends="limpar-euvouromper-admin,empacotar-core,empacotar-dao-postgresql,empacotar-euvouromper-model">
 		<javac srcdir="${euvouromper.dir.admin}/WEB-INF/src" destdir="${euvouromper.build.dir.admin}" encoding="UTF-8" deprecation="off" nowarn="on" includeantruntime="on" includejavaruntime="on" debug="on">
 			<classpath>
+			    <fileset dir="/Users/orlandoburli/Documents/java/lib/jasperreports/jasperreports-5.6.0/dist">
+			        <include name="jasperreports-5.6.0.jar" />
+					<include name="jasperreports-fonts-5.6.0.jar" />
+			    </fileset>
+			    
+			    <fileset dir="/Users/orlandoburli/Documents/java/lib/jasperreports/jasperreports-5.6.0/lib">
+					<include name="commons-beanutils-1.8.0.jar" />
+					<include name="commons-collections-3.2.1.jar" />
+					<include name="commons-digester-2.1.jar" />
+					<include name="commons-logging-1.1.1.jar" />
+					<include name="iText-2.1.7.js2.jar" />
+				</fileset>
+				
 				<fileset dir="${deploy.dir}">
 					<include name="core.jar" />
 					<include name="euvouromper-model.jar" />
 				</fileset>
+				
 				<fileset dir="${tomcat-lib.dir}">
 					<include name="*.jar" />
 				</fileset>

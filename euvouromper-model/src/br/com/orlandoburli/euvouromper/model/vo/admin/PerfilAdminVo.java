@@ -15,6 +15,9 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 
 @Table(PerfilAdmin.TABELA_PERFIL_ADMIN)
 public class PerfilAdminVo extends BaseVo {
+
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = Colunas.ID_PERFIL, dataType = DataType.INT, isNotNull = true, isAutoIncrement = true, isKey = true)
 	private Integer idPerfil;
 

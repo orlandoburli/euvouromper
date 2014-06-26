@@ -27,6 +27,8 @@ import br.com.orlandoburli.framework.core.vo.annotations.Description;
 @Table(Artigo.TABELA_ARTIGO)
 public class ArtigoVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_ARTIGO, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idArtigo;
 

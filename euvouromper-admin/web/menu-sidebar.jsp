@@ -131,6 +131,10 @@
 						<li><a data-menu-type="link" data-link="pedidoconsulta.admin">Pedidos</a></li>
 					</c:if>
 				</ul></li>
+			<li><a href="#" class="expand"><span>Relatórios</span> <i class="icon-paragraph-justify2"></i></a>
+				<ul>
+					<li><a data-menu-type="link" data-link="relatorioprofessor.admin">Faturamento Professor</a></li>
+				</ul></li>
 		</ul>
 		<!-- /main navigation -->
 

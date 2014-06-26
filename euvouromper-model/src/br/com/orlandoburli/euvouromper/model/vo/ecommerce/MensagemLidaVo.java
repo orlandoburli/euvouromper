@@ -20,6 +20,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.MensagemLid
 @Table(value = Dicionario.MensagemLida.TABELA_MENSAGEM_LIDA, constraints = { @UniqueConstraint(columns = { ID_MENSAGEM, ID_CLIENTE }, constraintName = MensagemLida.UNIQUE_MENSAGEM_LIDA) })
 public class MensagemLidaVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_MENSAGEM_LIDA, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idMensagemLida;
 

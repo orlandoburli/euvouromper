@@ -16,6 +16,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Pacote.Colu
 @Table(Dicionario.Pacote.TABELA_PACOTE)
 public class PacoteVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_PACOTE, dataType = DataType.INT, isKey = true, isAutoIncrement = true)
 	private Integer idPacote;
 

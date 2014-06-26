@@ -14,6 +14,8 @@ import static br.com.orlandoburli.euvouromper.model.utils.Dicionario.Email.Colun
 @Table(Dicionario.Email.TABELA_EMAIL)
 public class EmailVo extends BaseVo {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = ID_EMAIL, dataType = DataType.VARCHAR, isKey = true)
 	@NotNull
 	@NotEmpty
