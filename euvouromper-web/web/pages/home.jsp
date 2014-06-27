@@ -45,7 +45,7 @@
 				<h2 class="titulo-padrao" title="Aula Experimental">Aula Experimental</h2>
 				
 				<c:forEach items="${videos}" var="video">
-					<a class="aula-item" href="javascript:void(0)">
+					<a class="aula-item" href="${root}/video/free/${video.idVideo}">
 						<figure>
 							<img src="${video.pathFoto}" alt="" align="middle" height="150">
 							<figcaption> 

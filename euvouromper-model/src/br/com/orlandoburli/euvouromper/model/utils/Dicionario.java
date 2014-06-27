@@ -262,6 +262,16 @@ public final class Dicionario {
 			public static final String PATH_FOTO = "path_foto";
 		}
 	}
+	
+	public final class VideoProduto {
+		public static final String TABELA_VIDEO_PRODUTO = "video_produto";
+		public static final String UNQ_VIDEO_PRODUTO = "unq_video_produto";
+		public final class Colunas {
+			public static final String ID_VIDEO_PRODUTO = "id_video_produto";
+			public static final String ID_VIDEO = Video.Colunas.ID_VIDEO;
+			public static final String ID_PRODUTO = Produto.Colunas.ID_PRODUTO;
+		}
+	}
 
 	public final class Modulo {
 		public static final String TABELA_MODULO = "modulo";

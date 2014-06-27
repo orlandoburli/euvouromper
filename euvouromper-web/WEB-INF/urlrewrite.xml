@@ -169,5 +169,10 @@
 		<to type="forward">/aluno.curso.page?produto=$1</to>
 	</rule>
 	
+	<rule match-type="wildcard">
+		<from>/video/free/*</from>
+		<to type="forward">/aluno.free.video.page?v=$1</to>
+	</rule>
+	
 	
 </urlrewrite>

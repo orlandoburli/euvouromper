@@ -24,6 +24,7 @@ import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ItemPedidoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.ProdutoVo;
 import br.com.orlandoburli.euvouromper.model.vo.ecommerce.cliente.ClienteVo;
 import br.com.orlandoburli.euvouromper.model.vo.online.VideoVo;
+import br.com.orlandoburli.euvouromper.web.servlets.utils.WebUtils;
 import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListException;
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
@@ -31,7 +32,7 @@ import br.com.orlandoburli.framework.core.utils.Constants;
 import br.com.orlandoburli.framework.core.utils.Criptografia;
 import br.com.orlandoburli.framework.core.utils.Utils;
 
-@WebServlet("/aluno.video.page")
+@WebServlet("/aluno.free.video.page")
 public class ClienteVideoPlayerView extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -40,15 +41,17 @@ public class ClienteVideoPlayerView extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ClienteVo cliente = (ClienteVo) req.getSession().getAttribute(Constants.Session.CLIENTE);
 
-		if (cliente == null) {
-			// Não precisa redirecionar, so na faz nada.
-			Log.debug("Cliente não logado.");
-			return;
-		}
-
 		DAOManager manager = DAOManager.getDAOManager();
 
 		try {
+
+			// Menus
+
+			WebUtils.buildMenus(req, manager);
+			
+			// Videos Gratuitos
+
+			req.setAttribute("videos", new VideoBe(manager).getListaGratuitosHome());
 
 			Integer idVideo = null;
 			try {
@@ -59,6 +62,12 @@ public class ClienteVideoPlayerView extends HttpServlet {
 
 			if (idVideo == null) {
 				Log.warning("Parametro [v] está vazio.");
+				WebUtils.goHome(req, resp);
+				return;
+			}
+
+			if (cliente == null) {
+				WebUtils.goTo(req, resp, "/entrar?redir=/video/free/" + idVideo);
 				return;
 			}
 
@@ -83,7 +92,7 @@ public class ClienteVideoPlayerView extends HttpServlet {
 			} catch (NumberFormatException | NullPointerException e) {
 				idModulo = null;
 			}
-			
+
 			req.setAttribute("idModulo", idModulo);
 
 			// Verifica se o video foi comprado invidividualmente
@@ -93,12 +102,14 @@ public class ClienteVideoPlayerView extends HttpServlet {
 
 				// Item ainda nao foi comprado, dar opcao de compra somente
 				// daquele video
-				Log.warning("Parametro [i] está vazio.");
-
-				// Seta o produto de video individual para compra.
-				req.setAttribute("produto", new ProdutoBe(manager).getProdutoVideoIndividual());
-
-				req.getRequestDispatcher("/web/pages/ecommerce/cliente/cliente_video_comprar.jsp").forward(req, resp);
+				// Log.warning("Parametro [i] está vazio.");
+				//
+				// // Seta o produto de video individual para compra.
+				// req.setAttribute("produto", new
+				// ProdutoBe(manager).getProdutoVideoIndividual());
+				//
+				// req.getRequestDispatcher("/web/pages/ecommerce/cliente/cliente_free_video.jsp").forward(req,
+				// resp);
 
 				return;
 			}
@@ -180,7 +191,7 @@ public class ClienteVideoPlayerView extends HttpServlet {
 			manager.commit();
 		}
 
-		req.getRequestDispatcher("/web/pages/ecommerce/cliente/cliente_video_ver.jsp").forward(req, resp);
+		req.getRequestDispatcher("/web/pages/ecommerce/cliente/cliente_free_video_ver.jsp").forward(req, resp);
 	}
 
 	@Override
