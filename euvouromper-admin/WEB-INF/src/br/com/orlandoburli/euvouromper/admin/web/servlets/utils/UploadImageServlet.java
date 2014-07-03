@@ -25,6 +25,7 @@ import br.com.orlandoburli.framework.core.be.exceptions.persistence.ListExceptio
 import br.com.orlandoburli.framework.core.dao.DAOManager;
 import br.com.orlandoburli.framework.core.log.Log;
 import br.com.orlandoburli.framework.core.utils.Constants;
+import br.com.orlandoburli.framework.core.utils.Utils;
 
 @WebServlet("/upload/images")
 public class UploadImageServlet extends HttpServlet {
@@ -103,6 +104,8 @@ public class UploadImageServlet extends HttpServlet {
 							if (!dstFile.exists()) {
 								dstFile.mkdirs();
 							}
+							
+							this.name = Utils.removeAcentos(this.name);
 
 							File dst = new File(dstFile.getPath() + "/" + this.name);
 

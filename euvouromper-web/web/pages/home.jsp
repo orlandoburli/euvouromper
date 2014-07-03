@@ -41,6 +41,32 @@
 					</ul>
 				</div>
 			</div><!-- end sliders-->
+			
+			<script type="text/javascript">
+				jQuery(function($) {
+					$('ul#items-videosxxxx').easyPaginate({
+						step : 4,
+						auto : true,
+						loop : true,
+						clickstop : false,
+						pause : 2000
+					});
+				});
+			</script>
+			<!-- 
+			<ul id="items" class="">
+				    <c:forEach items="${professores}" var="professor">
+						<li>
+							<p class="image">
+								<a href="professor/${professor.url}"> <img src="${professor.pathFoto}" alt="${professor.nome}" class="cycle polaroid shadow" style="width: 125px; height: 125px;" />
+								</a>
+							</p>
+							<h3>${professor.nome}</h3>
+						</li>
+					</c:forEach>
+				</ul>
+			
+			 -->
 			<section id="aula-experimental" class="" style="overflow: auto;">
 				<h2 class="titulo-padrao" title="Aula Experimental">Aula Experimental</h2>
 				
@@ -50,11 +76,10 @@
 							<img src="${video.pathFoto}" alt="" align="middle" height="150">
 							<figcaption> 
 								<span> ${video.nome} Aula ${video.aula} Bloco ${video.bloco} - ${video.disciplina.nome } - ${video.professor.nome}</span>
-								</figcaption>
+							</figcaption>
 						</figure>
 					</a>
 				</c:forEach>
-				
 			</section><!-- end section aulas -->
 			<section id="noticias" class="span5">
 					<h2 class="titulo-padrao" title="Notícias">Notícias</h2>
@@ -91,7 +116,7 @@
 					</article>
 				</c:forEach>
 
-				<a href="teste" title="Ver Todos" id="ver-noticias">Ver Todos</a>
+				<a href="${root}/agenda/lista" title="Ver Todos" id="ver-noticias">Ver Todos</a>
 			</section>
 			<section id="noticias" class="span5">
 					<h2 class="titulo-padrao" title="Artigos">Artigos</h2>
@@ -121,7 +146,7 @@
 					<div id="tweecool"></div>
 				</div>
 
-				<a href="http://twitter.com/@gsarruda" target="_blank" title="Seguir" id="ver-noticias">Seguir</a>
+				<a href="http://twitter.com/@euvouromper" target="_blank" title="Seguir" id="ver-noticias">Seguir</a>
 			</section>
 		</aside>
 		<aside id="aside-right" class="" style="overflow:auto">
@@ -133,10 +158,6 @@
 					<a href="${menu.url }" class="link-oab">${menu.nome }</a>
 				</c:forEach>
 				
-				<%-- <a href="" class="link-oab">oab</a>
-				<a href="${root}/produto/lista" class="link-cursos">cursos</a>
-				<a href="" class="link-concursos">concursos</a> --%>
-				
 			</section>
 			<section id="romper-tv">
 				<h2 class="titulo-padrao" title="TV Romper">TV Romper</h2>
@@ -147,11 +168,11 @@
 				<script type="text/javascript">
 				jQuery(function($) {
 					$('ul#items').easyPaginate({
-						step : 3,
-						auto : false,
-						loop : false,
+						step : 2,
+						auto : true,
+						loop : true,
 						clickstop : false,
-						pause : 8000
+						pause : 2000
 					});
 				});
 				</script>
@@ -179,7 +200,7 @@
 		  			fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));
 					</script>
-				<div class="fb-like-box" data-href="http://www.facebook.com/McProjota" data-width="338" data-height="422" data-show-faces="true" data-border-color="#cccccc" data-stream="false" data-header="false"></div>
+				<div class="fb-like-box" data-href="https://www.facebook.com/pages/Eu-Vou-Romper/242928119244088" data-width="338" data-height="422" data-show-faces="true" data-border-color="#cccccc" data-stream="false" data-header="false"></div>
 	      </section><!-- end facebook -->
 
 		</aside><!-- /end aside-right -->

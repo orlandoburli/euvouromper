@@ -47,7 +47,7 @@ public class AgendaBe extends BaseBe<AgendaVo, AgendaDao> {
 		AgendaVo filter = new AgendaVo();
 		filter.setStatus(StatusAgenda.PUBLICADO);
 
-		return getList(filter, null, Agenda.TABELA_AGENDA + "." + Agenda.Colunas.DATA + " DESC", 1, 2);
+		return getList(filter, null, Agenda.TABELA_AGENDA + "." + Agenda.Colunas.DATA + " DESC", 1, 3);
 	}
 
 	/**

@@ -47,7 +47,7 @@ public class NoticiaBe extends BaseBe<NoticiaVo, NoticiaDao> {
 		NoticiaVo filter = new NoticiaVo();
 		filter.setStatus(StatusNoticia.PUBLICADO);
 
-		return getList(filter, null, Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.DATA + " DESC", 1, 2);
+		return getList(filter, null, Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.DATA + " DESC", 1, 3);
 	}
 
 	/**

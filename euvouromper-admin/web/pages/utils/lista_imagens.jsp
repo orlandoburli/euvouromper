@@ -61,14 +61,9 @@
 						title : "Zip files",
 						extensions : "zip"
 					} ]
-				},
-				resize : {
-					width : 320,
-					height : 240,
-					quality : 90
 				}
 			});
-		}, tempo);
+		}, tempo * 5);
 	});
 	
 	function loadImagens() {

@@ -39,8 +39,8 @@
 			</div>
 			<div id="redes-sociais">
 				<ul class="">
-					<li><a href="" title="" class="facebook">facebook</a></li>
-					<li><a href="" title="" class="twitter">twitter</a></li>
+					<li><a href="https://www.facebook.com/pages/Eu-Vou-Romper/242928119244088" title="" target="_blank" class="facebook">facebook</a></li>
+					<li><a href="http://twitter.com/euvouromper" title="" target="_blank" class="twitter">twitter</a></li>
 					<li><a href="https://plus.google.com/u/0/109431195159309613921/about" title="" target="_blank" class="google">google +</a></li>
 					<li><a href="https://www.youtube.com/channel/UCg0xRIvQW70uyqr5kImlbAg/feed" target="_blank" title="" class="youtube">youtube</a></li>
 				</ul>

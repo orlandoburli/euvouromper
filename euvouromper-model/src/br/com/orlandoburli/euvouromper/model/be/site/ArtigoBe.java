@@ -48,7 +48,7 @@ public class ArtigoBe extends BaseBe<ArtigoVo, ArtigoDao> {
 
 		filter.setStatus(StatusArtigo.PUBLICADO);
 
-		return getList(filter, null, Artigo.TABELA_ARTIGO + "." + Artigo.Colunas.DATA + " DESC", 1, 2);
+		return getList(filter, null, Artigo.TABELA_ARTIGO + "." + Artigo.Colunas.DATA + " DESC", 1, 3);
 	}
 
 	public Integer getQuantidadePaginasArtigos() throws ListException {
