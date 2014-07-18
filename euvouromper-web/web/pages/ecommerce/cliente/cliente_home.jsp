@@ -99,7 +99,7 @@
 										</td>
 										<td class="right">${mensagem.remetente}</td>
 										<td class="right">${dataFormatada}</td>
-										<td class="text-right"><a href="" title=""><img src="${root}/web/assets/imgs/delete.png" alt=""></a></td>
+										<%-- <td class="text-right"><a href="" title=""><img src="${root}/web/assets/imgs/delete.png" alt=""></a></td> --%>
 									</tr>
 								</c:forEach>
 							</tbody>

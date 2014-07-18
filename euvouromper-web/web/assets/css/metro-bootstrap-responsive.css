@@ -8,6 +8,7 @@
  * max 480
  * max 320
  */
+ /*
 #responsive-utils .hide-element {
   display: none !important;
   visibility: hidden !important;
@@ -51,6 +52,7 @@
   padding: 0 10px;
 }
 /* Desktop */
+/*
 @media screen and (min-width: 800px) {
   .no-desktop {
     display: none !important;
@@ -70,7 +72,8 @@
     width: 940px !important;
   }
 }
-/* Large desktop */
+*/
+/* Large desktop 
 @media screen and (min-width: 1200px) {
   html {
     font-size: 70%;
@@ -89,6 +92,7 @@
   }
 }
 /* tablet landscape*/
+/*
 @media only screen and (max-width: 1024px) {
   .no-tablet-landscape,
   .no-tablet {
@@ -103,7 +107,8 @@
     width: 940px !important;
   }
 }
-/* tablet portrait */
+*/
+/* tablet portrait *
 @media only screen and (max-width: 800px) {
   html {
     font-size: 60%;
@@ -117,9 +122,11 @@
     display: block !important;
     visibility: visible !important;
   }
+  /* 
   .container {
     width: 720px !important;
   }
+
   .grid:not(.fluid) > .row {
     margin: 0;
   }
@@ -234,7 +241,7 @@
     display: block !important;
   }
 }
-/* Phones landscape*/
+/* Phones landscape
 @media only screen and (max-width: 640px) {
   html {
     font-size: 60%;
@@ -281,7 +288,7 @@
     width: 100% !important;
   }
 }
-/* Phones portrait*/
+/* Phones portrait
 @media only screen and (max-width: 480px) {
   html {
     font-size: 45%;
@@ -321,3 +328,4 @@
     width: 100% !important;
   }
 }
+ */

@@ -45,9 +45,10 @@ public class NoticiaBe extends BaseBe<NoticiaVo, NoticiaDao> {
 
 	public List<NoticiaVo> getListaHome() throws ListException {
 		NoticiaVo filter = new NoticiaVo();
+
 		filter.setStatus(StatusNoticia.PUBLICADO);
 
-		return getList(filter, null, Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.DATA + " DESC", 1, 3);
+		return getList(filter, getSqlFiltroHoje(), getOrderNoticias(), 1, 3);
 	}
 
 	/**
@@ -64,11 +65,12 @@ public class NoticiaBe extends BaseBe<NoticiaVo, NoticiaDao> {
 
 		filter.setStatus(StatusNoticia.PUBLICADO);
 
-		return getList(filter, null, Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.DATA + " DESC", pagina, TAMANHO_PAGINA_NOTICIAS);
+		return getList(filter, getSqlFiltroHoje(), getOrderNoticias(), pagina, TAMANHO_PAGINA_NOTICIAS);
 	}
 
 	/**
 	 * Retorna o numero de paginas
+	 * 
 	 * @return Numero de paginas de noticias
 	 * @throws ListException
 	 */
@@ -78,7 +80,15 @@ public class NoticiaBe extends BaseBe<NoticiaVo, NoticiaDao> {
 
 		filter.setStatus(StatusNoticia.PUBLICADO);
 
-		return getPageCount(filter, null, TAMANHO_PAGINA_NOTICIAS);
+		return getPageCount(filter, getSqlFiltroHoje(), TAMANHO_PAGINA_NOTICIAS);
+	}
+
+	private String getSqlFiltroHoje() {
+		return Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.DATA + " <= now()";
+	}
+
+	private String getOrderNoticias() {
+		return Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.DATA + " DESC, " + Noticia.TABELA_NOTICIA + "." + Noticia.Colunas.ID_NOTICIA + " DESC";
 	}
 
 }

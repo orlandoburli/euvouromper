@@ -97,7 +97,11 @@ public class ClienteVo extends BaseVo {
 	private String fone2;
 
 	public String getPrimeiroNome() {
-		return getNome().substring(0, getNome().indexOf(" ")).trim();
+		if (getNome().indexOf(" ") > 0) {
+			return getNome().substring(0, getNome().indexOf(" ")).trim();
+		}
+
+		return getNome();
 	}
 
 	public Integer getIdCliente() {
