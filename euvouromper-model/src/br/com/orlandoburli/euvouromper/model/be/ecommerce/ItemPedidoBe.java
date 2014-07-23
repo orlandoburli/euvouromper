@@ -180,7 +180,7 @@ public class ItemPedidoBe extends BaseBe<ItemPedidoVo, ItemPedidoDao> {
 
 				return true;
 			} else {
-				Log.debug("Item encontrado, mas vencido para o produto ACESSO TOTAL Hoje: " + sdf.format(hoje.getTime()) + " Validade: " + sdf.format(item.getDataValidade().getTime()));
+				Log.debug("Item encontrado, mas vencido para o produto ACESSO TOTAL Hoje: " + sdf.format(hoje.getTime()) + " Validade: " + sdf.format(validade.getTime()));
 			}
 		}
 
